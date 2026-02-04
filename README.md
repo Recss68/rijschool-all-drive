@@ -39,6 +39,13 @@ De focus ligt op **performance**, **SEO** en **gebruiksvriendelijkheid**, met ru
 
 ---
 
+## 📐 Conventions
+
+This project follows the conventions defined here: 
+https://docs.fdnd.nl/conventies.html
+
+---
+
 ## 🌍 SEO
 
 - Server Side Rendering (SSR)
