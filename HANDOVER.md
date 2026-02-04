@@ -68,7 +68,6 @@ Nieuw project — de concept- en ontwerpfase is gestart.
   - Leerlingaccounts
   - Meertaligheid (EN) nodig zijn
 - Hoe vaak content (zoals geslaagde leerlingen) wordt bijgewerkt
-- Of Supabase Edge Functions nodig gaan zijn
 
 ---
 
