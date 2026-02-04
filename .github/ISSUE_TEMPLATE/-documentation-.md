@@ -1,7 +1,7 @@
 ---
 name: "[DOCUMENTATION]"
 about: Describing what you are going to do
-title: ''
+title: "[DOCUMENTATION]: "
 labels: ''
 assignees: ''
 
