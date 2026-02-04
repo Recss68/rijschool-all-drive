@@ -1,8 +1,8 @@
 # 🚗 Rijschool All Drive — Website
 
 <!-- Tech stack badges -->
-![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)
-![Next.js](https://img.shields.io/badge/Next.js-14-black?logo=nextdotjs)
+![Svelte](https://img.shields.io/badge/Svelte-4-FF3E00?logo=svelte&logoColor=white)
+![SvelteKit](https://img.shields.io/badge/SvelteKit-App%20Framework-FF3E00?logo=svelte)
 ![TypeScript](https://img.shields.io/badge/TypeScript-Strict-3178C6?logo=typescript&logoColor=white)
 ![Supabase](https://img.shields.io/badge/Supabase-Backend-3ECF8E?logo=supabase&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-Deployment-000000?logo=vercel)
@@ -14,7 +14,7 @@ De focus ligt op **performance**, **SEO** en **gebruiksvriendelijkheid**, met ru
 
 ## ✨ Features
 
-- ⚡ Supersnel dankzij Next.js
+- ⚡ Supersnel dankzij SvelteKit
 - 🔍 SEO-vriendelijk (SSR & SSG)
 - 📱 Volledig responsive (mobile-first)
 - 📝 Online inschrijfformulieren
@@ -27,8 +27,8 @@ De focus ligt op **performance**, **SEO** en **gebruiksvriendelijkheid**, met ru
 ## 🧱 Tech Stack
 
 **Frontend**
-- React
-- Next.js (App Router)
+- Svelte
+- SvelteKit
 - TypeScript
 
 **Backend / Services**
