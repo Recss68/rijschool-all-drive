@@ -55,6 +55,7 @@ Volg onderstaande stappen om het project lokaal te draaien.
 
 ### Repository clonen
 `git clone`
+
 `cd rijschool-all-drive`
 
 ### Dependencies installeren
