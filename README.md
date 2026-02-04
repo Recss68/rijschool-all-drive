@@ -54,7 +54,7 @@ De focus ligt op **performance**, **SEO** en **gebruiksvriendelijkheid**, met ru
 Volg onderstaande stappen om het project lokaal te draaien.
 
 # Repository clonen
-git clone https://github.com/jouw-gebruikersnaam/rijschool-all-drive.git
+git clone
 cd rijschool-all-drive
 
 # Dependencies installeren
