@@ -37,14 +37,19 @@
 
   --c-slate-900: #19252e;
   --c-slate-600: #5983a6;
-  --c-slate-200: #bdcddb;
+  --c-slate-200: #d6e5f1;
   --c-slate-100: #e7edf1;
   --c-slate-50: #f5f8fa;
 
   /* Gradient (Background color) */
   --g-0: #1c398e;
-  --g-50: #193c88;
+  --g-50: #193bb3;
   --g-100: #1c398e;
+
+  /* Hover states */
+  --hover-state-lighter: #ffffff21;
+  --hover-state-light: #5983a67e;
+  --hover-state-dark: #193bb3b1;
 
   /* Typography */
   --font-heading: "Bricolage Grotesque", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -64,13 +69,14 @@
   /* Font sizes (mobile targets from style guide) */
   --fs-display-lg-mobile: 61px;
   --fs-display-md-mobile: 46px;
-  --fs-hl-lg-mobile: 38px;
+  --fs-hl-lg-mobile: 32px;
   --fs-hl-md-mobile: 20px;
   --fs-hl-sm-mobile: 18px;
   --fs-body-md-mobile: 18px;
   --fs-body-sm-mobile: 16px;
   --fs-label-md-mobile: 18px;
   --fs-label-sm-mobile: 16px;
+  --fs-label-xs-mobile: 12px;
 
   /* Fluid type scale (uses mobile->desktop values) */
   --fs-display-lg: clamp(var(--fs-display-lg-mobile), 8vw, var(--fs-display-lg-desktop));
@@ -148,6 +154,7 @@ a {
 p {
   margin: 0 0 var(--space-4) 0;
   font-size: var(--fs-body-md);
+  color: var(--c-slate-200);
 }
 
 /* --- Typography Helpers --------------------------------------------------- */
@@ -186,13 +193,70 @@ h6 {
 
 .section {
   width: 100%;
-  padding-block: clamp(3rem, 8vw, 6rem);
+  padding-block: clamp(5rem, 8vw, 6rem);
 }
 
 .section > .section-inner {
-  max-width: 1120px; /* pas aan naar jouw design */
+  max-width: 1120px;
   margin-inline: auto;
   padding-inline: clamp(1rem, 4vw, 2rem);
 }
 
+.sub-title {
+  background-color: var(--c-span);
+  color: var(--c-white);
+  padding: var(--space-2);
+  border-radius: var(--radius-round);
+  font-size: var(--fs-label-xs-mobile);
+  svg {
+    vertical-align: middle;
+  }
+}
+
+.divider-blue {
+  color: var(--c-span);
+  opacity: 0.5;
+  margin-top: var(--space-10);
+}
+
+.arrow {
+  margin-left: var(--space-2);
+  display: inline-block;
+  transition: all 0.25s ease;
+}
+
+.btn-white {
+  background-color: var(--c-white);
+  font-weight: 600;
+  color: var(--c-navy-900);
+  border: none;
+  padding: var(--space-4);
+  border-radius: var(--radius-soft);
+  transition: 0.2s all ease-in-out;
+  &:hover {
+    color: var(--c-white);
+    background-color: var(--hover-state-light);
+    .arrow {
+      transform: translateX(var(--space-2));
+    }
+  }
+}
+
+.btn-outline {
+  background-color: transparent;
+  font-weight: 600;
+  color: var(--c-white);
+  border: 2px solid var(--c-white);
+  padding: var(--space-4);
+  border-radius: var(--radius-soft);
+  transition: 0.2s background-color ease-in-out;
+  &:hover {
+    background-color: var(--hover-state-lighter);
+  }
+}
+
+.t-highlight {
+  font-size: var(--fs-hl-lg);
+  font-weight: bold;
+} 
 
