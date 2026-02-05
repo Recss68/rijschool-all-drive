@@ -1,5 +1,6 @@
 <script>
-	import favicon from '/images/favicon_white.avif';
+	import '$lib/styles/ad-styles.css';
+	import favicon from '$lib/assets/images/favicon_white.avif';
 
 	let { children } = $props();
 </script>

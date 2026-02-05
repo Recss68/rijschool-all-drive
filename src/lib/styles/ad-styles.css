@@ -29,6 +29,7 @@
   --c-accent: #155dfc;
 
   /* Neutral palette (Navigation, forms, backgrounds, sections) */
+  --c-span: #1447E6;
   --c-navy-900: #002646;
   --c-sky-600: #0d6ecb;
   --c-sky-100: #d2ebff;
@@ -156,9 +157,9 @@ h3,
 h4,
 h5,
 h6 {
-  /* margin: 0 0 var(--space-4) 0; */
+  margin: 0 0 var(--space-4) 0;
   font-family: var(--font-heading);
-  /* line-height: var(--lh-heading); */
+  line-height: var(--lh-heading);
   letter-spacing: -0.02em;
   color: var(--c-navy-900);
 }
@@ -188,9 +189,10 @@ h6 {
   padding-block: clamp(3rem, 8vw, 6rem);
 }
 
-.section > .section__inner {
+.section > .section-inner {
   max-width: 1120px; /* pas aan naar jouw design */
   margin-inline: auto;
   padding-inline: clamp(1rem, 4vw, 2rem);
 }
+
 
