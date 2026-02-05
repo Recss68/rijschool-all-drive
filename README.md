@@ -3,7 +3,7 @@
 <!-- Tech stack badges -->
 ![Svelte](https://img.shields.io/badge/Svelte-4-FF3E00?logo=svelte&logoColor=white)
 ![SvelteKit](https://img.shields.io/badge/SvelteKit-App%20Framework-FF3E00?logo=svelte)
-![TypeScript](https://img.shields.io/badge/TypeScript-Strict-3178C6?logo=typescript&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ESNext-F7DF1E?logo=javascript&logoColor=000)
 ![Supabase](https://img.shields.io/badge/Supabase-Backend-3ECF8E?logo=supabase&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-Deployment-000000?logo=vercel)
 
@@ -29,7 +29,7 @@ De focus ligt op **performance**, **SEO** en **gebruiksvriendelijkheid**, met ru
 **Frontend**
 - Svelte
 - SvelteKit
-- TypeScript
+- JavaScript (ESNext)
 
 **Backend / Services**
 - Supabase (Database, Auth, Storage)
@@ -41,7 +41,7 @@ De focus ligt op **performance**, **SEO** en **gebruiksvriendelijkheid**, met ru
 
 ## 📐 Conventions
 
-This project follows the conventions defined here: 
+This project follows the conventions defined here:  
 https://docs.fdnd.nl/conventies.html
 
 ---
@@ -54,7 +54,6 @@ https://docs.fdnd.nl/conventies.html
 - Klaar voor lokale SEO (rijschool + locatie)
 
 ---
-
 
 ## 🖥️ Lokaal project opstarten
 
@@ -70,4 +69,3 @@ Volg onderstaande stappen om het project lokaal te draaien.
 
 ### Development server starten
 `npm run dev`
-
