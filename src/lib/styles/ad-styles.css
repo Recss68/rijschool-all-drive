@@ -57,7 +57,7 @@
 
   /* Font sizes (desktop targets from style guide) */
   --fs-display-lg-desktop: 160px;
-  --fs-display-md-desktop: 85px;
+  --fs-display-md-desktop: 60px;
   --fs-hl-lg-desktop: 50px;
   --fs-hl-md-desktop: 38px;
   --fs-hl-sm-desktop: 24px;
@@ -116,7 +116,7 @@
 
   /* Shadows */
   --shadow-sm: 0 6px 18px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.12);
+  --shadow-md: 30px 30px 80px rgba(0, 0, 0, 0.285);
 
   /* Layout */
   --container-max: 1120px;
@@ -214,9 +214,12 @@ h6 {
 }
 
 .divider-blue {
-  color: var(--c-span);
-  opacity: 0.5;
+  background-color: var(--c-span);
+  border: none;
+  opacity: 0.8;
   margin-top: var(--space-10);
+  height: 2px;
+
 }
 
 .arrow {
@@ -256,7 +259,7 @@ h6 {
 }
 
 .t-highlight {
-  font-size: var(--fs-hl-lg);
+  font-size: var(--fs-hl-lg-mobile);
   font-weight: bold;
 } 
 
