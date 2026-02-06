@@ -1,7 +1,7 @@
 <section class="section gradient hero-section">
     <div class="section-inner">
-         <div class="parent-hero">
-            <div class="hero-grid-1">
+         <div class="parent-hero animated animatedFadeInUp fadeInUp">
+            <div class="hero-grid-1 ">
                 <span class="sub-title">
                     <svg
                     viewBox="0 0 24 24"
