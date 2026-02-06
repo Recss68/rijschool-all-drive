@@ -1,12 +1,16 @@
 <script>
 	import '$lib/styles/ad-styles.css';
-	import favicon from '$lib/assets/images/favicon_white.avif';
 
 	let { children } = $props();
 </script>
 
 <svelte:head>
-	<link rel="icon" href={favicon} />
+	<title>Rijschool in Amsterdam | Rijschool All Drive</title>
+	<meta
+		name="description"
+		content="Op zoek naar een rijschool in Amsterdam? Rijschool All Drive biedt betaalbare rijlessen, persoonlijke begeleiding en hoge slagingskansen."
+	/>
+	<link rel="icon" href="/images/favicon_white.avif" />
 </svelte:head>
 
 <main>
