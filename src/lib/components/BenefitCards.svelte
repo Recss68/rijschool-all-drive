@@ -30,6 +30,9 @@
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: var(--space-8);
         margin-top: var(--space-8);
+        @media (min-width: 1024px) {
+            grid-template-columns: repeat(4, 1fr);
+        }
         h3 {
             font-weight: var(--fw-semibold);
             font-size: var(--fs-hl-md-mobile);
