@@ -33,11 +33,7 @@
                 </ul>
             </div>
             <div class="hero-grid-2 fadeInUp"> 
-                <picture>
-                    <source srcset="/images/hero-picture.webp" type="image/avif" />
-                    <source srcset="/images/hero-picture.jpg" type="image/webp" />
-                    <img class="hero-image" src="/images/hero-picture.avif" alt="Instructor and Student" loading="lazy" fetchpriority="high" />
-                </picture>
+                <img class="hero-image" src="/images/hero-picture.avif" alt="Instructor and Student" loading="lazy" fetchpriority="high" />
             </div>
         </div> 
     </div>
@@ -99,10 +95,12 @@
     .hero-image {
         display: none;
         border-radius: var(--radius-round);
-        @media (min-width: 768px) {
+        @media (min-width: 768px) { 
             display: block;
-            width: clamp(300px, 40vw, 600px);
-            height: auto;
+            aspect-ratio: 16 / 9;  
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
             box-shadow: var(--shadow-md);
         }
     }
