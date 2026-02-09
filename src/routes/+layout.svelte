@@ -1,5 +1,10 @@
 <script>
 	import '$lib/styles/ad-styles.css';
+	// import { onMount } from 'svelte';
+
+	// onMount(() => {
+	// 	document.documentElement.classList.add('has-anim');
+	// });
 
 	let { children } = $props();
 </script>
