@@ -33,7 +33,11 @@
                 </ul>
             </div>
             <div class="hero-grid-2 fadeInUp"> 
-                <img class="hero-image" src="/images/hero-picture.avif" alt="Instructor and Student" loading="lazy" fetchpriority="high" />
+                <picture>
+                    <source srcset="/images/hero-picture.webp" type="image/avif" />
+                    <source srcset="/images/hero-picture.jpg" type="image/webp" />
+                    <img class="hero-image" src="/images/hero-picture.avif" alt="Instructor and Student" loading="lazy" fetchpriority="high" />
+                </picture>
             </div>
         </div> 
     </div>
