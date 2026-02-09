@@ -1,7 +1,7 @@
 <section class="section gradient hero-section">
     <div class="section-inner">
-         <div class="parent-hero animated animatedFadeInUp fadeInUp">
-            <div class="hero-grid-1 ">
+         <div class="parent-hero">
+            <div class="hero-grid-1 fadeInUp">
                 <span class="sub-title">
                     <svg
                     viewBox="0 0 24 24"
@@ -32,8 +32,8 @@
                     <li><span class="t-highlight">4.9/5</span> Beoordeling</li>
                 </ul>
             </div>
-            <div class="hero-grid-2"> 
-                <img class="hero-image" src="/images/hero-picture.avif" alt="Hero Image" />
+            <div class="hero-grid-2 fadeInUp"> 
+                <img class="hero-image" src="/images/hero-picture.avif" alt="Instructor and Student" loading="lazy" fetchpriority="high" />
             </div>
         </div> 
     </div>
@@ -46,7 +46,7 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             grid-template-rows: 1fr;
-            grid-column-gap: var(--space-20);
+            grid-column-gap: var(--space-18);
         }
 
         .hero-grid-1 { grid-area: 1 / 1 / 2 / 2; }
@@ -97,7 +97,7 @@
         border-radius: var(--radius-round);
         @media (min-width: 768px) {
             display: block;
-            width: clamp(300px, 40vw, 600px);
+            width: clamp(300px, 30vw, 600px);
             height: auto;
             box-shadow: var(--shadow-md);
         }
