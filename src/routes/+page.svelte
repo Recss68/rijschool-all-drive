@@ -12,4 +12,17 @@
     </div>
 </section>
 
+<style> 
 
+    .benefits-container { 
+        background-color: var(--c-section);
+        text-align: center;
+        h2 {
+            font-size: var(--fs-hl-lg);
+        }
+        p {
+            color: var(--c-text);
+        }
+    }
+
+</style>

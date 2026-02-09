@@ -24,3 +24,38 @@
     </article>
 </div>
 
+<style>
+    .benefit-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--space-8);
+        margin-top: var(--space-8);
+        h3 {
+            font-weight: var(--fw-semibold);
+            font-size: var(--fs-hl-md-mobile);
+        }
+        p {
+            color: var(--c-text-light);
+            font-size: var(--fs-label-xs-mobile);
+        }
+    }
+
+    .benefit-cards article {
+        text-align: left;
+        background-color: var(--c-white);
+        padding: var(--space-6);
+        border-radius: var(--radius-soft);
+        box-shadow: var(--shadow-s);
+        transition: box-shadow 0.3s linear;
+        &:hover {
+            box-shadow: var(--shadow-sm);
+        }
+        svg {
+            background-color: var(--c-icon-bg);
+            border-radius: var(--radius-soft);
+            width: 3rem;
+            margin-bottom: var(--space-2);
+        }
+    }
+
+</style>
