@@ -4,21 +4,21 @@
    ========================================================================== */
 
 /* --- Fonts ------------------------------------------------- */
-@font-face {
+/* @font-face {
   font-family: "Bricolage Grotesque";
-  src: url("/fonts/bricolage-grotesque.ttf") format("ttf");
+  src: url("/fonts/bricolage-grotesque.woff2") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
-}
+} */
 
-@font-face {
+/* @font-face {
   font-family: "DM Sans";
-  src: url("/fonts/dmsans.ttf") format("ttf");
+  src: url("/fonts/dmsans.woff2") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
-}
+} */
 
 /* --- CSS Variables -------------------------------------------------------- */
 :root {
@@ -106,6 +106,7 @@
   --space-10: 2.5rem;
   --space-12: 3rem;
   --space-16: 4rem;
+  --space-18: 4.5rem;
   --space-20: 5rem;
   --space-24: 6rem;
 
@@ -264,40 +265,18 @@ h6 {
 } 
 
 @keyframes fadeInUp {
-    from {
-        transform: translate3d(0,40px,0)
-    }
-
-    to {
-        transform: translate3d(0,0,0);
-        opacity: 1
-    }
-}
-
-@-webkit-keyframes fadeInUp {
-    from {
-        transform: translate3d(0,40px,0)
-    }
-
-    to {
-        transform: translate3d(0,0,0);
-        opacity: 1
-    }
-}
-
-.animated {
-    animation-duration: 1s;
-    animation-fill-mode: both;
-    -webkit-animation-duration: 1s;
-    -webkit-animation-fill-mode: both
-}
-
-.animatedFadeInUp {
-    opacity: 0
+  to {
+    transform: translate3d(0,0,0);
+    opacity: 1;
+  }
 }
 
 .fadeInUp {
-    opacity: 0;
-    animation-name: fadeInUp;
-    -webkit-animation-name: fadeInUp;
+  @supports (animation: fadeInUp 0.3s forwards ease-out) {
+    @media (prefers-reduced-motion: no-preference) {
+      opacity: 0.01;
+      transform: translate3d(0,40px,0);
+      animation: fadeInUp 0.3s forwards ease-out;
+    }
+  }
 }
