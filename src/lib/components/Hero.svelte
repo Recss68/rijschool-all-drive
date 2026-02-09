@@ -101,7 +101,7 @@
         border-radius: var(--radius-round);
         @media (min-width: 768px) {
             display: block;
-            width: clamp(300px, 30vw, 600px);
+            width: clamp(300px, 40vw, 600px);
             height: auto;
             box-shadow: var(--shadow-md);
         }
