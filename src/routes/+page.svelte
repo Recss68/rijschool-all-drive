@@ -1,5 +1,5 @@
 <script>
-    import { Hero, BenefitCards } from '$lib';
+    import { Hero, BenefitCards, PriceCards } from '$lib';
 </script>
 
 <Hero />
@@ -12,9 +12,17 @@
     </div>
 </section>
 
+<section class="price-cards-container section">
+    <div class="section-inner">
+        <h2>Onze Lespakketten</h2>
+        <p>Kies het pakket dat bij jou past. Altijd flexibel en op maat aan te passen.</p>
+        <PriceCards />
+    </div>        
+</section>
+
 <style> 
 
-    .benefits-container { 
+    .benefits-container, .price-cards-container{ 
         background-color: var(--c-section);
         text-align: center;
         h2 {
@@ -25,4 +33,7 @@
         }
     }
 
+    .price-cards-container {
+        background-color: var(--c-white);
+    }
 </style>
