@@ -27,8 +27,12 @@
   --c-black: #000000;
   --c-border: #d7d7d7;
   --c-accent: #155dfc;
+  --c-section: #f9fafb;
+  --c-text: #19252e;
+  --c-text-light: #4A5565;
 
   /* Neutral palette (Navigation, forms, backgrounds, sections) */
+  --c-icon-bg: #dbeafe;
   --c-span: #1447E6;
   --c-navy-900: #002646;
   --c-sky-600: #0d6ecb;
@@ -54,6 +58,13 @@
   /* Typography */
   --font-heading: "Bricolage Grotesque", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   --font-body: "DM Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  /* Font weights */
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
 
   /* Font sizes (desktop targets from style guide) */
   --fs-display-lg-desktop: 160px;
@@ -116,6 +127,7 @@
   --radius-soft: 12px; 
 
   /* Shadows */
+  --shadow-s: 0 0px 18px rgba(0, 0, 0, 0.08);
   --shadow-sm: 0 6px 18px rgba(0, 0, 0, 0.08);
   --shadow-md: 30px 30px 80px rgba(0, 0, 0, 0.285);
 
