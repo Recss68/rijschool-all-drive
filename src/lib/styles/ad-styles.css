@@ -25,6 +25,7 @@
   /* Brand / Primary */
   --c-white: #ffffff;
   --c-black: #000000;
+  --c-dark: #101828;
   --c-border: #d7d7d7;
   --c-accent: #155dfc;
   --c-section: #f9fafb;
@@ -34,6 +35,9 @@
   /* Neutral palette (Navigation, forms, backgrounds, sections) */
   --c-icon-bg: #dbeafe;
   --c-span: #1447E6;
+  --c-btn-bg-main: #f3f4f6;
+  --c-border-light: #e5e7eb;
+
   --c-navy-900: #002646;
   --c-sky-600: #0d6ecb;
   --c-sky-100: #d2ebff;
@@ -45,6 +49,9 @@
   --c-slate-100: #e7edf1;
   --c-slate-50: #f5f8fa;
 
+  --c-green: #00A63E;
+  --c-yellow: #FDC700;
+
   /* Gradient (Background color) */
   --g-0: #1c398e;
   --g-50: #193bb3;
@@ -53,6 +60,7 @@
   /* Hover states */
   --hover-state-lighter: #ffffff21;
   --hover-state-light: #5983a67e;
+  --hover-state-main: oklch(.928 .006 264.531);
   --hover-state-dark: #193bb3b1;
 
   /* Typography */
@@ -87,7 +95,10 @@
   --fs-body-sm-mobile: 16px;
   --fs-label-md-mobile: 18px;
   --fs-label-sm-mobile: 16px;
+  --fs-label-s-mobile: 14px;
   --fs-label-xs-mobile: 12px;
+
+  --fs-highlighted-mobile: 36px;
 
   /* Fluid type scale (uses mobile->desktop values) */
   --fs-display-lg: clamp(var(--fs-display-lg-mobile), 8vw, var(--fs-display-lg-desktop));
@@ -291,4 +302,20 @@ h6 {
       animation: fadeInUp 0.3s forwards ease-out;
     }
   }
+}
+
+.btn-primary {
+  background-color: var(--c-btn-bg-main);
+  padding: var(--space-3);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-body-sm-mobile);
+  border-radius: var(--radius-soft);
+  transition: background-color 0.2s ease-in-out;
+  &:hover {
+    background-color: var(--hover-state-main);
+  }
+}
+
+.rec-btn {
+  color: var(--c-accent);
 }
