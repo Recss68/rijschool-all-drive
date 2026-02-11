@@ -17,6 +17,7 @@
         <h2>Onze Lespakketten</h2>
         <p>Kies het pakket dat bij jou past. Altijd flexibel en op maat aan te passen.</p>
         <PriceCards />
+        <p class="cards-footer">Niet zeker welke pakket bij je past? <a href="https://wa.me/31627824428">Neem contact op</a> voor persoonlijk advies!</p>
     </div>        
 </section>
 
@@ -28,12 +29,18 @@
         h2 {
             font-size: var(--fs-hl-lg);
         }
-        p {
-            color: var(--c-text);
-        }
     }
 
     .price-cards-container {
         background-color: var(--c-white);
+        .cards-footer {
+            margin-top: var(--space-12);
+            font-size: var(--fs-body-sm-mobile);
+            color: var(--c-text-light);
+            a {
+                color: var(--c-accent);
+                font-weight: var(--fw-semibold);
+            }
+        }
     }
 </style>

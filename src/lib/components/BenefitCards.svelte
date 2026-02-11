@@ -39,7 +39,7 @@
         }
         p {
             color: var(--c-text-light);
-            font-size: var(--fs-label-xs-mobile);
+            font-size: var(--fs-label-sm-mobile);
         }
     }
 

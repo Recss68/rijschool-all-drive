@@ -68,6 +68,9 @@
             color: var(--c-white);
             font-size: var(--fs-display-md);
         }
+        p {
+            color: var(--c-slate-200);
+        }
         ul {
             padding: 0;
             margin: 0;

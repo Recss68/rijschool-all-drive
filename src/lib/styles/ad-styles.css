@@ -178,7 +178,7 @@ a {
 p {
   margin: 0 0 var(--space-4) 0;
   font-size: var(--fs-body-md);
-  color: var(--c-slate-200);
+  color: var(--c-text-light);
 }
 
 /* --- Typography Helpers --------------------------------------------------- */
