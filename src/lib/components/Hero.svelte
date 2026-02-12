@@ -33,7 +33,11 @@
                 </ul>
             </div>
             <div class="hero-grid-2 fadeInUp"> 
-                <img class="hero-image" src="/images/hero-picture.avif" alt="Instructor and Student" loading="lazy" fetchpriority="high" />
+                <picture>
+                    <source srcset="/images/hero-picture.webp" type="image/avif" />
+                    <source srcset="/images/hero-picture.jpg" type="image/jpeg" />
+                    <img class="hero-image" src="/images/hero-picture.avif" alt="Instructor and Student" loading="lazy" fetchpriority="high" />
+                </picture>
             </div>
         </div> 
     </div>
@@ -53,7 +57,6 @@
         .hero-grid-2 { 
             grid-area: 1 / 2 / 2 / 3; 
             display: flex;
-            align-items: center;
             justify-content: center;
         }
     }
@@ -105,6 +108,7 @@
             width: 100%;
             height: 100%;
             box-shadow: var(--shadow-md);
+            opacity: 0.8;
         }
     }
 
