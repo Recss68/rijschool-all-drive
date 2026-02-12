@@ -25,3 +25,23 @@
 </div>    
 
 
+<style>
+
+.step {
+    text-align: left;
+    .step-number {
+        display: inline-block;
+        background-color: var(--c-accent);
+        color: var(--c-white);
+        padding: var(--space-7) var(--space-8);
+        border-radius: var(--radius-round);
+        box-shadow: var(--shadow-m);
+        margin: var(--space-8) 0 var(--space-6) 0;
+    }
+    .step-number, h3 {
+        font-size: var(--fs-hl-sm-desktop);
+        font-weight: var(--fw-bold);
+    }
+}
+
+</style>
