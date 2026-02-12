@@ -1,5 +1,5 @@
 <script>
-    import { Hero, BenefitCards, PriceCards } from '$lib';
+    import { Hero, BenefitCards, PriceCards, ProcessSteps } from '$lib';
 </script>
 
 <Hero />
@@ -21,9 +21,17 @@
     </div>        
 </section>
 
+<section class="process-steps-container section">
+    <div class="section-inner">
+        <h2>Hoe het werkt</h2>
+        <p>Van aanmelding tot rijbewijs in 4 eenvoudige stappen!</p>
+        <ProcessSteps />
+    </div>
+</section>
+
 <style> 
 
-    .benefits-container, .price-cards-container{ 
+    .benefits-container, .price-cards-container, .process-steps-container{ 
         background-color: var(--c-section);
         text-align: center;
         h2 {
