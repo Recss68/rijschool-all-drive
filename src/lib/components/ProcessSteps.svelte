@@ -89,10 +89,6 @@
             grid-column: 2;
         }
 
-        li h3 {
-            margin: 0 0 var(--space-2) 0;
-        }
-
         li p {
             margin: 0;
             max-width: 65ch;
