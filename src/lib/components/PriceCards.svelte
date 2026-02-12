@@ -70,7 +70,7 @@
 
     <article>
         <h3>Vol Gas</h3>
-        <p>Perfect voor beginners</p>
+        <p>Gevorderd rijles pakket</p>
 
         <p class="price">€2.785 <span>/ 40 lessen</span></p>
         <ul>

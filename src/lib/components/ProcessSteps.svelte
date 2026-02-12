@@ -89,6 +89,11 @@
             grid-column: 2;
         }
 
+        li h3 {
+            padding-top: var(--space-3);
+            margin-bottom: var(--space-1);
+        }
+
         li p {
             margin: 0;
             max-width: 65ch;
