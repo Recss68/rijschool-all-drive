@@ -36,7 +36,8 @@
   --c-icon-bg: #dbeafe;
   --c-span: #1447E6;
   --c-btn-bg-main: #f3f4f6;
-  --c-border-light: #e5e7eb;
+  --c-border-light: #e5e7eb;  
+  --c-review-bg: #F9FAFB;
 
   --c-navy-900: #002646;
   --c-sky-600: #0d6ecb;
@@ -134,9 +135,9 @@
   --space-24: 6rem;
 
   /* Radius (style guide: none 0px, round 20px) */
-  --radius-none: 0px;
-  --radius-round: 20px;
   --radius-soft: 12px; 
+  --radius-round: 20px;
+  --radius-circle: 30px;
 
   /* Shadows */
   --shadow-s: 0 0px 18px rgba(0, 0, 0, 0.08);

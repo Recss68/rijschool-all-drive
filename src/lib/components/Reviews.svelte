@@ -38,3 +38,37 @@
     </article>
 
 </div>
+
+<style>
+    .stars {
+        color: var(--c-yellow);
+    }
+
+    .review {
+        text-align: left;
+        background-color: var(--c-review-bg);
+        padding: var(--space-6);
+        border-radius: var(--radius-round);
+        margin-bottom: var(--space-8);
+        .reviewer-details{
+            display: grid;
+            grid-template-columns: var(--space-16) 1fr;
+
+            img {
+                border-radius: var(--radius-circle);
+            }
+            .reviewer-info {
+                grid-column: 2;
+                h3 {
+                    font-size: var(--fs-body-sm-mobile);
+                }
+                p {
+                    font-size: var(--fs-label-s-mobile);
+                }
+                h3, p {
+                    margin: var(--space-1) 0 0 0;
+                }
+            }
+        }
+    }
+</style>
