@@ -40,6 +40,14 @@
 </div>
 
 <style>
+    .g-reviews {
+        @media (min-width: 1024px) {
+            display: flex;
+            gap: var(--space-6);
+            margin-top: var(--space-14);
+        }
+    }
+
     .stars {
         color: var(--c-yellow);
     }
@@ -50,6 +58,9 @@
         padding: var(--space-6);
         border-radius: var(--radius-round);
         margin-bottom: var(--space-8);
+        p { 
+            font-size: var(--fs-label-s-mobile);
+        }
         .reviewer-details{
             display: grid;
             grid-template-columns: var(--space-16) 1fr;
