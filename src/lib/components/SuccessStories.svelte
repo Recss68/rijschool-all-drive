@@ -22,9 +22,16 @@
         column-gap: 0;
         margin-top: var(--space-12);
         img {
-            aspect-ratio: 3 / 3;
+            aspect-ratio: 1 / 1;
             object-fit: cover;
             border-radius: var(--radius-soft);
+            width: 200px;
         }
+       @media (min-width: 768px) {
+        display: flex; 
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--space-6);
+       } 
     }
 </style>
