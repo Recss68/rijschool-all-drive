@@ -1,5 +1,5 @@
 <script>
-    import { Hero, BenefitCards, PriceCards, ProcessSteps, Reviews } from '$lib';
+    import { Hero, BenefitCards, PriceCards, ProcessSteps, Reviews, SuccessStories } from '$lib';
 </script>
 
 <Hero />
@@ -17,7 +17,7 @@
         <h2>Onze Lespakketten</h2>
         <p>Kies het pakket dat bij jou past. Altijd flexibel en op maat aan te passen.</p>
         <PriceCards />
-        <p class="cards-footer">Niet zeker welke pakket bij je past? <a href="https://wa.me/31627824428">Neem contact op</a> voor persoonlijk advies!</p>
+        <p class="section-footer">Niet zeker welke pakket bij je past? <a href="https://wa.me/31627824428">Neem contact op</a> voor persoonlijk advies!</p>
     </div>        
 </section>
 
@@ -37,9 +37,22 @@
     </div>
 </section>
 
+<section class="success-stories-container section">
+    <div class="section-inner">
+        <h2>Geslaagd bij Rijschool All Drive!</h2>
+        <p>Ontmoet ekele van onze trotse geslaagde leerlingen!</p>
+        <SuccessStories />
+        <p class="section-footer">Wil jij ook je rijbewijs halen? <a href="https://wa.me/31627824428">Neem dan nu contact op!</a></p>
+    </div>
+</section>
+
 <style> 
 
-    .benefits-container, .price-cards-container, .process-steps-container, .reviews-container{ 
+    .benefits-container, 
+    .price-cards-container, 
+    .process-steps-container, 
+    .reviews-container, 
+    .success-stories-container { 
         background-color: var(--c-section);
         text-align: center;
         h2 {
@@ -51,15 +64,14 @@
         background-color: var(--c-white);
     }
 
-    .price-cards-container {
-        .cards-footer {
-            margin-top: var(--space-12);
-            font-size: var(--fs-body-sm-mobile);
-            color: var(--c-text-light);
-            a {
-                color: var(--c-accent);
-                font-weight: var(--fw-semibold);
-            }
+    .section-footer {
+        margin-top: var(--space-12);
+        font-size: var(--fs-body-sm-mobile);
+        color: var(--c-text-light);
+        a {
+            color: var(--c-accent);
+            font-weight: var(--fw-semibold);
         }
     }
+
 </style>
