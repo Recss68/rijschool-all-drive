@@ -4,34 +4,36 @@
 
 <div class="success-stories">
     {#each stories as story}
-        <img 
-        src={story.image} 
-        alt="leerling-{story.id}"
-        width="150px"
-        loading="lazy"
-        >
+        <picture>
+            <source srcset={story.image_2} type="image/avif" />
+            <source srcset={story.image_3} type="image/webp" />
+            <img 
+            src={story.image} 
+            alt="leerling-{story.id}"
+            width="170px"
+            loading="lazy"
+            >     
+        </picture>
     {/each}
 </div>
 
 <style>
     .success-stories {
         display: grid;
-        gap: var(--space-3);
+        gap: var(--space-1);
         grid-template-columns: repeat(2, 1fr);
         justify-items: center;
-        column-gap: 0;
         margin-top: var(--space-12);
         img {
             aspect-ratio: 1 / 1;
             object-fit: cover;
             border-radius: var(--radius-soft);
-            width: 200px;
         }
        @media (min-width: 768px) {
-        display: flex; 
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: var(--space-6);
+            display: flex; 
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--space-6);
        } 
     }
 </style>
