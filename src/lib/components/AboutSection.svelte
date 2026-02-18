@@ -6,7 +6,7 @@
             <img 
             src="/images/alldrive-auto.jpg" 
             alt="rijschool-alldrive-car"
-            width="353.4px"
+            width="100%"
             height="500"
             loading="lazy"
             >
@@ -29,3 +29,25 @@
         </div>
     </div>
 </section>
+
+<style>
+    .about-section {
+        text-align: center;
+        position: relative;
+        h2 {
+            font-size: var(--fs-hl-lg);
+        }
+        img {
+            object-fit: cover;
+            object-position: 75%;
+            border-radius: var(--radius-m);
+            box-shadow: var(--shadow-m);
+            margin-bottom: var(--space-12);
+        }
+        .t-content {
+            text-align: left;
+            font-size: var(--fs-hl-sm-mobile);
+            color: var(--c-text-light);
+        }
+    }
+</style>
