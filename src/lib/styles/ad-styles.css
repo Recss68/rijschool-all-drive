@@ -137,6 +137,7 @@
 
   /* Radius (style guide: none 0px, round 20px) */
   --radius-soft: 12px; 
+  --radius-m: 16px;
   --radius-round: 20px;
   --radius-circle: 30px;
 
@@ -172,6 +173,7 @@ body {
   font-family: var(--font-body);
   font-size: var(--fs-body-md);
   line-height: var(--lh-body);
+  overflow-x: hidden;
 }
 
 a {
@@ -230,6 +232,10 @@ h6 {
   padding-inline: clamp(1rem, 4vw, 2rem);
 }
 
+.section-heading {
+    margin-bottom: var(--space-8);
+}
+
 .sub-title {
   background-color: var(--c-span);
   color: var(--c-white);
@@ -268,7 +274,7 @@ h6 {
     color: var(--c-white);
     background-color: var(--hover-state-light);
     .arrow {
-      transform: translateX(var(--space-2));
+      padding-left: var(--space-2);
     }
   }
 }
@@ -322,4 +328,11 @@ h6 {
 
 .rec-btn {
   color: var(--c-accent);
+  font-weight: var(--fw-semibold);
+  transition: padding-left 0.2 ease-in-out;
+    &:hover {
+      .arrow {
+        padding-left: var(--space-1);
+      }
+    }
 }
