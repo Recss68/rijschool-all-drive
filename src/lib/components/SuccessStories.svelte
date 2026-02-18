@@ -10,7 +10,7 @@
             <img 
             src={story.image} 
             alt="leerling-{story.id}"
-            width="170px"
+            width="160px"
             loading="lazy"
             >     
         </picture>
