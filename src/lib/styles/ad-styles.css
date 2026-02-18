@@ -263,6 +263,8 @@ h6 {
 }
 
 .btn-white {
+  text-align: center;
+  font-size: var(--fs-label-sm-mobile);
   background-color: var(--c-white);
   font-weight: 600;
   color: var(--c-navy-900);
@@ -280,6 +282,8 @@ h6 {
 }
 
 .btn-outline {
+  text-align: center;
+  font-size: var(--fs-label-sm-mobile);
   background-color: transparent;
   font-weight: 600;
   color: var(--c-white);
