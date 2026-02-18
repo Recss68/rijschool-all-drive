@@ -1,5 +1,5 @@
 <script>
-    import { Hero, BenefitCards, PriceCards, ProcessSteps, Reviews, SuccessStories } from '$lib';
+    import { Hero, BenefitCards, PriceCards, ProcessSteps, Reviews, SuccessStories, AboutSection } from '$lib';
 </script>
 
 <Hero />
@@ -45,6 +45,8 @@
         <p class="section-footer">Wil jij ook je rijbewijs halen? <a href="https://wa.me/31627824428">Neem dan nu contact op!</a></p>
     </div>
 </section>
+
+<AboutSection />
 
 <style> 
 
