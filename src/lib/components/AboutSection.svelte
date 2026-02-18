@@ -14,17 +14,17 @@
 
         <div class="t-content">
             <h2>Over Rijschool All Drive</h2>
-            <p>Bij Rijschool All Drive, dé rijschool in Amsterdam, geloven we dat leren rijden meer is dan alleen het besturen van een auto. Het draait om vertrouwen, veiligheid en zelfstandigheid – essentieel voor iedereen die zijn rijbewijs wil halen in Amsterdam.</p>
-            <p>Ben je op zoek naar een betrouwbare rijschool Amsterdam met persoonlijke begeleiding? Vraag je je af welke rijschool in Amsterdam een hoog slagingspercentage heeft? Bij ons ben je aan het juiste adres.</p>
-            <p>Sinds onze oprichting hebben wij al veel cursisten geholpen om succesvol hun rijbewijs te behalen. Met een slagingspercentage van 85% behoren wij tot de best presterende rijscholen in Amsterdam.</p>
-            <p>Waarom kiezen zoveel leerlingen voor onze rijschool in Amsterdam?</p>
+            <p>Bij Rijschool All Drive, dé <b>rijschool in Amsterdam</b>, geloven we dat leren rijden meer is dan alleen het besturen van een auto. Het draait om vertrouwen, veiligheid en zelfstandigheid – essentieel voor iedereen die zijn rijbewijs wil halen <b>in Amsterdam</b>.</p>
+            <p>Ben je op zoek naar <b>een betrouwbare rijschool Amsterdam</b> met persoonlijke begeleiding? Vraag je je af welke <b>rijschool in Amsterdam</b> een hoog slagingspercentage heeft? Bij ons ben je aan het juiste adres.</p>
+            <p>Sinds onze oprichting hebben wij al veel cursisten geholpen om succesvol hun rijbewijs te behalen. Met een slagingspercentage van 85% behoren wij tot de best presterende <b>rijscholen in Amsterdam</b>.</p>
+            <p>Waarom kiezen zoveel leerlingen voor onze <b>rijschool in Amsterdam?</b></p>
             <ul>
                 <li>Persoonlijke begeleiding vanaf je eerste les</li>
                 <li>Ervaren en geduldige instructeurs</li>
                 <li>Flexibele lestijden in heel Amsterdam</li>
                 <li>Duidelijke lespakketten zonder verborgen kosten</li>
             </ul>
-            <p>Wil jij snel en veilig je rijbewijs halen bij een professionele rijschool in Amsterdam? Ons team van ervaren instructeurs begeleidt je stap voor stap, van je eerste proefles tot aan het praktijkexamen.</p>
+            <p>Wil jij snel en veilig je rijbewijs halen bij <b>een professionele rijschool in Amsterdam?</b> Ons team van ervaren instructeurs begeleidt je stap voor stap, van je eerste proefles tot aan het praktijkexamen.</p>
             <a class="rec-btn" href="/over-ons">Lees meer over ons <span class="arrow">→</span></a>
         </div>
     </div>
@@ -34,8 +34,24 @@
     .about-section {
         text-align: center;
         position: relative;
+        @media (min-width: 786px) { 
+            .section-inner {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: 1fr; 
+                column-gap: var(--space-12);
+                img {
+                    grid-column: 1;
+                    height: 100%;
+                }
+                .t-content {
+                    grid-column: 2;
+                }
+            }
+        }
         h2 {
             font-size: var(--fs-hl-lg);
+            margin-bottom: var(--space-6);
         }
         img {
             object-fit: cover;
