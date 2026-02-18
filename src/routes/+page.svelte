@@ -6,16 +6,20 @@
 
 <section class="benefits-container section">
     <div class="section-inner">
-        <h2>Waarom kiezen voor Rijschool All Drive?</h2>
-        <p>Ontdek wat ons uniek maakt en waarom leerlingen voor ons kiezen.</p>
+        <div class="section-heading">
+            <h2>Waarom kiezen voor Rijschool All Drive?</h2>
+            <p>Ontdek wat ons uniek maakt en waarom leerlingen voor ons kiezen.</p>
+        </div>
         <BenefitCards />
     </div>
 </section>
 
 <section class="price-cards-container section">
     <div class="section-inner">
-        <h2>Onze Lespakketten</h2>
-        <p>Kies het pakket dat bij jou past. Altijd flexibel en op maat aan te passen.</p>
+        <div class="section-heading">
+            <h2>Onze Lespakketten</h2>
+            <p>Kies het pakket dat bij jou past. Altijd flexibel en op maat aan te passen.</p>
+        </div>
         <PriceCards />
         <p class="section-footer">Niet zeker welke pakket bij je past? <a href="https://wa.me/31627824428">Neem contact op</a> voor persoonlijk advies!</p>
     </div>        
@@ -23,24 +27,30 @@
 
 <section class="process-steps-container section">
     <div class="section-inner">
-        <h2>Hoe het werkt</h2>
-        <p>Van aanmelding tot rijbewijs in 4 eenvoudige stappen!</p>
+        <div class="section-heading">
+            <h2>Hoe het werkt</h2>
+            <p>Van aanmelding tot rijbewijs in 4 eenvoudige stappen!</p>
+        </div>
         <ProcessSteps />
     </div>
 </section>
 
 <section class="reviews-container section">
     <div class="section-inner">
-        <h2>Wat onze leerlingen zeggen</h2>
-        <p>Ontdek de ervaringen van onze geslaagde leerlingen!</p>
+        <div class="section-heading">
+            <h2>Wat onze leerlingen zeggen</h2>
+            <p>Ontdek de ervaringen van onze geslaagde leerlingen!</p>
+        </div>
         <Reviews />
     </div>
 </section>
 
 <section class="success-stories-container section">
     <div class="section-inner">
-        <h2>Geslaagd bij Rijschool All Drive!</h2>
-        <p>Ontmoet ekele van onze trotse geslaagde leerlingen!</p>
+        <div class="section-heading">
+            <h2>Geslaagd bij Rijschool All Drive!</h2>
+            <p>Ontmoet ekele van onze trotse geslaagde leerlingen!</p>
+        </div> 
         <SuccessStories />
         <p class="section-footer">Wil jij ook je rijbewijs halen? <a href="https://wa.me/31627824428">Neem dan nu contact op!</a></p>
     </div>

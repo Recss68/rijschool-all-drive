@@ -13,7 +13,9 @@
         </picture>
 
         <div class="t-content">
-            <h2>Over Rijschool All Drive</h2>
+            <div class="section-heading">
+                <h2>Over Rijschool All Drive</h2>
+            </div>
             <p>Bij Rijschool All Drive, dé <b>rijschool in Amsterdam</b>, geloven we dat leren rijden meer is dan alleen het besturen van een auto. Het draait om vertrouwen, veiligheid en zelfstandigheid – essentieel voor iedereen die zijn rijbewijs wil halen <b>in Amsterdam</b>.</p>
             <p>Ben je op zoek naar <b>een betrouwbare rijschool Amsterdam</b> met persoonlijke begeleiding? Vraag je je af welke <b>rijschool in Amsterdam</b> een hoog slagingspercentage heeft? Bij ons ben je aan het juiste adres.</p>
             <p>Sinds onze oprichting hebben wij al veel cursisten geholpen om succesvol hun rijbewijs te behalen. Met een slagingspercentage van 85% behoren wij tot de best presterende <b>rijscholen in Amsterdam</b>.</p>
@@ -51,7 +53,6 @@
         }
         h2 {
             font-size: var(--fs-hl-lg);
-            margin-bottom: var(--space-6);
         }
         img {
             object-fit: cover;

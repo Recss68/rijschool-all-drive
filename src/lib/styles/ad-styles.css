@@ -232,6 +232,10 @@ h6 {
   padding-inline: clamp(1rem, 4vw, 2rem);
 }
 
+.section-heading {
+    margin-bottom: var(--space-8);
+}
+
 .sub-title {
   background-color: var(--c-span);
   color: var(--c-white);
