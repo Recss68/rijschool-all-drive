@@ -33,6 +33,7 @@
                 flex-direction: column;
                 justify-content: center;
                 gap: var(--space-4);
+                width: 100%;
             }
         }
         @media (min-width: 1024px) {
