@@ -26,11 +26,30 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             gap: var(--space-4);
             .cta-buttons {
                 display: flex;
                 flex-direction: column;
+                justify-content: center;
                 gap: var(--space-4);
+            }
+        }
+        @media (min-width: 1024px) {
+            h2 {
+                font-size: var(--fs-hl-lg-desktop);
+            }
+            p {
+                max-width: 60%;
+            }
+            .section-inner {
+                .cta-buttons {
+                    flex-direction: row;
+                    .btn-outline, .btn-white {
+                        padding-right: var(--space-6);
+                        padding-left: var(--space-6);
+                    }
+                }
             }
         }
     }
