@@ -11,3 +11,4 @@ export { default as ProcessSteps } from './components/sections/ProcessSteps.svel
 export { default as Reviews } from './components/sections/Reviews.svelte';
 export { default as SuccessStories } from './components/sections/SuccessStories.svelte';
 export { default as AboutSection } from './components/sections/AboutSection.svelte';
+export { default as CtaSection } from './components/sections/CtaSection.svelte';

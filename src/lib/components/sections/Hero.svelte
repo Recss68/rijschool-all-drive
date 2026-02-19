@@ -22,8 +22,8 @@
                 <h1>Jouw rijbewijs, Ons succes</h1>
                 <p>Leer rijden met ervaren instructeurs in een veilige en professionele omgeving. Start vandaag nog met jouw eerste proefles.</p>
                 <div class="hero-buttons">
-                    <button class="btn-white">Proefles boeken<span class="arrow">→</span></button>
-                    <button class="btn-outline">Bekijk prijzen</button>
+                    <a href="/" class="btn-white">Proefles boeken<span class="arrow">→</span></a>
+                    <a href="/" class="btn-outline">Bekijk prijzen</a>
                 </div>
                 <hr class="divider-blue">
                 <ul>

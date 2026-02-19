@@ -58,6 +58,9 @@
   --g-50: #193bb3;
   --g-100: #1c398e;
 
+  --g2-0: #155DFC;
+  --g2-100: #193CB8;
+
   /* Hover states */
   --hover-state-lighter: #ffffff21;
   --hover-state-light: #5983a67e;
@@ -263,6 +266,8 @@ h6 {
 }
 
 .btn-white {
+  text-align: center;
+  font-size: var(--fs-label-sm-mobile);
   background-color: var(--c-white);
   font-weight: 600;
   color: var(--c-navy-900);
@@ -280,6 +285,8 @@ h6 {
 }
 
 .btn-outline {
+  text-align: center;
+  font-size: var(--fs-label-sm-mobile);
   background-color: transparent;
   font-weight: 600;
   color: var(--c-white);

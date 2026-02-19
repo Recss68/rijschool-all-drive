@@ -1,5 +1,15 @@
 <script>
-    import { Hero, BenefitCards, PriceCards, ProcessSteps, Reviews, SuccessStories, AboutSection } from '$lib';
+    import 
+    { 
+        Hero, 
+        BenefitCards, 
+        PriceCards, 
+        ProcessSteps, 
+        Reviews, 
+        SuccessStories, 
+        AboutSection,
+        CtaSection
+        } from '$lib';
 </script>
 
 <Hero />
@@ -57,6 +67,8 @@
 </section>
 
 <AboutSection />
+
+<CtaSection />
 
 <style> 
 
