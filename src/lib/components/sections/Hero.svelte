@@ -34,8 +34,8 @@
             </div>
             <div class="hero-grid-2 fadeInUp"> 
                 <picture>
-                    <source srcset="/images/hero-picture.avif" type="image/avif" />
-                    <source srcset="/images/hero-picture.webp" type="image/webp" />
+                    <source srcset="/images/hero-picture.avif" loading="lazy" type="image/avif" />
+                    <source srcset="/images/hero-picture.webp" loading="lazy" type="image/webp" />
                     <img class="hero-image" src="/images/hero-picture.jpg" alt="Instructor and Student" loading="lazy" fetchpriority="high" />
                 </picture>
             </div>
