@@ -5,7 +5,7 @@
             <picture>
                 <source srcset="/images/ad_long_white.webp" type="images/webp">
                 <source srcset="/images/ad_long_white.png" type="images/png">
-                <img src="/images/ad_long_white.avif" alt="rijschool-all-drive-logo" loading="lazy">
+                <img src="/images/ad_long_white.avif" width="70%" height="70%" alt="rijschool-all-drive-logo" loading="lazy">
             </picture>
             <p>Rijschool All Drive is jouw betrouwbare rijschool in Amsterdam voor het snel en veilig behalen van je rijbewijs. Professioneel, persoonlijk en resultaatgericht – met ervaren instructeurs en een hoog slagingspercentage in Amsterdam.</p>
         </div>
@@ -48,7 +48,7 @@
 
         <div class="footer-bottom">
             <p>© 2026 Rijschool All Drive. Alle rechten voorbehouden.</p>
-            <p>Designed & Hosted by <a class="rec-btn" href="https://devrec.nl">DevRec</a></p>
+            <p>Designed & Hosted by <a href="https://devrec.nl">DevRec</a></p>
         </div>
 
     </div>
@@ -60,9 +60,6 @@
         background-color: var(--c-footer);
         padding-top: 0;
         padding-bottom: var(--space-6);
-        picture img {
-            width: 70%;
-        }
         h2 {
             color: var(--c-white);
             font-size: var(--fs-body-sm-mobile);
@@ -104,6 +101,9 @@
             text-align: center;
             padding: var(--space-10) 0 var(--space-6) 0;
             line-height: var(--space-2);
+            a {
+                font-weight: var(--fw-bold);
+            }
         }
         @media (min-width: 1024px) {
             padding-top: var(--space-12);
@@ -137,6 +137,7 @@
 
                 picture img {
                     width: 90%;
+                    height: auto;
                 }
             }
         }
