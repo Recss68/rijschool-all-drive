@@ -1,3 +1,13 @@
+<script>
+  import { page } from '$app/stores';
+
+  let menuBtn;
+
+  $: if ($page) {
+    if (menuBtn) menuBtn.checked = false;
+  }
+</script>
+
 <header class="fadeInUp">
     <a href="/">
         <picture>
@@ -10,7 +20,7 @@
         </picture>
     </a>
 
-  <input class="menu-btn" type="checkbox" id="menu-btn" name="menu-btn" />
+  <input bind:this={menuBtn} class="menu-btn" type="checkbox" id="menu-btn" name="menu-btn" />
   <label class="menu-icon" for="menu-btn">
     <span class="navicon" aria-label="Toggle Menu"></span>
   </label>
@@ -28,3 +38,124 @@
     <a class="btn-white" href="https://wa.me/31627824428">Proefles boeken</a>
   </nav>
 </header>
+
+<style>
+    header {
+        display: grid;
+        grid-template-areas:
+            "title   title   hamburger"
+            "nav     nav     nav";
+        width: 100%;
+        position: fixed;
+        background-color: var(--c-white);
+        z-index: 99;
+        padding: var(--space-4);
+        box-shadow: var(--shadow-m);
+        align-items: center;
+    }
+
+    .btn-white {
+        background-color: var(--c-accent);
+        color: var(--c-white);
+    }
+
+    .menu-btn {
+        display: none;
+    }
+
+    .menu-icon {
+        grid-area: hamburger;
+        cursor: pointer;
+        display: flex;
+        justify-content: flex-end;
+        align-items: baseline;
+        padding: 30px 20px 30px 0;
+        position: relative;
+        user-select: none;
+        visibility: visible;
+    }
+
+    .nav-item {
+        transition: all 0.2s ease-in-out;
+        &:hover {
+            color: var(--hover-state);
+            background-color: var(--hover-state-x);
+        }
+    }
+
+    .navicon {
+        background: #333;
+        display: block;
+        height: 2px;
+        width: 18px;
+        position: relative;
+    }
+
+    .navicon:before {
+        top: 5px;
+    }
+
+    .navicon:after {
+        top: -5px;
+    }
+
+    .navicon:before,
+    .navicon:after {
+        background: var(--c-text);
+        display: block;
+        width: 100%;
+        height: 100%;
+        content: "";
+        position: absolute;
+        transition: all 0.2s ease-out;
+    }
+
+    .menu {
+        grid-area: nav;
+        max-width: unset;
+        max-height: 0;
+        transition: all 0.2s ease-out;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        background-color: var(--c-white);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .menu a {
+        padding: var(--space-2);
+        width: 100%;
+        font-size: var(--fs-label-sm);
+        white-space: nowrap;
+    }
+
+    .menu a[href^="tel"] {
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        margin-bottom: var(--space-2);
+    }
+
+    .menu-btn:checked ~ .menu {
+        max-height: 75vh;
+        padding: var(--space-2);
+    }
+
+    .menu-btn:checked ~ .menu-icon .navicon {
+        background: transparent;
+    }
+
+    .menu-btn:checked ~ .menu-icon .navicon:before {
+        transform: rotate(-45deg);
+    }
+
+    .menu-btn:checked ~ .menu-icon .navicon:after {
+        transform: rotate(45deg);
+    }
+
+    .menu-btn:checked ~ .menu-icon .navicon:before,
+    .menu-btn:checked ~ .menu-icon .navicon:after {
+        top: 0;
+    }
+</style>
