@@ -22,8 +22,8 @@
                 <h1>Jouw rijbewijs, Ons succes</h1>
                 <p>Leer rijden met ervaren instructeurs in een veilige en professionele omgeving. Start vandaag nog met jouw eerste proefles.</p>
                 <div class="hero-buttons">
-                    <a href="/" class="btn-white">Proefles boeken<span class="arrow">→</span></a>
-                    <a href="/" class="btn-outline">Bekijk prijzen</a>
+                    <a href="https://wa.me/31627824428" class="btn-white">Proefles boeken<span class="arrow">→</span></a>
+                    <a href="/prijzen" class="btn-outline">Bekijk prijzen</a>
                 </div>
                 <hr class="divider-blue">
                 <ul>
@@ -34,8 +34,8 @@
             </div>
             <div class="hero-grid-2 fadeInUp"> 
                 <picture>
-                    <source srcset="/images/hero-picture.avif" type="image/avif" />
-                    <source srcset="/images/hero-picture.webp" type="image/webp" />
+                    <source srcset="/images/hero-picture.avif" loading="lazy" type="image/avif" />
+                    <source srcset="/images/hero-picture.webp" loading="lazy" type="image/webp" />
                     <img class="hero-image" src="/images/hero-picture.jpg" alt="Instructor and Student" loading="lazy" fetchpriority="high" />
                 </picture>
             </div>
@@ -62,6 +62,7 @@
     }
 
     .hero-section{
+        padding-top: var(--space-26);
         color: var(--c-white);
         background: linear-gradient(to bottom right, var(--g-0), var(--g-50), var(--g-100));
         h1, p {
