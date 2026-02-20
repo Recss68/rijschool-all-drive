@@ -135,6 +135,10 @@
         align-items: center;
         gap: var(--space-2);
         margin-bottom: var(--space-2);
+        transition: color 0.2s ease-in-out;
+        &:hover {
+            color: var(--hover-state);
+        }
     }
 
     .menu-btn:checked ~ .menu {
