@@ -5,7 +5,7 @@
             <picture>
                 <source srcset="/images/ad_long_white.webp" type="images/webp">
                 <source srcset="/images/ad_long_white.png" type="images/png">
-                <img src="/images/ad_long_white.avif" alt="rijschool-all-drive-logo">
+                <img src="/images/ad_long_white.avif" alt="rijschool-all-drive-logo" loading="lazy">
             </picture>
             <p>Rijschool All Drive is jouw betrouwbare rijschool in Amsterdam voor het snel en veilig behalen van je rijbewijs. Professioneel, persoonlijk en resultaatgericht – met ervaren instructeurs en een hoog slagingspercentage in Amsterdam.</p>
         </div>
@@ -46,8 +46,6 @@
             </div>
         </div>
 
-        <hr>
-
         <div class="footer-bottom">
             <p>© 2026 Rijschool All Drive. Alle rechten voorbehouden.</p>
             <p>Designed & Hosted by <a class="rec-btn" href="https://devrec.nl">DevRec</a></p>
@@ -64,10 +62,6 @@
         padding-bottom: var(--space-6);
         picture img {
             width: 70%;
-        }
-        hr { 
-            border: none;
-            border-top: 1px solid var(--c-text);
         }
         h2 {
             color: var(--c-white);
@@ -106,9 +100,45 @@
             }
         }
         .footer-bottom {
+            border-top: 1px solid var(--c-text);
             text-align: center;
             padding: var(--space-10) 0 var(--space-6) 0;
             line-height: var(--space-2);
+        }
+        @media (min-width: 1024px) {
+            padding-top: var(--space-12);
+            .section-inner {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(2, 1fr); 
+                grid-template-rows: 1fr;
+                grid-column-gap: var(--space-12);
+                grid-row-gap: 0px; 
+                
+                .footer-heading{ 
+                    grid-area: 1 / 1 / 2 / 2;
+                }
+                .quick-menu-1{ 
+                    grid-area: 1 / 2 / 2 / 3;
+                }
+                .quick-menu-2{ 
+                    grid-area: 1 / 3 / 2 / 4;
+                }
+                .quick-menu-3{ 
+                    grid-area: 1 / 4 / 2 / 5;
+                }
+                .footer-bottom {
+                    grid-area: 2 / 1 / 3 / 5;
+                }
+                
+                .quick-menu-1, .quick-menu-2, .quick-menu-3 {
+                    padding-top: var(--space-10);
+                }
+
+                picture img {
+                    width: 90%;
+                }
+            }
         }
     }
 </style>
