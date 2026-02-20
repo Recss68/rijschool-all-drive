@@ -158,4 +158,36 @@
     .menu-btn:checked ~ .menu-icon .navicon:after {
         top: 0;
     }
+
+    /* Desktop styles */
+    @media screen and (min-width: 1070px) {
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header picture {
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-icon {
+            visibility: hidden;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: row;
+            gap: var(--space-4);
+            align-items: center;
+            max-width: 100vw;
+            max-height: unset;
+            margin-left: auto;
+            margin-right: var(--space-10);
+        }
+        .menu a[href^="tel"] {
+            margin: 0;
+        }
+    }
 </style>
