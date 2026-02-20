@@ -1,5 +1,5 @@
 <script>
-	import { Footer } from '$lib';
+	import { Header, Footer } from '$lib';
 	import '$lib/styles/ad-styles.css';
 	// import { onMount } from 'svelte';
 
@@ -18,6 +18,8 @@
 	/>
 	<link rel="icon" href="/images/favicon_white.jpg" />
 </svelte:head>
+
+<Header />
 
 <main>
 	{@render children()}
