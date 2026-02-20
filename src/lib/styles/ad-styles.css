@@ -31,6 +31,7 @@
   --c-section: #f9fafb;
   --c-text: #19252e;
   --c-text-light: #4A5565;
+  --c-text-lighter: #D1D5DC;
 
   --c-footer: oklch(.21 .034 264.665);
   --c-footer-icons-bg: oklch(.278 .033 256.848);

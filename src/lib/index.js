@@ -2,6 +2,8 @@
 
 
 // Layout
+export { default as Footer } from './components/layout/Footer.svelte'
+
 
 // Sections
 export { default as Hero } from './components/sections/Hero.svelte';
