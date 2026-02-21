@@ -1,3 +1,12 @@
+<svelte:head>
+	<title>Rijschool in Amsterdam | Rijschool All Drive</title>
+	<meta
+		name="description"
+		content="Op zoek naar een rijschool in Amsterdam? Rijschool All Drive biedt betaalbare rijlessen, persoonlijke begeleiding en hoge slagingskansen."
+	/>
+	<link rel="icon" href="/images/favicon_white.jpg" />
+</svelte:head>
+
 <script>
     import 
     { 
