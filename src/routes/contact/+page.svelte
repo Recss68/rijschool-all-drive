@@ -93,3 +93,60 @@
 	</div>
 </section>
 
+<style>
+
+	.contact-grid-right {
+		
+	}
+
+	.contact-info {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-4);
+	}
+
+	.contact-info li {
+		display: flex;
+		align-items: flex-start;
+		gap: var(--space-3);
+	}
+
+	.icon {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: var(--c-icon-bg);
+		width: 50px;
+		height: 50px;
+		padding: var(--space-1);
+		border-radius: var(--radius-soft);
+		svg {
+			width: 30px;
+			stroke: var(--c-accent);
+		} 
+	}
+
+	.details {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+	}
+
+	.details strong {
+		font-size: var(--fs-label);
+		color: var(--c-text);
+	}
+
+	.details a {
+		color: var(--c-accent);
+		font-size: var(--fs-body);
+	}
+
+	.details span {
+		color: var(--c-text-muted);
+		font-size: var(--fs-label-sm);
+	}
+</style>
