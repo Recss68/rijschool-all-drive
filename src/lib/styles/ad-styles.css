@@ -41,6 +41,7 @@
   --c-span: #1447E6;
   --c-btn-bg-main: #f3f4f6;
   --c-border-light: #e5e7eb;  
+  --c-border-gray: #D1D5DC;
   --c-review-bg: #F9FAFB;
 
   --c-navy-900: #002646;
@@ -151,6 +152,7 @@
   --space-28: 12rem;
 
   /* Radius (style guide: none 0px, round 20px) */
+  --radius-softest: 10px;
   --radius-soft: 12px; 
   --radius-m: 16px;
   --radius-round: 20px;
@@ -351,6 +353,23 @@ h6 {
   transition: background-color 0.2s ease-in-out;
   &:hover {
     background-color: var(--hover-state-main);
+  }
+}
+
+.btn-secondary {
+  border: none;
+  background-color: var(--c-accent);
+  color: var(--c-white);
+  border-radius: var(--radius-soft);
+  font-size: var(--fs-label-sm-mobile);
+  padding: var(--space-3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-2);
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    background-color: var(--hover-state-light);
   }
 }
 
