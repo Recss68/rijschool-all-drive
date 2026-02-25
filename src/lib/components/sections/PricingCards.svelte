@@ -44,7 +44,7 @@
   });
 
   // Returns the actual rendered width of one slide.
-  // This is important because mobile = 1 card visible, tablet = 2 cards visible.
+  // This is important because mobile = 1 card visible, tablet = 2 cards visible, desktop = 3 cards visible.
   function getSlideWidth() {
     if (!sliderEl) return 0;
 
@@ -66,8 +66,7 @@
   }
 
   // Calculates how many valid "start positions" the slider has.
-  // Example:
-  // 6 cards total, 2 visible => 5 possible positions (1-2, 2-3, 3-4, 4-5, 5-6)
+  // Example: 6 cards total, 2 visible => 5 possible positions
   function getPageCount() {
     const total = filteredPackages.length;
     if (!total) return 0;
@@ -131,7 +130,7 @@
     });
   }
 
-  // Recalculate pager state on viewport resize (important for mobile <-> tablet)
+  // Recalculate pager state on viewport resize (important for responsive breakpoints)
   function handleResize() {
     updatePagerState();
   }
@@ -141,10 +140,8 @@
   $: filteredPackages, tick().then(() => updatePagerState());
 </script>
 
-<!-- Listen to window resize so dot count stays correct across breakpoints -->
 <svelte:window on:resize={handleResize} />
 
-<!-- Tab navigation (changes visible package group) -->
 <nav class="pricing-tabs-wrap">
   <div class="pricing-tabs">
     {#each tabs as tab (tab.id)}
@@ -160,15 +157,9 @@
   </div>
 </nav>
 
-<!-- Slider wrapper -->
 <section class="pricing-slider-wrap">
-  <!-- Horizontal slider:
-       - mobile: 1 card visible
-       - tablet: 2 cards visible (via CSS)
-       Dots and JS adapt automatically based on measured slide width -->
   <section class="pricing-slider" bind:this={sliderEl} on:scroll={onScroll} tabindex="0">
     {#each filteredPackages as pkg (pkg.id)}
-      <!-- Compute display values per package so the markup stays readable -->
       {@const hasLessons = typeof pkg.lessons === "number" && pkg.lessons > 0}
       {@const priceText = typeof pkg.price === "number" ? euro0.format(pkg.price) : ""}
       {@const perLesson =
@@ -180,7 +171,6 @@
           : null}
       {@const includes = Array.isArray(pkg.includes) ? pkg.includes : []}
 
-      <!-- One slide = one package card -->
       <div class="slide">
         <article class="price-card">
           <header class="card-head">
@@ -203,7 +193,7 @@
 
           <hr class="divider" />
 
-          <h4 class="includes-title">Wat is inbegrepen:</h4>
+          <p class="includes-title">Wat is inbegrepen:</p>
 
           <ul class="includes">
             {#if lessonsLine}
@@ -227,8 +217,6 @@
     {/each}
   </section>
 
-  <!-- Dots represent valid slider positions, not raw package count.
-       This prevents broken dots when 2 cards are visible at once on tablet. -->
   {#if pageCount > 1}
     <div class="dots">
       {#each Array.from({ length: pageCount }) as _, i}
@@ -239,6 +227,7 @@
           on:click={() => goTo(i)}
         >
           <span class="dot-visual"></span>
+          <span class="sr-only">Ga naar slide {i + 1}</span>
         </button>
       {/each}
     </div>
@@ -439,6 +428,7 @@
   }
 
   .dot {
+    position: relative;
     border: 0;
     background: transparent;
     padding: 0.25rem;
@@ -463,6 +453,18 @@
   .dot:focus-visible {
     outline: 4px solid color-mix(in srgb, var(--c-accent) 55%, transparent);
     outline-offset: 2px;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
   }
 
   @media (min-width: 768px) {
@@ -494,76 +496,76 @@
       padding: 0 0.35rem;
     }
 
-.price-card {
-  width: 92%;
-  max-width: 430px;
-  margin: 0 auto;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
+    .price-card {
+      width: 92%;
+      max-width: 430px;
+      margin: 0 auto;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
 
     .price-card .includes {
       margin-bottom: var(--space-5);
     }
 
-.price-card .cta {
-  margin-top: auto;
-  width: 58%;
-}
+    .price-card .cta {
+      margin-top: auto;
+      width: 58%;
+    }
   }
 
-@media (min-width: 1024px) {
-  .pricing-slider-wrap {
-    width: 100%;
-    max-width: none;
-    margin: 0 auto;
-    padding-inline: 0.75rem;
-  }
+  @media (min-width: 1024px) {
+    .pricing-slider-wrap {
+      width: 100%;
+      max-width: none;
+      margin: 0 auto;
+      padding-inline: 0.75rem;
+    }
 
-  .pricing-slider {
-    width: 100%;
-    max-width: none;
-    margin: 0 auto;
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: 33.3333%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    gap: 0;
-    padding-bottom: 0.25rem;
-  }
+    .pricing-slider {
+      width: 100%;
+      max-width: none;
+      margin: 0 auto;
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 33.3333%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      gap: 0;
+      padding-bottom: 0.25rem;
+    }
 
-  .slide {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-    padding: 0 0.10rem;
-  }
+    .slide {
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      padding: 0 0.1rem;
+    }
 
-.price-card {
- width: 80%;        /* was 80% */
-  max-width: 900px;  /* was 900px */
-  margin: 0 auto;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
+    .price-card {
+      width: 80%;
+      max-width: 900px;
+      margin: 0 auto;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
 
-  .price-card .cta {
-    margin-top: auto;
-    margin-inline: auto;
-    width: 80%;
-  }
-}
+    .price-card .cta {
+      margin-top: auto;
+      margin-inline: auto;
+      width: 80%;
+    }
 
- .dot {
-    padding: 0.35rem;
-  }
+    .dot {
+      padding: 0.35rem;
+    }
 
-  .dot-visual {
-    width: 14px;
-    height: 14px;
+    .dot-visual {
+      width: 14px;
+      height: 14px;
+    }
   }
 </style>
