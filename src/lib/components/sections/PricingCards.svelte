@@ -512,4 +512,58 @@
   width: 58%;
 }
   }
+
+@media (min-width: 1024px) {
+  .pricing-slider-wrap {
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    padding-inline: 0.75rem;
+  }
+
+  .pricing-slider {
+    width: 100%;
+    max-width: none;
+    margin: 0 auto;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 33.3333%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    gap: 0;
+    padding-bottom: 0.25rem;
+  }
+
+  .slide {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    padding: 0 0.10rem;
+  }
+
+.price-card {
+ width: 80%;        /* was 80% */
+  max-width: 900px;  /* was 900px */
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+  .price-card .cta {
+    margin-top: auto;
+    margin-inline: auto;
+    width: 80%;
+  }
+}
+
+ .dot {
+    padding: 0.35rem;
+  }
+
+  .dot-visual {
+    width: 14px;
+    height: 14px;
+  }
 </style>
