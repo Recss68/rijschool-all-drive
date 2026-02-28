@@ -1,35 +1,25 @@
 <script>
-  // Waits for the DOM to update after state changes (for example after switching tabs)
-  import { tick } from "svelte";
-
-  // Pricing data source (JSON). The fallback supports different bundler import shapes.
+  import { onMount } from "svelte";
   import rawPackages from "$lib/data/pricing-packages.json";
 
   const packages = rawPackages?.default ?? rawPackages;
 
-  // Tab definitions for the package groups
   const tabs = [
     { id: "extra", label: "Extra" },
     { id: "basis", label: "Basis" },
     { id: "theorie", label: "Theorie" }
   ];
 
-  // Currently selected tab/group
-  let activeGroup = "basis";
+  const groups = tabs.map((tab) => ({
+    id: tab.id,
+    label: tab.label,
+    pkgs: packages.filter((pkg) => pkg.group === tab.id)
+  }));
 
-  // Reactive filtered list based on active tab
-  $: filteredPackages = packages.filter((p) => p.group === activeGroup);
+  let sliderEls = {};
+  let activeIndexes = Object.fromEntries(tabs.map((tab) => [tab.id, 0]));
+  let pageCounts = Object.fromEntries(tabs.map((tab) => [tab.id, 1]));
 
-  // Reference to the horizontal slider element
-  let sliderEl;
-
-  // Current active dot/page index
-  let activeIndex = 0;
-
-  // Total number of valid dot positions/pages (depends on viewport width)
-  let pageCount = 0;
-
-  // Currency formatters (whole euros and per-lesson decimals)
   const euro0 = new Intl.NumberFormat("nl-NL", {
     style: "currency",
     currency: "EUR",
@@ -43,229 +33,257 @@
     maximumFractionDigits: 2
   });
 
-  // Returns the actual rendered width of one slide.
-  // This is important because mobile = 1 card visible, tablet = 2 cards visible, desktop = 3 cards visible.
-  function getSlideWidth() {
-    if (!sliderEl) return 0;
-
-    const firstSlide = sliderEl.querySelector(".slide");
-    if (!firstSlide) return 0;
-
-    return firstSlide.getBoundingClientRect().width;
+  function getSlideWidth(el) {
+    return el?.querySelector(".slide")?.getBoundingClientRect().width ?? 0;
   }
 
-  // Calculates how many slides are visible at once in the current viewport
-  function getVisibleSlides() {
-    if (!sliderEl) return 1;
-
-    const slideWidth = getSlideWidth();
-    if (!slideWidth) return 1;
-
-    const visible = Math.floor(sliderEl.clientWidth / slideWidth) || 1;
-    return Math.max(1, visible);
+  function getVisibleSlides(el) {
+    if (!el || el.clientWidth === 0) return 1;
+    const width = getSlideWidth(el);
+    return width ? Math.max(1, Math.floor(el.clientWidth / width)) : 1;
   }
 
-  // Calculates how many valid "start positions" the slider has.
-  // Example: 6 cards total, 2 visible => 5 possible positions
-  function getPageCount() {
-    const total = filteredPackages.length;
-    if (!total) return 0;
+  function updatePager(groupId) {
+    const el = sliderEls[groupId];
+    if (!el || el.clientWidth === 0) return;
 
-    const visible = getVisibleSlides();
-    return Math.max(1, total - visible + 1);
+    const total = groups.find((group) => group.id === groupId)?.pkgs.length ?? 0;
+    const visibleSlides = getVisibleSlides(el);
+    const pages = Math.max(1, total - visibleSlides + 1);
+
+    pageCounts[groupId] = pages;
+    activeIndexes[groupId] = Math.min(activeIndexes[groupId], pages - 1);
+
+    pageCounts = { ...pageCounts };
+    activeIndexes = { ...activeIndexes };
   }
 
-  // Syncs pageCount and keeps activeIndex inside valid bounds
-  function updatePagerState() {
-    pageCount = getPageCount();
-    activeIndex = Math.min(activeIndex, Math.max(0, pageCount - 1));
+  function onScroll(groupId) {
+    const el = sliderEls[groupId];
+    if (!el) return;
+
+    const width = getSlideWidth(el);
+    if (!width) return;
+
+    const max = Math.max(0, (pageCounts[groupId] ?? 1) - 1);
+
+    activeIndexes[groupId] = Math.max(
+      0,
+      Math.min(Math.round(el.scrollLeft / width), max)
+    );
+
+    activeIndexes = { ...activeIndexes };
   }
 
-  // Handles tab switch:
-  // 1) update active group
-  // 2) reset active dot
-  // 3) wait for DOM render
-  // 4) scroll slider back to start
-  // 5) recalculate pager state
-  async function setGroup(id) {
-    activeGroup = id;
-    activeIndex = 0;
+  function goTo(groupId, index) {
+    const el = sliderEls[groupId];
+    if (!el) return;
+    if ((pageCounts[groupId] ?? 1) <= 1) return;
 
-    await tick();
+    const width = getSlideWidth(el);
+    if (!width) return;
 
-    sliderEl?.scrollTo({
-      left: 0,
-      behavior: "auto"
-    });
-
-    updatePagerState();
-  }
-
-  // Updates active dot while the user scrolls/swipes manually
-  function onScroll() {
-    if (!sliderEl) return;
-
-    const slideWidth = getSlideWidth();
-    if (!slideWidth) return;
-
-    const maxPageIndex = Math.max(0, pageCount - 1);
-    const nextIndex = Math.round(sliderEl.scrollLeft / slideWidth);
-
-    activeIndex = Math.max(0, Math.min(nextIndex, maxPageIndex));
-  }
-
-  // Scrolls to a specific dot/page position
-  function goTo(i) {
-    if (!sliderEl) return;
-
-    const max = Math.max(0, pageCount - 1);
-    const next = Math.max(0, Math.min(i, max));
-    const slideWidth = getSlideWidth();
-
-    if (!slideWidth) return;
-
-    sliderEl.scrollTo({
-      left: slideWidth * next,
+    el.scrollTo({
+      left: width * index,
       behavior: "smooth"
     });
   }
 
-  // Recalculate pager state on viewport resize (important for responsive breakpoints)
-  function handleResize() {
-    updatePagerState();
+  function setSlider(groupId, el) {
+    if (!el) return;
+    sliderEls[groupId] = el;
   }
 
-  // Recalculate pager whenever the filtered package list changes (tab switch / data change)
-  // tick() ensures the DOM has updated before measuring widths.
-  $: filteredPackages, tick().then(() => updatePagerState());
+  function handleTabChange(groupId) {
+    requestAnimationFrame(() => {
+      const el = sliderEls[groupId];
+      if (!el) return;
+
+      el.scrollTo({ left: 0, behavior: "auto" });
+      activeIndexes[groupId] = 0;
+      activeIndexes = { ...activeIndexes };
+      updatePager(groupId);
+    });
+  }
+
+  function handleResize() {
+    for (const group of groups) {
+      updatePager(group.id);
+    }
+  }
+
+  onMount(() => {
+    requestAnimationFrame(() => {
+      updatePager("basis");
+    });
+  });
 </script>
 
 <svelte:window on:resize={handleResize} />
 
-<nav class="pricing-tabs-wrap">
-  <div class="pricing-tabs">
-    {#each tabs as tab (tab.id)}
-      <button
-        type="button"
-        class="tab"
-        class:active={activeGroup === tab.id}
-        on:click={() => setGroup(tab.id)}
+<section class="pricing">
+  <h2 class="sr-only">Pakketten</h2>
+
+  {#each tabs as tab (tab.id)}
+    <input
+      type="radio"
+      class="sr-only tab-radio"
+      name="pricing-group"
+      id={"tab-" + tab.id}
+      value={tab.id}
+      checked={tab.id === "basis"}
+      on:change={() => handleTabChange(tab.id)}
+    />
+  {/each}
+
+  <nav class="pricing-tabs-wrap">
+    <ul class="pricing-tabs">
+      {#each tabs as tab (tab.id)}
+        <li>
+          <label for={"tab-" + tab.id} class="tab">
+            {tab.label}
+          </label>
+        </li>
+      {/each}
+    </ul>
+  </nav>
+
+  {#each groups as group (group.id)}
+    <section class="pricing-slider-wrap" data-group={group.id}>
+      <h3 class="sr-only">{group.label}</h3>
+
+      <ul
+        class="pricing-slider"
+        bind:this={sliderEls[group.id]}
+        on:scroll={() => onScroll(group.id)}
+        tabindex="0"
       >
-        {tab.label}
-      </button>
-    {/each}
-  </div>
-</nav>
+        {#each group.pkgs as pkg (pkg.id)}
+          {@const hasLessons = typeof pkg.lessons === "number" && pkg.lessons > 0}
+          {@const priceText = typeof pkg.price === "number" ? euro0.format(pkg.price) : ""}
+          {@const perLesson = hasLessons && typeof pkg.price === "number" ? pkg.price / pkg.lessons : null}
+          {@const perLessonText = perLesson !== null ? `${euro2.format(perLesson)} per les` : null}
+          {@const lessonsLine = hasLessons && typeof pkg.lessonMinutes === "number"
+            ? `${pkg.lessons} rijlessen van ${pkg.lessonMinutes} minuten`
+            : null}
+          {@const includes = Array.isArray(pkg.includes) ? pkg.includes : []}
 
-<section class="pricing-slider-wrap">
-  <section class="pricing-slider" bind:this={sliderEl} on:scroll={onScroll} tabindex="0">
-    {#each filteredPackages as pkg (pkg.id)}
-      {@const hasLessons = typeof pkg.lessons === "number" && pkg.lessons > 0}
-      {@const priceText = typeof pkg.price === "number" ? euro0.format(pkg.price) : ""}
-      {@const perLesson =
-        hasLessons && typeof pkg.price === "number" ? pkg.price / pkg.lessons : null}
-      {@const perLessonText = perLesson !== null ? `${euro2.format(perLesson)} per les` : null}
-      {@const lessonsLine =
-        hasLessons && typeof pkg.lessonMinutes === "number"
-          ? `${pkg.lessons} rijlessen van ${pkg.lessonMinutes} minuten`
-          : null}
-      {@const includes = Array.isArray(pkg.includes) ? pkg.includes : []}
+          <li class="slide">
+            <article class="price-card">
+              <header class="card-head">
+                <h4 class="title">{pkg.title}</h4>
 
-      <div class="slide">
-        <article class="price-card">
-          <header class="card-head">
-            <div>
-              <h3 class="title">{pkg.title}</h3>
-              {#if pkg.subtitle}
-                <p class="subtitle">{pkg.subtitle}</p>
-              {/if}
-            </div>
-          </header>
+                {#if pkg.subtitle}
+                  <p class="subtitle">{pkg.subtitle}</p>
+                {/if}
+              </header>
 
-          <div class="price-wrap">
-            <p class="price">{priceText}</p>
-            <p class="exam">{pkg.includesExam ? "Incl. examen" : "Excl. examen"}</p>
+              <p class="price-wrap">
+                <span class="price">{priceText}</span>
+                <span class="exam">{pkg.includesExam ? "Incl. examen" : "Excl. examen"}</span>
+                {#if perLessonText}
+                  <span class="per">{perLessonText}</span>
+                {/if}
+              </p>
 
-            {#if perLessonText}
-              <p class="per">{perLessonText}</p>
-            {/if}
-          </div>
+              <hr class="divider" />
 
-          <hr class="divider" />
+              <h5 class="includes-title">Wat is inbegrepen</h5>
 
-          <p class="includes-title">Wat is inbegrepen:</p>
+              <ul class="includes">
+                {#if lessonsLine}
+                  <li class="inc">
+                    <img class="inc-icon" src="/icons/list-bullet.svg" alt="" />
+                    <span>{lessonsLine}</span>
+                  </li>
+                {/if}
 
-          <ul class="includes">
-            {#if lessonsLine}
-              <li class="inc">
-                <img class="inc-icon" src="/icons/list-bullet.svg" alt="" />
-                <span>{lessonsLine}</span>
-              </li>
-            {/if}
+                {#each includes as item (item)}
+                  <li class="inc">
+                    <img class="inc-icon" src="/icons/list-bullet.svg" alt="" />
+                    <span>{item}</span>
+                  </li>
+                {/each}
+              </ul>
 
-            {#each includes as item (item)}
-              <li class="inc">
-                <img class="inc-icon" src="/icons/list-bullet.svg" alt="" />
-                <span>{item}</span>
+              <button class="cta" type="button">
+                Kies dit pakket!
+              </button>
+            </article>
+          </li>
+        {/each}
+      </ul>
+
+      {#if pageCounts[group.id] > 1}
+        <nav class="dots">
+          <ul class="dots-list">
+            {#each Array.from({ length: pageCounts[group.id] }) as _, index}
+              <li>
+                <button
+                  type="button"
+                  class="dot"
+                  class:active={index === activeIndexes[group.id]}
+                  on:click={() => goTo(group.id, index)}
+                >
+                  <span class="dot-visual"></span>
+                  <span class="sr-only">Ga naar slide {index + 1}</span>
+                </button>
               </li>
             {/each}
           </ul>
-
-          <button class="cta" type="button">Kies dit pakket!</button>
-        </article>
-      </div>
-    {/each}
-  </section>
-
-  {#if pageCount > 1}
-    <div class="dots">
-      {#each Array.from({ length: pageCount }) as _, i}
-        <button
-          type="button"
-          class="dot"
-          class:active={i === activeIndex}
-          on:click={() => goTo(i)}
-        >
-          <span class="dot-visual"></span>
-          <span class="sr-only">Ga naar slide {i + 1}</span>
-        </button>
-      {/each}
-    </div>
-  {/if}
+        </nav>
+      {/if}
+    </section>
+  {/each}
 </section>
 
 <style>
+  .pricing-slider-wrap {
+    display: none;
+  }
+
+  #tab-extra:checked ~ .pricing-slider-wrap[data-group="extra"],
+  #tab-basis:checked ~ .pricing-slider-wrap[data-group="basis"],
+  #tab-theorie:checked ~ .pricing-slider-wrap[data-group="theorie"] {
+    display: block;
+  }
+
   .pricing-tabs-wrap {
     display: flex;
     justify-content: center;
     padding: var(--space-4) 0 var(--space-5);
+  }
 
-    .pricing-tabs {
-      display: inline-flex;
-      gap: var(--space-3);
-      padding: 0.35rem;
-      border-radius: 999px;
-      background: var(--c-btn-bg-main);
-      border: 1px solid var(--c-border-light);
-    }
+  .pricing-tabs {
+    display: inline-flex;
+    gap: var(--space-3);
+    padding: 0.35rem;
+    margin: 0;
+    list-style: none;
+    border-radius: 999px;
+    background: var(--c-btn-bg-main);
+    border: 1px solid var(--c-border-light);
+  }
 
-    .tab {
-      border: 0;
-      background: transparent;
-      border-radius: 999px;
-      padding: var(--space-3) var(--space-5);
-      font-weight: var(--fw-bold);
-      cursor: pointer;
-      color: var(--c-navy-900);
-      transition: background-color 150ms ease, transform 150ms ease;
+  .tab {
+    display: inline-block;
+    border: 0;
+    background: transparent;
+    border-radius: 999px;
+    padding: var(--space-3) var(--space-5);
+    font-weight: var(--fw-bold);
+    cursor: pointer;
+    color: var(--c-navy-900);
+    transition: background-color 150ms ease, transform 150ms ease;
+  }
 
-      &.active {
-        background: var(--c-white);
-        outline: 4px solid color-mix(in srgb, var(--c-accent) 55%, transparent);
-        outline-offset: 2px;
-        transform: translateY(-1px);
-      }
-    }
+  #tab-extra:checked ~ nav .pricing-tabs label[for="tab-extra"],
+  #tab-basis:checked ~ nav .pricing-tabs label[for="tab-basis"],
+  #tab-theorie:checked ~ nav .pricing-tabs label[for="tab-theorie"] {
+    background: var(--c-white);
+    outline: 4px solid color-mix(in srgb, var(--c-accent) 55%, transparent);
+    outline-offset: 2px;
+    transform: translateY(-1px);
   }
 
   .pricing-slider-wrap {
@@ -276,6 +294,8 @@
   .pricing-slider {
     max-width: 520px;
     margin: 0 auto;
+    padding: 0;
+    list-style: none;
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 100%;
@@ -286,7 +306,6 @@
     overscroll-behavior-x: contain;
     touch-action: pan-x pan-y;
     padding-bottom: 0.25rem;
-
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
@@ -315,116 +334,129 @@
     border-radius: 28px;
     padding: 22px;
     box-shadow: var(--shadow-s);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
 
-    .title {
-      margin: 0;
-      font-family: var(--font-heading);
-      font-size: var(--fs-hl-sm);
-      line-height: var(--lh-heading);
-      font-weight: 800;
-      color: var(--c-navy-900);
-    }
+  .title {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: var(--fs-hl-sm);
+    line-height: var(--lh-heading);
+    font-weight: 800;
+    color: var(--c-navy-900);
+  }
 
-    .subtitle {
-      margin: var(--space-1) 0 0;
-      font-size: var(--fs-body-sm);
-      color: var(--c-text-light);
-    }
+  .subtitle {
+    margin: var(--space-1) 0 0;
+    font-size: var(--fs-body-sm);
+    color: var(--c-text-light);
+  }
 
-    .price-wrap {
-      margin-top: var(--space-6);
-    }
+  .price-wrap {
+    margin-top: var(--space-6);
+  }
 
-    .price {
-      margin: 0;
-      font-size: var(--fs-highlighted-mobile);
-      line-height: 1;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      color: var(--c-navy-900);
-    }
+  .price {
+    margin: 0;
+    display: block;
+    font-size: var(--fs-highlighted-mobile);
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    color: var(--c-navy-900);
+  }
 
-    .exam,
-    .per {
-      margin: var(--space-1) 0 0;
-      font-size: var(--fs-body-sm);
-      color: var(--c-text-light);
-    }
+  .exam,
+  .per {
+    margin: var(--space-1) 0 0;
+    display: block;
+    font-size: var(--fs-body-sm);
+    color: var(--c-text-light);
+  }
 
-    .divider {
-      border: 0;
-      height: 2px;
-      background: var(--c-border-light);
-      margin: var(--space-10) 0 var(--space-4);
-      border-radius: var(--radius-round);
-    }
+  .divider {
+    border: 0;
+    height: 2px;
+    background: var(--c-border-light);
+    margin: var(--space-10) 0 var(--space-4);
+    border-radius: var(--radius-round);
+  }
 
-    .includes-title {
-      margin: 0 0 var(--space-3);
-      font-size: var(--fs-label-md);
-      font-weight: 800;
-      color: var(--c-navy-900);
-    }
+  .includes-title {
+    margin: 0 0 var(--space-3);
+    font-size: var(--fs-label-md);
+    font-weight: 800;
+    color: var(--c-navy-900);
+  }
 
-    .includes {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: grid;
-      gap: var(--space-3);
+  .includes {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-3);
+  }
 
-      .inc {
-        display: grid;
-        grid-template-columns: 22px 1fr;
-        gap: var(--space-3);
-        align-items: start;
-        color: var(--c-text);
-        font-size: var(--fs-body-sm);
-        line-height: 1.35;
+  .inc {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: var(--space-3);
+    align-items: start;
+    color: var(--c-text);
+    font-size: var(--fs-body-sm);
+    line-height: 1.35;
+  }
 
-        .inc-icon {
-          width: 22px;
-          height: 22px;
-          margin-top: 2px;
-        }
-      }
-    }
+  .inc-icon {
+    width: 22px;
+    height: 22px;
+    margin-top: 2px;
+  }
 
-    .cta {
-      margin: var(--space-5) auto 0;
-      display: block;
-      width: 70%;
-      border: 0;
-      border-radius: var(--radius-round);
-      padding: var(--space-4);
-      font-weight: 800;
-      font-size: var(--fs-label-sm);
-      color: var(--c-white);
-      background: var(--c-accent);
-      cursor: pointer;
-      transition: background-color 150ms ease, transform 150ms ease;
+  .cta {
+    margin: var(--space-5) auto 0;
+    display: block;
+    width: 70%;
+    border: 0;
+    border-radius: var(--radius-round);
+    padding: var(--space-4);
+    font-weight: 800;
+    font-size: var(--fs-label-sm);
+    color: var(--c-white);
+    background: var(--c-accent);
+    cursor: pointer;
+    transition: background-color 150ms ease, transform 150ms ease;
+  }
 
-      &:hover {
-        background: var(--c-span);
-        transform: translateY(-1px);
-      }
+  .cta:hover {
+    background: var(--c-span);
+    transform: translateY(-1px);
+  }
 
-      &:active {
-        transform: translateY(0);
-      }
+  .cta:active {
+    transform: translateY(0);
+  }
 
-      &:focus-visible {
-        outline: 4px solid color-mix(in srgb, var(--c-accent) 55%, transparent);
-        outline-offset: 4px;
-      }
-    }
+  .cta:focus-visible {
+    outline: 4px solid color-mix(in srgb, var(--c-accent) 55%, transparent);
+    outline-offset: 4px;
   }
 
   .dots {
     display: flex;
     justify-content: center;
-    gap: 0.5rem;
     margin-top: var(--space-4);
+  }
+
+  .dots-list {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
 
   .dot {
@@ -466,7 +498,7 @@
     white-space: nowrap;
     border: 0;
   }
-
+  
   @media (min-width: 768px) {
     .pricing-slider-wrap {
       width: 100%;
@@ -478,42 +510,30 @@
     .pricing-slider {
       width: 100%;
       max-width: none;
-      margin: 0 auto;
-      display: grid;
-      grid-auto-flow: column;
       grid-auto-columns: 50%;
-      overflow-x: auto;
-      overflow-y: hidden;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      gap: 0;
       padding-bottom: 0.25rem;
     }
 
     .slide {
-      scroll-snap-align: start;
-      scroll-snap-stop: always;
       padding: 0 0.35rem;
     }
 
     .price-card {
       width: 92%;
       max-width: 430px;
-      margin: 0 auto;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
     }
 
-    .price-card .includes {
+    .includes {
       margin-bottom: var(--space-5);
     }
 
-    .price-card .cta {
+    .cta {
       margin-top: auto;
       width: 58%;
     }
   }
+
+  
 
   @media (min-width: 1024px) {
     .pricing-slider-wrap {
@@ -526,37 +546,23 @@
     .pricing-slider {
       width: 100%;
       max-width: none;
-      margin: 0 auto;
-      display: grid;
-      grid-auto-flow: column;
       grid-auto-columns: 33.3333%;
-      overflow-x: auto;
-      overflow-y: hidden;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      gap: 0;
       padding-bottom: 0.25rem;
     }
 
     .slide {
-      scroll-snap-align: start;
-      scroll-snap-stop: always;
       padding: 0 0.1rem;
     }
 
     .price-card {
       width: 80%;
       max-width: 900px;
-      margin: 0 auto;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
     }
 
-    .price-card .cta {
+    .cta {
       margin-top: auto;
       margin-inline: auto;
-      width: 80%;
+      width: 50%;
     }
 
     .dot {
