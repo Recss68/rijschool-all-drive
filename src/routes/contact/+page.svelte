@@ -7,7 +7,7 @@
 </svelte:head>
 
 <script>
-	import { ContactForm } from '$lib';
+	import { ContactForm, WhatsappCard } from '$lib';
 </script>
 
 <section class="breadcrumb">
@@ -88,6 +88,7 @@
 					</li>
 					
 				</ul>
+				<WhatsappCard />
 		</div>
 
 	</div>
@@ -95,8 +96,24 @@
 
 <style>
 
+	.contact-section {
+		.section-inner {
+			@media ( min-width: 1024px ) {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				grid-template-rows: 1fr;
+				grid-column-gap: var(--space-12);
+				grid-row-gap: 0px;
+			}
+		}
+	}
+
+	.contact-grid-left {
+		grid-area: 1 / 1 / 2 / 2; 
+	}
+
 	.contact-grid-right {
-		
+		grid-area: 1 / 2 / 2 / 3;
 	}
 
 	.contact-info {
