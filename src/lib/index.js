@@ -8,6 +8,7 @@ export { default as Footer } from './components/layout/Footer.svelte'
 
 // UI
 export { default as ContactForm } from './components/ui/ContactFrom.svelte'
+export { default as WhatsappCard } from './components/ui/WhatsappCard.svelte'
 
 
 // Sections

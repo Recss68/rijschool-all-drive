@@ -55,8 +55,12 @@
   --c-slate-100: #e7edf1;
   --c-slate-50: #f5f8fa;
 
+  --c-green-lighter: #F0FDF4;
+  --c-green-light: #00C950;
   --c-green: #00A63E;
   --c-yellow: #FDC700;
+
+  
 
   /* Gradient (Background color) */
   --g-0: #1c398e;
