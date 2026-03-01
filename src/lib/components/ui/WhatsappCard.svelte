@@ -50,12 +50,16 @@
         border-radius: 8px;
         font-size: var(--fs-label-sm-mobile);
         font-weight: var(--fw-bold);
-        background-color: var(--c-green);
+        background-color: var(--c-green-dark);
         color: var(--c-white);
         align-self: flex-start;
+        transition: background-color 0.2s ease-in-out;
         svg {
             fill: var(--c-white);
             width: 20px;
+        }
+        &:hover {
+            background-color: var(--c-green);
         }
     }
 </style>
