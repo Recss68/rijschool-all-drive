@@ -125,6 +125,8 @@
         background-color: var(--c-white);
         display: flex;
         flex-direction: column;
+        visibility: hidden;
+        pointer-events: none;
     }
 
     .menu a {
@@ -148,6 +150,8 @@
     .menu-btn:checked ~ .menu {
         max-height: 75vh;
         padding: var(--space-2);
+        visibility: visible;
+        pointer-events: auto;
     }
 
     .menu-btn:checked ~ .menu-icon .navicon {
