@@ -297,13 +297,13 @@
     transition: background-color 150ms ease, transform 150ms ease;
   }
 
-  #tab-extra:checked ~ nav .pricing-tabs label[for="tab-extra"],
-  #tab-basis:checked ~ nav .pricing-tabs label[for="tab-basis"],
-  #tab-theorie:checked ~ nav .pricing-tabs label[for="tab-theorie"] {
+    #tab-extra:checked ~ nav .pricing-tabs label[for="tab-extra"],
+    #tab-basis:checked ~ nav .pricing-tabs label[for="tab-basis"],
+    #tab-theorie:checked ~ nav .pricing-tabs label[for="tab-theorie"] {
     background: var(--c-white);
-    outline: 4px solid color-mix(in srgb, var(--c-accent) 55%, transparent);
+    outline: 4px solid rgba(0, 123, 255, 0.35);
     outline-offset: 2px;
-    transform: translateY(-1px);
+    outline: 4px solid color-mix(in srgb, var(--c-accent) 55%, transparent);
   }
 
   .pricing-slider-viewport {
@@ -481,8 +481,9 @@
   }
 
   .cta:focus-visible {
-    outline: 4px solid color-mix(in srgb, var(--c-accent) 55%, transparent);
+    outline: 4px solid rgba(0, 123, 255, 0.35);
     outline-offset: 4px;
+    outline: 4px solid color-mix(in srgb, var(--c-accent) 55%, transparent);
   }
 
   .dots {
