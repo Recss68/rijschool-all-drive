@@ -222,9 +222,9 @@
                   {/each}
                 </ul>
 
-                <button class="cta" type="button">
+                <a class="cta" href="https://wa.me/31627824428">
                   Kies dit pakket!
-                </button>
+                </a>
               </article>
             </li>
           {/each}
@@ -596,6 +596,8 @@
     .cta {
       margin-top: auto;
       width: 58%;
+      text-decoration: none;
+      text-align: center;
     }
   }
 
