@@ -54,17 +54,20 @@
         align-items: center;
     }
 
-    /* .logo {
-        width: 80px;
-    } */
-
     .btn-white {
         background-color: var(--c-accent);
         color: var(--c-white);
     }
 
     .menu-btn {
-        display: none;
+        position: absolute;
+        opacity: 0;
+        z-index: 100;
+        cursor: pointer;
+    }
+    
+    .menu-btn:focus-visible + .menu-icon {
+        outline: 2px solid var(--c-accent);
     }
 
     .menu-icon {
@@ -125,6 +128,8 @@
         background-color: var(--c-white);
         display: flex;
         flex-direction: column;
+        visibility: hidden;
+        pointer-events: none;
     }
 
     .menu a {
@@ -148,6 +153,8 @@
     .menu-btn:checked ~ .menu {
         max-height: 75vh;
         padding: var(--space-2);
+        visibility: visible;
+        pointer-events: auto;
     }
 
     .menu-btn:checked ~ .menu-icon .navicon {
