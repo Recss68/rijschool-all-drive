@@ -54,17 +54,20 @@
         align-items: center;
     }
 
-    /* .logo {
-        width: 80px;
-    } */
-
     .btn-white {
         background-color: var(--c-accent);
         color: var(--c-white);
     }
 
     .menu-btn {
-        display: none;
+        position: absolute;
+        opacity: 0;
+        z-index: 100;
+        cursor: pointer;
+    }
+    
+    .menu-btn:focus-visible + .menu-icon {
+        outline: 2px solid var(--c-accent);
     }
 
     .menu-icon {
