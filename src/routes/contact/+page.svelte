@@ -204,4 +204,28 @@
 		font-size: var(--fs-label-sm);
 	}
 
+	.service-area {
+		.service-area-cards {
+			display: flex;
+			flex-direction: column;
+			gap: var(--space-8);
+			margin: var(--space-8) 0 var(--space-8) 0;
+			.area-card {
+				background-color: var(--c-white);
+				padding: var(--space-6);
+				border-radius: var(--radius-soft);
+				box-shadow: var(--shadow-m);
+				h3 { 
+					font-size: var(--fs-label-sm-mobile);
+				}
+				p {
+					font-size: var(--fs-label-s-mobile);
+				}
+				svg {
+					width: 40px;
+					margin-bottom: var(--space-3);
+				}
+			}
+		}
+	}
 </style>
