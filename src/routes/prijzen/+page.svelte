@@ -1,3 +1,7 @@
+<script>
+	import PricingSlider from '$lib/components/sections/PricingSlider.svelte';
+</script>
+
 <svelte:head>
 	<title>Rijles Prijzen Amsterdam | Pakketten & Tarieven | All Drive</title>
 	<meta
@@ -9,4 +13,8 @@
 <section class="breadcrumb">
 	<h1>Transparante Prijzen</h1>
 	<p>Geen verborgen kosten. Kies het pakket dat bij jou past en start met je rijlessen.</p>
+</section>
+
+<section class="pricing">
+	<PricingSlider />
 </section>
