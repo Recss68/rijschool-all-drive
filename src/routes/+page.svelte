@@ -12,7 +12,7 @@
     { 
         Hero, 
         BenefitCards, 
-        PriceCards, 
+        RecommendedPriceCards as PriceCards, 
         ProcessSteps, 
         Reviews, 
         SuccessStories, 
