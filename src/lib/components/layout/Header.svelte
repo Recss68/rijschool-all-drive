@@ -130,6 +130,10 @@
         flex-direction: column;
         visibility: hidden;
         pointer-events: none;
+        @media (min-width: 1070px) {
+            visibility: visible;
+            pointer-events: auto;
+        }
     }
 
     .menu a {
