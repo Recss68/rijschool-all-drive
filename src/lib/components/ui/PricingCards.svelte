@@ -457,12 +457,13 @@
   }
 
   .cta {
+    text-align: center;
     margin: var(--space-5) auto 0;
     display: block;
     width: 70%;
     border: 0;
     border-radius: var(--radius-round);
-    padding: var(--space-4);
+    padding: var(--space-3);
     font-weight: 800;
     font-size: var(--fs-label-sm);
     color: var(--c-white);

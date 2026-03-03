@@ -1,5 +1,5 @@
 <script>
-	import PricingSlider from '$lib/components/sections/PricingSlider.svelte';
+	import { PricingCards } from '$lib';
 </script>
 
 <svelte:head>
@@ -16,5 +16,5 @@
 </section>
 
 <section class="pricing">
-	<PricingSlider />
+	<PricingCards />
 </section>
