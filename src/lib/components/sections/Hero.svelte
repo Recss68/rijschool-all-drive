@@ -1,3 +1,61 @@
+<script>
+    import { gsap } from 'gsap';
+    import { onMount, onDestroy } from 'svelte';
+
+    let split;
+
+    onMount(async () => {
+        // respect user preference for reduced motion
+        try {
+            if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                // user prefers reduced motion — skip animation
+                return;
+            }
+
+            // ensure gsap is available and the registerPlugin function exists
+            if (!gsap || typeof gsap.registerPlugin !== 'function') {
+                console.warn('GSAP is not available; skipping SplitText animation.');
+                return;
+            }
+
+            // dynamically import SplitText (avoids import-time failures)
+            let SplitTextModule;
+            try {
+                SplitTextModule = await import('gsap/SplitText');
+            } catch (err) {
+                // some environments or GSAP installs don't include SplitText
+                console.warn('Could not load gsap/SplitText; skipping text-splitting animation.', err);
+                return;
+            }
+
+            const SplitText = SplitTextModule && (SplitTextModule.default || SplitTextModule.SplitText || SplitTextModule);
+            if (!SplitText) {
+                console.warn('SplitText plugin not found on import; skipping animation.');
+                return;
+            }
+
+            gsap.registerPlugin(SplitText);
+            split = new SplitText('#my-text', { type: 'chars' });
+
+            // animate the chars in
+            gsap.from(split.chars, {
+                y: 8,
+                opacity: 0,
+                stagger: 0.05,
+                delay: 0.2,
+                duration: 0.45,
+                ease: 'power2.out'
+            });
+        } catch (e) {
+            console.warn('Error while trying to run SplitText animation:', e);
+        }
+    });
+
+    onDestroy(() => {
+        if (split && typeof split.revert === 'function') split.revert();
+    });
+</script>
+
 <section class="section gradient hero-section">
     <div class="section-inner">
          <div class="parent-hero">
@@ -19,7 +77,7 @@
                     />
                     </svg>
                     Officieel erkende rijschool</span>
-                <h1>Jouw rijbewijs, Ons succes</h1>
+                <h1 id="my-text">Start vandaag met <br>jouw rijbewijs.</h1>
                 <p>Leer rijden met ervaren instructeurs in een veilige en professionele omgeving. Start vandaag nog met jouw eerste proefles.</p>
                 <div class="hero-buttons">
                     <a href="https://wa.me/31627824428" class="btn-white">Proefles boeken<span class="arrow">→</span></a>
