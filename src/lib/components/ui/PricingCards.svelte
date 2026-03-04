@@ -421,7 +421,7 @@
     border: 0;
     height: 2px;
     background: var(--c-border-light);
-    margin: var(--space-10) 0 var(--space-4);
+    margin: var(--space-2) 0 var(--space-6);
     border-radius: var(--radius-round);
   }
 
