@@ -119,7 +119,7 @@
 			</article>
 
 		</div>
-		<p>Niet zeker of we in jouw buurt rijden? Neem contact met ons op voor meer informatie!</p>
+		<p class="sub-text">Niet zeker of we in jouw buurt rijden? Neem contact met ons op voor meer informatie!</p>
 	</div>
 </section>
 
@@ -131,7 +131,14 @@
         h2 {
             font-size: var(--fs-hl-lg);
         }
+		p {
+			font-size: var(--fs-hl-md-mobile);
+		}
     }
+
+	.sub-text {
+		font-size: var(--fs-label-sm-mobile) !important;
+	}
 
 	.contact-section {
 		.section-inner {
@@ -210,6 +217,13 @@
 			flex-direction: column;
 			gap: var(--space-8);
 			margin: var(--space-8) 0 var(--space-8) 0;
+			@media ( min-width: 1024px ) {
+				flex-direction: row;
+				gap: var(--space-6);
+				.area-card {
+					flex: 1;
+				}
+			}
 			.area-card {
 				background-color: var(--c-white);
 				padding: var(--space-6);
