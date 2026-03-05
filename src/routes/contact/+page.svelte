@@ -7,7 +7,13 @@
 </svelte:head>
 
 <script>
-	import { ContactForm, WhatsappCard } from '$lib';
+	import 
+	{ 
+		ContactForm, 
+		WhatsappCard, 
+		FaqSection
+	} 
+	from '$lib';
 </script>
 
 <section class="breadcrumb">
@@ -122,6 +128,8 @@
 		<p class="sub-text">Niet zeker of we in jouw buurt rijden? Neem contact met ons op voor meer informatie!</p>
 	</div>
 </section>
+
+<FaqSection />
 
 <style>
 
