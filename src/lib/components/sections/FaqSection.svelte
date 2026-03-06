@@ -100,6 +100,7 @@
         text-align: center;
         h2 {
             font-size: var(--fs-hl-lg);
+            margin-bottom: var(--space-12);
         }
 
         .faq-item {
@@ -108,6 +109,9 @@
             margin-bottom: var(--space-6);
             border-radius: var(--radius-soft);
             background-color: var(--c-section);
+            @media (min-width: 1024px) {
+                padding: var(--space-6);
+            }
 
             summary {
                 display: flex;
