@@ -75,6 +75,15 @@
 	</div>
 </section>
 
+<!-- <section class="section charging-container">
+	<div class="section-inner">
+		<h2>Aanvullende informatie</h2>
+		<div class="additional-info">
+		<p>Wij geloven in in transparantie. Naast de lespakketten zijn er geen verborgen kosten.</p>
+
+	</div>
+</section> -->
+
 <FaqSection />
 
 <CtaSection isPricePage={true} />
