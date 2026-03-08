@@ -97,14 +97,4 @@
         background-color: var(--c-white);
     }
 
-    .section-footer {
-        margin-top: var(--space-12);
-        font-size: var(--fs-body-sm-mobile);
-        color: var(--c-text-light);
-        a {
-            color: var(--c-accent);
-            font-weight: var(--fw-semibold);
-        }
-    }
-
 </style>

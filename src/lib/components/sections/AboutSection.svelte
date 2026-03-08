@@ -1,14 +1,19 @@
+<script>
+    export let showLink = true;
+</script>
+
 <section class="about-section section">
     <div class="section-inner">
         <picture>
-            <source srcset="/images/alldrive-auto.avif" type="images/avif">
-            <source srcset="/images/alldrive-auto.webp" type="images/webp">
+            <source srcset="/images/alldrive-auto.avif" type="image/avif">
+            <source srcset="/images/alldrive-auto.webp" type="image/webp">
             <img 
-            src="/images/alldrive-auto.jpg" 
+            src="/images/alldrive-auto.jpeg" 
             alt="rijschool-alldrive-car"
-            width="100%"
+            width="600"
             height="500"
             loading="lazy"
+            decoding="async"
             >
         </picture>
 
@@ -27,7 +32,9 @@
                 <li>Duidelijke lespakketten zonder verborgen kosten</li>
             </ul>
             <p>Wil jij snel en veilig je rijbewijs halen bij <b>een professionele rijschool in Amsterdam?</b> Ons team van ervaren instructeurs begeleidt je stap voor stap, van je eerste proefles tot aan het praktijkexamen.</p>
+            {#if showLink}
             <a class="rec-btn" href="/over-ons">Lees meer over ons <span class="arrow">→</span></a>
+            {/if}
         </div>
     </div>
 </section>

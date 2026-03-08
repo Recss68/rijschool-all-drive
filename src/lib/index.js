@@ -22,6 +22,9 @@ export { default as SuccessStories } from './components/sections/SuccessStories.
 export { default as AboutSection } from './components/sections/AboutSection.svelte';
 export { default as CtaSection } from './components/sections/CtaSection.svelte';
 export { default as FaqSection } from './components/sections/FaqSection.svelte';
+export { default as InstructorTeam } from './components/sections/InstructorTeam.svelte';
+
 
 // Data
 export { default as FaqData } from './data/faq-data.json';
+export { default as InstructorData } from './data/instructors.json';
