@@ -1,3 +1,7 @@
+<script>
+    export let showLink = true;
+</script>
+
 <section class="about-section section">
     <div class="section-inner">
         <picture>
@@ -27,7 +31,9 @@
                 <li>Duidelijke lespakketten zonder verborgen kosten</li>
             </ul>
             <p>Wil jij snel en veilig je rijbewijs halen bij <b>een professionele rijschool in Amsterdam?</b> Ons team van ervaren instructeurs begeleidt je stap voor stap, van je eerste proefles tot aan het praktijkexamen.</p>
+            {#if showLink}
             <a class="rec-btn" href="/over-ons">Lees meer over ons <span class="arrow">→</span></a>
+            {/if}
         </div>
     </div>
 </section>
