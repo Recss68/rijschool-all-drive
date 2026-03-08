@@ -7,7 +7,7 @@
 </svelte:head>
 
 <script>
-	import { AboutSection } from '$lib';
+	import { AboutSection, BenefitCards } from '$lib';
 </script>
 
 <section class="breadcrumb">
@@ -48,11 +48,21 @@
 	</div>
 </section>
 
+
+<section class="section benefits-container">
+    <div class="section-inner">
+        <div class="section-heading">
+            <h2>Waarom kiezen voor Rijschool All Drive?</h2>
+            <p>Ontdek wat ons uniek maakt en waarom leerlingen voor ons kiezen.</p>
+        </div>
+        <BenefitCards />
+    </div>
+</section>
+
 <style>
 	.lessons-info {
 		background-color: var(--c-section);
 		h2 {
-			font-size: var(--fs-hl-lg);
 			margin-bottom: var(--space-12);
 			text-align: center;
 		}
@@ -96,6 +106,12 @@
 			article ul {
 				padding: 0 var(--space-10) 0 var(--space-12);
 			}
+		}
+	}
+
+	.benefits-container {
+		h2, p {
+			text-align: center;
 		}
 	}
 </style>
