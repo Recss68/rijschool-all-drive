@@ -55,3 +55,33 @@
 		</div>
 	</div>
 </section>
+
+<style>
+	.lessons-info {
+		background-color: var(--c-section);
+		h2 {
+			font-size: var(--fs-hl-lg);
+			margin-bottom: var(--space-12);
+			text-align: center;
+		}
+
+		article {
+			background-color: var(--c-white);
+			padding: var(--space-4);
+			border-radius: var(--radius-round);
+			margin-bottom: var(--space-6);
+			color: var(--c-text-light);
+			h3 {
+				background-color: var(--c-accent);
+				color: var(--c-white);
+				padding: var(--space-2);
+				margin: var(--space-4);
+				border-radius: var(--radius-soft);
+				text-align: center;
+			}
+			ul li {
+				margin-bottom: var(--space-4);
+			}
+		}
+	}
+</style>
