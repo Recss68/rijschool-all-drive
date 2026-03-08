@@ -2,7 +2,8 @@
 	import 
 	{ 
 		PricingCards,
-		CtaSection 
+		CtaSection,
+		FaqSection
 	} 
 	from '$lib';
 </script>
@@ -23,5 +24,7 @@
 <section class="pricing">
 	<PricingCards />
 </section>
+
+<FaqSection />
 
 <CtaSection isPricePage={true} />
