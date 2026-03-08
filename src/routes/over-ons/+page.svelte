@@ -13,6 +13,7 @@
 		BenefitCards,
 		ProcessSteps,
 		SuccessStories,
+		InstructorTeam,
 		CtaSection
 	} 
 	from '$lib';
@@ -88,6 +89,16 @@
     </div>
 </section>
 
+<section class="section instructors-container">
+	<div class="section-inner">
+		<div class="section-heading">
+			<h2>Maak kennis met ons instructeursteam</h2>
+			<p>Onze ervaren en vriendelijke instructeurs staan klaar om jou te begeleiden naar succes!</p>
+		</div>
+		<InstructorTeam />
+	</div>
+</section>
+
 <CtaSection />
 
 <style>
@@ -150,7 +161,7 @@
 		}
 	}
 
-	.process-steps {
+	.process-steps, .instructors-container {
 		background-color: var(--c-section);
 	}
 </style>
