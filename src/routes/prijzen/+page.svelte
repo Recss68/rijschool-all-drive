@@ -1,5 +1,10 @@
 <script>
-	import { PricingCards } from '$lib';
+	import 
+	{ 
+		PricingCards,
+		CtaSection 
+	} 
+	from '$lib';
 </script>
 
 <svelte:head>
@@ -18,3 +23,5 @@
 <section class="pricing">
 	<PricingCards />
 </section>
+
+<CtaSection isPricePage={true} />
