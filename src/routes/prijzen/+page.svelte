@@ -85,6 +85,7 @@
 		h2 {
 			text-align: center;
 			margin-bottom: var(--space-12);
+			font-size: var(--fs-hl-lg);
 		}
 		.package-list {
 			article {
