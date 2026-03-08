@@ -98,7 +98,7 @@
   --fs-display-lg-desktop: 160px;
   --fs-display-md-desktop: 60px;
   --fs-hl-lg-desktop: 50px;
-  --fs-hl-md-desktop: 38px;
+  --fs-hl-md-desktop: 36px;
   --fs-hl-sm-desktop: 24px;
   --fs-body-md-desktop: 20px;
   --fs-body-sm-desktop: 18px;
@@ -124,6 +124,7 @@
   --fs-display-lg: clamp(var(--fs-display-lg-mobile), 8vw, var(--fs-display-lg-desktop));
   --fs-display-md: clamp(var(--fs-display-md-mobile), 5vw, var(--fs-display-md-desktop));
   --fs-hl-lg: clamp(var(--fs-hl-lg-mobile), 3.2vw, var(--fs-hl-lg-desktop));
+  --fs-hl-lg-md: clamp(var(--fs-hl-lg-mobile), 2.6vw, var(--fs-hl-md-desktop));
   --fs-hl-md: clamp(var(--fs-hl-md-mobile), 2.6vw, var(--fs-hl-md-desktop));
   --fs-hl-sm: clamp(var(--fs-hl-sm-mobile), 1.8vw, var(--fs-hl-sm-desktop));
   --fs-body-md: clamp(var(--fs-body-md-mobile), 1.4vw, var(--fs-body-md-desktop));
