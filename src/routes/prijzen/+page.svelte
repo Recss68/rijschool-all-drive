@@ -78,3 +78,24 @@
 <FaqSection />
 
 <CtaSection isPricePage={true} />
+
+<style>
+	.package-info {
+		background-color: var(--c-section);
+		h2 {
+			text-align: center;
+			margin-bottom: var(--space-12);
+		}
+		.package-list {
+			article {
+				background-color: var(--c-white);
+				padding: var(--space-4);
+				border-radius: var(--radius-m);
+				svg { 
+					fill: var(--c-green);
+					width: 40px;
+				}
+			}
+		}
+	}
+</style>
