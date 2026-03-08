@@ -7,7 +7,13 @@
 </svelte:head>
 
 <script>
-	import { AboutSection, BenefitCards } from '$lib';
+	import 
+	{ 
+		AboutSection, 
+		BenefitCards,
+		ProcessSteps 
+	} 
+	from '$lib';
 </script>
 
 <section class="breadcrumb">
@@ -59,12 +65,32 @@
     </div>
 </section>
 
+<section class="section process-steps">
+	<div class="section-inner">
+		<div class="section-heading">
+			<h2>Hoe het werkt</h2>
+			<p>Een bewezen aanpak die resulteert in hoge slagingspercentages!</p>
+		</div>
+		<ProcessSteps showMethodContent={true}  isWhite={true} />
+	</div>
+</section>
+
 <style>
+	.section-heading h2, h2 {
+		font-size: var(--fs-hl-lg);
+		margin-bottom: var(--space-5);
+	}
+	.section-heading  {
+		h2, p {
+			text-align: center;
+		}
+	}
+
 	.lessons-info {
 		background-color: var(--c-section);
 		h2 {
-			margin-bottom: var(--space-12);
 			text-align: center;
+			
 		}
 
 		article {
@@ -109,9 +135,7 @@
 		}
 	}
 
-	.benefits-container {
-		h2, p {
-			text-align: center;
-		}
+	.process-steps {
+		background-color: var(--c-section);
 	}
 </style>
