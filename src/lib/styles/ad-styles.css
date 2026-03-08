@@ -269,6 +269,17 @@ h6 {
     margin-bottom: var(--space-8);
 }
 
+.section-footer {
+  text-align: center;
+  margin-top: var(--space-12);
+  font-size: var(--fs-body-sm-mobile);
+  color: var(--c-text-light);
+  a {
+    color: var(--c-accent);
+    font-weight: var(--fw-semibold);
+  }
+}
+
 .sub-title {
   background-color: var(--c-span);
   color: var(--c-white);

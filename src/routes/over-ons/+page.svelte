@@ -11,7 +11,9 @@
 	{ 
 		AboutSection, 
 		BenefitCards,
-		ProcessSteps 
+		ProcessSteps,
+		SuccessStories,
+		CtaSection
 	} 
 	from '$lib';
 </script>
@@ -74,6 +76,19 @@
 		<ProcessSteps showMethodContent={true}  isWhite={true} />
 	</div>
 </section>
+
+<section class="success-stories-container section">
+    <div class="section-inner">
+        <div class="section-heading">
+            <h2>Geslaagd bij Rijschool All Drive!</h2>
+            <p>Ontmoet ekele van onze trotse geslaagde leerlingen!</p>
+        </div> 
+        <SuccessStories />
+        <p class="section-footer">Wil jij ook je rijbewijs halen? <a href="https://wa.me/31627824428">Neem dan nu contact op!</a></p>
+    </div>
+</section>
+
+<CtaSection />
 
 <style>
 	.section-heading h2, h2 {
