@@ -5,14 +5,15 @@
 <section class="about-section section">
     <div class="section-inner">
         <picture>
-            <source srcset="/images/alldrive-auto.avif" type="images/avif">
-            <source srcset="/images/alldrive-auto.webp" type="images/webp">
+            <source srcset="/images/alldrive-auto.avif" type="image/avif">
+            <source srcset="/images/alldrive-auto.webp" type="image/webp">
             <img 
-            src="/images/alldrive-auto.jpg" 
+            src="/images/alldrive-auto.jpeg" 
             alt="rijschool-alldrive-car"
-            width="100%"
+            width="600"
             height="500"
             loading="lazy"
+            decoding="async"
             >
         </picture>
 
