@@ -67,6 +67,7 @@
             border-radius: var(--radius-m);
             box-shadow: var(--shadow-m);
             margin-bottom: var(--space-12);
+            width: 100%;
         }
         .t-content {
             text-align: left;
