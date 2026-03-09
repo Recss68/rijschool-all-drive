@@ -1,69 +1,68 @@
 [
-  {
-    "id": 1,
-    "image": "/images/students/leerling-1.jpg",
-    "image_2": "/images/students/leerling-1.avif",
-    "image_3": "/images/students/leerling-1.webp"
-  },
-  {
-    "id": 2,
-    "image": "/images/students/leerling-2.jpg",
-    "image_2": "/images/students/leerling-2.avif",
-    "image_3": "/images/students/leerling-2.webp"
-  },
-  {
-    "id": 3,
-    "image": "/images/students/leerling-3.jpg",
-    "image_2": "/images/students/leerling-3.avif",
-    "image_3": "/images/students/leerling-3.webp"
-  },
-  {
-    "id": 4,
-    "image": "/images/students/leerling-4.jpg",
-    "image_2": "/images/students/leerling-4.avif",
-    "image_3": "/images/students/leerling-4.webp"
-  },
-  {
-    "id": 5,
-    "image": "/images/students/leerling-5.jpg",
-    "image_2": "/images/students/leerling-5.avif",
-    "image_3": "/images/students/leerling-5.webp"
-  },
-  {
-    "id": 6,
-    "image": "/images/students/leerling-6.jpg",
-    "image_2": "/images/students/leerling-6.avif",
-    "image_2": "/images/students/leerling-6.webp"
-    
-  },
-  {
-    "id": 7,
-    "image": "/images/students/leerling-7.jpg",
-    "image_2": "/images/students/leerling-7.avif",
-    "image_3": "/images/students/leerling-7.webp"
-  },
-  {
-    "id": 8,
-    "image": "/images/students/leerling-8.jpg",
-    "image_2": "/images/students/leerling-8.avif",
-    "image_3": "/images/students/leerling-8.webp"
-  },
-  {
-    "id": 9,
-    "image": "/images/students/leerling-9.jpg",
-    "image_2": "/images/students/leerling-9.avif",
-    "image_3": "/images/students/leerling-9.webp"
-  },
-  {
-    "id": 10,
-    "image": "/images/students/leerling-10.jpg",
-    "image_2": "/images/students/leerling-10.avif",
-    "image_3": "/images/students/leerling-10.webp"
-  },
-  {
-    "id": 11,
-    "image": "/images/students/leerling-11.jpg",
-    "image_2": "/images/students/leerling-11.avif",
-    "image_3": "/images/students/leerling-11.webp"
-  }
+	{
+		"id": 1,
+		"image": "/images/students/leerling-1.jpg",
+		"image_2": "/images/students/leerling-1.avif",
+		"image_3": "/images/students/leerling-1.webp"
+	},
+	{
+		"id": 2,
+		"image": "/images/students/leerling-2.jpg",
+		"image_2": "/images/students/leerling-2.avif",
+		"image_3": "/images/students/leerling-2.webp"
+	},
+	{
+		"id": 3,
+		"image": "/images/students/leerling-3.jpg",
+		"image_2": "/images/students/leerling-3.avif",
+		"image_3": "/images/students/leerling-3.webp"
+	},
+	{
+		"id": 4,
+		"image": "/images/students/leerling-4.jpg",
+		"image_2": "/images/students/leerling-4.avif",
+		"image_3": "/images/students/leerling-4.webp"
+	},
+	{
+		"id": 5,
+		"image": "/images/students/leerling-5.jpg",
+		"image_2": "/images/students/leerling-5.avif",
+		"image_3": "/images/students/leerling-5.webp"
+	},
+	{
+		"id": 6,
+		"image": "/images/students/leerling-6.jpg",
+		"image_2": "/images/students/leerling-6.avif",
+		"image_2": "/images/students/leerling-6.webp"
+	},
+	{
+		"id": 7,
+		"image": "/images/students/leerling-7.jpg",
+		"image_2": "/images/students/leerling-7.avif",
+		"image_3": "/images/students/leerling-7.webp"
+	},
+	{
+		"id": 8,
+		"image": "/images/students/leerling-8.jpg",
+		"image_2": "/images/students/leerling-8.avif",
+		"image_3": "/images/students/leerling-8.webp"
+	},
+	{
+		"id": 9,
+		"image": "/images/students/leerling-9.jpg",
+		"image_2": "/images/students/leerling-9.avif",
+		"image_3": "/images/students/leerling-9.webp"
+	},
+	{
+		"id": 10,
+		"image": "/images/students/leerling-10.jpg",
+		"image_2": "/images/students/leerling-10.avif",
+		"image_3": "/images/students/leerling-10.webp"
+	},
+	{
+		"id": 11,
+		"image": "/images/students/leerling-11.jpg",
+		"image_2": "/images/students/leerling-11.avif",
+		"image_3": "/images/students/leerling-11.webp"
+	}
 ]

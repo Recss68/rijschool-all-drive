@@ -1,179 +1,175 @@
 [
-  {
-    "id": "basis",
-    "group": "basis",
-    "title": "Basis pakket",
-    "subtitle": "Perfect voor beginners",
-    "price": 635,
-    "includesExam": false,
-    "lessons": 10,
-    "lessonMinutes": 60,
-    "includes": [
-      "Theorieondersteuning",
-      "Vaste instructeur",
-      "Flexibele planning",
-      "Moderne lesauto",
-      "Ophalen en terugbrengen"
-    ]
-  },
-  {
-    "id": "rij-start",
-    "group": "basis",
-    "title": "Rij Start",
-    "subtitle": "Perfect voor beginners",
-    "price": 1565,
-    "includesExam": true,
-    "lessons": 20,
-    "lessonMinutes": 60,
-    "includes": [
-      "Theorieondersteuning",
-      "Vaste instructeur",
-      "Flexibele planning",
-      "Moderne lesauto",
-      "Ophalen en terugbrengen"
-    ]
-  },
-  {
-    "id": "door-rij",
-    "group": "basis",
-    "title": "Door Rij",
-    "subtitle": "Perfect voor beginners",
-    "price": 2180,
-    "includesExam": true,
-    "lessons": 30,
-    "lessonMinutes": 60,
-    "includes": [
-      "Theorieondersteuning",
-      "Vaste instructeur",
-      "Flexibele planning",
-      "Moderne lesauto",
-      "Ophalen en terugbrengen"
-    ]
-  },
-  {
-    "id": "vol-gas",
-    "group": "basis",
-    "title": "Vol Gas",
-    "subtitle": "Perfect voor beginners",
-    "price": 2785,
-    "includesExam": true,
-    "lessons": 40,
-    "lessonMinutes": 60,
-    "includes": [
-      "Theorieondersteuning",
-      "Vaste instructeur",
-      "Flexibele planning",
-      "Moderne lesauto",
-      "Ophalen en terugbrengen"
-    ]
-  },
-  {
-    "id": "alles-in-een-rijbewijs",
-    "group": "basis",
-    "title": "Alles in één rijbewijs",
-    "price": 3659,
-    "includesExam": true,
-    "lessons": 50,
-    "lessonMinutes": 60,
-    "includes": [
-      "Theorieondersteuning",
-      "Vaste instructeur",
-      "Flexibele planning",
-      "Moderne lesauto",
-      "Ophalen en terugbrengen"
-    ]
-  },
-  {
-    "id": "herexamen-pakket",
-    "group": "basis",
-    "title": "Herexamen pakket",
-    "price": 638.75,
-    "includesExam": true,
-    "lessons": 5.5,
-    "lessonMinutes": 60,
-    "includes": [
-      "Theorieondersteuning",
-      "Vaste instructeur",
-      "Flexibele planning",
-      "Moderne lesauto",
-      "Ophalen en terugbrengen"
-    ]
-  },
-  {
-    "id": "rij-start-plus",
-    "group": "extra",
-    "title": "Rij Start Plus",
-    "price": 1889,
-    "includesExam": true,
-    "lessons": 20,
-    "lessonMinutes": 60,
-    "includes": [
-      "Theoriepakket",
-      "Tussentijds examen",
-      "Vaste instructeur",
-      "Flexibele planning",
-      "Moderne lesauto",
-      "Ophalen en terugbrengen"
-    ]
-  },
-  {
-    "id": "door-rij-plus",
-    "group": "extra",
-    "title": "Door Rij Plus",
-    "price": 2489,
-    "includesExam": true,
-    "lessons": 30,
-    "lessonMinutes": 60,
-    "includes": [
-      "Theoriepakket",
-      "Tussentijds examen",
-      "Vaste instructeur",
-      "Flexibele planning",
-      "Moderne lesauto",
-      "Ophalen en terugbrengen"
-    ]
-  },
-  {
-    "id": "vol-gas-plus",
-    "group": "extra",
-    "title": "Vol Gas Plus",
-    "price": 3079,
-    "includesExam": true,
-    "lessons": 40,
-    "lessonMinutes": 60,
-    "includes": [
-      "Tussentijds examen",
-      "Theoriepakket",
-      "Vaste instructeur",
-      "Flexibele planning",
-      "Moderne lesauto",
-      "Ophalen en terugbrengen"
-    ]
-  },
-  {
-    "id": "e-theorie-pakket",
-    "group": "theorie",
-    "title": "E-theorie pakket",
-    "subtitle": "Categorie B",
-    "price": 69,
-    "includesExam": false,
-    "lessons": null,
-    "lessonMinutes": null,
-    "includes": [
-      "Online leren en oefenen"
-    ]
-  },
-  {
-    "id": "theorie-pakket",
-    "group": "theorie",
-    "title": "Theorie pakket",
-    "subtitle": "Categorie B",
-    "price": 69,
-    "includesExam": false,
-    "lessons": null,
-    "lessonMinutes": null,
-    "includes": [
-      "Boek en online examentraining"
-    ]
-  }
+	{
+		"id": "basis",
+		"group": "basis",
+		"title": "Basis pakket",
+		"subtitle": "Perfect voor beginners",
+		"price": 635,
+		"includesExam": false,
+		"lessons": 10,
+		"lessonMinutes": 60,
+		"includes": [
+			"Theorieondersteuning",
+			"Vaste instructeur",
+			"Flexibele planning",
+			"Moderne lesauto",
+			"Ophalen en terugbrengen"
+		]
+	},
+	{
+		"id": "rij-start",
+		"group": "basis",
+		"title": "Rij Start",
+		"subtitle": "Perfect voor beginners",
+		"price": 1565,
+		"includesExam": true,
+		"lessons": 20,
+		"lessonMinutes": 60,
+		"includes": [
+			"Theorieondersteuning",
+			"Vaste instructeur",
+			"Flexibele planning",
+			"Moderne lesauto",
+			"Ophalen en terugbrengen"
+		]
+	},
+	{
+		"id": "door-rij",
+		"group": "basis",
+		"title": "Door Rij",
+		"subtitle": "Perfect voor beginners",
+		"price": 2180,
+		"includesExam": true,
+		"lessons": 30,
+		"lessonMinutes": 60,
+		"includes": [
+			"Theorieondersteuning",
+			"Vaste instructeur",
+			"Flexibele planning",
+			"Moderne lesauto",
+			"Ophalen en terugbrengen"
+		]
+	},
+	{
+		"id": "vol-gas",
+		"group": "basis",
+		"title": "Vol Gas",
+		"subtitle": "Perfect voor beginners",
+		"price": 2785,
+		"includesExam": true,
+		"lessons": 40,
+		"lessonMinutes": 60,
+		"includes": [
+			"Theorieondersteuning",
+			"Vaste instructeur",
+			"Flexibele planning",
+			"Moderne lesauto",
+			"Ophalen en terugbrengen"
+		]
+	},
+	{
+		"id": "alles-in-een-rijbewijs",
+		"group": "basis",
+		"title": "Alles in één rijbewijs",
+		"price": 3659,
+		"includesExam": true,
+		"lessons": 50,
+		"lessonMinutes": 60,
+		"includes": [
+			"Theorieondersteuning",
+			"Vaste instructeur",
+			"Flexibele planning",
+			"Moderne lesauto",
+			"Ophalen en terugbrengen"
+		]
+	},
+	{
+		"id": "herexamen-pakket",
+		"group": "basis",
+		"title": "Herexamen pakket",
+		"price": 638.75,
+		"includesExam": true,
+		"lessons": 5.5,
+		"lessonMinutes": 60,
+		"includes": [
+			"Theorieondersteuning",
+			"Vaste instructeur",
+			"Flexibele planning",
+			"Moderne lesauto",
+			"Ophalen en terugbrengen"
+		]
+	},
+	{
+		"id": "rij-start-plus",
+		"group": "extra",
+		"title": "Rij Start Plus",
+		"price": 1889,
+		"includesExam": true,
+		"lessons": 20,
+		"lessonMinutes": 60,
+		"includes": [
+			"Theoriepakket",
+			"Tussentijds examen",
+			"Vaste instructeur",
+			"Flexibele planning",
+			"Moderne lesauto",
+			"Ophalen en terugbrengen"
+		]
+	},
+	{
+		"id": "door-rij-plus",
+		"group": "extra",
+		"title": "Door Rij Plus",
+		"price": 2489,
+		"includesExam": true,
+		"lessons": 30,
+		"lessonMinutes": 60,
+		"includes": [
+			"Theoriepakket",
+			"Tussentijds examen",
+			"Vaste instructeur",
+			"Flexibele planning",
+			"Moderne lesauto",
+			"Ophalen en terugbrengen"
+		]
+	},
+	{
+		"id": "vol-gas-plus",
+		"group": "extra",
+		"title": "Vol Gas Plus",
+		"price": 3079,
+		"includesExam": true,
+		"lessons": 40,
+		"lessonMinutes": 60,
+		"includes": [
+			"Tussentijds examen",
+			"Theoriepakket",
+			"Vaste instructeur",
+			"Flexibele planning",
+			"Moderne lesauto",
+			"Ophalen en terugbrengen"
+		]
+	},
+	{
+		"id": "e-theorie-pakket",
+		"group": "theorie",
+		"title": "E-theorie pakket",
+		"subtitle": "Categorie B",
+		"price": 69,
+		"includesExam": false,
+		"lessons": null,
+		"lessonMinutes": null,
+		"includes": ["Online leren en oefenen"]
+	},
+	{
+		"id": "theorie-pakket",
+		"group": "theorie",
+		"title": "Theorie pakket",
+		"subtitle": "Categorie B",
+		"price": 69,
+		"includesExam": false,
+		"lessons": null,
+		"lessonMinutes": null,
+		"includes": ["Boek en online examentraining"]
+	}
 ]

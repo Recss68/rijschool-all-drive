@@ -1,10 +1,9 @@
 ---
-name: "[USER TEST]"
+name: '[USER TEST]'
 about: Describe what you want to learn from this user test.
-title: "[USER TEST]: "
+title: '[USER TEST]: '
 labels: ''
 assignees: ''
-
 ---
 
 ## User Test
@@ -32,15 +31,16 @@ As a user, I want to find the lesson prices so I can decide if this driving scho
 
 List the tasks the user needs to perform during the test.
 
-- Task 1: ______________________________________
-- Task 2: ______________________________________
-- Task 3: ______________________________________
+- Task 1: **\*\*\*\***\*\***\*\*\*\***\_\_**\*\*\*\***\*\***\*\*\*\***
+- Task 2: **\*\*\*\***\*\***\*\*\*\***\_\_**\*\*\*\***\*\***\*\*\*\***
+- Task 3: **\*\*\*\***\*\***\*\*\*\***\_\_**\*\*\*\***\*\***\*\*\*\***
 
 ---
 
 ## Observations
 
 During the test, note what you observe:
+
 - Where does the user hesitate?
 - What feels clear or confusing?
 - Any unexpected behavior?
@@ -50,6 +50,7 @@ During the test, note what you observe:
 ## User Feedback
 
 Write down what the user says or feels:
+
 - What did they like?
 - What was unclear?
 - What would they change?

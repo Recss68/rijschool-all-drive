@@ -1,6 +1,7 @@
 # 🚗 Rijschool All Drive — Website
 
 <!-- Tech stack badges -->
+
 ![Svelte](https://img.shields.io/badge/Svelte-4-FF3E00?logo=svelte&logoColor=white)
 ![SvelteKit](https://img.shields.io/badge/SvelteKit-App%20Framework-FF3E00?logo=svelte)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ESNext-F7DF1E?logo=javascript&logoColor=000)
@@ -27,14 +28,17 @@ De focus ligt op **performance**, **SEO** en **gebruiksvriendelijkheid**, met ru
 ## 🧱 Tech Stack
 
 **Frontend**
+
 - Svelte
 - SvelteKit
 - JavaScript (ESNext)
 
 **Backend / Services**
+
 - Supabase (Database, Auth, Storage)
 
 **Deployment**
+
 - Vercel
 
 ---
@@ -60,12 +64,15 @@ https://docs.fdnd.nl/conventies.html
 Volg onderstaande stappen om het project lokaal te draaien.
 
 ### Repository clonen
+
 `git clone`
 
 `cd rijschool-all-drive`
 
 ### Dependencies installeren
+
 `npm install`
 
 ### Development server starten
+
 `npm run dev`

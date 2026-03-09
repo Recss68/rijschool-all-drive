@@ -1,10 +1,9 @@
 ---
-name: "[DOCUMENTATION]"
+name: '[DOCUMENTATION]'
 about: Describing what you are going to do
-title: "[DOCUMENTATION]: "
+title: '[DOCUMENTATION]: '
 labels: ''
 assignees: ''
-
 ---
 
 ## Description
@@ -12,6 +11,7 @@ assignees: ''
 Describe what documentation needs to be created, updated, or improved.
 
 Explain:
+
 - What is currently missing or unclear
 - What should be documented or changed
 - Why this documentation is needed
@@ -25,6 +25,7 @@ Briefly describe what this documentation issue is about.
 ---
 
 ## TO-DO
+
 - [ ]
 - [ ]
 - [ ]

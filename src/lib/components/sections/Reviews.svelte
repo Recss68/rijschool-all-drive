@@ -1,5 +1,9 @@
 <div class="g-reviews">
-    <script defer async src='https://cdn.trustindex.io/loader.js?ce4c266667ef04213d065dab480'></script>
+	<script
+		defer
+		async
+		src="https://cdn.trustindex.io/loader.js?ce4c266667ef04213d065dab480"
+	></script>
 </div>
 
 <!-- <div class="g-reviews">
