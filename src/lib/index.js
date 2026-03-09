@@ -1,17 +1,14 @@
 // place files you want to import through the `$lib` alias in this folder.
 
-
 // Layout
-export { default as Header } from './components/layout/Header.svelte'
-export { default as Footer } from './components/layout/Footer.svelte'
-
+export { default as Header } from './components/layout/Header.svelte';
+export { default as Footer } from './components/layout/Footer.svelte';
 
 // UI
-export { default as ContactForm } from './components/ui/ContactFrom.svelte'
-export { default as WhatsappCard } from './components/ui/WhatsappCard.svelte'
+export { default as ContactForm } from './components/ui/ContactFrom.svelte';
+export { default as WhatsappCard } from './components/ui/WhatsappCard.svelte';
 export { default as PricingCards } from './components/ui/PricingCards.svelte';
 export { default as RecommendedPriceCards } from './components/ui/RecommendedPriceCards.svelte';
-
 
 // Sections
 export { default as Hero } from './components/sections/Hero.svelte';
@@ -23,7 +20,6 @@ export { default as AboutSection } from './components/sections/AboutSection.svel
 export { default as CtaSection } from './components/sections/CtaSection.svelte';
 export { default as FaqSection } from './components/sections/FaqSection.svelte';
 export { default as InstructorTeam } from './components/sections/InstructorTeam.svelte';
-
 
 // Data
 export { default as FaqData } from './data/faq-data.json';
