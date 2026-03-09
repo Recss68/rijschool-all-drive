@@ -7,13 +7,12 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
-		"prettier": "prettier --write \"src/**/*.{js,ts,tsx,css,md}\"",
 
 		"prepare": "svelte-kit sync || echo ''",
 
 		"lint": "prettier --check . && eslint .",
-		"format": "prettier --write .",
-		"format:check": "prettier --check ."
+		"format": "prettier --write \"src/**/*.{js,ts,tsx,css,md}\"",
+		"format:check": "prettier --check \"src/**/*.{js,ts,tsx,css,md}\""
 	},
 	"devDependencies": {
 		"@eslint/compat": "^2.0.1",
