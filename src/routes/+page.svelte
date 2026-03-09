@@ -1,36 +1,104 @@
-<script>
-  import checkmark from '$lib/assets/images/checkmark.svg';
-</script>
+<svelte:head>
+	<title>Rijschool in Amsterdam | Rijschool All Drive</title>
+	<meta
+		name="description"
+		content="Op zoek naar een rijschool in Amsterdam? Rijschool All Drive biedt betaalbare rijlessen, persoonlijke begeleiding en hoge slagingskansen."
+	/>
+	<link rel="icon" href="/images/favicon_white.jpg" />
+</svelte:head>
 
-<section class="section gradient hero-section">
-    <div class="section-inner">
-        <span class="sub-title">
-            <svg
-            viewBox="0 0 24 24"
-            width="22"
-            aria-hidden="true"
-            class="icon"
-            >
-            <path
-                d="M20 6L9 17l-5-5"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-            />
-            </svg>
-            Officieel erkende rijschool</span>
-        <h1>Jouw rijbewijs, Ons succes</h1>
-        <p>Leer rijden met ervaren instructeurs in een veilige en professionele omgeving. Start vandaag nog met jouw eerste proefles.</p>
-        <button class="btn-white">Proefles boeken</button>
-        <button class="btn-outline">Bekijk prijzen</button>
-        <hr class="divider-blue">
-        <ul>
-            <li>85% Slagingspercentage</li>
-            <li>500+ Geslaagden</li>
-            <li>4.9/5 Beoordeling</li>
-        </ul>
-    </div>
+<Hero />
+
+<section class="benefits-container section">
+	<div class="section-inner">
+		<div class="section-heading">
+			<h2>Waarom kiezen voor Rijschool All Drive?</h2>
+			<p>Ontdek wat ons uniek maakt en waarom leerlingen voor ons kiezen.</p>
+		</div>
+		<BenefitCards />
+	</div>
 </section>
 
+<section class="price-cards-container section">
+	<div class="section-inner">
+		<div class="section-heading">
+			<h2>Onze Lespakketten</h2>
+			<p>Kies het pakket dat bij jou past. Altijd flexibel en op maat aan te passen.</p>
+		</div>
+		<PriceCards />
+		<p class="section-footer">
+			Niet zeker welke pakket bij je past? <a href="https://wa.me/31627824428">Neem contact op</a> voor
+			persoonlijk advies!
+		</p>
+	</div>
+</section>
+
+<section class="process-steps-container section">
+	<div class="section-inner">
+		<div class="section-heading">
+			<h2>Hoe het werkt</h2>
+			<p>Van aanmelding tot rijbewijs in 4 eenvoudige stappen!</p>
+		</div>
+		<ProcessSteps />
+	</div>
+</section>
+
+<section class="reviews-container section">
+	<div class="section-inner">
+		<div class="section-heading">
+			<h2>Wat onze leerlingen zeggen</h2>
+			<p>Ontdek de ervaringen van onze geslaagde leerlingen!</p>
+		</div>
+		<Reviews />
+	</div>
+</section>
+
+<section class="success-stories-container section">
+	<div class="section-inner">
+		<div class="section-heading">
+			<h2>Geslaagd bij Rijschool All Drive!</h2>
+			<p>Ontmoet ekele van onze trotse geslaagde leerlingen!</p>
+		</div>
+		<SuccessStories />
+		<p class="section-footer">
+			Wil jij ook je rijbewijs halen? <a href="https://wa.me/31627824428">Neem dan nu contact op!</a
+			>
+		</p>
+	</div>
+</section>
+
+<AboutSection />
+
+<CtaSection />
+
+<script>
+	import {
+		Hero,
+		BenefitCards,
+		RecommendedPriceCards as PriceCards,
+		ProcessSteps,
+		Reviews,
+		SuccessStories,
+		AboutSection,
+		CtaSection,
+	} from '$lib';
+</script>
+
+<style>
+	.benefits-container,
+	.price-cards-container,
+	.process-steps-container,
+	.reviews-container,
+	.success-stories-container {
+		background-color: var(--c-section);
+		text-align: center;
+		h2 {
+			font-size: var(--fs-hl-lg);
+		}
+	}
+
+	.price-cards-container,
+	.reviews-container {
+		background-color: var(--c-white);
+	}
+</style>

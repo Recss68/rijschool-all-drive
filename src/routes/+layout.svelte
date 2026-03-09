@@ -1,14 +1,23 @@
-<script>
-	import '$lib/styles/ad-styles.css';
-	import favicon from '$lib/assets/images/favicon_white.avif';
-
-	let { children } = $props();
-</script>
-
 <svelte:head>
-	<link rel="icon" href={favicon} />
+	<link rel="icon" href="/images/favicon_white.jpg" />
 </svelte:head>
+
+<Header />
 
 <main>
 	{@render children()}
 </main>
+
+<Footer />
+
+<script>
+	import { Header, Footer } from '$lib';
+	import '$lib/styles/ad-styles.css';
+	// import { onMount } from 'svelte';
+
+	// onMount(() => {
+	// 	document.documentElement.classList.add('has-anim');
+	// });
+
+	let { children } = $props();
+</script>
