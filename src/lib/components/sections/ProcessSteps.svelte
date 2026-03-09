@@ -1,8 +1,3 @@
-<script>
-	export let showMethodContent = false;
-	export let isWhite = false;
-</script>
-
 <div class="process-steps">
 	<ol class="steps">
 		<li class:is-white={isWhite}>
@@ -82,6 +77,11 @@
 		</li>
 	</ol>
 </div>
+
+<script>
+	export let showMethodContent = false;
+	export let isWhite = false;
+</script>
 
 <style>
 	.process-steps {

@@ -1,3 +1,55 @@
+<section class="section gradient hero-section">
+	<div class="section-inner">
+		<div class="parent-hero">
+			<div class="hero-grid-1 fadeInUp">
+				<span class="sub-title">
+					<svg viewBox="0 0 24 24" width="15" aria-hidden="true" class="icon">
+						<path
+							d="M20 6L9 17l-5-5"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						></path>
+					</svg>
+					Officieel erkende rijschool</span
+				>
+				<h1 id="my-text">Start vandaag met <br />jouw rijbewijs.</h1>
+				<p>
+					Leer rijden met ervaren instructeurs in een veilige en professionele omgeving. Start
+					vandaag nog met jouw eerste proefles.
+				</p>
+				<div class="hero-buttons">
+					<a href="https://wa.me/31627824428" class="btn-white"
+						>Proefles boeken<span class="arrow">→</span></a
+					>
+					<a href="/prijzen" class="btn-outline">Bekijk prijzen</a>
+				</div>
+				<hr class="divider-blue" />
+				<ul>
+					<li><span class="t-highlight">90%</span> Slagingspercentage</li>
+					<li><span class="t-highlight">30+</span> Geslaagden</li>
+					<li><span class="t-highlight">4.9/5</span> Beoordeling</li>
+				</ul>
+			</div>
+			<div class="hero-grid-2 fadeInUp">
+				<picture>
+					<source srcset="/images/hero-picture.avif" loading="lazy" type="image/avif" />
+					<source srcset="/images/hero-picture.webp" loading="lazy" type="image/webp" />
+					<img
+						class="hero-image"
+						src="/images/hero-picture.jpg"
+						alt="Instructor and Student"
+						loading="lazy"
+						fetchpriority="high"
+					/>
+				</picture>
+			</div>
+		</div>
+	</div>
+</section>
+
 <script>
 	import { gsap } from 'gsap';
 	import { onMount, onDestroy } from 'svelte';
@@ -49,7 +101,7 @@
 				stagger: 0.05,
 				delay: 0.2,
 				duration: 0.45,
-				ease: 'power2.out'
+				ease: 'power2.out',
 			});
 		} catch (e) {
 			console.warn('Error while trying to run SplitText animation:', e);
@@ -60,58 +112,6 @@
 		if (split && typeof split.revert === 'function') split.revert();
 	});
 </script>
-
-<section class="section gradient hero-section">
-	<div class="section-inner">
-		<div class="parent-hero">
-			<div class="hero-grid-1 fadeInUp">
-				<span class="sub-title">
-					<svg viewBox="0 0 24 24" width="15" aria-hidden="true" class="icon">
-						<path
-							d="M20 6L9 17l-5-5"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						/>
-					</svg>
-					Officieel erkende rijschool</span
-				>
-				<h1 id="my-text">Start vandaag met <br />jouw rijbewijs.</h1>
-				<p>
-					Leer rijden met ervaren instructeurs in een veilige en professionele omgeving. Start
-					vandaag nog met jouw eerste proefles.
-				</p>
-				<div class="hero-buttons">
-					<a href="https://wa.me/31627824428" class="btn-white"
-						>Proefles boeken<span class="arrow">→</span></a
-					>
-					<a href="/prijzen" class="btn-outline">Bekijk prijzen</a>
-				</div>
-				<hr class="divider-blue" />
-				<ul>
-					<li><span class="t-highlight">85%</span> Slagingspercentage</li>
-					<li><span class="t-highlight">500+</span> Geslaagden</li>
-					<li><span class="t-highlight">4.9/5</span> Beoordeling</li>
-				</ul>
-			</div>
-			<div class="hero-grid-2 fadeInUp">
-				<picture>
-					<source srcset="/images/hero-picture.avif" loading="lazy" type="image/avif" />
-					<source srcset="/images/hero-picture.webp" loading="lazy" type="image/webp" />
-					<img
-						class="hero-image"
-						src="/images/hero-picture.jpg"
-						alt="Instructor and Student"
-						loading="lazy"
-						fetchpriority="high"
-					/>
-				</picture>
-			</div>
-		</div>
-	</div>
-</section>
 
 <style>
 	@media (min-width: 768px) {

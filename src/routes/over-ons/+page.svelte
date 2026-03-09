@@ -1,14 +1,3 @@
-<script>
-	import {
-		AboutSection,
-		BenefitCards,
-		ProcessSteps,
-		SuccessStories,
-		InstructorTeam,
-		CtaSection
-	} from '$lib';
-</script>
-
 <svelte:head>
 	<title>Over Rijschool All Drive | Rijschool in Amsterdam</title>
 	<meta
@@ -139,6 +128,17 @@
 </section>
 
 <CtaSection />
+
+<script>
+	import {
+		AboutSection,
+		BenefitCards,
+		ProcessSteps,
+		SuccessStories,
+		InstructorTeam,
+		CtaSection,
+	} from '$lib';
+</script>
 
 <style>
 	.section-heading h2,

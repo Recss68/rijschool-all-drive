@@ -1,6 +1,8 @@
+<!-- eslint-disable -->
+
 <div class="benefit-cards">
 	<article>
-		<svg viewBox="0 -0.5 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" stroke=""
+		<svg viewBox="0 -0.5 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"
 			><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
 				id="SVGRepo_tracerCarrier"
 				stroke-linecap="round"
@@ -130,9 +132,8 @@
 		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 		gap: var(--space-8);
 		margin-top: var(--space-8);
-		@media (min-width: 1024px) {
-			grid-template-columns: repeat(4, 1fr);
-		}
+
+		/* H3 en p stijlen blijven zoals ze zijn */
 		h3 {
 			font-weight: var(--fw-semibold);
 			font-size: var(--fs-hl-md-mobile);
@@ -141,23 +142,35 @@
 			color: var(--c-text-light);
 			font-size: var(--fs-label-sm-mobile);
 		}
+
+		/* Verbetering: full width op grote schermen */
+		@media (min-width: 1024px) {
+			grid-template-columns: repeat(4, 1fr);
+		}
 	}
 
 	.benefit-cards article {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start; /* Zorgt dat alles links uitgelijnd blijft */
 		text-align: left;
 		background-color: var(--c-white);
 		padding: var(--space-6);
 		border-radius: var(--radius-soft);
 		box-shadow: var(--shadow-s);
 		transition: box-shadow 0.3s linear;
+
 		&:hover {
 			box-shadow: var(--shadow-sm);
 		}
+
+		/* SVG posities verbeteren */
 		svg {
+			display: block; /* voorkomt inline spacing issues */
 			background-color: var(--c-icon-bg);
 			border-radius: var(--radius-soft);
 			width: 3rem;
-			margin-bottom: var(--space-2);
+			margin-bottom: var(--space-4); /* iets minder dan h3 padding */
 		}
 	}
 </style>

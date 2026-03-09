@@ -32,8 +32,12 @@
 		<div class="quick-menu-2">
 			<h2>Contact</h2>
 			<ul>
-				<li><a href="tel:+31627824428">+31 6 27824428</a></li>
-				<li><a href="mailto:info@rijschoolalldrive.nl">info@rijschoolalldrive.nl</a></li>
+				<li><a href="tel:+31627824428" title="Bel ons">+31 6 27824428</a></li>
+				<li>
+					<a href="mailto:info@rijschoolalldrive.nl" title="Stuur een e-mail"
+						>info@rijschoolalldrive.nl</a
+					>
+				</li>
 				<li>Amsterdam & Omstreken</li>
 			</ul>
 		</div>

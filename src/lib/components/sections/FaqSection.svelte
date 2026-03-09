@@ -1,7 +1,20 @@
+<section class="section faq-container">
+	<div class="section-inner">
+		<h2>Veelgestelde Vragen</h2>
+		{#each FaqData as faq (faq.question)}
+			<details class="faq-item" use:detailsToggle>
+				<summary>{faq.question}</summary>
+				<p>{faq.answer}</p>
+			</details>
+		{/each}
+	</div>
+</section>
+
 <script>
 	import { FaqData } from '$lib';
+	import { SvelteSet } from 'svelte/reactivity';
 
-	const registry = new Set();
+	const registry = new SvelteSet();
 	const DURATION = 300;
 
 	function detailsToggle(node) {
@@ -34,22 +47,10 @@
 			destroy() {
 				registry.delete(node);
 				if (summary) summary.removeEventListener('click', onSummaryClick);
-			}
+			},
 		};
 	}
 </script>
-
-<section class="section faq-container">
-	<div class="section-inner">
-		<h2>Veelgestelde Vragen</h2>
-		{#each FaqData as faq}
-			<details class="faq-item" use:detailsToggle>
-				<summary>{faq.question}</summary>
-				<p>{faq.answer}</p>
-			</details>
-		{/each}
-	</div>
-</section>
 
 <style>
 	.faq-container {

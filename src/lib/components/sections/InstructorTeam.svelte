@@ -1,9 +1,5 @@
-<script>
-	import { InstructorData } from '$lib';
-</script>
-
 <div class="instructor-team">
-	{#each InstructorData as instructor}
+	{#each InstructorData as instructor (instructor.name)}
 		<div class="instructor">
 			<span>{instructor.name_short}</span>
 			<h3>{instructor.name}</h3>
@@ -12,6 +8,10 @@
 		</div>
 	{/each}
 </div>
+
+<script>
+	import { InstructorData } from '$lib';
+</script>
 
 <style>
 	.instructor-team {

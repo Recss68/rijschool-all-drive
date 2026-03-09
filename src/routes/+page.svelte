@@ -1,16 +1,3 @@
-<script>
-	import {
-		Hero,
-		BenefitCards,
-		RecommendedPriceCards as PriceCards,
-		ProcessSteps,
-		Reviews,
-		SuccessStories,
-		AboutSection,
-		CtaSection
-	} from '$lib';
-</script>
-
 <svelte:head>
 	<title>Rijschool in Amsterdam | Rijschool All Drive</title>
 	<meta
@@ -83,6 +70,19 @@
 <AboutSection />
 
 <CtaSection />
+
+<script>
+	import {
+		Hero,
+		BenefitCards,
+		RecommendedPriceCards as PriceCards,
+		ProcessSteps,
+		Reviews,
+		SuccessStories,
+		AboutSection,
+		CtaSection,
+	} from '$lib';
+</script>
 
 <style>
 	.benefits-container,

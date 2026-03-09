@@ -1,136 +1,3 @@
-<script>
-	import { onMount } from 'svelte';
-	import rawPackages from '$lib/data/pricing-packages.json';
-
-	// Support both direct JSON imports and bundled default exports
-	const packages = rawPackages?.default ?? rawPackages;
-
-	// Define the available tabs
-	const tabs = [
-		{ id: 'extra', label: 'Extra' },
-		{ id: 'basis', label: 'Basis' },
-		{ id: 'theorie', label: 'Theorie' }
-	];
-
-	// Group packages by tab
-	const groups = tabs.map((tab) => ({
-		id: tab.id,
-		label: tab.label,
-		pkgs: packages.filter((pkg) => pkg.group === tab.id)
-	}));
-
-	// Store slider element references per group
-	let sliderEls = {};
-
-	// Track the active pager index per group
-	let activeIndexes = Object.fromEntries(tabs.map((tab) => [tab.id, 0]));
-
-	// Track the total page count per group
-	let pageCounts = Object.fromEntries(tabs.map((tab) => [tab.id, 1]));
-
-	// Formatter for whole euro prices
-	const euro0 = new Intl.NumberFormat('nl-NL', {
-		style: 'currency',
-		currency: 'EUR',
-		maximumFractionDigits: 0
-	});
-
-	// Formatter for euro prices with two decimals
-	const euro2 = new Intl.NumberFormat('nl-NL', {
-		style: 'currency',
-		currency: 'EUR',
-		minimumFractionDigits: 2,
-		maximumFractionDigits: 2
-	});
-
-	// Get the width of a single slide
-	function getSlideWidth(el) {
-		return el?.querySelector('.slide')?.getBoundingClientRect().width ?? 0;
-	}
-
-	// Calculate how many slides are visible in the viewport
-	function getVisibleSlides(el) {
-		if (!el || el.clientWidth === 0) return 1;
-		const width = getSlideWidth(el);
-		return width ? Math.max(1, Math.floor(el.clientWidth / width)) : 1;
-	}
-
-	// Recalculate the amount of pager dots for a group
-	function updatePager(groupId) {
-		const el = sliderEls[groupId];
-		if (!el || el.clientWidth === 0) return;
-
-		const total = groups.find((group) => group.id === groupId)?.pkgs.length ?? 0;
-		const visibleSlides = getVisibleSlides(el);
-		const pages = Math.max(1, total - visibleSlides + 1);
-
-		pageCounts[groupId] = pages;
-		activeIndexes[groupId] = Math.min(activeIndexes[groupId], pages - 1);
-
-		// Reassign objects so Svelte updates the UI
-		pageCounts = { ...pageCounts };
-		activeIndexes = { ...activeIndexes };
-	}
-
-	// Update the active dot based on current scroll position
-	function onScroll(groupId) {
-		const el = sliderEls[groupId];
-		if (!el) return;
-
-		const width = getSlideWidth(el);
-		if (!width) return;
-
-		const max = Math.max(0, (pageCounts[groupId] ?? 1) - 1);
-
-		activeIndexes[groupId] = Math.max(0, Math.min(Math.round(el.scrollLeft / width), max));
-
-		// Reassign so Svelte reacts to the change
-		activeIndexes = { ...activeIndexes };
-	}
-
-	// Scroll to a specific slide index
-	function goTo(groupId, index) {
-		const el = sliderEls[groupId];
-		if (!el) return;
-		if ((pageCounts[groupId] ?? 1) <= 1) return;
-
-		const width = getSlideWidth(el);
-		if (!width) return;
-
-		el.scrollTo({
-			left: width * index,
-			behavior: 'smooth'
-		});
-	}
-
-	// Reset slider position and pager when switching tabs
-	function handleTabChange(groupId) {
-		requestAnimationFrame(() => {
-			const el = sliderEls[groupId];
-			if (!el) return;
-
-			el.scrollTo({ left: 0, behavior: 'auto' });
-			activeIndexes[groupId] = 0;
-			activeIndexes = { ...activeIndexes };
-			updatePager(groupId);
-		});
-	}
-
-	// Recalculate all pagers on resize
-	function handleResize() {
-		for (const group of groups) {
-			updatePager(group.id);
-		}
-	}
-
-	// Initialize the pager for the default visible tab
-	onMount(() => {
-		requestAnimationFrame(() => {
-			updatePager('basis');
-		});
-	});
-</script>
-
 <svelte:window on:resize={handleResize} />
 
 <section class="section pricing">
@@ -231,7 +98,7 @@
 			{#if pageCounts[group.id] > 1}
 				<nav class="dots">
 					<ul class="dots-list">
-						{#each Array.from({ length: pageCounts[group.id] }) as _, index}
+						{#each Array.from({ length: pageCounts[group.id] }), index (index)}
 							<li>
 								<button
 									type="button"
@@ -250,6 +117,139 @@
 		</section>
 	{/each}
 </section>
+
+<script>
+	import { onMount } from 'svelte';
+	import rawPackages from '$lib/data/pricing-packages.json';
+
+	// Support both direct JSON imports and bundled default exports
+	const packages = rawPackages?.default ?? rawPackages;
+
+	// Define the available tabs
+	const tabs = [
+		{ id: 'extra', label: 'Extra' },
+		{ id: 'basis', label: 'Basis' },
+		{ id: 'theorie', label: 'Theorie' },
+	];
+
+	// Group packages by tab
+	const groups = tabs.map((tab) => ({
+		id: tab.id,
+		label: tab.label,
+		pkgs: packages.filter((pkg) => pkg.group === tab.id),
+	}));
+
+	// Store slider element references per group
+	let sliderEls = {};
+
+	// Track the active pager index per group
+	let activeIndexes = Object.fromEntries(tabs.map((tab) => [tab.id, 0]));
+
+	// Track the total page count per group
+	let pageCounts = Object.fromEntries(tabs.map((tab) => [tab.id, 1]));
+
+	// Formatter for whole euro prices
+	const euro0 = new Intl.NumberFormat('nl-NL', {
+		style: 'currency',
+		currency: 'EUR',
+		maximumFractionDigits: 0,
+	});
+
+	// Formatter for euro prices with two decimals
+	const euro2 = new Intl.NumberFormat('nl-NL', {
+		style: 'currency',
+		currency: 'EUR',
+		minimumFractionDigits: 2,
+		maximumFractionDigits: 2,
+	});
+
+	// Get the width of a single slide
+	function getSlideWidth(el) {
+		return el?.querySelector('.slide')?.getBoundingClientRect().width ?? 0;
+	}
+
+	// Calculate how many slides are visible in the viewport
+	function getVisibleSlides(el) {
+		if (!el || el.clientWidth === 0) return 1;
+		const width = getSlideWidth(el);
+		return width ? Math.max(1, Math.floor(el.clientWidth / width)) : 1;
+	}
+
+	// Recalculate the amount of pager dots for a group
+	function updatePager(groupId) {
+		const el = sliderEls[groupId];
+		if (!el || el.clientWidth === 0) return;
+
+		const total = groups.find((group) => group.id === groupId)?.pkgs.length ?? 0;
+		const visibleSlides = getVisibleSlides(el);
+		const pages = Math.max(1, total - visibleSlides + 1);
+
+		pageCounts[groupId] = pages;
+		activeIndexes[groupId] = Math.min(activeIndexes[groupId], pages - 1);
+
+		// Reassign objects so Svelte updates the UI
+		pageCounts = { ...pageCounts };
+		activeIndexes = { ...activeIndexes };
+	}
+
+	// Update the active dot based on current scroll position
+	function onScroll(groupId) {
+		const el = sliderEls[groupId];
+		if (!el) return;
+
+		const width = getSlideWidth(el);
+		if (!width) return;
+
+		const max = Math.max(0, (pageCounts[groupId] ?? 1) - 1);
+
+		activeIndexes[groupId] = Math.max(0, Math.min(Math.round(el.scrollLeft / width), max));
+
+		// Reassign so Svelte reacts to the change
+		activeIndexes = { ...activeIndexes };
+	}
+
+	// Scroll to a specific slide index
+	function goTo(groupId, index) {
+		const el = sliderEls[groupId];
+		if (!el) return;
+		if ((pageCounts[groupId] ?? 1) <= 1) return;
+
+		const width = getSlideWidth(el);
+		if (!width) return;
+
+		el.scrollTo({
+			left: width * index,
+			behavior: 'smooth',
+		});
+	}
+
+	// Reset slider position and pager when switching tabs
+	function handleTabChange(groupId) {
+		requestAnimationFrame(() => {
+			const el = sliderEls[groupId];
+			if (!el) return;
+
+			el.scrollTo({ left: 0, behavior: 'auto' });
+			activeIndexes[groupId] = 0;
+			activeIndexes = { ...activeIndexes };
+			updatePager(groupId);
+		});
+	}
+
+	// Recalculate all pagers on resize
+	function handleResize() {
+		for (const group of groups) {
+			updatePager(group.id);
+		}
+	}
+
+	// Initialize the pager for the default visible tab
+	onMount(() => {
+		requestAnimationFrame(() => {
+			updatePager('basis');
+		});
+	});
+</script>
 
 <style>
 	.pricing-slider-wrap {

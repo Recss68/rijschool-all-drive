@@ -1,7 +1,3 @@
-<script>
-	import { PricingCards, CtaSection, FaqSection } from '$lib';
-</script>
-
 <svelte:head>
 	<title>Rijles Prijzen Amsterdam | Pakketten & Tarieven | All Drive</title>
 	<meta
@@ -132,6 +128,10 @@
 <FaqSection />
 
 <CtaSection isPricePage={true} />
+
+<script>
+	import { PricingCards, CtaSection, FaqSection } from '$lib';
+</script>
 
 <style>
 	.package-info {

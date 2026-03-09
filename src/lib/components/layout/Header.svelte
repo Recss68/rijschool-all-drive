@@ -1,13 +1,3 @@
-<script>
-	import { page } from '$app/stores';
-
-	let menuBtn;
-
-	$: if ($page) {
-		if (menuBtn) menuBtn.checked = false;
-	}
-</script>
-
 <header class="fadeInUp">
 	<a href="/">
 		<picture>
@@ -77,6 +67,16 @@
 		<a class="btn-white" href="https://wa.me/31627824428">Proefles boeken</a>
 	</nav>
 </header>
+
+<script>
+	import { page } from '$app/stores';
+
+	let menuBtn;
+
+	$: if ($page) {
+		if (menuBtn) menuBtn.checked = false;
+	}
+</script>
 
 <style>
 	header {

@@ -1,7 +1,3 @@
-<script>
-	export let showLink = true;
-</script>
-
 <section class="about-section section">
 	<div class="section-inner">
 		<picture>
@@ -56,6 +52,10 @@
 		</div>
 	</div>
 </section>
+
+<script>
+	export let showLink = true;
+</script>
 
 <style>
 	.about-section {

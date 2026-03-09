@@ -1,7 +1,3 @@
-<script>
-	import { ContactForm, WhatsappCard, FaqSection } from '$lib';
-</script>
-
 <svelte:head>
 	<title>Contact Rijschool Amsterdam | Boek een Proefles | Rijschool All Drive</title>
 	<meta
@@ -256,6 +252,10 @@
 </section>
 
 <FaqSection />
+
+<script>
+	import { ContactForm, WhatsappCard, FaqSection } from '$lib';
+</script>
 
 <style>
 	.service-area {

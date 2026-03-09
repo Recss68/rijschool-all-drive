@@ -1,9 +1,12 @@
 {
 	"useTabs": true,
 	"singleQuote": true,
-	"trailingComma": "none",
+	"trailingComma": "es5",
 	"printWidth": 100,
 	"plugins": ["prettier-plugin-svelte"],
+	"svelteSortOrder": "markup-scripts-options-styles",
+	"svelteStrictMode": true,
+	"svelteAllowShorthand": true,
 	"overrides": [
 		{
 			"files": "*.svelte",

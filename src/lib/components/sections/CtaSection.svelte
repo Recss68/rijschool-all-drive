@@ -1,7 +1,3 @@
-<script>
-	export let isPricePage = false;
-</script>
-
 <section class="cta-section gradient section">
 	<div class="section-inner">
 		{#if isPricePage}
@@ -24,6 +20,10 @@
 		</div>
 	</div>
 </section>
+
+<script>
+	export let isPricePage = false;
+</script>
 
 <style>
 	.cta-section {

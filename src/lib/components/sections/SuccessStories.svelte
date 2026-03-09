@@ -1,9 +1,5 @@
-<script>
-	import stories from '$lib/data/succes-stories.json';
-</script>
-
 <div class="success-stories">
-	{#each stories as story}
+	{#each stories as story (story.id)}
 		<picture>
 			<source srcset={story.image_2} type="image/avif" />
 			<source srcset={story.image_3} type="image/webp" />
@@ -11,6 +7,10 @@
 		</picture>
 	{/each}
 </div>
+
+<script>
+	import stories from '$lib/data/succes-stories.json';
+</script>
 
 <style>
 	.success-stories {
