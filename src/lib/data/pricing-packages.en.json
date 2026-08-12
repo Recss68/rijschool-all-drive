@@ -1,0 +1,175 @@
+[
+	{
+		"id": "basis",
+		"group": "basis",
+		"title": "Basic Package",
+		"subtitle": "Perfect for beginners",
+		"price": 635,
+		"includesExam": false,
+		"lessons": 10,
+		"lessonMinutes": 60,
+		"includes": [
+			"Theory support",
+			"Dedicated instructor",
+			"Flexible scheduling",
+			"Modern lesson car",
+			"Pick-up and drop-off"
+		]
+	},
+	{
+		"id": "rij-start",
+		"group": "basis",
+		"title": "Drive Start",
+		"subtitle": "Perfect for beginners",
+		"price": 1565,
+		"includesExam": true,
+		"lessons": 20,
+		"lessonMinutes": 60,
+		"includes": [
+			"Theory support",
+			"Dedicated instructor",
+			"Flexible scheduling",
+			"Modern lesson car",
+			"Pick-up and drop-off"
+		]
+	},
+	{
+		"id": "door-rij",
+		"group": "basis",
+		"title": "Drive Through",
+		"subtitle": "Perfect for beginners",
+		"price": 2180,
+		"includesExam": true,
+		"lessons": 30,
+		"lessonMinutes": 60,
+		"includes": [
+			"Theory support",
+			"Dedicated instructor",
+			"Flexible scheduling",
+			"Modern lesson car",
+			"Pick-up and drop-off"
+		]
+	},
+	{
+		"id": "vol-gas",
+		"group": "basis",
+		"title": "Full Throttle",
+		"subtitle": "Perfect for beginners",
+		"price": 2785,
+		"includesExam": true,
+		"lessons": 40,
+		"lessonMinutes": 60,
+		"includes": [
+			"Theory support",
+			"Dedicated instructor",
+			"Flexible scheduling",
+			"Modern lesson car",
+			"Pick-up and drop-off"
+		]
+	},
+	{
+		"id": "alles-in-een-rijbewijs",
+		"group": "basis",
+		"title": "All-in-One Licence",
+		"price": 3659,
+		"includesExam": true,
+		"lessons": 50,
+		"lessonMinutes": 60,
+		"includes": [
+			"Theory support",
+			"Dedicated instructor",
+			"Flexible scheduling",
+			"Modern lesson car",
+			"Pick-up and drop-off"
+		]
+	},
+	{
+		"id": "herexamen-pakket",
+		"group": "basis",
+		"title": "Re-exam Package",
+		"price": 638.75,
+		"includesExam": true,
+		"lessons": 5.5,
+		"lessonMinutes": 60,
+		"includes": [
+			"Theory support",
+			"Dedicated instructor",
+			"Flexible scheduling",
+			"Modern lesson car",
+			"Pick-up and drop-off"
+		]
+	},
+	{
+		"id": "rij-start-plus",
+		"group": "extra",
+		"title": "Drive Start Plus",
+		"price": 1889,
+		"includesExam": true,
+		"lessons": 20,
+		"lessonMinutes": 60,
+		"includes": [
+			"Theory package",
+			"Interim exam",
+			"Dedicated instructor",
+			"Flexible scheduling",
+			"Modern lesson car",
+			"Pick-up and drop-off"
+		]
+	},
+	{
+		"id": "door-rij-plus",
+		"group": "extra",
+		"title": "Drive Through Plus",
+		"price": 2489,
+		"includesExam": true,
+		"lessons": 30,
+		"lessonMinutes": 60,
+		"includes": [
+			"Theory package",
+			"Interim exam",
+			"Dedicated instructor",
+			"Flexible scheduling",
+			"Modern lesson car",
+			"Pick-up and drop-off"
+		]
+	},
+	{
+		"id": "vol-gas-plus",
+		"group": "extra",
+		"title": "Full Throttle Plus",
+		"price": 3079,
+		"includesExam": true,
+		"lessons": 40,
+		"lessonMinutes": 60,
+		"includes": [
+			"Interim exam",
+			"Theory package",
+			"Dedicated instructor",
+			"Flexible scheduling",
+			"Modern lesson car",
+			"Pick-up and drop-off"
+		]
+	},
+	{
+		"id": "e-theorie-pakket",
+		"group": "theorie",
+		"title": "E-theory Package",
+		"subtitle": "Category B",
+		"price": 69,
+		"includesExam": false,
+		"lessons": null,
+		"lessonMinutes": null,
+		"includes": ["Online learning and practice"]
+	},
+	{
+		"id": "theorie-pakket",
+		"group": "theorie",
+		"title": "Theory Package",
+		"subtitle": "Category B",
+		"price": 69,
+		"includesExam": false,
+		"lessons": null,
+		"lessonMinutes": null,
+		"includes": ["Book and online exam training"]
+	}
+]

@@ -1,7 +1,7 @@
 <section class="section faq-container">
 	<div class="section-inner">
-		<h2>Veelgestelde Vragen</h2>
-		{#each FaqData as faq (faq.question)}
+		<h2>{m.faq_heading()}</h2>
+		{#each FaqData as faq (faq.id)}
 			<details class="faq-item" use:detailsToggle>
 				<summary>{faq.question}</summary>
 				<p>{faq.answer}</p>
@@ -11,8 +11,13 @@
 </section>
 
 <script>
-	import { FaqData } from '$lib';
+	import { m } from '$lib/paraglide/messages.js';
+	import { pickByLocale } from '$lib/utils/get-localized-data';
+	import faqDataNl from '$lib/data/faq-data.nl.json';
+	import faqDataEn from '$lib/data/faq-data.en.json';
 	import { SvelteSet } from 'svelte/reactivity';
+
+	const FaqData = pickByLocale({ nl: faqDataNl, en: faqDataEn });
 
 	const registry = new SvelteSet();
 	const DURATION = 300;

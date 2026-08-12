@@ -36,15 +36,16 @@
 	</a>
 
 	<input bind:this={menuBtn} class="menu-btn" type="checkbox" id="menu-btn" name="menu-btn" />
-	<label class="menu-icon" aria-label="Toggle Menu" for="menu-btn">
+	<label class="menu-icon" aria-label={m.header_menu_toggle_aria()} for="menu-btn">
 		<span class="navicon"></span>
 	</label>
 
 	<nav class="menu">
-		<a class="nav-item" href="/">Home</a>
-		<a class="nav-item" href="/over-ons">Over ons</a>
-		<a class="nav-item" href="/prijzen">Prijzen</a>
-		<a class="nav-item" href="/contact">Contact</a>
+		<a class="nav-item" href="/">{m.header_home()}</a>
+		<a class="nav-item" href="/over-ons">{m.header_about()}</a>
+		<a class="nav-item" href="/prijzen">{m.header_prices()}</a>
+		<a class="nav-item" href="/contact">{m.header_contact()}</a>
+		<LanguageSwitcher />
 		<span class="divider"></span>
 		<a href="tel:+31627824428">
 			<svg viewBox="0 0 24 24" height="20px" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -64,12 +65,14 @@
 			>
 			+31 6 27824428
 		</a>
-		<a class="btn-white" href="https://wa.me/31627824428">Proefles boeken</a>
+		<a class="btn-white" href="https://wa.me/31627824428">{m.cta_book_trial()}</a>
 	</nav>
 </header>
 
 <script>
 	import { page } from '$app/stores';
+	import { m } from '$lib/paraglide/messages.js';
+	import LanguageSwitcher from '../ui/LanguageSwitcher.svelte';
 
 	let menuBtn;
 
@@ -241,6 +244,7 @@
 			align-items: center;
 			max-width: 100vw;
 			max-height: unset;
+			overflow: visible;
 			margin-left: auto;
 			margin-right: var(--space-10);
 		}

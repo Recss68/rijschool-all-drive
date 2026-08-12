@@ -4,16 +4,14 @@
 			<span class="step-number"></span>
 			<div class="step-content">
 				{#if showMethodContent}
-					<h2>Persoonlijke Intake</h2>
+					<h2>{m.process_method1_title()}</h2>
 					<p>
-						We beginnen altijd met een uitgebreid kennismakingsgesprek om je doelen, verwachtingen
-						en eventuele zorgen te bespreken. Dit helpt ons om een lesprogramma op maat te maken.
+						{m.process_method1_desc()}
 					</p>
 				{:else}
-					<h3>Aanmelden & Kennismaken</h3>
+					<h3>{m.process_step1_title()}</h3>
 					<p>
-						Boek je gratis proefles online of neem contact met ons op. We plannen een kennismaking
-						en bespreken je doelen en verwachtingen.
+						{m.process_step1_desc()}
 					</p>
 				{/if}
 			</div>
@@ -23,16 +21,14 @@
 			<span class="step-number"></span>
 			<div class="step-content">
 				{#if showMethodContent}
-					<h2>Stapsgewijze Opbouw</h2>
+					<h2>{m.process_method2_title()}</h2>
 					<p>
-						We bouwen de lessen logisch en stapsgewijs op, van basis rijvaardigheden tot complexe
-						verkeerssituaties. Elke les sluit aan bij je voortgang en niveau.
+						{m.process_method2_desc()}
 					</p>
 				{:else}
-					<h3>Theorie & Rijlessen</h3>
+					<h3>{m.process_step2_title()}</h3>
 					<p>
-						Begin met je theorie-examen en start tegelijkertijd met je rijlessen. Wij begeleiden je
-						bij beide onderdelen tot je volledig voorbereid bent.
+						{m.process_step2_desc()}
 					</p>
 				{/if}
 			</div>
@@ -42,16 +38,14 @@
 			<span class="step-number"></span>
 			<div class="step-content">
 				{#if showMethodContent}
-					<h2>Continue Feedback</h2>
+					<h2>{m.process_method3_title()}</h2>
 					<p>
-						Na elke les ontvang je duidelijke feedback over je vorderingen en aandachtspunten. Zo
-						weet je precies waar je staat en wat je nog moet leren.
+						{m.process_method3_desc()}
 					</p>
 				{:else}
-					<h3>Voorbereiding Praktijkexamen</h3>
+					<h3>{m.process_step3_title()}</h3>
 					<p>
-						Je instructeur bepaalt wanneer je klaar bent voor het praktijkexamen. We regelen de
-						aanmelding en begeleiden je volledig op de dag zelf.
+						{m.process_step3_desc()}
 					</p>
 				{/if}
 			</div>
@@ -61,16 +55,14 @@
 			<span class="step-number"></span>
 			<div class="step-content">
 				{#if showMethodContent}
-					<h2>Examenbegeleiding</h2>
+					<h2>{m.process_method4_title()}</h2>
 					<p>
-						Wanneer je volledig voorbereid bent, regelen we je examen en begeleiden we je op de dag
-						zelf. We blijven bij je tot je geslaagd bent.
+						{m.process_method4_desc()}
 					</p>
 				{:else}
-					<h3>Geslaagd & Rijbewijs!</h3>
+					<h3>{m.process_step4_title()}</h3>
 					<p>
-						Gefeliciteerd! Je hebt je rijbewijs gehaald. Je ontvangt je rijbewijs binnen enkele
-						dagen en bent klaar om zelfstandig de weg op te gaan.
+						{m.process_step4_desc()}
 					</p>
 				{/if}
 			</div>
@@ -79,6 +71,8 @@
 </div>
 
 <script>
+	import { m } from '$lib/paraglide/messages.js';
+
 	export let showMethodContent = false;
 	export let isWhite = false;
 </script>

@@ -10,7 +10,11 @@
 </div>
 
 <script>
-	import { InstructorData } from '$lib';
+	import { pickByLocale } from '$lib/utils/get-localized-data';
+	import instructorsNl from '$lib/data/instructors.nl.json';
+	import instructorsEn from '$lib/data/instructors.en.json';
+
+	const InstructorData = pickByLocale({ nl: instructorsNl, en: instructorsEn });
 </script>
 
 <style>

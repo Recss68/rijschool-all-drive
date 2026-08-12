@@ -3,32 +3,43 @@
 		<picture>
 			<source srcset={story.image_2} type="image/avif" />
 			<source srcset={story.image_3} type="image/webp" />
-			<img src={story.image} alt="leerling-{story.id}" width="160px" loading="lazy" />
+			<img
+				src={story.image}
+				alt={m.success_story_alt({ id: story.id })}
+				width="400"
+				height="400"
+				loading="lazy"
+			/>
 		</picture>
 	{/each}
 </div>
 
 <script>
+	import { m } from '$lib/paraglide/messages.js';
 	import stories from '$lib/data/succes-stories.json';
 </script>
 
 <style>
 	.success-stories {
 		display: grid;
-		gap: var(--space-1);
-		grid-template-columns: repeat(2, 1fr);
-		justify-items: center;
-		margin-top: var(--space-12);
+		grid-template-columns: 1fr;
+		gap: var(--space-6);
+		max-width: 420px;
+		margin: var(--space-12) auto 0;
+
 		img {
+			display: block;
+			width: 100%;
 			aspect-ratio: 1 / 1;
 			object-fit: cover;
-			border-radius: var(--radius-soft);
+			border-radius: var(--radius-m);
+			box-shadow: var(--shadow-m);
 		}
-		@media (min-width: 768px) {
-			display: flex;
-			flex-wrap: wrap;
-			justify-content: center;
-			gap: var(--space-6);
+
+		@media (min-width: 640px) {
+			grid-template-columns: repeat(3, 1fr);
+			gap: var(--space-8);
+			max-width: 900px;
 		}
 	}
 </style>

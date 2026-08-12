@@ -1,3 +1,4 @@
+<!-- eslint-disable svelte/no-at-html-tags -- static translated copy from messages/*.json, never user input -->
 <section class="section gradient hero-section">
 	<div class="section-inner">
 		<div class="parent-hero">
@@ -13,24 +14,23 @@
 							stroke-linejoin="round"
 						></path>
 					</svg>
-					Officieel erkende rijschool</span
+					{m.hero_badge()}</span
 				>
-				<h1 id="my-text">Start vandaag met <br />jouw rijbewijs.</h1>
+				<h1 id="my-text">{@html m.hero_title()}</h1>
 				<p>
-					Leer rijden met ervaren instructeurs in een veilige en professionele omgeving. Start
-					vandaag nog met jouw eerste proefles.
+					{m.hero_subtitle()}
 				</p>
 				<div class="hero-buttons">
 					<a href="https://wa.me/31627824428" class="btn-white"
-						>Proefles boeken<span class="arrow">→</span></a
+						>{m.cta_book_trial()}<span class="arrow">→</span></a
 					>
-					<a href="/prijzen" class="btn-outline">Bekijk prijzen</a>
+					<a href="/prijzen" class="btn-outline">{m.hero_cta_prices()}</a>
 				</div>
 				<hr class="divider-blue" />
 				<ul>
-					<li><span class="t-highlight">90%</span> Slagingspercentage</li>
-					<li><span class="t-highlight">30+</span> Geslaagden</li>
-					<li><span class="t-highlight">4.9/5</span> Beoordeling</li>
+					<li><span class="t-highlight">90%</span> {m.hero_stat_pass_rate()}</li>
+					<li><span class="t-highlight">30+</span> {m.hero_stat_graduates()}</li>
+					<li><span class="t-highlight">4.9/5</span> {m.hero_stat_rating()}</li>
 				</ul>
 			</div>
 			<div class="hero-grid-2 fadeInUp">
@@ -53,6 +53,7 @@
 <script>
 	import { gsap } from 'gsap';
 	import { onMount, onDestroy } from 'svelte';
+	import { m } from '$lib/paraglide/messages.js';
 
 	let split;
 

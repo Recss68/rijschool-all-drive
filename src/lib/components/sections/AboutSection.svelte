@@ -1,3 +1,4 @@
+<!-- eslint-disable svelte/no-at-html-tags -- static translated copy from messages/*.json, never user input -->
 <section class="about-section section">
 	<div class="section-inner">
 		<picture>
@@ -15,45 +16,29 @@
 
 		<div class="t-content">
 			<div class="section-heading">
-				<h2>Over Rijschool All Drive</h2>
+				<h2>{m.about_heading()}</h2>
 			</div>
-			<p>
-				Bij Rijschool All Drive, dé <b>rijschool in Amsterdam</b>, geloven we dat leren rijden meer
-				is dan alleen het besturen van een auto. Het draait om vertrouwen, veiligheid en
-				zelfstandigheid – essentieel voor iedereen die zijn rijbewijs wil halen <b>in Amsterdam</b>.
-			</p>
-			<p>
-				Ben je op zoek naar <b>een betrouwbare rijschool Amsterdam</b> met persoonlijke begeleiding?
-				Vraag je je af welke <b>rijschool in Amsterdam</b> een hoog slagingspercentage heeft? Bij ons
-				ben je aan het juiste adres.
-			</p>
-			<p>
-				Sinds onze oprichting hebben wij al veel cursisten geholpen om succesvol hun rijbewijs te
-				behalen. Met een slagingspercentage van 85% behoren wij tot de best presterende <b
-					>rijscholen in Amsterdam</b
-				>.
-			</p>
-			<p>Waarom kiezen zoveel leerlingen voor onze <b>rijschool in Amsterdam?</b></p>
+			<p>{@html m.about_para1()}</p>
+			<p>{@html m.about_para2()}</p>
+			<p>{@html m.about_para3()}</p>
+			<p>{@html m.about_para4()}</p>
 			<ul>
-				<li>Persoonlijke begeleiding vanaf je eerste les</li>
-				<li>Ervaren en geduldige instructeurs</li>
-				<li>Flexibele lestijden in heel Amsterdam</li>
-				<li>Duidelijke lespakketten zonder verborgen kosten</li>
+				<li>{m.about_list_1()}</li>
+				<li>{m.about_list_2()}</li>
+				<li>{m.about_list_3()}</li>
+				<li>{m.about_list_4()}</li>
 			</ul>
-			<p>
-				Wil jij snel en veilig je rijbewijs halen bij <b
-					>een professionele rijschool in Amsterdam?</b
-				> Ons team van ervaren instructeurs begeleidt je stap voor stap, van je eerste proefles tot aan
-				het praktijkexamen.
-			</p>
+			<p>{@html m.about_para5()}</p>
 			{#if showLink}
-				<a class="rec-btn" href="/over-ons">Lees meer over ons <span class="arrow">→</span></a>
+				<a class="rec-btn" href="/over-ons">{m.about_read_more()} <span class="arrow">→</span></a>
 			{/if}
 		</div>
 	</div>
 </section>
 
 <script>
+	import { m } from '$lib/paraglide/messages.js';
+
 	export let showLink = true;
 </script>
 
