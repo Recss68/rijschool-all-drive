@@ -14,10 +14,9 @@
 				></path>
 			</g></svg
 		>
-		<h3>Hoog Slagingspercentage</h3>
+		<h3>{m.benefit_1_title()}</h3>
 		<p>
-			85% van onze cursisten slaagt in één keer dankzij onze bewezen lesmethode en ervaren
-			instructeurs.
+			{m.benefit_1_desc()}
 		</p>
 	</article>
 
@@ -64,10 +63,9 @@
 				></path>
 			</g></svg
 		>
-		<h3>Ervaren Instructeurs</h3>
+		<h3>{m.benefit_2_title()}</h3>
 		<p>
-			Al onze instructeurs zijn volledig gecertificeerd en hebben jarenlange ervaring in het
-			rijonderwijs.
+			{m.benefit_2_desc()}
 		</p>
 	</article>
 
@@ -93,9 +91,9 @@
 				></path>
 			</g></svg
 		>
-		<h3>Transparante Prijzen</h3>
+		<h3>{m.benefit_3_title()}</h3>
 		<p>
-			Geen verrassingen of verborgen kosten. Je weet precies waar je aan toe bent vanaf het begin.
+			{m.benefit_3_desc()}
 		</p>
 	</article>
 
@@ -121,10 +119,14 @@
 				></path>
 			</g></svg
 		>
-		<h3>Persoonlijke Begeleiding</h3>
-		<p>Iedere cursist krijgt een persoonlijke aanpak die past bij jouw leerstijl en tempo.</p>
+		<h3>{m.benefit_4_title()}</h3>
+		<p>{m.benefit_4_desc()}</p>
 	</article>
 </div>
+
+<script>
+	import { m } from '$lib/paraglide/messages.js';
+</script>
 
 <style>
 	.benefit-cards {

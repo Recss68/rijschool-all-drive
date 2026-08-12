@@ -1,7 +1,7 @@
 <svelte:window on:resize={handleResize} />
 
 <section class="section pricing">
-	<h2 class="sr-only">Pakketten</h2>
+	<h2 class="sr-only">{m.pricing_heading_sr()}</h2>
 
 	{#each tabs as tab (tab.id)}
 		<input
@@ -43,10 +43,10 @@
 						{@const perLesson =
 							hasLessons && typeof pkg.price === 'number' ? pkg.price / pkg.lessons : null}
 						{@const perLessonText =
-							perLesson !== null ? `${euro2.format(perLesson)} per les` : null}
+							perLesson !== null ? m.pricing_per_lesson({ price: euro2.format(perLesson) }) : null}
 						{@const lessonsLine =
 							hasLessons && typeof pkg.lessonMinutes === 'number'
-								? `${pkg.lessons} rijlessen van ${pkg.lessonMinutes} minuten`
+								? m.pricing_lessons_line({ count: pkg.lessons, minutes: pkg.lessonMinutes })
 								: null}
 						{@const includes = Array.isArray(pkg.includes) ? pkg.includes : []}
 
@@ -62,7 +62,9 @@
 
 								<p class="price-wrap">
 									<span class="price">{priceText}</span>
-									<span class="exam">{pkg.includesExam ? 'Incl. examen' : 'Excl. examen'}</span>
+									<span class="exam"
+										>{pkg.includesExam ? m.pricing_incl_exam() : m.pricing_excl_exam()}</span
+									>
 									{#if perLessonText}
 										<span class="per">{perLessonText}</span>
 									{/if}
@@ -70,7 +72,7 @@
 
 								<hr class="divider" />
 
-								<h5 class="includes-title">Wat is inbegrepen</h5>
+								<h5 class="includes-title">{m.pricing_includes_title()}</h5>
 
 								<ul class="includes">
 									{#if lessonsLine}
@@ -88,7 +90,7 @@
 									{/each}
 								</ul>
 
-								<a class="cta" href="https://wa.me/31627824428"> Kies dit pakket! </a>
+								<a class="cta" href="https://wa.me/31627824428"> {m.pricing_choose_package()} </a>
 							</article>
 						</li>
 					{/each}
@@ -107,7 +109,7 @@
 									on:click={() => goTo(group.id, index)}
 								>
 									<span class="dot-visual"></span>
-									<span class="sr-only">Ga naar slide {index + 1}</span>
+									<span class="sr-only">{m.pricing_go_to_slide({ number: index + 1 })}</span>
 								</button>
 							</li>
 						{/each}
@@ -120,16 +122,19 @@
 
 <script>
 	import { onMount } from 'svelte';
-	import rawPackages from '$lib/data/pricing-packages.json';
+	import { m } from '$lib/paraglide/messages.js';
+	import { getLocale } from '$lib/paraglide/runtime';
+	import { pickByLocale } from '$lib/utils/get-localized-data';
+	import packagesNl from '$lib/data/pricing-packages.nl.json';
+	import packagesEn from '$lib/data/pricing-packages.en.json';
 
-	// Support both direct JSON imports and bundled default exports
-	const packages = rawPackages?.default ?? rawPackages;
+	const packages = pickByLocale({ nl: packagesNl, en: packagesEn });
 
 	// Define the available tabs
 	const tabs = [
-		{ id: 'extra', label: 'Extra' },
-		{ id: 'basis', label: 'Basis' },
-		{ id: 'theorie', label: 'Theorie' },
+		{ id: 'extra', label: m.pricing_tab_extra() },
+		{ id: 'basis', label: m.pricing_tab_basis() },
+		{ id: 'theorie', label: m.pricing_tab_theorie() },
 	];
 
 	// Group packages by tab
@@ -148,15 +153,19 @@
 	// Track the total page count per group
 	let pageCounts = Object.fromEntries(tabs.map((tab) => [tab.id, 1]));
 
+	// Map the app locale to an Intl locale for currency formatting
+	const intlLocales = { nl: 'nl-NL', en: 'en-GB', tr: 'tr-TR' };
+	const intlLocale = intlLocales[getLocale()] ?? 'nl-NL';
+
 	// Formatter for whole euro prices
-	const euro0 = new Intl.NumberFormat('nl-NL', {
+	const euro0 = new Intl.NumberFormat(intlLocale, {
 		style: 'currency',
 		currency: 'EUR',
 		maximumFractionDigits: 0,
 	});
 
 	// Formatter for euro prices with two decimals
-	const euro2 = new Intl.NumberFormat('nl-NL', {
+	const euro2 = new Intl.NumberFormat(intlLocale, {
 		style: 'currency',
 		currency: 'EUR',
 		minimumFractionDigits: 2,

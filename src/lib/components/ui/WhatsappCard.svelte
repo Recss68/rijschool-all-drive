@@ -13,9 +13,9 @@
 				></path></g
 			></svg
 		>
-		<strong>Direct Contact via WhatsApp</strong>
+		<strong>{m.whatsapp_title()}</strong>
 	</div>
-	<p>Voor snelle vragen of om direct een proefles in te plannen.</p>
+	<p>{m.whatsapp_text()}</p>
 	<a href="https://wa.me/31627824428" class="whatsapp-card__btn">
 		<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"
 			><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
@@ -30,9 +30,13 @@
 				></path></g
 			></svg
 		>
-		Open WhatsApp
+		{m.whatsapp_button()}
 	</a>
 </div>
+
+<script>
+	import { m } from '$lib/paraglide/messages.js';
+</script>
 
 <style>
 	.whatsapp-card {

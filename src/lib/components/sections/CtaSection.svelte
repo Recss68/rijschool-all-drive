@@ -1,27 +1,28 @@
 <section class="cta-section gradient section">
 	<div class="section-inner">
 		{#if isPricePage}
-			<h2>Nog vragen over onze prijzen?</h2>
+			<h2>{m.cta_price_heading()}</h2>
 			<p>
-				Neem contact met ons op voor persoonlijk advies over welk pakket het beste bij jou past!
+				{m.cta_price_text()}
 			</p>
 		{:else}
-			<h2>Klaar om te beginnen?</h2>
+			<h2>{m.cta_default_heading()}</h2>
 			<p>
-				Start vandaag nog met je eerste gratis proefles en ervaar zelf waarom zo veel leerlingen
-				voor ons kiezen.
+				{m.cta_default_text()}
 			</p>
 		{/if}
 		<div class="cta-buttons">
 			<a class="btn-white" href="https://wa.me/31627824428"
-				>Boek je proefles <span class="arrow">→</span></a
+				>{m.cta_book_now()} <span class="arrow">→</span></a
 			>
-			<a class="btn-outline" href="tel:+31627824428">Bel direct!</a>
+			<a class="btn-outline" href="tel:+31627824428">{m.cta_call_now()}</a>
 		</div>
 	</div>
 </section>
 
 <script>
+	import { m } from '$lib/paraglide/messages.js';
+
 	export let isPricePage = false;
 </script>
 

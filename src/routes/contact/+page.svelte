@@ -1,27 +1,24 @@
 <svelte:head>
-	<title>Contact Rijschool Amsterdam | Boek een Proefles | Rijschool All Drive</title>
-	<meta
-		name="description"
-		content="Neem contact op met Rijschool All Drive in Amsterdam. Heb je vragen of wil je direct een proefles boeken? Wij helpen je graag met persoonlijke begeleiding en snelle rijlessen in Amsterdam."
-	/>
+	<title>{m.meta_contact_title()}</title>
+	<meta name="description" content={m.meta_contact_description()} />
 </svelte:head>
 
 <section class="breadcrumb">
-	<h1>Neem Contact Op</h1>
-	<p>Heb je vragen of wil je direct starten? Wij helpen je graag verder!</p>
+	<h1>{m.contact_hero_title()}</h1>
+	<p>{m.contact_hero_text()}</p>
 </section>
 
 <section class="contact-section section">
 	<div class="section-inner">
 		<div class="contact-grid-left">
-			<h2>Stuur ons een bericht</h2>
-			<p>Vul het formulier in en we nemen binnen 24 uur contact met je op.</p>
-			<ContactForm />
+			<h2>{m.contact_form_heading()}</h2>
+			<p>{m.contact_form_text()}</p>
+			<ContactForm {data} {form} />
 		</div>
 
 		<div class="contact-grid-right">
-			<h2>Contactgegevens</h2>
-			<p>Je kunt ons ook direct bereiken via telefoon, email of WhatsApp.</p>
+			<h2>{m.contact_details_heading()}</h2>
+			<p>{m.contact_details_text()}</p>
 			<ul class="contact-info">
 				<li>
 					<div class="icon">
@@ -41,10 +38,10 @@
 						>
 					</div>
 					<div class="details">
-						<strong>Telefoon</strong>
+						<strong>{m.contact_phone_label()}</strong>
 						<a href="tel:+31627824428">+31 6 27 82 44 28</a>
-						<span>Ma-Vr: 08:00 - 20:00</span>
-						<span>Za: 09:00 - 17:00</span>
+						<span>{m.contact_phone_hours1()}</span>
+						<span>{m.contact_phone_hours2()}</span>
 					</div>
 				</li>
 
@@ -66,9 +63,9 @@
 						>
 					</div>
 					<div class="details">
-						<strong>E-mail</strong>
+						<strong>{m.contact_email_label()}</strong>
 						<a href="mailto:info@rijschoolalldrive.nl">info@rijschoolalldrive.nl</a>
-						<span>We reageren binnen 24 uur</span>
+						<span>{m.contact_email_response()}</span>
 					</div>
 				</li>
 
@@ -90,9 +87,9 @@
 						>
 					</div>
 					<div class="details">
-						<strong>Whatsapp</strong>
+						<strong>{m.contact_whatsapp_label()}</strong>
 						<a href="https://wa.me/31627824428">+31 6 27 82 44 28</a>
-						<span>Snel en direct contact</span>
+						<span>{m.contact_whatsapp_text()}</span>
 					</div>
 				</li>
 
@@ -120,9 +117,9 @@
 						>
 					</div>
 					<div class="details">
-						<strong>Werkgebied</strong>
-						<span>Amsterdam & Omstreken</span>
-						<span>Noord-Holland</span>
+						<strong>{m.contact_area_label()}</strong>
+						<span>{m.contact_area_value1()}</span>
+						<span>{m.contact_area_value2()}</span>
 					</div>
 				</li>
 
@@ -144,10 +141,10 @@
 						>
 					</div>
 					<div class="details">
-						<strong>Openingstijden</strong>
-						<span>Maandag - Vrijdag: 08:00 - 18:00</span>
-						<span>Zaterdag: 08:00 - 18:00</span>
-						<span>Zondag: Gesloten</span>
+						<strong>{m.contact_hours_label()}</strong>
+						<span>{m.contact_hours_weekdays()}</span>
+						<span>{m.contact_hours_saturday()}</span>
+						<span>{m.contact_hours_sunday()}</span>
 					</div>
 				</li>
 			</ul>
@@ -158,8 +155,8 @@
 
 <section class="section service-area">
 	<div class="section-inner">
-		<h2>Ons werkgebied</h2>
-		<p>Wij verzorgen rijlessen in Amsterdam en directe omgeving</p>
+		<h2>{m.contact_service_area_heading()}</h2>
+		<p>{m.contact_service_area_text()}</p>
 		<div class="service-area-cards">
 			<article class="area-card">
 				<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -184,10 +181,9 @@
 						></path>
 					</g></svg
 				>
-				<h3>Amsterdam</h3>
+				<h3>{m.contact_area1_title()}</h3>
 				<p>
-					Rijlessen in Amsterdam West, Rijlessen in Amsterdam Noord, Rijlessen in Amsterdam Zuid en
-					Rijlessen in Amsterdam Zuid.
+					{m.contact_area1_desc()}
 				</p>
 			</article>
 
@@ -214,8 +210,8 @@
 						></path>
 					</g></svg
 				>
-				<h3>Amsterdam Centrum</h3>
-				<p>Ook in Amsterdam Centrum zijn wij actief met onze rijlessen.</p>
+				<h3>{m.contact_area2_title()}</h3>
+				<p>{m.contact_area2_desc()}</p>
 			</article>
 
 			<article class="area-card">
@@ -241,12 +237,12 @@
 						></path>
 					</g></svg
 				>
-				<h3>Omliggende gebieden</h3>
-				<p>Rijlessen Diemen, Rijlessen Haarlem, Rijlessen Amstelveen en omstreken.</p>
+				<h3>{m.contact_area3_title()}</h3>
+				<p>{m.contact_area3_desc()}</p>
 			</article>
 		</div>
 		<p class="sub-text">
-			Niet zeker of we in jouw buurt rijden? Neem contact met ons op voor meer informatie!
+			{m.contact_service_area_subtext()}
 		</p>
 	</div>
 </section>
@@ -255,6 +251,9 @@
 
 <script>
 	import { ContactForm, WhatsappCard, FaqSection } from '$lib';
+	import { m } from '$lib/paraglide/messages.js';
+
+	let { data, form } = $props();
 </script>
 
 <style>

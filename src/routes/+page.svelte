@@ -1,9 +1,7 @@
+<!-- eslint-disable svelte/no-at-html-tags -- static translated copy from messages/*.json, never user input -->
 <svelte:head>
-	<title>Rijschool in Amsterdam | Rijschool All Drive</title>
-	<meta
-		name="description"
-		content="Op zoek naar een rijschool in Amsterdam? Rijschool All Drive biedt betaalbare rijlessen, persoonlijke begeleiding en hoge slagingskansen."
-	/>
+	<title>{m.meta_home_title()}</title>
+	<meta name="description" content={m.meta_home_description()} />
 	<link rel="icon" href="/images/favicon_white.jpg" />
 </svelte:head>
 
@@ -12,8 +10,8 @@
 <section class="benefits-container section">
 	<div class="section-inner">
 		<div class="section-heading">
-			<h2>Waarom kiezen voor Rijschool All Drive?</h2>
-			<p>Ontdek wat ons uniek maakt en waarom leerlingen voor ons kiezen.</p>
+			<h2>{m.home_benefits_heading()}</h2>
+			<p>{m.home_benefits_text()}</p>
 		</div>
 		<BenefitCards />
 	</div>
@@ -22,13 +20,12 @@
 <section class="price-cards-container section">
 	<div class="section-inner">
 		<div class="section-heading">
-			<h2>Onze Lespakketten</h2>
-			<p>Kies het pakket dat bij jou past. Altijd flexibel en op maat aan te passen.</p>
+			<h2>{m.home_packages_heading()}</h2>
+			<p>{m.home_packages_text()}</p>
 		</div>
 		<PriceCards />
 		<p class="section-footer">
-			Niet zeker welke pakket bij je past? <a href="https://wa.me/31627824428">Neem contact op</a> voor
-			persoonlijk advies!
+			{@html m.home_packages_footer()}
 		</p>
 	</div>
 </section>
@@ -36,8 +33,8 @@
 <section class="process-steps-container section">
 	<div class="section-inner">
 		<div class="section-heading">
-			<h2>Hoe het werkt</h2>
-			<p>Van aanmelding tot rijbewijs in 4 eenvoudige stappen!</p>
+			<h2>{m.home_process_heading()}</h2>
+			<p>{m.home_process_text()}</p>
 		</div>
 		<ProcessSteps />
 	</div>
@@ -46,8 +43,8 @@
 <section class="reviews-container section">
 	<div class="section-inner">
 		<div class="section-heading">
-			<h2>Wat onze leerlingen zeggen</h2>
-			<p>Ontdek de ervaringen van onze geslaagde leerlingen!</p>
+			<h2>{m.home_reviews_heading()}</h2>
+			<p>{m.home_reviews_text()}</p>
 		</div>
 		<Reviews />
 	</div>
@@ -56,13 +53,12 @@
 <section class="success-stories-container section">
 	<div class="section-inner">
 		<div class="section-heading">
-			<h2>Geslaagd bij Rijschool All Drive!</h2>
-			<p>Ontmoet ekele van onze trotse geslaagde leerlingen!</p>
+			<h2>{m.home_success_heading()}</h2>
+			<p>{m.home_success_text()}</p>
 		</div>
 		<SuccessStories />
 		<p class="section-footer">
-			Wil jij ook je rijbewijs halen? <a href="https://wa.me/31627824428">Neem dan nu contact op!</a
-			>
+			{@html m.home_success_footer()}
 		</p>
 	</div>
 </section>
@@ -82,6 +78,7 @@
 		AboutSection,
 		CtaSection,
 	} from '$lib';
+	import { m } from '$lib/paraglide/messages.js';
 </script>
 
 <style>

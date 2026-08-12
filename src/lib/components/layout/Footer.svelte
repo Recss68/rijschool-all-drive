@@ -13,24 +13,22 @@
 				/>
 			</picture>
 			<p>
-				Rijschool All Drive is jouw betrouwbare rijschool in Amsterdam voor het snel en veilig
-				behalen van je rijbewijs. Professioneel, persoonlijk en resultaatgericht – met ervaren
-				instructeurs en een hoog slagingspercentage in Amsterdam.
+				{m.footer_about_text()}
 			</p>
 		</div>
 
 		<div class="quick-menu-1">
-			<h2>Snelle Links</h2>
+			<h2>{m.footer_quick_links_heading()}</h2>
 			<ul>
-				<li><a href="/">Home</a></li>
-				<li><a href="/over-ons">Over ons</a></li>
-				<li><a href="/prijzen">Prijzen</a></li>
-				<li><a href="/contact">Contact</a></li>
+				<li><a href="/">{m.header_home()}</a></li>
+				<li><a href="/over-ons">{m.header_about()}</a></li>
+				<li><a href="/prijzen">{m.header_prices()}</a></li>
+				<li><a href="/contact">{m.header_contact()}</a></li>
 			</ul>
 		</div>
 
 		<div class="quick-menu-2">
-			<h2>Contact</h2>
+			<h2>{m.footer_contact_heading()}</h2>
 			<ul>
 				<li><a href="tel:+31627824428" title="Bel ons">+31 6 27824428</a></li>
 				<li>
@@ -38,16 +36,16 @@
 						>info@rijschoolalldrive.nl</a
 					>
 				</li>
-				<li>Amsterdam & Omstreken</li>
+				<li>{m.footer_area()}</li>
 			</ul>
 		</div>
 
 		<div class="quick-menu-3">
-			<h2>Openingstijden</h2>
+			<h2>{m.footer_hours_heading()}</h2>
 			<ul>
-				<li>Ma - Vr: 08:00 - 18.:00</li>
-				<li>Za: 08:00 - 18:00</li>
-				<li>Zo: Gesloten</li>
+				<li>{m.footer_hours_weekdays()}</li>
+				<li>{m.footer_hours_saturday()}</li>
+				<li>{m.footer_hours_sunday()}</li>
 			</ul>
 			<div class="menu-icons">
 				<a href="https://instagram.com/">
@@ -94,11 +92,15 @@
 		</div>
 
 		<div class="footer-bottom">
-			<p>© 2026 Rijschool All Drive. Alle rechten voorbehouden.</p>
-			<p>Designed & Hosted by <a href="https://devrec.nl">DevRec</a></p>
+			<p>{m.footer_rights()}</p>
+			<p>{m.footer_credit_prefix()} <a href="https://devrec.nl">DevRec</a></p>
 		</div>
 	</div>
 </footer>
+
+<script>
+	import { m } from '$lib/paraglide/messages.js';
+</script>
 
 <style>
 	footer {
