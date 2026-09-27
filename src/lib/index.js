@@ -20,3 +20,4 @@ export { default as AboutSection } from './components/sections/AboutSection.svel
 export { default as CtaSection } from './components/sections/CtaSection.svelte';
 export { default as FaqSection } from './components/sections/FaqSection.svelte';
 export { default as InstructorTeam } from './components/sections/InstructorTeam.svelte';
+export { default as LegalContent } from './components/sections/LegalContent.svelte';
