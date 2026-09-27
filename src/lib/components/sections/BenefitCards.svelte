@@ -14,10 +14,17 @@
 				></path>
 			</g></svg
 		>
-		<h3>{m.benefit_1_title()}</h3>
-		<p>
-			{m.benefit_1_desc()}
-		</p>
+		{#if passRate}
+			<h3>{m.benefit_1_title_rate()}</h3>
+			<p>
+				<a href={passRate.url}>{passRateNote(passRate)}</a>
+			</p>
+		{:else}
+			<h3>{m.benefit_1_title()}</h3>
+			<p>
+				{m.benefit_1_desc()}
+			</p>
+		{/if}
 	</article>
 
 	<article>
@@ -126,6 +133,10 @@
 
 <script>
 	import { m } from '$lib/paraglide/messages.js';
+	import { business } from '$lib/data/business.js';
+	import { passRateNote } from '$lib/utils/pass-rate';
+
+	const { passRate } = business;
 </script>
 
 <style>

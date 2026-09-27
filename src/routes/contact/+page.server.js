@@ -1,6 +1,7 @@
 import { fail } from '@sveltejs/kit';
 import nodemailer from 'nodemailer';
 import { env } from '$env/dynamic/private';
+import { business } from '$lib/data/business.js';
 
 function randomDigit() {
 	return Math.floor(Math.random() * 9) + 1;
@@ -40,7 +41,7 @@ export const actions = {
 			return fail(400, { error: 'captcha', values, captchaA, captchaB });
 		}
 
-		const toEmail = env.CONTACT_TO_EMAIL || 'info@rijschoolalldrive.nl';
+		const toEmail = env.CONTACT_TO_EMAIL || business.email;
 
 		try {
 			const transporter = nodemailer.createTransport({

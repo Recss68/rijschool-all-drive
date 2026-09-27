@@ -16,7 +16,7 @@
 		<strong>{m.whatsapp_title()}</strong>
 	</div>
 	<p>{m.whatsapp_text()}</p>
-	<a href="https://wa.me/31627824428" class="whatsapp-card__btn">
+	<a href={business.whatsappUrl} class="whatsapp-card__btn">
 		<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"
 			><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
 				id="SVGRepo_tracerCarrier"
@@ -35,6 +35,7 @@
 </div>
 
 <script>
+	import { business } from '$lib/data/business.js';
 	import { m } from '$lib/paraglide/messages.js';
 </script>
 

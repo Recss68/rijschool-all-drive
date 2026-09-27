@@ -4,21 +4,22 @@
    ========================================================================== */
 
 /* --- Fonts ------------------------------------------------- */
-/* @font-face {
-  font-family: "Bricolage Grotesque";
-  src: url("/fonts/bricolage-grotesque.woff2") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-} */
+/* Both files are variable fonts: one file covers the full weight range. */
+@font-face {
+	font-family: 'Bricolage Grotesque';
+	src: url('/fonts/bricolage-grotesque.woff2') format('woff2');
+	font-weight: 200 800;
+	font-style: normal;
+	font-display: swap;
+}
 
-/* @font-face {
-  font-family: "DM Sans";
-  src: url("/fonts/dmsans.woff2") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-} */
+@font-face {
+	font-family: 'DM Sans';
+	src: url('/fonts/dmsans.woff2') format('woff2');
+	font-weight: 100 1000;
+	font-style: normal;
+	font-display: swap;
+}
 
 /* --- CSS Variables -------------------------------------------------------- */
 :root {
@@ -194,6 +195,13 @@ html {
 	scroll-behavior: smooth;
 }
 
+button,
+input,
+select,
+textarea {
+	font: inherit;
+}
+
 body {
 	margin: 0;
 	font-family: var(--font-body);
@@ -225,39 +233,6 @@ h6 {
 	line-height: var(--lh-heading);
 	letter-spacing: -0.02em;
 	color: var(--c-navy-900);
-}
-
-.h-display-lg {
-	font-size: var(--fs-display-lg);
-	line-height: var(--lh-tight);
-}
-.h-display-md {
-	font-size: var(--fs-display-md);
-	line-height: var(--lh-tight);
-}
-.h-headline-lg {
-	font-size: var(--fs-hl-lg);
-}
-.h-headline-md {
-	font-size: var(--fs-hl-md);
-}
-.h-headline-sm {
-	font-size: var(--fs-hl-sm);
-}
-
-.text-body-md {
-	font-size: var(--fs-body-md);
-}
-.text-body-sm {
-	font-size: var(--fs-body-sm);
-}
-.text-label-md {
-	font-size: var(--fs-label-md);
-	font-weight: 600;
-}
-.text-label-sm {
-	font-size: var(--fs-label-sm);
-	font-weight: 600;
 }
 
 /* Reduce motion */
@@ -361,8 +336,9 @@ h6 {
 }
 
 .t-highlight {
+	font-family: var(--font-heading);
 	font-size: var(--fs-hl-lg-mobile);
-	font-weight: bold;
+	font-weight: var(--fw-bold);
 }
 
 @keyframes fadeInUp {

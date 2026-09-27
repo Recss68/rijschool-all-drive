@@ -3,6 +3,11 @@
 	<div class="section-inner">
 		<div class="parent-hero">
 			<div class="hero-grid-1 fadeInUp">
+				{#if business.promoFreeInterimExam}
+					<p class="promo">
+						{m.promo_interim_exam({ price: formatEuro(business.prices.interimExam) })}
+					</p>
+				{/if}
 				<span class="sub-title">
 					<svg viewBox="0 0 24 24" width="15" aria-hidden="true" class="icon">
 						<path
@@ -19,19 +24,37 @@
 				<h1 id="my-text">{@html m.hero_title()}</h1>
 				<p>
 					{m.hero_subtitle()}
+					{m.hero_areas()}
 				</p>
 				<div class="hero-buttons">
-					<a href="https://wa.me/31627824428" class="btn-white"
+					<a href={business.whatsappUrl} class="btn-white"
 						>{m.cta_book_trial()}<span class="arrow">→</span></a
 					>
 					<a href="/prijzen" class="btn-outline">{m.hero_cta_prices()}</a>
 				</div>
+				<TrialFacts />
 				<hr class="divider-blue" />
 				<ul>
-					<li><span class="t-highlight">90%</span> {m.hero_stat_pass_rate()}</li>
+					{#if passRate}
+						<li>
+							<a href={passRate.url} title={passRateText}
+								><span class="t-highlight">{passRate.value}%</span> {m.hero_stat_pass_rate()}</a
+							>
+						</li>
+					{/if}
 					<li><span class="t-highlight">30+</span> {m.hero_stat_graduates()}</li>
-					<li><span class="t-highlight">4.9/5</span> {m.hero_stat_rating()}</li>
+					{#if reviews}
+						<li>
+							<a href={reviews.url}
+								><span class="t-highlight">{reviews.rating}/5</span>
+								{m.hero_stat_rating({ source: reviews.source, count: reviews.count })}</a
+							>
+						</li>
+					{/if}
 				</ul>
+				{#if passRate}
+					<p class="stat-source">{passRateText}</p>
+				{/if}
 			</div>
 			<div class="hero-grid-2 fadeInUp">
 				<picture>
@@ -54,48 +77,24 @@
 	import { gsap } from 'gsap';
 	import { onMount, onDestroy } from 'svelte';
 	import { m } from '$lib/paraglide/messages.js';
+	import { business } from '$lib/data/business.js';
+	import TrialFacts from '$lib/components/ui/TrialFacts.svelte';
+	import { formatEuro } from '$lib/utils/format-euro';
+	import { passRateNote } from '$lib/utils/pass-rate';
+
+	const { passRate, reviews } = business;
+	const passRateText = passRate ? passRateNote(passRate) : '';
 
 	let split;
 
 	onMount(async () => {
-		// respect user preference for reduced motion
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
 		try {
-			if (
-				typeof window !== 'undefined' &&
-				window.matchMedia('(prefers-reduced-motion: reduce)').matches
-			) {
-				// user prefers reduced motion — skip animation
-				return;
-			}
-
-			// ensure gsap is available and the registerPlugin function exists
-			if (!gsap || typeof gsap.registerPlugin !== 'function') {
-				console.warn('GSAP is not available; skipping SplitText animation.');
-				return;
-			}
-
-			// dynamically import SplitText (avoids import-time failures)
-			let SplitTextModule;
-			try {
-				SplitTextModule = await import('gsap/SplitText');
-			} catch (err) {
-				// some environments or GSAP installs don't include SplitText
-				console.warn('Could not load gsap/SplitText; skipping text-splitting animation.', err);
-				return;
-			}
-
-			const SplitText =
-				SplitTextModule &&
-				(SplitTextModule.default || SplitTextModule.SplitText || SplitTextModule);
-			if (!SplitText) {
-				console.warn('SplitText plugin not found on import; skipping animation.');
-				return;
-			}
-
+			const { SplitText } = await import('gsap/SplitText');
 			gsap.registerPlugin(SplitText);
-			split = new SplitText('#my-text', { type: 'chars' });
-
-			// animate the chars in
+			// split into words too, so words never break across lines
+			split = new SplitText('#my-text', { type: 'words,chars' });
 			gsap.from(split.chars, {
 				y: 8,
 				opacity: 0,
@@ -105,7 +104,7 @@
 				ease: 'power2.out',
 			});
 		} catch (e) {
-			console.warn('Error while trying to run SplitText animation:', e);
+			console.warn('Hero title animation skipped:', e);
 		}
 	});
 
@@ -159,6 +158,25 @@
 			li {
 				font-size: var(--fs-body-sm);
 			}
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+		}
+		.promo {
+			margin: 0 0 var(--space-4);
+			display: inline-block;
+			background-color: var(--c-yellow);
+			color: var(--c-navy-900);
+			font-weight: var(--fw-semibold);
+			font-size: var(--fs-label-s-mobile);
+			padding: var(--space-2) var(--space-4);
+			border-radius: var(--radius-soft);
+		}
+		.stat-source {
+			margin-top: var(--space-3);
+			font-size: var(--fs-label-s-mobile);
+			text-align: center;
 		}
 	}
 

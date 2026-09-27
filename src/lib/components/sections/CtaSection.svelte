@@ -12,16 +12,21 @@
 			</p>
 		{/if}
 		<div class="cta-buttons">
-			<a class="btn-white" href="https://wa.me/31627824428"
-				>{m.cta_book_now()} <span class="arrow">→</span></a
+			<a class="btn-white" href={business.whatsappUrl}
+				>{m.cta_book_trial()} <span class="arrow">→</span></a
 			>
-			<a class="btn-outline" href="tel:+31627824428">{m.cta_call_now()}</a>
+			<a class="btn-outline" href="tel:{business.phone}">{m.cta_call_now()}</a>
+		</div>
+		<div class="trial-facts-wrap">
+			<TrialFacts />
 		</div>
 	</div>
 </section>
 
 <script>
 	import { m } from '$lib/paraglide/messages.js';
+	import { business } from '$lib/data/business.js';
+	import TrialFacts from '$lib/components/ui/TrialFacts.svelte';
 
 	export let isPricePage = false;
 </script>
@@ -37,8 +42,12 @@
 			font-size: var(--fs-hl-md-mobile);
 		}
 		h2,
-		p {
+		p,
+		.trial-facts-wrap {
 			color: var(--c-white);
+		}
+		.trial-facts-wrap :global(.trial-facts) {
+			justify-content: center;
 		}
 		.section-inner {
 			display: flex;
