@@ -2,7 +2,6 @@
 <svelte:head>
 	<title>{m.meta_home_title()}</title>
 	<meta name="description" content={m.meta_home_description()} />
-	<link rel="icon" href="/images/favicon_white.jpg" />
 </svelte:head>
 
 <Hero />

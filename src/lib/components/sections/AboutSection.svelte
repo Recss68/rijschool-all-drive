@@ -1,11 +1,10 @@
-<!-- eslint-disable svelte/no-at-html-tags -- static translated copy from messages/*.json, never user input -->
 <section class="about-section section">
 	<div class="section-inner">
 		<picture>
 			<source srcset="/images/alldrive-auto.avif" type="image/avif" />
 			<source srcset="/images/alldrive-auto.webp" type="image/webp" />
 			<img
-				src="/images/alldrive-auto.jpeg"
+				src="/images/alldrive-auto.jpg"
 				alt="rijschool-alldrive-car"
 				width="600"
 				height="500"
@@ -18,17 +17,13 @@
 			<div class="section-heading">
 				<h2>{m.about_heading()}</h2>
 			</div>
-			<p>{@html m.about_para1()}</p>
-			<p>{@html m.about_para2()}</p>
-			<p>{@html m.about_para3()}</p>
-			<p>{@html m.about_para4()}</p>
-			<ul>
-				<li>{m.about_list_1()}</li>
-				<li>{m.about_list_2()}</li>
-				<li>{m.about_list_3()}</li>
-				<li>{m.about_list_4()}</li>
-			</ul>
-			<p>{@html m.about_para5()}</p>
+			<p>{m.about_intro()}</p>
+			<dl>
+				{#each questions as item (item.q)}
+					<dt>{item.q}</dt>
+					<dd>{item.a}</dd>
+				{/each}
+			</dl>
 			{#if showLink}
 				<a class="rec-btn" href="/over-ons">{m.about_read_more()} <span class="arrow">→</span></a>
 			{/if}
@@ -40,6 +35,15 @@
 	import { m } from '$lib/paraglide/messages.js';
 
 	export let showLink = true;
+
+	const questions = [
+		{ q: m.about_q1(), a: m.about_a1() },
+		{ q: m.about_q2(), a: m.about_a2() },
+		{ q: m.about_q3(), a: m.about_a3() },
+		{ q: m.about_q4(), a: m.about_a4() },
+		{ q: m.about_q5(), a: m.about_a5() },
+		{ q: m.about_q6(), a: m.about_a6() },
+	];
 </script>
 
 <style>
@@ -76,6 +80,17 @@
 			text-align: left;
 			font-size: var(--fs-hl-sm-mobile);
 			color: var(--c-text-light);
+		}
+		dl {
+			margin: var(--space-6) 0;
+		}
+		dt {
+			color: var(--c-text);
+			font-weight: var(--fw-semibold);
+			margin-top: var(--space-4);
+		}
+		dd {
+			margin: var(--space-1) 0 0;
 		}
 	}
 </style>

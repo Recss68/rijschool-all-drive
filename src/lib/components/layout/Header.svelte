@@ -47,7 +47,7 @@
 		<a class="nav-item" href="/contact">{m.header_contact()}</a>
 		<LanguageSwitcher />
 		<span class="divider"></span>
-		<a href="tel:+31627824428">
+		<a href="tel:{business.phone}">
 			<svg viewBox="0 0 24 24" height="20px" fill="none" xmlns="http://www.w3.org/2000/svg"
 				><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
 					id="SVGRepo_tracerCarrier"
@@ -63,13 +63,14 @@
 					></path>
 				</g></svg
 			>
-			+31 6 27824428
+			{business.phoneDisplay}
 		</a>
-		<a class="btn-white" href="https://wa.me/31627824428">{m.cta_book_trial()}</a>
+		<a class="btn-white" href={business.whatsappUrl}>{m.cta_header_trial()}</a>
 	</nav>
 </header>
 
 <script>
+	import { business } from '$lib/data/business.js';
 	import { page } from '$app/stores';
 	import { m } from '$lib/paraglide/messages.js';
 	import LanguageSwitcher from '../ui/LanguageSwitcher.svelte';

@@ -39,11 +39,10 @@
 				<ul class="pricing-slider">
 					{#each group.pkgs as pkg (pkg.id)}
 						{@const hasLessons = typeof pkg.lessons === 'number' && pkg.lessons > 0}
-						{@const priceText = typeof pkg.price === 'number' ? euro0.format(pkg.price) : ''}
-						{@const perLesson =
-							hasLessons && typeof pkg.price === 'number' ? pkg.price / pkg.lessons : null}
-						{@const perLessonText =
-							perLesson !== null ? m.pricing_per_lesson({ price: euro2.format(perLesson) }) : null}
+						{@const priceText = typeof pkg.price === 'number' ? formatEuro(pkg.price) : ''}
+						{@const perLessonText = hasLessons
+							? m.pricing_per_lesson({ price: formatEuro(business.prices.lesson) })
+							: null}
 						{@const lessonsLine =
 							hasLessons && typeof pkg.lessonMinutes === 'number'
 								? m.pricing_lessons_line({ count: pkg.lessons, minutes: pkg.lessonMinutes })
@@ -90,7 +89,7 @@
 									{/each}
 								</ul>
 
-								<a class="cta" href="https://wa.me/31627824428"> {m.pricing_choose_package()} </a>
+								<a class="cta" href={business.whatsappUrl}> {m.pricing_choose_package()} </a>
 							</article>
 						</li>
 					{/each}
@@ -121,10 +120,11 @@
 </section>
 
 <script>
+	import { business } from '$lib/data/business.js';
 	import { onMount } from 'svelte';
 	import { m } from '$lib/paraglide/messages.js';
-	import { getLocale } from '$lib/paraglide/runtime';
 	import { pickByLocale } from '$lib/utils/get-localized-data';
+	import { formatEuro } from '$lib/utils/format-euro';
 	import packagesNl from '$lib/data/pricing-packages.nl.json';
 	import packagesEn from '$lib/data/pricing-packages.en.json';
 
@@ -152,25 +152,6 @@
 
 	// Track the total page count per group
 	let pageCounts = Object.fromEntries(tabs.map((tab) => [tab.id, 1]));
-
-	// Map the app locale to an Intl locale for currency formatting
-	const intlLocales = { nl: 'nl-NL', en: 'en-GB', tr: 'tr-TR' };
-	const intlLocale = intlLocales[getLocale()] ?? 'nl-NL';
-
-	// Formatter for whole euro prices
-	const euro0 = new Intl.NumberFormat(intlLocale, {
-		style: 'currency',
-		currency: 'EUR',
-		maximumFractionDigits: 0,
-	});
-
-	// Formatter for euro prices with two decimals
-	const euro2 = new Intl.NumberFormat(intlLocale, {
-		style: 'currency',
-		currency: 'EUR',
-		minimumFractionDigits: 2,
-		maximumFractionDigits: 2,
-	});
 
 	// Get the width of a single slide
 	function getSlideWidth(el) {
@@ -408,11 +389,12 @@
 	}
 
 	.price {
+		font-family: var(--font-heading);
 		margin: 0;
 		display: block;
 		font-size: var(--fs-highlighted-mobile);
 		line-height: 1;
-		font-weight: 900;
+		font-weight: 800;
 		letter-spacing: -0.03em;
 		color: var(--c-navy-900);
 	}
@@ -594,12 +576,12 @@
 		}
 
 		.slide {
-			padding: 0 0.35rem;
+			padding: 0 var(--space-2);
 		}
 
 		.price-card {
-			width: 92%;
-			max-width: 430px;
+			width: 100%;
+			max-width: none;
 		}
 
 		.includes {
@@ -616,6 +598,7 @@
 
 	@media (min-width: 1024px) {
 		.pricing-slider-wrap {
+			max-width: 1280px;
 			padding-inline: 0.75rem;
 		}
 
@@ -624,12 +607,7 @@
 		}
 
 		.slide {
-			padding: 0 0.1rem;
-		}
-
-		.price-card {
-			width: 80%;
-			max-width: 900px;
+			padding: 0 var(--space-3);
 		}
 
 		.cta {

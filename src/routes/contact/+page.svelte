@@ -39,7 +39,7 @@
 					</div>
 					<div class="details">
 						<strong>{m.contact_phone_label()}</strong>
-						<a href="tel:+31627824428">+31 6 27 82 44 28</a>
+						<a href="tel:{business.phone}">{business.phoneDisplay}</a>
 						<span>{m.contact_phone_hours1()}</span>
 						<span>{m.contact_phone_hours2()}</span>
 					</div>
@@ -64,7 +64,7 @@
 					</div>
 					<div class="details">
 						<strong>{m.contact_email_label()}</strong>
-						<a href="mailto:info@rijschoolalldrive.nl">info@rijschoolalldrive.nl</a>
+						<a href="mailto:{business.email}">{business.email}</a>
 						<span>{m.contact_email_response()}</span>
 					</div>
 				</li>
@@ -88,7 +88,7 @@
 					</div>
 					<div class="details">
 						<strong>{m.contact_whatsapp_label()}</strong>
-						<a href="https://wa.me/31627824428">+31 6 27 82 44 28</a>
+						<a href={business.whatsappUrl}>{business.phoneDisplay}</a>
 						<span>{m.contact_whatsapp_text()}</span>
 					</div>
 				</li>
@@ -250,6 +250,7 @@
 <FaqSection />
 
 <script>
+	import { business } from '$lib/data/business.js';
 	import { ContactForm, WhatsappCard, FaqSection } from '$lib';
 	import { m } from '$lib/paraglide/messages.js';
 
