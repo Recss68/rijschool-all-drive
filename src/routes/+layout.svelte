@@ -1,5 +1,19 @@
 <svelte:head>
 	<link rel="icon" href="/images/favicon_white.jpg" />
+	<link
+		rel="preload"
+		href="/fonts/bricolage-grotesque.woff2"
+		as="font"
+		type="font/woff2"
+		crossorigin="anonymous"
+	/>
+	<link
+		rel="preload"
+		href="/fonts/dmsans.woff2"
+		as="font"
+		type="font/woff2"
+		crossorigin="anonymous"
+	/>
 </svelte:head>
 
 <Header />
@@ -13,11 +27,6 @@
 <script>
 	import { Header, Footer } from '$lib';
 	import '$lib/styles/ad-styles.css';
-	// import { onMount } from 'svelte';
-
-	// onMount(() => {
-	// 	document.documentElement.classList.add('has-anim');
-	// });
 
 	let { children } = $props();
 </script>
