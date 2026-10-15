@@ -5,7 +5,7 @@
 			<source srcset="/images/alldrive-auto.webp" type="image/webp" />
 			<img
 				src="/images/alldrive-auto.jpg"
-				alt="rijschool-alldrive-car"
+				alt={m.alt_car()}
 				width="600"
 				height="500"
 				loading="lazy"
@@ -25,13 +25,16 @@
 				{/each}
 			</dl>
 			{#if showLink}
-				<a class="rec-btn" href="/over-ons">{m.about_read_more()} <span class="arrow">→</span></a>
+				<a class="rec-btn" href={localizeHref('/over-ons')}
+					>{m.about_read_more()} <span class="arrow">→</span></a
+				>
 			{/if}
 		</div>
 	</div>
 </section>
 
 <script>
+	import { localizeHref } from '$lib/paraglide/runtime';
 	import { m } from '$lib/paraglide/messages.js';
 
 	export let showLink = true;

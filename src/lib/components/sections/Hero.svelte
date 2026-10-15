@@ -26,12 +26,16 @@
 					{m.hero_subtitle()}
 					{m.hero_areas()}
 				</p>
+				<!-- one clear primary action; WhatsApp as alternative, prices as a quiet link -->
 				<div class="hero-buttons">
-					<a href={business.whatsappUrl} class="btn-white"
-						>{m.cta_book_trial()}<span class="arrow">→</span></a
+					<a href={localizeHref('/aanmelden')} class="btn-white" data-signup
+						>{m.cta_signup()} <span class="arrow" aria-hidden="true">→</span></a
 					>
-					<a href="/prijzen" class="btn-outline">{m.hero_cta_prices()}</a>
+					<a href={business.whatsappUrl} class="btn-outline">{m.cta_whatsapp_short()}</a>
 				</div>
+				<a class="prices-link" href={localizeHref('/prijzen')}
+					>{m.hero_cta_prices()} <span aria-hidden="true">→</span></a
+				>
 				<TrialFacts />
 				<hr class="divider-blue" />
 				<ul>
@@ -58,13 +62,15 @@
 			</div>
 			<div class="hero-grid-2 fadeInUp">
 				<picture>
-					<source srcset="/images/hero-picture.avif" loading="lazy" type="image/avif" />
-					<source srcset="/images/hero-picture.webp" loading="lazy" type="image/webp" />
+					<source srcset="/images/hero-picture.avif" type="image/avif" />
+					<source srcset="/images/hero-picture.webp" type="image/webp" />
+					<!-- LCP image on desktop: load eagerly with high priority -->
 					<img
 						class="hero-image"
 						src="/images/hero-picture.jpg"
-						alt="Instructor and Student"
-						loading="lazy"
+						alt={m.alt_hero()}
+						width="1080"
+						height="720"
 						fetchpriority="high"
 					/>
 				</picture>
@@ -74,6 +80,7 @@
 </section>
 
 <script>
+	import { localizeHref } from '$lib/paraglide/runtime';
 	import { gsap } from 'gsap';
 	import { onMount, onDestroy } from 'svelte';
 	import { m } from '$lib/paraglide/messages.js';
@@ -187,6 +194,24 @@
 		gap: var(--space-3);
 		@media (min-width: 786px) {
 			flex-direction: row;
+		}
+	}
+
+	.prices-link {
+		display: inline-block;
+		margin-top: var(--space-4);
+		padding-block: var(--space-2);
+		color: var(--c-white);
+		font-weight: var(--fw-semibold);
+		text-decoration: underline;
+		text-underline-offset: 4px;
+		&:hover {
+			text-decoration-thickness: 2px;
+		}
+		&:focus-visible {
+			outline: 2px solid var(--c-white);
+			outline-offset: 2px;
+			border-radius: 4px;
 		}
 	}
 

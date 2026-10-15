@@ -1,5 +1,5 @@
 <header class="fadeInUp">
-	<a href="/">
+	<a href={localizeHref('/')}>
 		<picture>
 			<source
 				media="(min-width: 768px)"
@@ -29,7 +29,7 @@
 				src="/images/ad_short_black.avif"
 				width="80"
 				height="54"
-				alt="alldrive-logo"
+				alt={m.alt_logo()}
 				loading="lazy"
 			/>
 		</picture>
@@ -41,10 +41,10 @@
 	</label>
 
 	<nav class="menu">
-		<a class="nav-item" href="/">{m.header_home()}</a>
-		<a class="nav-item" href="/over-ons">{m.header_about()}</a>
-		<a class="nav-item" href="/prijzen">{m.header_prices()}</a>
-		<a class="nav-item" href="/contact">{m.header_contact()}</a>
+		<a class="nav-item" href={localizeHref('/')}>{m.header_home()}</a>
+		<a class="nav-item" href={localizeHref('/over-ons')}>{m.header_about()}</a>
+		<a class="nav-item" href={localizeHref('/prijzen')}>{m.header_prices()}</a>
+		<a class="nav-item" href={localizeHref('/contact')}>{m.header_contact()}</a>
 		<LanguageSwitcher />
 		<span class="divider"></span>
 		<a href="tel:{business.phone}">
@@ -65,11 +65,12 @@
 			>
 			{business.phoneDisplay}
 		</a>
-		<a class="btn-white" href={business.whatsappUrl}>{m.cta_header_trial()}</a>
+		<a class="btn-white" href={localizeHref('/aanmelden')} data-signup>{m.cta_signup()}</a>
 	</nav>
 </header>
 
 <script>
+	import { localizeHref } from '$lib/paraglide/runtime';
 	import { business } from '$lib/data/business.js';
 	import { page } from '$app/stores';
 	import { m } from '$lib/paraglide/messages.js';

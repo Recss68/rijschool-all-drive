@@ -1,8 +1,9 @@
 <!-- eslint-disable svelte/no-at-html-tags -- static translated copy from messages/*.json, never user input -->
-<svelte:head>
-	<title>{m.meta_home_title()}</title>
-	<meta name="description" content={m.meta_home_description()} />
-</svelte:head>
+<Seo
+	title={m.meta_home_title()}
+	description={m.meta_home_description()}
+	schema={[organization()]}
+/>
 
 <Hero />
 
@@ -28,6 +29,28 @@
 		</p>
 	</div>
 </section>
+
+<section class="service-area-container section">
+	<div class="section-inner">
+		<div class="section-heading">
+			<h2>{m.home_area_heading()}</h2>
+			<p>{m.home_area_text()}</p>
+		</div>
+		<ServiceArea />
+		<p class="section-footer">
+			<a href={localizeHref('/werkgebied')}
+				>{m.home_area_link()} <span aria-hidden="true">→</span></a
+			>
+		</p>
+	</div>
+</section>
+
+<RelatedCards
+	heading={m.home_services_heading()}
+	cta={m.home_services_cta()}
+	items={serviceCards}
+	tone="white"
+/>
 
 <section class="process-steps-container section">
 	<div class="section-inner">
@@ -67,6 +90,10 @@
 <CtaSection />
 
 <script>
+	import { organization } from '$lib/seo/schema.js';
+	import { localizeHref } from '$lib/paraglide/runtime';
+	import { services } from '$lib/data/services';
+	import { pickByLocale } from '$lib/utils/get-localized-data';
 	import {
 		Hero,
 		BenefitCards,
@@ -76,12 +103,21 @@
 		SuccessStories,
 		AboutSection,
 		CtaSection,
+		Seo,
+		ServiceArea,
+		RelatedCards,
 	} from '$lib';
 	import { m } from '$lib/paraglide/messages.js';
+
+	const serviceCards = services.map((service) => {
+		const content = pickByLocale(service);
+		return { href: `/${service.slug}`, title: content.cardTitle, text: content.summary };
+	});
 </script>
 
 <style>
 	.benefits-container,
+	.service-area-container,
 	.price-cards-container,
 	.process-steps-container,
 	.reviews-container,

@@ -89,7 +89,16 @@
 									{/each}
 								</ul>
 
-								<a class="cta" href={business.whatsappUrl}> {m.pricing_choose_package()} </a>
+								<a
+									class="cta"
+									href={pkg.group === 'theorie'
+										? business.whatsappUrl
+										: localizeHref(`/aanmelden?pakket=${pkg.id}`)}
+									data-signup={pkg.group === 'theorie' ? undefined : ''}
+									data-package-id={pkg.id}
+								>
+									{m.pricing_choose_package()}
+								</a>
 							</article>
 						</li>
 					{/each}
@@ -120,6 +129,7 @@
 </section>
 
 <script>
+	import { localizeHref } from '$lib/paraglide/runtime';
 	import { business } from '$lib/data/business.js';
 	import { onMount } from 'svelte';
 	import { m } from '$lib/paraglide/messages.js';

@@ -3,13 +3,7 @@
 		<picture>
 			<source srcset={story.image_2} type="image/avif" />
 			<source srcset={story.image_3} type="image/webp" />
-			<img
-				src={story.image}
-				alt={m.success_story_alt({ id: story.id })}
-				width="400"
-				height="400"
-				loading="lazy"
-			/>
+			<img src={story.image} alt={m.success_story_alt()} width="400" height="400" loading="lazy" />
 		</picture>
 	{/each}
 </div>

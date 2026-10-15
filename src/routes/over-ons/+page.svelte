@@ -1,12 +1,14 @@
 <!-- eslint-disable svelte/no-at-html-tags -- static translated copy from messages/*.json, never user input -->
-<svelte:head>
-	<title>{m.meta_overons_title()}</title>
-	<meta name="description" content={m.meta_overons_description()} />
-</svelte:head>
+<Seo
+	title={m.meta_overons_title()}
+	description={m.meta_overons_description()}
+	schema={[breadcrumbs([{ name: m.header_about(), path: '/over-ons' }])]}
+/>
 
 <section class="breadcrumb">
 	<h1>{m.overons_hero_title()}</h1>
 	<p>{m.overons_hero_text()}</p>
+	<CtaButtons center />
 </section>
 
 <AboutSection showLink={false} />
@@ -92,6 +94,7 @@
 <CtaSection />
 
 <script>
+	import { breadcrumbs } from '$lib/seo/schema.js';
 	import {
 		AboutSection,
 		BenefitCards,
@@ -99,6 +102,8 @@
 		SuccessStories,
 		InstructorTeam,
 		CtaSection,
+		Seo,
+		CtaButtons,
 	} from '$lib';
 	import { m } from '$lib/paraglide/messages.js';
 </script>
