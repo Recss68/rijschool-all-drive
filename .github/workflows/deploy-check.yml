@@ -1,0 +1,54 @@
+name: Deploy check
+
+# After Vercel reports a successful production deployment, check the live site:
+# the agent-facing endpoints from SEO-GEO-AIO-CHECKLIST.md plus the main redirects.
+on:
+  deployment_status:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    name: Smoke test production
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.deployment_status.state == 'success' &&
+       github.event.deployment_status.environment == 'Production')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      SITE: https://www.rijschoolalldrive.nl
+    steps:
+      - name: Wait for the new deployment to be served
+        run: sleep 20
+
+      - name: Home page (HTML)
+        run: |
+          curl -fsS -o /dev/null -w '%{http_code}\n' -H 'Accept: text/html' "$SITE/"
+          curl -fsSI -H 'Accept: text/html' "$SITE/" | grep -qi '^vary:.*accept'
+
+      - name: Markdown version of the home page and a city page
+        run: |
+          for path in / /rijschool-haarlem /en/prices; do
+            type=$(curl -fsS -o /dev/null -w '%{content_type}' -H 'Accept: text/markdown' "$SITE$path")
+            echo "$path -> $type"
+            [[ "$type" == text/markdown* ]]
+          done
+
+      - name: 404 stays 404 (HTML and Markdown)
+        run: |
+          [ "$(curl -s -o /dev/null -w '%{http_code}' "$SITE/bestaat-niet-xyz")" = 404 ]
+          [ "$(curl -s -o /dev/null -w '%{http_code}' -H 'Accept: text/markdown' "$SITE/bestaat-niet-xyz")" = 404 ]
+
+      - name: robots.txt, sitemap.xml and llms.txt
+        run: |
+          curl -fsS "$SITE/robots.txt" | grep -q "Sitemap: $SITE/sitemap.xml"
+          curl -fsS "$SITE/sitemap.xml" | grep -q '<urlset'
+          curl -fsS "$SITE/llms.txt" | grep -q '^# Rijschool All Drive'
+
+      - name: Redirects
+        run: |
+          [ "$(curl -s -o /dev/null -w '%{http_code}' "$SITE/about")" = 301 ]
+          [ "$(curl -s -o /dev/null -w '%{http_code}' https://rijschoolalldrive.nl/)" = 308 ]
