@@ -26,11 +26,13 @@
 
 <SignupDialog />
 <CookieBanner />
+<PromoPopup />
 
 <script>
 	import { Header, Footer } from '$lib';
 	import SignupDialog from '$lib/components/ui/SignupDialog.svelte';
 	import CookieBanner from '$lib/components/ui/CookieBanner.svelte';
+	import PromoPopup from '$lib/components/ui/PromoPopup.svelte';
 	import { afterNavigate } from '$app/navigation';
 	import { gtagPageView } from '$lib/gtag.js';
 	import '$lib/styles/ad-styles.css';
