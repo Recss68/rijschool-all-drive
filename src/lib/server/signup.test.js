@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { validateSignup } from './signup.js';
+import { validateSignup, isPlausibleBirthDate, ageOn } from './signup.js';
 
 const form = (fields) => {
 	const data = new FormData();
@@ -8,9 +8,10 @@ const form = (fields) => {
 };
 const valid = {
 	transmissie: 'automaat',
-	plaats: 'haarlem',
+	plaats: 'amsterdam',
 	pakket: 'door-rij',
 	naam: 'Jan Jansen',
+	geboortedatum: '2008-03-14',
 	adres: 'Straatnaam 1, 1234 AB Haarlem',
 	telefoon: '06 12345678',
 	email: 'jan@example.com',
@@ -52,7 +53,37 @@ describe('validateSignup', () => {
 			places
 		);
 		expect(Object.keys(errors).sort()).toEqual(
-			['adres', 'email', 'naam', 'pakket', 'plaats', 'telefoon', 'transmissie'].sort()
+			[
+				'adres',
+				'email',
+				'geboortedatum',
+				'naam',
+				'pakket',
+				'plaats',
+				'telefoon',
+				'transmissie',
+			].sort()
 		);
+	});
+});
+
+describe('date of birth', () => {
+	const now = new Date('2026-10-15');
+
+	it('calculates the age on a given day', () => {
+		expect(ageOn('2008-10-15', now)).toBe(18);
+		expect(ageOn('2008-10-16', now)).toBe(17);
+	});
+
+	it.each([
+		['2008-03-14', true],
+		['2011-10-15', true],
+		['2011-10-16', false], // 14 years old
+		['1925-01-01', false], // over 100
+		['2008-02-30', false], // not a real date
+		['14-03-2008', false], // wrong format
+		['2030-01-01', false], // in the future
+	])('%s -> %s', (date, ok) => {
+		expect(isPlausibleBirthDate(date, now)).toBe(ok);
 	});
 });

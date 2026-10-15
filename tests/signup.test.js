@@ -22,6 +22,7 @@ const details = {
 	plaats: 'amsterdam',
 	pakket: 'rij-start',
 	naam: 'Jan Jansen',
+	geboortedatum: '2008-03-14',
 	adres: 'Straatnaam 1, 1234 AB Amsterdam',
 	telefoon: '06 12345678',
 	email: 'jan@example.com',

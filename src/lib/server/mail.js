@@ -4,9 +4,9 @@ import { business } from '$lib/data/business.js';
 
 /**
  * Sends a form submission to the school's inbox (SMTP settings come from the environment).
- * @param {{ subject: string, text: string, replyTo?: string }} message
+ * @param {{ subject: string, text: string, html?: string, replyTo?: string }} message
  */
-export async function sendToSchool({ subject, text, replyTo }) {
+export async function sendToSchool({ subject, text, html, replyTo }) {
 	const transporter = nodemailer.createTransport({
 		host: env.SMTP_HOST,
 		port: Number(env.SMTP_PORT) || 587,
@@ -19,5 +19,6 @@ export async function sendToSchool({ subject, text, replyTo }) {
 		replyTo,
 		subject,
 		text,
+		html,
 	});
 }
