@@ -1,52 +1,62 @@
 [
 	{
 		"id": 1,
-		"question": "How quickly can I get my driving licence at a driving school in Amsterdam?",
-		"answer": "At Rijschool All Drive in Amsterdam, you can often start driving lessons within a few weeks. How quickly you get your driving licence depends on your availability, learning pace and how often you take lessons. Many students choose multiple lessons per week so they're ready for their practical exam sooner. Our instructors help you create a personal lesson plan so you can get your driving licence in Amsterdam efficiently and safely."
+		"question": "How much do driving lessons in Amsterdam cost at Rijschool All Drive?",
+		"answer": "A 60-minute lesson costs {lessonPrice}. Packages including the CBR practical exam start at {fromPrice} for {fromLessons} lessons. See all packages on the prices page."
 	},
 	{
 		"id": 2,
-		"question": "How much do driving lessons cost in Amsterdam?",
-		"answer": "The cost of driving lessons in Amsterdam varies by driving school and package. At Rijschool All Drive we offer several lesson packages that suit your level and budget. You can choose individual lessons or affordable packages that include the practical exam. Transparent prices and clear packages help you know exactly what you're paying for your driving education in Amsterdam."
+		"question": "How many driving lessons do I need?",
+		"answer": "At Rijschool All Drive, students need on average {min} to {max} lessons, depending on their experience. That is why our packages have 20, 30 or 40 lessons. After the trial lesson you get lesson advice."
 	},
 	{
 		"id": 3,
-		"question": "On average, how many driving lessons do I need to get my licence?",
-		"answer": "The number of lessons you need varies per person. On average, students in the Netherlands need about 35 to 45 lessons before they're ready for the practical exam. During a trial lesson at our driving school in Amsterdam, the instructor can give you a better estimate of how many lessons you'll likely need."
+		"question": "Automatic or manual: what can I choose?",
+		"answer": "Both. We teach in a manual or automatic car (licence B). With a manual licence you may drive both types of car; with an automatic licence only automatics."
 	},
 	{
 		"id": 4,
-		"question": "Can I take a trial lesson first at your driving school in Amsterdam?",
-		"answer": "Yes, at Rijschool All Drive you can start with a trial lesson in Amsterdam. During this lesson you'll get to know the instructor, the lesson car and our teaching style. The instructor assesses your driving skills and advises on how many lessons you'll likely need to get your driving licence."
+		"question": "Is the CBR practical exam included in the price?",
+		"answer": "Yes, packages marked ‘Incl. exam’ include the CBR practical exam. On its own, a practical exam costs {examPrice}."
 	},
 	{
 		"id": 5,
-		"question": "Do I need to pass my theory exam before taking driving lessons?",
-		"answer": "You can take driving lessons in Amsterdam while you're still working on your theory. Many students choose to prepare for their theory exam at the same time as their driving lessons. It's wise to pass your theory in good time, though, since you'll need it before you can take your practical exam."
+		"question": "How much does an extra lesson cost?",
+		"answer": "An extra 60-minute lesson costs {lessonPrice}."
 	},
 	{
 		"id": 6,
-		"question": "Where can I take my theory exam in Amsterdam?",
-		"answer": "The theory exam for your driving licence is administered by the CBR. There are several locations in Amsterdam where you can take your theory exam. At Rijschool All Drive we're happy to help with tips, practice material and guidance so you're well prepared for your theory exam in Amsterdam."
+		"question": "Will I be picked up?",
+		"answer": "Yes. Your instructor picks you up and drops you off after every lesson, in Amsterdam and the towns in our service area."
 	},
 	{
 		"id": 7,
-		"question": "Why choose a driving school in Amsterdam?",
-		"answer": "A driving school in Amsterdam has experience with busy city traffic. During your lessons you'll learn to handle situations like trams, cyclists, narrow streets and busy intersections. This means you learn to drive confidently and safely in and around Amsterdam."
+		"question": "Can I have lessons in the evening or on Saturdays?",
+		"answer": "Yes, by arrangement we also schedule lessons in the evening and on Saturdays."
 	},
 	{
 		"id": 8,
-		"question": "Can I take driving lessons in the evening or on Saturdays?",
-		"answer": "Yes, at our driving school in Amsterdam we offer flexible lesson times. By arrangement you can also schedule lessons in the evening or on Saturdays, making it easier to combine driving lessons with school, studies or work."
+		"question": "I have driving anxiety. Can I still take lessons?",
+		"answer": "Yes. Tell us during the trial lesson. We discuss your concerns and build up the lessons step by step, at your own pace, with a dedicated instructor."
 	},
 	{
 		"id": 9,
-		"question": "How do I schedule my driving lessons in Amsterdam?",
-		"answer": "You can easily get in touch with us via WhatsApp, phone or the contact form on our website. Together we'll schedule your driving lessons in Amsterdam at times that suit you best, so you can work towards your driving licence flexibly."
+		"question": "Do you guide students to a fear of failure exam?",
+		"answer": "Yes. If you are too nervous for the regular practical exam, you can take a fear of failure exam (faalangstexamen) with the CBR. We prepare you and book the exam for you."
 	},
 	{
 		"id": 10,
-		"question": "What happens if I don't pass my practical exam?",
-		"answer": "If you don't pass your practical exam, we'll discuss with your instructor what can be improved. We'll then schedule extra lessons so you're better prepared for the next exam. Many students still pass quickly after a few extra lessons."
+		"question": "How soon can I have a trial lesson?",
+		"answer": "You can usually start within a few weeks. Send us a WhatsApp message and we will let you know when there is a spot. The trial lesson is free when you buy a package."
+	},
+	{
+		"id": 11,
+		"question": "Do you offer an intensive driving course?",
+		"answer": "Yes. In an intensive course you take many lessons in a short time. The price depends on your situation; request one via WhatsApp or call us."
+	},
+	{
+		"id": 12,
+		"question": "Do you teach in English?",
+		"answer": "Yes. We teach in English and in Dutch."
 	}
 ]

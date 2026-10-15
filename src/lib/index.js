@@ -8,6 +8,7 @@ export { default as Footer } from './components/layout/Footer.svelte';
 export { default as ContactForm } from './components/ui/ContactFrom.svelte';
 export { default as WhatsappCard } from './components/ui/WhatsappCard.svelte';
 export { default as PricingCards } from './components/ui/PricingCards.svelte';
+export { default as PackageTable } from './components/ui/PackageTable.svelte';
 export { default as RecommendedPriceCards } from './components/ui/RecommendedPriceCards.svelte';
 
 // Sections
@@ -19,5 +20,15 @@ export { default as SuccessStories } from './components/sections/SuccessStories.
 export { default as AboutSection } from './components/sections/AboutSection.svelte';
 export { default as CtaSection } from './components/sections/CtaSection.svelte';
 export { default as FaqSection } from './components/sections/FaqSection.svelte';
+export { default as ServiceArea } from './components/sections/ServiceArea.svelte';
 export { default as InstructorTeam } from './components/sections/InstructorTeam.svelte';
-export { default as LegalContent } from './components/sections/LegalContent.svelte';
+export { default as ArticleSection } from './components/sections/ArticleSection.svelte';
+
+// Article layout (info and city pages)
+export { default as ArticleHero } from './components/article/ArticleHero.svelte';
+export { default as ArticleLayout } from './components/article/ArticleLayout.svelte';
+export { default as RelatedCards } from './components/article/RelatedCards.svelte';
+export { default as ArticleBlocks } from './components/article/ArticleBlocks.svelte';
+export { default as FaqBlock } from './components/article/FaqBlock.svelte';
+export { default as CtaButtons } from './components/ui/CtaButtons.svelte';
+export { default as Seo } from './components/Seo.svelte';

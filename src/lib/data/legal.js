@@ -4,9 +4,9 @@
 
 import { business } from './business.js';
 
-export const legalLastUpdated = '2026-09-27';
+export const legalLastUpdated = '2026-10-15';
 
-const { name, kvk, email, phoneDisplay, address, prices, policies, trialLesson } = business;
+const { name, kvk, email, phoneDisplay, prices, policies, trialLesson } = business;
 
 const euro = (amount) => `€${amount}`;
 
@@ -17,12 +17,7 @@ export const privacy = {
 			paragraphs: [
 				`${name} is verantwoordelijk voor de verwerking van jouw persoonsgegevens zoals beschreven in deze privacyverklaring.`,
 			],
-			items: [
-				`KvK-nummer: ${kvk}`,
-				address && `Adres: ${address}`,
-				`E-mail: ${email}`,
-				`Telefoon: ${phoneDisplay}`,
-			],
+			items: [`KvK-nummer: ${kvk}`, `E-mail: ${email}`, `Telefoon: ${phoneDisplay}`],
 		},
 		{
 			heading: '2. Welke gegevens verwerken wij?',
@@ -54,6 +49,8 @@ export const privacy = {
 				'Onze hosting- en e-mailprovider, die de website en berichten via het contactformulier voor ons verwerkt.',
 				'WhatsApp (Meta), als je ervoor kiest om via WhatsApp contact met ons op te nemen.',
 				'Elfsight, dat de Google-reviews op onze website toont. Bij het laden hiervan ontvangt Elfsight technische gegevens zoals je IP-adres.',
+				'Google (Google Analytics), alleen als je daar toestemming voor geeft in de cookiebanner.',
+				'Cloudflare (Turnstile), dat bij onze formulieren controleert of je geen spambot bent. Daarvoor ontvangt Cloudflare technische gegevens zoals je IP-adres en browserkenmerken. Turnstile gebruikt deze alleen voor de beveiligingscheck.',
 			],
 		},
 		{
@@ -67,7 +64,8 @@ export const privacy = {
 		{
 			heading: '6. Cookies',
 			paragraphs: [
-				'Onze website plaatst één functionele cookie die onthoudt in welke taal je de website bekijkt. Wij gebruiken geen tracking- of advertentiecookies.',
+				'We meten op twee manieren hoe de website wordt gebruikt. Vercel Web Analytics werkt zonder cookies en zonder gegevens waarmee je persoonlijk herkenbaar bent.',
+				'Daarnaast gebruiken we Google Analytics, maar alleen als je daar in de cookiebanner toestemming voor geeft. Google plaatst dan analytische cookies (beginnend met _ga) en ontvangt gegevens over je bezoek, zoals de pagina’s die je bekijkt en een ingekort IP-adres. We delen geen gegevens voor advertenties. Je kunt je keuze altijd wijzigen via “Cookie-instellingen” onderaan elke pagina.',
 				'De reviewwidget van Elfsight wordt van een externe server geladen. Elfsight kan daarbij eigen cookies plaatsen; zie hiervoor het privacybeleid van Elfsight.',
 			],
 		},
@@ -99,7 +97,6 @@ export const privacy = {
 			],
 			items: [
 				`Chamber of Commerce (KvK) number: ${kvk}`,
-				address && `Address: ${address}`,
 				`Email: ${email}`,
 				`Phone: ${phoneDisplay}`,
 			],
@@ -134,6 +131,8 @@ export const privacy = {
 				'Our hosting and email provider, which processes the website and contact form messages for us.',
 				'WhatsApp (Meta), if you choose to contact us through WhatsApp.',
 				'Elfsight, which shows the Google reviews on our website. When this loads, Elfsight receives technical data such as your IP address.',
+				'Google (Google Analytics), only if you agree in the cookie banner.',
+				'Cloudflare (Turnstile), which checks on our forms that you are not a spam bot. For this, Cloudflare receives technical data such as your IP address and browser characteristics. Turnstile only uses these for the security check.',
 			],
 		},
 		{
@@ -147,7 +146,8 @@ export const privacy = {
 		{
 			heading: '6. Cookies',
 			paragraphs: [
-				'Our website places one functional cookie that remembers which language you view the website in. We do not use tracking or advertising cookies.',
+				'We measure how the website is used in two ways. Vercel Web Analytics works without cookies and without data that identifies you personally.',
+				'We also use Google Analytics, but only if you agree in the cookie banner. Google then places analytics cookies (starting with _ga) and receives data about your visit, such as the pages you view and a shortened IP address. We do not share data for advertising. You can change your choice at any time via “Cookie settings” at the bottom of every page.',
 				"The Elfsight review widget is loaded from an external server. Elfsight may place its own cookies; see Elfsight's privacy policy.",
 			],
 		},

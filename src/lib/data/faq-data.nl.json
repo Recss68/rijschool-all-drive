@@ -1,52 +1,62 @@
 [
 	{
 		"id": 1,
-		"question": "Hoe snel kan ik mijn rijbewijs halen bij een rijschool in Amsterdam?",
-		"answer": "Bij Rijschool All Drive in Amsterdam kun je vaak al binnen enkele weken starten met rijlessen. Hoe snel je jouw rijbewijs haalt, hangt af van je beschikbaarheid, je leertempo en hoe vaak je rijlessen volgt. Veel leerlingen kiezen voor meerdere rijlessen per week zodat ze sneller klaar zijn voor het praktijkexamen. Onze instructeurs helpen je een persoonlijk lesplan te maken zodat je efficiënt en veilig jouw rijbewijs kunt halen in Amsterdam."
+		"question": "Wat kost rijles in Amsterdam bij Rijschool All Drive?",
+		"answer": "Een les van 60 minuten kost {lessonPrice}. Pakketten inclusief CBR-praktijkexamen beginnen bij {fromPrice} voor {fromLessons} lessen. Bekijk alle pakketten op de prijzenpagina."
 	},
 	{
 		"id": 2,
-		"question": "Wat kosten rijlessen in Amsterdam?",
-		"answer": "De kosten voor rijlessen in Amsterdam verschillen per rijschool en pakket. Bij Rijschool All Drive bieden we verschillende rijlespakketten aan die passen bij jouw niveau en budget. Je kunt kiezen voor losse rijlessen of voordelige pakketten inclusief praktijkexamen. Transparante prijzen en duidelijke pakketten helpen je om precies te weten wat je betaalt voor jouw rijopleiding in Amsterdam."
+		"question": "Hoeveel rijlessen heb ik nodig?",
+		"answer": "Bij Rijschool All Drive hebben leerlingen gemiddeld {min} à {max} lessen nodig, afhankelijk van hun ervaring. Daarom hebben onze pakketten 20, 30 of 40 lessen. Na de proefles krijg je een lesadvies."
 	},
 	{
 		"id": 3,
-		"question": "Hoeveel rijlessen heb ik gemiddeld nodig om mijn rijbewijs te halen?",
-		"answer": "Het aantal rijlessen dat je nodig hebt verschilt per persoon. Gemiddeld hebben leerlingen in Nederland ongeveer 35 tot 45 rijlessen nodig voordat ze klaar zijn voor het praktijkexamen. Tijdens een proefles bij onze rijschool in Amsterdam kan de instructeur een betere inschatting maken van hoeveel rijlessen jij ongeveer nodig hebt."
+		"question": "Automaat of schakel: wat kan ik kiezen?",
+		"answer": "Allebei. We geven les in een schakel- of automaatauto (rijbewijs B). Met een schakelrijbewijs mag je in beide soorten auto’s rijden; met een automaatrijbewijs alleen in een automaat."
 	},
 	{
 		"id": 4,
-		"question": "Kan ik eerst een proefles nemen bij jullie rijschool in Amsterdam?",
-		"answer": "Ja, bij Rijschool All Drive kun je beginnen met een proefles in Amsterdam. Tijdens deze rijles maak je kennis met de instructeur, de lesauto en onze manier van lesgeven. De instructeur beoordeelt je rijvaardigheid en geeft advies over hoeveel rijlessen je waarschijnlijk nodig hebt om je rijbewijs te halen."
+		"question": "Zit het CBR-praktijkexamen in de prijs?",
+		"answer": "Ja, bij de pakketten met ‘Incl. examen’ zit het CBR-praktijkexamen in de prijs. Los kost een praktijkexamen {examPrice}."
 	},
 	{
 		"id": 5,
-		"question": "Moet ik eerst mijn theorie halen voordat ik rijlessen neem?",
-		"answer": "Je kunt rijlessen in Amsterdam volgen terwijl je nog bezig bent met je theorie. Veel leerlingen kiezen ervoor om hun theorie-examen tegelijk met hun rijlessen voor te bereiden. Wel is het verstandig om je theorie op tijd te halen, omdat je deze nodig hebt voordat je praktijkexamen kunt doen."
+		"question": "Wat kost een extra les?",
+		"answer": "Een extra les van 60 minuten kost {lessonPrice}."
 	},
 	{
 		"id": 6,
-		"question": "Waar kan ik mijn theorie-examen doen in Amsterdam?",
-		"answer": "Het theorie-examen voor je rijbewijs wordt afgenomen door het CBR. In Amsterdam zijn er meerdere locaties waar je je theorie-examen kunt doen. Bij Rijschool All Drive helpen we je graag met tips, oefenmateriaal en begeleiding zodat je goed voorbereid bent op je theorie-examen in Amsterdam."
+		"question": "Word ik opgehaald?",
+		"answer": "Ja. Je instructeur haalt je op en brengt je na elke les terug, in Amsterdam en de plaatsen in ons werkgebied."
 	},
 	{
 		"id": 7,
-		"question": "Waarom kiezen voor een rijschool in Amsterdam?",
-		"answer": "Een rijschool in Amsterdam heeft ervaring met rijden in druk stadsverkeer. Tijdens je rijlessen leer je omgaan met situaties zoals trams, fietsers, smalle straten en drukke kruispunten. Dit zorgt ervoor dat je zelfverzekerd en veilig leert rijden in Amsterdam en omgeving."
+		"question": "Kan ik ’s avonds of op zaterdag rijles krijgen?",
+		"answer": "Ja, in overleg plannen we lessen ook in de avond en op zaterdag."
 	},
 	{
 		"id": 8,
-		"question": "Kan ik rijlessen volgen in de avond of op zaterdag?",
-		"answer": "Ja, bij onze rijschool in Amsterdam bieden we flexibele rijlestijden aan. Je kunt in overleg ook rijlessen plannen in de avond of op zaterdag. Dit maakt het makkelijker om rijlessen te combineren met school, studie of werk."
+		"question": "Ik heb rijangst. Kan ik toch rijles nemen?",
+		"answer": "Ja. Vertel het ons bij de proefles. We bespreken je zorgen en bouwen de lessen stap voor stap op, in jouw tempo, met een vaste instructeur."
 	},
 	{
 		"id": 9,
-		"question": "Hoe plan ik mijn rijlessen in Amsterdam?",
-		"answer": "Je kunt eenvoudig contact met ons opnemen via WhatsApp, telefoon of het contactformulier op de website. Samen plannen we jouw rijlessen in Amsterdam op momenten die voor jou het beste uitkomen. Zo kun je flexibel werken aan het behalen van jouw rijbewijs."
+		"question": "Begeleiden jullie naar een faalangstexamen?",
+		"answer": "Ja. Ben je té zenuwachtig voor het gewone praktijkexamen, dan kun je een faalangstexamen bij het CBR doen. Wij bereiden je voor en reserveren het examen voor je."
 	},
 	{
 		"id": 10,
-		"question": "Wat gebeurt er als ik mijn praktijkexamen niet haal?",
-		"answer": "Als je je praktijkexamen niet haalt, bespreken we samen met je instructeur wat er verbeterd kan worden. Daarna plannen we extra rijlessen in zodat je beter voorbereid bent op het volgende examen. Veel leerlingen slagen alsnog snel na een paar extra rijlessen."
+		"question": "Hoe snel kan ik een proefles doen?",
+		"answer": "Meestal kun je binnen enkele weken starten. Stuur ons een WhatsApp-bericht, dan laten we je weten wanneer er plek is. De proefles is gratis bij afname van een pakket."
+	},
+	{
+		"id": 11,
+		"question": "Bieden jullie een spoedcursus aan?",
+		"answer": "Ja. Met een spoedcursus volg je veel lessen in korte tijd. De prijs hangt af van je situatie; vraag een spoedcursus aan via WhatsApp of bel ons."
+	},
+	{
+		"id": 12,
+		"question": "Geven jullie ook les in het Engels?",
+		"answer": "Ja. We geven les in het Nederlands en in het Engels."
 	}
 ]
