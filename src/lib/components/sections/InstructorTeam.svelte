@@ -8,8 +8,10 @@
 		</div>
 	{/each}
 </div>
+<p class="team-note">{m.team_note()}</p>
 
 <script>
+	import { m } from '$lib/paraglide/messages.js';
 	import { pickByLocale } from '$lib/utils/get-localized-data';
 	import instructorsNl from '$lib/data/instructors.nl.json';
 	import instructorsEn from '$lib/data/instructors.en.json';
@@ -18,6 +20,12 @@
 </script>
 
 <style>
+	.team-note {
+		max-width: 600px;
+		margin: var(--space-6) auto 0;
+		text-align: center;
+	}
+
 	.instructor-team {
 		display: flex;
 		align-items: center;
@@ -25,7 +33,8 @@
 		text-align: center;
 		.instructor {
 			background-color: var(--c-white);
-			width: 500px;
+			width: 100%;
+			max-width: 500px;
 			padding: var(--space-6);
 			border-radius: var(--radius-m);
 			span {

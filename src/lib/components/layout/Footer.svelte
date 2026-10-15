@@ -2,13 +2,13 @@
 	<div class="section-inner">
 		<div class="footer-heading">
 			<picture>
-				<source srcset="/images/ad_long_white.webp" type="images/webp" />
-				<source srcset="/images/ad_long_white.png" type="images/png" />
+				<source srcset="/images/ad_long_white.webp" type="image/webp" />
+				<source srcset="/images/ad_long_white.png" type="image/png" />
 				<img
 					src="/images/ad_long_white.avif"
-					width="70%"
-					height="70%"
-					alt="rijschool-all-drive-logo"
+					width="1376"
+					height="768"
+					alt={m.alt_logo()}
 					loading="lazy"
 				/>
 			</picture>
@@ -20,12 +20,34 @@
 		<div class="quick-menu-1">
 			<h2>{m.footer_quick_links_heading()}</h2>
 			<ul>
-				<li><a href="/">{m.header_home()}</a></li>
-				<li><a href="/over-ons">{m.header_about()}</a></li>
-				<li><a href="/prijzen">{m.header_prices()}</a></li>
-				<li><a href="/contact">{m.header_contact()}</a></li>
-				<li><a href="/privacy">{m.footer_privacy()}</a></li>
-				<li><a href="/algemene-voorwaarden">{m.footer_terms()}</a></li>
+				<li><a href={localizeHref('/')}>{m.header_home()}</a></li>
+				<li><a href={localizeHref('/over-ons')}>{m.header_about()}</a></li>
+				<li><a href={localizeHref('/prijzen')}>{m.header_prices()}</a></li>
+				<li><a href={localizeHref('/contact')}>{m.header_contact()}</a></li>
+				<li><a href={localizeHref('/privacy')}>{m.footer_privacy()}</a></li>
+				<li><a href={localizeHref('/algemene-voorwaarden')}>{m.footer_terms()}</a></li>
+			</ul>
+		</div>
+
+		<div class="quick-menu-cities">
+			<h2>{m.footer_cities_heading()}</h2>
+			<ul>
+				{#each cities as city (city.slug)}
+					<li>
+						<a href={localizeHref(`/rijschool-${city.slug}`)}
+							>{m.city_hero_title({ city: city.name })}</a
+						>
+					</li>
+				{/each}
+			</ul>
+		</div>
+
+		<div class="quick-menu-info">
+			<h2>{m.footer_info_heading()}</h2>
+			<ul>
+				{#each infoPages as page (page.slug)}
+					<li><a href={localizeHref(`/${page.slug}`)}>{pickByLocale(page).title}</a></li>
+				{/each}
 			</ul>
 		</div>
 
@@ -104,14 +126,24 @@
 		<div class="footer-bottom">
 			<p>{m.footer_rights()}</p>
 			<p>{m.footer_kvk({ kvk: business.kvk })}</p>
+			<p>
+				<button type="button" class="cookie-settings" onclick={openConsentSettings}>
+					{m.cookie_settings()}
+				</button>
+			</p>
 			<p>{m.footer_credit_prefix()} <a href="https://devrec.nl">DevRec</a></p>
 		</div>
 	</div>
 </footer>
 
 <script>
+	import { localizeHref } from '$lib/paraglide/runtime';
 	import { m } from '$lib/paraglide/messages.js';
 	import { business } from '$lib/data/business.js';
+	import { openConsentSettings } from '$lib/consent.svelte.js';
+	import { cities } from '$lib/data/cities';
+	import { infoPages } from '$lib/data/info';
+	import { pickByLocale } from '$lib/utils/get-localized-data';
 
 	const { social } = business;
 </script>
@@ -143,6 +175,10 @@
 		}
 		.footer-heading {
 			padding-bottom: var(--space-2);
+			img {
+				width: 70%;
+				height: auto;
+			}
 		}
 		.menu-icons {
 			display: flex;
@@ -158,6 +194,22 @@
 				}
 			}
 		}
+		.cookie-settings {
+			background: none;
+			border: 0;
+			padding: var(--space-2) 0;
+			font: inherit;
+			color: inherit;
+			text-decoration: underline;
+			cursor: pointer;
+			&:hover {
+				color: var(--c-white);
+			}
+			&:focus-visible {
+				outline: 2px solid var(--c-white);
+				outline-offset: 2px;
+			}
+		}
 		.footer-bottom {
 			border-top: 1px solid var(--c-text);
 			text-align: center;
@@ -171,31 +223,38 @@
 			padding-top: var(--space-12);
 			.section-inner {
 				display: grid;
-				grid-template-columns: repeat(4, 1fr);
-				grid-template-rows: repeat(2, 1fr);
-				grid-template-rows: 1fr;
+				grid-template-columns: 1.4fr repeat(3, 1fr);
+				grid-template-areas:
+					'brand links cities info'
+					'brand contact hours .'
+					'bottom bottom bottom bottom';
 				grid-column-gap: var(--space-12);
-				grid-row-gap: 0px;
 
 				.footer-heading {
-					grid-area: 1 / 1 / 2 / 2;
+					grid-area: brand;
 				}
 				.quick-menu-1 {
-					grid-area: 1 / 2 / 2 / 3;
+					grid-area: links;
+				}
+				.quick-menu-cities {
+					grid-area: cities;
+				}
+				.quick-menu-info {
+					grid-area: info;
 				}
 				.quick-menu-2 {
-					grid-area: 1 / 3 / 2 / 4;
+					grid-area: contact;
 				}
 				.quick-menu-3 {
-					grid-area: 1 / 4 / 2 / 5;
+					grid-area: hours;
 				}
 				.footer-bottom {
-					grid-area: 2 / 1 / 3 / 5;
+					grid-area: bottom;
 				}
 
 				.quick-menu-1,
-				.quick-menu-2,
-				.quick-menu-3 {
+				.quick-menu-cities,
+				.quick-menu-info {
 					padding-top: var(--space-10);
 				}
 

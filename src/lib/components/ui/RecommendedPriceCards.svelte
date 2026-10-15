@@ -31,18 +31,24 @@
 				{/each}
 			</ul>
 			{#if card.highlighted}
-				<a class="btn-primary rec-btn" href={business.whatsappUrl}
-					>{m.recommended_choose_package()}</a
+				<a
+					class="btn-primary rec-btn"
+					href={localizeHref(`/aanmelden?pakket=${card.pkg.id}`)}
+					data-signup
+					data-package-id={card.pkg.id}>{m.recommended_choose_package()}</a
 				>
 			{:else}
-				<a class="btn-primary" href="/prijzen">{m.recommended_more_info()}</a>
+				<a class="btn-primary" href={localizeHref('/prijzen')}>{m.recommended_more_info()}</a>
 			{/if}
 		</article>
 	{/each}
 </div>
-<p class="terms-link"><a href="/prijzen#voorwaarden">{m.recommended_terms_link()}</a></p>
+<p class="terms-link">
+	<a href={localizeHref('/prijzen#voorwaarden')}>{m.recommended_terms_link()}</a>
+</p>
 
 <script>
+	import { localizeHref } from '$lib/paraglide/runtime';
 	import { m } from '$lib/paraglide/messages.js';
 	import { business } from '$lib/data/business.js';
 	import { pickByLocale } from '$lib/utils/get-localized-data';

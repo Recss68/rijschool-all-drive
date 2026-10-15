@@ -1,11 +1,13 @@
-<svelte:head>
-	<title>{m.meta_contact_title()}</title>
-	<meta name="description" content={m.meta_contact_description()} />
-</svelte:head>
+<Seo
+	title={m.meta_contact_title()}
+	description={m.meta_contact_description()}
+	schema={[breadcrumbs([{ name: m.header_contact(), path: '/contact' }])]}
+/>
 
 <section class="breadcrumb">
 	<h1>{m.contact_hero_title()}</h1>
 	<p>{m.contact_hero_text()}</p>
+	<CtaButtons center />
 </section>
 
 <section class="contact-section section">
@@ -13,7 +15,7 @@
 		<div class="contact-grid-left">
 			<h2>{m.contact_form_heading()}</h2>
 			<p>{m.contact_form_text()}</p>
-			<ContactForm {data} {form} />
+			<ContactForm {form} />
 		</div>
 
 		<div class="contact-grid-right">
@@ -250,11 +252,12 @@
 <FaqSection />
 
 <script>
+	import { breadcrumbs } from '$lib/seo/schema.js';
 	import { business } from '$lib/data/business.js';
-	import { ContactForm, WhatsappCard, FaqSection } from '$lib';
+	import { ContactForm, WhatsappCard, FaqSection, Seo, CtaButtons } from '$lib';
 	import { m } from '$lib/paraglide/messages.js';
 
-	let { data, form } = $props();
+	let { form } = $props();
 </script>
 
 <style>

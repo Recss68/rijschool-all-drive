@@ -1,16 +1,29 @@
 <!-- eslint-disable svelte/no-at-html-tags -- static translated copy from messages/*.json, never user input -->
-<svelte:head>
-	<title>{m.meta_prijzen_title()}</title>
-	<meta name="description" content={m.meta_prijzen_description()} />
-</svelte:head>
+<Seo
+	title={m.meta_prijzen_title()}
+	description={m.meta_prijzen_description()}
+	schema={[
+		breadcrumbs([{ name: m.header_prices(), path: '/prijzen' }]),
+		pricesPage(),
+		faqPage(faqItems),
+	]}
+/>
 
 <section class="breadcrumb">
 	<h1>{m.prijzen_hero_title()}</h1>
 	<p>{m.prijzen_hero_text()}</p>
+	<CtaButtons center />
 </section>
 
 <section class="pricing">
 	<PricingCards />
+</section>
+
+<section class="section compare">
+	<div class="section-inner">
+		<h2>{m.table_heading()}</h2>
+		<PackageTable />
+	</div>
 </section>
 
 <section class="section package-info">
@@ -144,12 +157,15 @@
 <CtaSection isPricePage={true} />
 
 <script>
-	import { PricingCards, CtaSection, FaqSection } from '$lib';
+	import { PricingCards, CtaSection, FaqSection, Seo, CtaButtons, PackageTable } from '$lib';
+	import { breadcrumbs, faqPage, pricesPage } from '$lib/seo/schema.js';
+	import { faqItems as getFaqItems } from '$lib/utils/faq';
 	import { m } from '$lib/paraglide/messages.js';
 	import { business } from '$lib/data/business.js';
 	import { formatEuro } from '$lib/utils/format-euro';
 
 	const { prices, policies } = business;
+	const faqItems = getFaqItems();
 
 	// Only confirmed policies are listed (see $lib/data/business.js)
 	const priceTerms = [
@@ -170,6 +186,17 @@
 </script>
 
 <style>
+	.compare {
+		.section-inner {
+			max-width: 860px;
+		}
+		h2 {
+			text-align: center;
+			font-size: var(--fs-hl-lg);
+			margin-bottom: var(--space-8);
+		}
+	}
+
 	.price-terms {
 		h2 {
 			text-align: center;

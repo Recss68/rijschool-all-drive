@@ -3,8 +3,8 @@
 		<h2>{m.faq_heading()}</h2>
 		{#each FaqData as faq (faq.id)}
 			<details class="faq-item" use:detailsToggle>
-				<summary>{faq.question}</summary>
-				<p>{faq.answer}</p>
+				<summary>{faq.q}</summary>
+				<p>{faq.a}</p>
 			</details>
 		{/each}
 	</div>
@@ -12,12 +12,10 @@
 
 <script>
 	import { m } from '$lib/paraglide/messages.js';
-	import { pickByLocale } from '$lib/utils/get-localized-data';
-	import faqDataNl from '$lib/data/faq-data.nl.json';
-	import faqDataEn from '$lib/data/faq-data.en.json';
+	import { faqItems } from '$lib/utils/faq';
 	import { SvelteSet } from 'svelte/reactivity';
 
-	const FaqData = pickByLocale({ nl: faqDataNl, en: faqDataEn });
+	const FaqData = faqItems();
 
 	const registry = new SvelteSet();
 	const DURATION = 300;

@@ -1,6 +1,8 @@
-<section class="section legal">
+<section class="section articles">
 	<div class="section-inner">
-		<p class="updated">{m.legal_last_updated({ date: lastUpdated })}</p>
+		{#if updated}
+			<p class="updated">{m.legal_last_updated({ date: formatDate(updated) })}</p>
+		{/if}
 		{#each articles as article (article.heading)}
 			<article>
 				<h2>{article.heading}</h2>
@@ -14,6 +16,13 @@
 						{/each}
 					</ul>
 				{/if}
+				{#if article.links?.length}
+					<ul class="links">
+						{#each article.links as link (link.href + link.label)}
+							<li><a href={link.href} rel="noopener" target="_blank">{link.label}</a></li>
+						{/each}
+					</ul>
+				{/if}
 			</article>
 		{/each}
 	</div>
@@ -22,21 +31,20 @@
 <script>
 	import { m } from '$lib/paraglide/messages.js';
 	import { getLocale } from '$lib/paraglide/runtime';
-	import { pickByLocale } from '$lib/utils/get-localized-data';
-	import { legalLastUpdated } from '$lib/data/legal.js';
 
-	/** @type {{ content: { nl: any[], en: any[] } }} */
-	let { content } = $props();
+	/** @type {{ articles: { heading: string, paragraphs?: string[], items?: (string|false)[], links?: { label: string, href: string }[] }[], updated?: string }} */
+	let { articles, updated } = $props();
 
-	const articles = pickByLocale(content);
-	const lastUpdated = new Date(legalLastUpdated).toLocaleDateString(
-		getLocale() === 'en' ? 'en-GB' : 'nl-NL',
-		{ day: 'numeric', month: 'long', year: 'numeric' }
-	);
+	const formatDate = (date) =>
+		new Date(date).toLocaleDateString(getLocale() === 'en' ? 'en-GB' : 'nl-NL', {
+			day: 'numeric',
+			month: 'long',
+			year: 'numeric',
+		});
 </script>
 
 <style>
-	.legal {
+	.articles {
 		background-color: var(--c-section);
 		.section-inner {
 			max-width: 860px;
@@ -62,6 +70,10 @@
 		}
 		li {
 			margin-bottom: var(--space-2);
+		}
+		.links a {
+			color: var(--c-accent);
+			font-weight: var(--fw-semibold);
 		}
 	}
 </style>
