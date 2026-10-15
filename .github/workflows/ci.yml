@@ -70,19 +70,23 @@ jobs:
     name: Dependency audit (informational)
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    # Reports known vulnerabilities without blocking; Dependabot opens the fix PRs
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
+      # Reports known vulnerabilities as a warning and in the run summary without failing the PR;
+      # Dependabot opens the update PRs
       - name: npm audit (production dependencies)
         run: |
-          {
-            echo '### npm audit (production dependencies)'
-            echo '```'
-            npm audit --omit=dev --audit-level=high || true
-            echo '```'
-          } >> "$GITHUB_STEP_SUMMARY"
-          npm audit --omit=dev --audit-level=high
+          if npm audit --omit=dev --audit-level=high > audit.txt; then
+            echo 'No high or critical vulnerabilities in production dependencies.' >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "::warning title=npm audit::$(tail -n 3 audit.txt | head -n 1)"
+            {
+              echo '### npm audit (production dependencies)'
+              echo '```'
+              cat audit.txt
+              echo '```'
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
