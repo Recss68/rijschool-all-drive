@@ -10,6 +10,11 @@
 		"answer": "At Rijschool All Drive, students need on average {min} to {max} lessons, depending on their experience. That is why our packages have 20, 30 or 40 lessons. After the trial lesson you get lesson advice."
 	},
 	{
+		"id": 13,
+		"question": "How long is a driving lesson?",
+		"answer": "Our packages are based on 60-minute lessons. Most students choose lessons of 1.5 hours on average, at their own request. Would you like shorter or longer lessons? We are flexible and happy to adapt."
+	},
+	{
 		"id": 3,
 		"question": "Automatic or manual: what can I choose?",
 		"answer": "Both. We teach in a manual or automatic car (licence B). With a manual licence you may drive both types of car; with an automatic licence only automatics."
@@ -43,6 +48,11 @@
 		"id": 9,
 		"question": "Do you guide students to a fear of failure exam?",
 		"answer": "Yes. If you are too nervous for the regular practical exam, you can take a fear of failure exam (faalangstexamen) with the CBR. We prepare you and book the exam for you."
+	},
+	{
+		"id": 14,
+		"question": "What is a BNOR exam?",
+		"answer": "A BNOR exam (Bureau Nader Onderzoek Rijvaardigheid, also called the state exam) is a CBR practical exam for people who failed their regular driving test 4 times within 5 years. At Rijschool All Drive a BNOR exam costs {bnorPrice}."
 	},
 	{
 		"id": 10,

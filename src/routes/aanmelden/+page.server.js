@@ -4,20 +4,11 @@ import { cities } from '$lib/data/cities';
 import { sendToSchool } from '$lib/server/mail.js';
 import { verifyTurnstile, turnstileSecret } from '$lib/server/turnstile.js';
 import { validateSignup } from '$lib/server/signup.js';
+import { signupEmail } from '$lib/server/form-emails.js';
 
 export function load({ url }) {
 	return { pakket: url.searchParams.get('pakket') };
 }
-
-const labels = {
-	transmissie: { automaat: 'Automaat', schakel: 'Schakel', onbekend: 'Weet ik nog niet' },
-	pakket: {
-		'rij-start': 'Rij Start',
-		'door-rij': 'Door Rij',
-		'vol-gas': 'Vol Gas',
-		onbekend: 'Weet ik nog niet',
-	},
-};
 
 const thanksUrl = () => localizeHref('/bedankt?form=aanmelden');
 
@@ -46,22 +37,7 @@ export const actions = {
 				: cities.find((c) => c.slug === values.plaats)?.name;
 
 		try {
-			await sendToSchool({
-				replyTo: values.email,
-				subject: `Nieuwe inschrijving: ${values.naam}`,
-				text: [
-					'Nieuwe inschrijving via de website',
-					'',
-					`Automaat of schakel: ${labels.transmissie[values.transmissie]}`,
-					`Woonplaats: ${place}`,
-					`Pakket in gedachten: ${labels.pakket[values.pakket]} (nog niet definitief)`,
-					'',
-					`Naam: ${values.naam}`,
-					`Adres: ${values.adres}`,
-					`Telefoon: ${values.telefoon}`,
-					`E-mail: ${values.email}`,
-				].join('\n'),
-			});
+			await sendToSchool({ replyTo: values.email, ...signupEmail(values, place) });
 		} catch (error) {
 			console.error('Failed to send sign-up email:', error);
 			return fail(500, { values, errors: { form: 'send' } });

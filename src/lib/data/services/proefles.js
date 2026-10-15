@@ -12,7 +12,7 @@ export const service = {
 		metaDescription:
 			'Een proefles bij Rijschool All Drive: kennismaken met je instructeur en de lesauto en een lesadvies krijgen. Gratis bij afname van een pakket. Vraag hem aan.',
 		answer:
-			'Met een proefles maak je kennis met je instructeur, de lesauto en onze manier van lesgeven. Je hebt geen rijervaring nodig. Na afloop krijg je een lesadvies: hoeveel lessen je ongeveer nodig hebt en welk pakket bij je past. De proefles is gratis als je daarna een pakket afneemt; anders betaal je de prijs van een losse les ({lessonPrice}).',
+			'Met een proefles maak je kennis met je instructeur, de lesauto en onze manier van lesgeven. Je hebt geen rijervaring nodig. Na afloop krijg je een lesadvies: hoeveel lessen je ongeveer nodig hebt en welk pakket bij je past. De proefles is gratis als je daarna een pakket afneemt; anders kost de proefles {trialPrice}.',
 		articles: [
 			{
 				heading: 'Wat gebeurt er tijdens de proefles?',
@@ -36,7 +36,7 @@ export const service = {
 				heading: 'Goed om te weten',
 				variant: 'callout',
 				paragraphs: [
-					'De proefles is gratis als je daarna een pakket afneemt. Neem je geen pakket af, dan betaal je de prijs van een losse les ({lessonPrice}).',
+					'De proefles is gratis als je daarna een pakket afneemt. Neem je geen pakket af, dan kost de proefles {trialPrice}.',
 				],
 			},
 		],
@@ -63,7 +63,7 @@ export const service = {
 		metaDescription:
 			'A trial lesson at Rijschool All Drive: meet your instructor and the lesson car and get lesson advice. Free when you buy a package. Request yours via WhatsApp.',
 		answer:
-			'In a trial lesson you meet your instructor, the lesson car and our way of teaching. You do not need any driving experience. Afterwards you get lesson advice: roughly how many lessons you need and which package suits you. The trial lesson is free if you then buy a package; otherwise you pay the price of a single lesson ({lessonPrice}).',
+			'In a trial lesson you meet your instructor, the lesson car and our way of teaching. You do not need any driving experience. Afterwards you get lesson advice: roughly how many lessons you need and which package suits you. The trial lesson is free if you then buy a package; otherwise the trial lesson costs {trialPrice}.',
 		articles: [
 			{
 				heading: 'What happens during the trial lesson?',
@@ -87,7 +87,7 @@ export const service = {
 				heading: 'Good to know',
 				variant: 'callout',
 				paragraphs: [
-					'The trial lesson is free if you then buy a package. If you do not, you pay the price of a single lesson ({lessonPrice}).',
+					'The trial lesson is free if you then buy a package. If you do not, the trial lesson costs {trialPrice}.',
 				],
 			},
 		],

@@ -31,7 +31,7 @@ jobs:
 
       - name: Markdown version of the home page and a city page
         run: |
-          for path in / /rijschool-haarlem /en/prices; do
+          for path in / /rijschool-amstelveen /en/prices; do
             type=$(curl -fsS -o /dev/null -w '%{content_type}' -H 'Accept: text/markdown' "$SITE$path")
             echo "$path -> $type"
             [[ "$type" == text/markdown* ]]

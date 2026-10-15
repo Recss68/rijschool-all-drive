@@ -10,7 +10,10 @@ describe('service-area map', () => {
 			expect(city.coordinates.lat).toBeLessThan(53);
 			expect(city.coordinates.lon).toBeGreaterThan(4.4);
 			expect(city.coordinates.lon).toBeLessThan(5.3);
-			expect(MUNICIPALITIES.map((f) => f.name)).toContain(city.municipality);
+			// null = a village inside a larger municipality (marker only, no highlight)
+			if (city.municipality !== null) {
+				expect(MUNICIPALITIES.map((f) => f.name)).toContain(city.municipality);
+			}
 			expect(['top', 'right', 'bottom', 'left']).toContain(city.mapLabel);
 		}
 	);

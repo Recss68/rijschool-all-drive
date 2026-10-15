@@ -15,6 +15,15 @@ const en = (path) => absoluteUrl(path, 'en');
 const both = (title, path, note = '') =>
 	`- [${title}](${nl(path)}) ([English](${en(path)}))${note ? `: ${note}` : ''}`;
 
+const RATE_NAMES = {
+	trialLesson: 'Trial lesson (free when a package is bought)',
+	singleLesson: 'Single lesson of 1.5 hours',
+	interimExam: 'CBR interim test (tussentijdse toets)',
+	exam: 'CBR practical exam',
+	fearOfFailureExam: 'CBR fear of failure exam (faalangstexamen)',
+	bnor: 'BNOR exam (Bureau Nader Onderzoek Rijvaardigheid, CBR state exam after failing 4 times within 5 years)',
+};
+
 export function buildLlms() {
 	const { prices, averageLessons, team, reviews } = business;
 	const main = MAIN_PACKAGE_IDS.map((id) => ({
@@ -40,8 +49,14 @@ ${business.name} is a service-area business: instructors pick students up at hom
 
 ${main.map(({ nl: p, en: e }) => `- ${p.title} (${e.title}): ${p.lessons} lessons, ${formatEuro(p.price)}`).join('\n')}
 - Extra lesson: ${formatEuro(prices.lesson)}
-- Trial lesson: free when a package is bought, otherwise the price of a single lesson (${formatEuro(prices.lesson)})
-${business.promoFreeInterimExam ? `- Limited-time offer${business.promoEndDate ? ` until ${business.promoEndDate}` : ''}: a free CBR interim test (tussentijdse toets) worth ${formatEuro(prices.interimExam)} with every lesson package\n` : ''}- Full price list: ${nl('/prijzen')} (English: ${en('/prijzen')})
+- Trial lesson: free when a package is bought, otherwise ${formatEuro(prices.trialLesson)}
+${business.promoFreeInterimExam ? `- Limited-time offer${business.promoEndDate ? ` until ${business.promoEndDate}` : ''}: a free CBR interim test (tussentijdse toets) worth ${formatEuro(prices.interimExam)} with every lesson package\n` : ''}- Packages are based on 60-minute lessons; most students choose 1.5-hour lessons on their own request
+- Full price list: ${nl('/prijzen')} (English: ${en('/prijzen')})
+
+## Single rates
+
+${business.singleRates.map((id) => `- ${RATE_NAMES[id]}: ${formatEuro(prices[id])}`).join('\n')}
+- All single rates: ${nl('/losse-tarieven')} (English: ${en('/losse-tarieven')})
 
 ## Service area (Werkgebied)
 

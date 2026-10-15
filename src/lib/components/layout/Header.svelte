@@ -1,4 +1,6 @@
-<header class="fadeInUp">
+<svelte:window bind:scrollY />
+
+<header class="fadeInUp" class:scrolled={scrollY > 24}>
 	<a href={localizeHref('/')}>
 		<picture>
 			<source
@@ -44,6 +46,7 @@
 		<a class="nav-item" href={localizeHref('/')}>{m.header_home()}</a>
 		<a class="nav-item" href={localizeHref('/over-ons')}>{m.header_about()}</a>
 		<a class="nav-item" href={localizeHref('/prijzen')}>{m.header_prices()}</a>
+		<a class="nav-item" href={localizeHref('/losse-tarieven')}>{m.header_rates()}</a>
 		<a class="nav-item" href={localizeHref('/contact')}>{m.header_contact()}</a>
 		<LanguageSwitcher />
 		<span class="divider"></span>
@@ -77,6 +80,8 @@
 	import LanguageSwitcher from '../ui/LanguageSwitcher.svelte';
 
 	let menuBtn;
+	// desktop: the bar turns into a floating pill once you start scrolling
+	let scrollY = 0;
 
 	$: if ($page) {
 		if (menuBtn) menuBtn.checked = false;
@@ -112,18 +117,29 @@
 
 	.menu-btn:focus-visible + .menu-icon {
 		outline: 2px solid var(--c-accent);
+		outline-offset: 2px;
 	}
 
+	/* hamburger: a 44px tap target with three rounded bars that turn into a cross */
 	.menu-icon {
 		grid-area: hamburger;
+		justify-self: end;
+		display: grid;
+		place-items: center;
+		width: 44px;
+		height: 44px;
+		border-radius: var(--radius-soft);
+		background-color: var(--c-section);
 		cursor: pointer;
-		display: flex;
-		justify-content: flex-end;
-		align-items: baseline;
-		padding: 30px 20px 30px 0;
 		position: relative;
 		user-select: none;
 		visibility: visible;
+		-webkit-tap-highlight-color: transparent;
+		touch-action: manipulation;
+		transition: background-color 0.2s ease-out;
+		&:hover {
+			background-color: var(--c-border-light);
+		}
 	}
 
 	.nav-item {
@@ -134,31 +150,35 @@
 		}
 	}
 
-	.navicon {
-		background: #333;
+	.navicon,
+	.navicon::before,
+	.navicon::after {
 		display: block;
+		width: 20px;
 		height: 2px;
-		width: 18px;
+		border-radius: 2px;
+		background-color: var(--c-navy-900);
+	}
+
+	.navicon {
 		position: relative;
+		transition: background-color 0.2s ease-out;
 	}
 
-	.navicon:before {
-		top: 5px;
-	}
-
-	.navicon:after {
-		top: -5px;
-	}
-
-	.navicon:before,
-	.navicon:after {
-		background: var(--c-text);
-		display: block;
-		width: 100%;
-		height: 100%;
+	.navicon::before,
+	.navicon::after {
 		content: '';
 		position: absolute;
-		transition: all 0.2s ease-out;
+		left: 0;
+		transition: transform 0.2s ease-out;
+	}
+
+	.navicon::before {
+		transform: translateY(-6px);
+	}
+
+	.navicon::after {
+		transform: translateY(6px);
 	}
 
 	.menu {
@@ -174,7 +194,7 @@
 		flex-direction: column;
 		visibility: hidden;
 		pointer-events: none;
-		@media (min-width: 1070px) {
+		@media (min-width: 1200px) {
 			visibility: visible;
 			pointer-events: auto;
 		}
@@ -205,29 +225,114 @@
 		pointer-events: auto;
 	}
 
-	.menu-btn:checked ~ .menu-icon .navicon {
-		background: transparent;
+	.menu-btn:checked ~ .menu-icon {
+		background-color: var(--c-icon-bg);
 	}
 
-	.menu-btn:checked ~ .menu-icon .navicon:before {
+	.menu-btn:checked ~ .menu-icon .navicon {
+		background-color: transparent;
+	}
+
+	.menu-btn:checked ~ .menu-icon .navicon::before {
 		transform: rotate(-45deg);
 	}
 
-	.menu-btn:checked ~ .menu-icon .navicon:after {
+	.menu-btn:checked ~ .menu-icon .navicon::after {
 		transform: rotate(45deg);
 	}
 
-	.menu-btn:checked ~ .menu-icon .navicon:before,
-	.menu-btn:checked ~ .menu-icon .navicon:after {
-		top: 0;
+	/* mobile and tablet: a slimmer bar with a smaller logo */
+	/* phones: a slim bar with a small logo */
+	@media (max-width: 599px) {
+		header {
+			padding: var(--space-2) var(--space-4);
+		}
+
+		.logo {
+			display: block;
+			width: auto;
+			height: 36px;
+		}
+	}
+
+	/* tablets: the original, roomier bar */
+	@media (min-width: 600px) and (max-width: 1199px) {
+		header {
+			padding: var(--space-4) var(--space-6);
+		}
+
+		.logo {
+			display: block;
+			width: auto;
+			height: 54px;
+		}
+
+		.menu-icon {
+			width: 48px;
+			height: 48px;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		header,
+		.logo,
+		.menu-icon,
+		.navicon,
+		.navicon::before,
+		.navicon::after {
+			transition: none;
+		}
 	}
 
 	/* Desktop styles */
-	@media screen and (min-width: 1070px) {
+	@media screen and (min-width: 1200px) {
 		header {
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			top: 0;
+			/* centred without transform: the fadeInUp entrance animation owns transform */
+			left: 0;
+			right: 0;
+			margin-inline: auto;
+			width: 100%;
+			border-radius: 0;
+			transition:
+				top 0.35s ease,
+				width 0.35s ease,
+				padding 0.35s ease,
+				border-radius 0.35s ease,
+				box-shadow 0.35s ease;
+		}
+
+		.logo {
+			width: 250px;
+			height: auto;
+			transition: width 0.35s ease;
+		}
+
+		/* floating pill once the page is scrolled */
+		header.scrolled {
+			top: var(--space-3);
+			width: min(1180px, calc(100% - var(--space-8)));
+			padding: var(--space-2) var(--space-2) var(--space-2) var(--space-6);
+			border-radius: 999px;
+			box-shadow:
+				0 1px 2px rgb(0 38 70 / 0.06),
+				0 10px 30px rgb(0 38 70 / 0.14);
+			.logo {
+				width: 170px;
+			}
+			.menu {
+				gap: var(--space-2);
+				margin-right: 0;
+			}
+			.menu a {
+				font-size: var(--fs-label-s-mobile);
+			}
+			.btn-white {
+				border-radius: 999px;
+			}
 		}
 
 		header picture {

@@ -179,7 +179,7 @@
 		}
 	}
 
-	@media (min-width: 1070px) {
+	@media (min-width: 1200px) {
 		.language-switcher--dropdown {
 			display: block;
 		}

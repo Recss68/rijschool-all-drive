@@ -1,5 +1,7 @@
 export const city = {
 	slug: 'haarlem',
+	// Temporarily not offered; set to true (or remove the line) to switch Haarlem back on
+	active: false,
 	name: 'Haarlem',
 	order: 4,
 	updated: '2026-10-14', // last real content change (sitemap lastmod)

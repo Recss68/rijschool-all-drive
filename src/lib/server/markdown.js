@@ -1,3 +1,4 @@
+import { placeList } from '$lib/utils/places';
 // Markdown versions of every public page, for AI agents that send `Accept: text/markdown`.
 // Built from the same messages and data as the HTML pages, so both always say the same.
 import { m } from '$lib/paraglide/messages.js';
@@ -95,7 +96,7 @@ function home() {
 	const starter = starterPackage();
 	return [
 		`# ${htmlToMd(m.hero_title())}`,
-		`${m.hero_subtitle()} ${m.hero_areas()}`,
+		`${m.hero_subtitle()} ${m.hero_areas({ places: placeList() })}`,
 		business.promoFreeInterimExam &&
 			`**${m.promo_interim_exam({ price: formatEuro(business.prices.interimExam) })}**`,
 		list([
@@ -144,19 +145,46 @@ function aboutMd() {
 	].join('\n\n');
 }
 
+function ratesMd() {
+	const labels = {
+		trialLesson: `${m.rate_trial()} (${m.rate_trial_detail()})`,
+		singleLesson: `${m.rate_lesson()} (${m.rate_lesson_detail()})`,
+		interimExam: m.rate_interim_exam(),
+		exam: m.rate_exam(),
+		fearOfFailureExam: m.rate_fear_exam(),
+		bnor: `${m.rate_bnor()} (${m.rate_bnor_detail()})`,
+	};
+	return [
+		`## ${m.rates_heading()}`,
+		list(business.singleRates.map((id) => `${labels[id]}: ${formatEuro(business.prices[id])}`)),
+		m.lesson_duration_note(),
+	].join('\n\n');
+}
+
+function rates() {
+	return [
+		`# ${m.rates_heading()}`,
+		m.rates_page_text(),
+		ratesMd(),
+		link(m.rates_packages_link(), '/prijzen'),
+		contactMd(),
+	];
+}
+
 function prices() {
 	return [
 		`# ${m.prijzen_hero_title()}`,
 		m.prijzen_hero_text(),
 		m.prices_updated({ date: business.pricesUpdated }),
 		packagesMd(),
+		ratesMd(),
 		`## ${m.prijzen_terms_heading()}`,
 		list([
 			business.promoFreeInterimExam &&
 				m.prijzen_term_promo({ price: formatEuro(business.prices.interimExam) }),
 			m.prijzen_term_extra_lesson({ price: formatEuro(business.prices.lesson) }),
 			m.prijzen_term_exam({ price: formatEuro(business.prices.exam) }),
-			m.prijzen_term_trial({ price: formatEuro(business.prices.lesson) }),
+			m.prijzen_term_trial({ price: formatEuro(business.prices.trialLesson) }),
 		]),
 		faqMd(m.faq_heading(), faqItems()),
 		contactMd(),
@@ -272,6 +300,7 @@ export function renderMarkdown(path) {
 	const pages = {
 		'/': home,
 		'/prijzen': prices,
+		'/losse-tarieven': rates,
 		'/over-ons': about,
 		'/contact': contact,
 		'/werkgebied': serviceArea,

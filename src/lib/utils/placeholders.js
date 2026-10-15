@@ -10,7 +10,7 @@ export function starterPackage() {
 }
 
 /**
- * Fills {lessonPrice}, {examPrice}, {fromPrice}, {fromLessons}, {min} and {max} in content texts,
+ * Fills {lessonPrice}, {examPrice}, {trialPrice}, {fearExamPrice}, {bnorPrice}, {fromPrice}, {fromLessons}, {min} and {max} in content texts,
  * so prices in page copy always come from the price data.
  * @param {string} text
  */
@@ -19,6 +19,9 @@ export function fillPlaceholders(text) {
 	return text
 		.replaceAll('{lessonPrice}', formatEuro(business.prices.lesson))
 		.replaceAll('{examPrice}', formatEuro(business.prices.exam))
+		.replaceAll('{trialPrice}', formatEuro(business.prices.trialLesson))
+		.replaceAll('{fearExamPrice}', formatEuro(business.prices.fearOfFailureExam))
+		.replaceAll('{bnorPrice}', formatEuro(business.prices.bnor))
 		.replaceAll('{fromPrice}', formatEuro(starter.price))
 		.replaceAll('{fromLessons}', String(starter.lessons))
 		.replaceAll('{min}', String(business.averageLessons.min))

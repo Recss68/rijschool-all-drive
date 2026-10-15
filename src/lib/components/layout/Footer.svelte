@@ -23,6 +23,7 @@
 				<li><a href={localizeHref('/')}>{m.header_home()}</a></li>
 				<li><a href={localizeHref('/over-ons')}>{m.header_about()}</a></li>
 				<li><a href={localizeHref('/prijzen')}>{m.header_prices()}</a></li>
+				<li><a href={localizeHref('/losse-tarieven')}>{m.header_rates()}</a></li>
 				<li><a href={localizeHref('/contact')}>{m.header_contact()}</a></li>
 				<li><a href={localizeHref('/privacy')}>{m.footer_privacy()}</a></li>
 				<li><a href={localizeHref('/algemene-voorwaarden')}>{m.footer_terms()}</a></li>

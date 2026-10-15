@@ -128,6 +128,7 @@
 					required
 					value={values[field.name] ?? ''}
 					placeholder={field.placeholder}
+					max={field.max}
 					aria-invalid={errors[field.name] ? 'true' : undefined}
 					aria-describedby={errors[field.name] ? `err-${field.name}` : undefined}
 				/>
@@ -229,6 +230,9 @@
 		{ value: 'onbekend', label: m.signup_dont_know(), detail: '' },
 	];
 
+	// latest possible birth date for the date picker (today)
+	const today = new Date().toISOString().slice(0, 10);
+
 	const detailFields = [
 		{
 			name: 'naam',
@@ -236,6 +240,13 @@
 			type: 'text',
 			autocomplete: 'name',
 			placeholder: m.signup_name_placeholder(),
+		},
+		{
+			name: 'geboortedatum',
+			label: m.signup_birthdate_label(),
+			type: 'date',
+			autocomplete: 'bday',
+			max: today,
 		},
 		{
 			name: 'adres',
@@ -264,8 +275,11 @@
 	];
 
 	const fieldError = (code) =>
-		({ phone: m.signup_error_phone(), email: m.form_error_email() })[code] ??
-		m.signup_error_required();
+		({
+			phone: m.signup_error_phone(),
+			email: m.form_error_email(),
+			birthdate: m.signup_error_birthdate(),
+		})[code] ?? m.signup_error_required();
 
 	const STEP_ONE = ['transmissie', 'plaats', 'plaats_anders'];
 
@@ -288,7 +302,7 @@
 	}
 
 	function handleSubmit({ cancel }) {
-		const all = [...STEP_ONE, 'naam', 'adres', 'telefoon', 'email'];
+		const all = [...STEP_ONE, 'naam', 'geboortedatum', 'adres', 'telefoon', 'email'];
 		const stepOneOk = [...formEl.elements].every(
 			(el) => !STEP_ONE.includes(el.name) || el.checkValidity()
 		);
@@ -439,6 +453,8 @@
 	.field {
 		display: grid;
 		gap: var(--space-2);
+		/* grid items may not grow past their column (keeps wide native inputs inside) */
+		min-width: 0;
 	}
 
 	input:not([type='radio']),
@@ -458,6 +474,22 @@
 		}
 		&[aria-invalid='true'] {
 			border-color: #b91c1c;
+		}
+	}
+
+	/* iOS Safari gives date inputs an intrinsic min-width that ignores width: 100%,
+	   which pushed the field past the right edge; reset it and keep the text left-aligned */
+	input[type='date'] {
+		display: block;
+		box-sizing: border-box;
+		min-width: 0;
+		max-width: 100%;
+		min-height: 48px;
+		-webkit-appearance: none;
+		appearance: none;
+		text-align: left;
+		&::-webkit-date-and-time-value {
+			text-align: left;
 		}
 	}
 

@@ -8,6 +8,7 @@ export { default as Footer } from './components/layout/Footer.svelte';
 export { default as ContactForm } from './components/ui/ContactFrom.svelte';
 export { default as WhatsappCard } from './components/ui/WhatsappCard.svelte';
 export { default as PricingCards } from './components/ui/PricingCards.svelte';
+export { default as SingleRates } from './components/ui/SingleRates.svelte';
 export { default as PackageTable } from './components/ui/PackageTable.svelte';
 export { default as RecommendedPriceCards } from './components/ui/RecommendedPriceCards.svelte';
 

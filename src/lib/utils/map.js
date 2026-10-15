@@ -11,7 +11,7 @@ export const { features: MUNICIPALITIES, source: MAP_SOURCE, license: MAP_LICENS
  * @param {{ municipality: string, coordinates: { lat: number, lon: number } }[]} cities
  */
 export function mapBounds(cities, marginLat = 0.015, marginLon = 0.025) {
-	const served = new Set(cities.map((c) => c.municipality));
+	const served = new Set(cities.map((c) => c.municipality).filter(Boolean));
 	const points = [
 		...MUNICIPALITIES.filter((f) => served.has(f.name)).flatMap((f) => f.rings.flat()),
 		...cities.map((c) => [c.coordinates.lon, c.coordinates.lat]),

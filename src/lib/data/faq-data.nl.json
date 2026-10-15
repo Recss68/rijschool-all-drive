@@ -10,6 +10,11 @@
 		"answer": "Bij Rijschool All Drive hebben leerlingen gemiddeld {min} à {max} lessen nodig, afhankelijk van hun ervaring. Daarom hebben onze pakketten 20, 30 of 40 lessen. Na de proefles krijg je een lesadvies."
 	},
 	{
+		"id": 13,
+		"question": "Hoe lang duurt een rijles?",
+		"answer": "Onze pakketten rekenen met lessen van 60 minuten. De meeste leerlingen kiezen op eigen verzoek voor lessen van gemiddeld 1,5 uur. Wil je korter of langer rijden? Wij zijn flexibel en spelen daar graag op in."
+	},
+	{
 		"id": 3,
 		"question": "Automaat of schakel: wat kan ik kiezen?",
 		"answer": "Allebei. We geven les in een schakel- of automaatauto (rijbewijs B). Met een schakelrijbewijs mag je in beide soorten auto’s rijden; met een automaatrijbewijs alleen in een automaat."
@@ -43,6 +48,11 @@
 		"id": 9,
 		"question": "Begeleiden jullie naar een faalangstexamen?",
 		"answer": "Ja. Ben je té zenuwachtig voor het gewone praktijkexamen, dan kun je een faalangstexamen bij het CBR doen. Wij bereiden je voor en reserveren het examen voor je."
+	},
+	{
+		"id": 14,
+		"question": "Wat is een BNOR-examen?",
+		"answer": "Een BNOR-examen (Bureau Nader Onderzoek Rijvaardigheid, ook wel staatsexamen genoemd) is een praktijkexamen van het CBR voor mensen die binnen 5 jaar 4 keer zijn gezakt voor hun reguliere rijexamen. Bij Rijschool All Drive kost een BNOR-examen {bnorPrice}."
 	},
 	{
 		"id": 10,

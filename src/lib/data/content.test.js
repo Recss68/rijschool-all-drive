@@ -6,6 +6,9 @@ import { services } from './services';
 import { infoPages } from './info';
 import { staticRoutes } from '$lib/i18n/routes.js';
 import instructorsNl from './instructors.nl.json';
+import packagesNl from './pricing-packages.nl.json';
+import packagesEn from './pricing-packages.en.json';
+import { business } from './business.js';
 import instructorsEn from './instructors.en.json';
 
 const MIN_UNIQUE_WORDS = 120;
@@ -90,5 +93,23 @@ describe('privacy', () => {
 		expect(instructorsNl).toHaveLength(1);
 		expect(instructorsEn).toHaveLength(1);
 		expect(instructorsNl[0].name).toBe('Sebahattin Yildiz');
+	});
+});
+
+describe('package prices', () => {
+	// Package price = lessons × hourly rate + CBR exam (when included) + theory and
+	// interim test for the Plus packages. Keeps prices right when a rate changes.
+	it.each([
+		['nl', packagesNl],
+		['en', packagesEn],
+	])('follow the rates in business.js (%s)', (_, packages) => {
+		const { lesson, exam, theory, interimExam } = business.prices;
+		for (const pkg of packages.filter((p) => typeof p.lessons === 'number')) {
+			const expected =
+				pkg.lessons * lesson +
+				(pkg.includesExam ? exam : 0) +
+				(pkg.group === 'extra' ? theory + interimExam : 0);
+			expect(pkg.price, pkg.id).toBe(expected);
+		}
 	});
 });

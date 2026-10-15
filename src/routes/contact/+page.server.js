@@ -1,6 +1,7 @@
 import { fail, redirect } from '@sveltejs/kit';
 import { localizeHref } from '$lib/paraglide/runtime';
 import { sendToSchool } from '$lib/server/mail.js';
+import { contactEmail } from '$lib/server/form-emails.js';
 import { verifyTurnstile, turnstileSecret } from '$lib/server/turnstile.js';
 
 export const actions = {
@@ -34,18 +35,7 @@ export const actions = {
 		if (!human) return fail(400, { error: 'captcha', values });
 
 		try {
-			await sendToSchool({
-				replyTo: email,
-				subject: `Contactformulier: ${onderwerp}`,
-				text: [
-					`Naam: ${naam}`,
-					`E-mail: ${email}`,
-					`Telefoon: ${telefoon}`,
-					`Onderwerp: ${onderwerp}`,
-					'',
-					bericht,
-				].join('\n'),
-			});
+			await sendToSchool({ replyTo: email, ...contactEmail(values) });
 		} catch (error) {
 			console.error('Failed to send contact form email:', error);
 			return fail(500, { error: 'send', values });
