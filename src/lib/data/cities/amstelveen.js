@@ -7,8 +7,8 @@ export const city = {
 	// Map position (city centre) and where the label sits next to the marker
 	coordinates: { lat: 52.3114, lon: 4.8701 },
 	municipality: 'Amstelveen', // CBS name, highlighted on the service-area map
-	mapLabel: 'left',
-	nearby: ['amsterdam', 'diemen', 'haarlem'],
+	mapLabel: 'right',
+	nearby: ['amsterdam', 'uithoorn', 'aalsmeer'],
 	cbrExamLocation: null, // TODO: verify the nearest CBR practical exam centre for licence B on cbr.nl
 	nl: {
 		metaTitle: 'Rijschool Amstelveen | Rijles automaat & schakel | All Drive',

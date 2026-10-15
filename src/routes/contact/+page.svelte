@@ -240,7 +240,7 @@
 					</g></svg
 				>
 				<h3>{m.contact_area3_title()}</h3>
-				<p>{m.contact_area3_desc()}</p>
+				<p>{m.contact_area3_desc({ places: placeList({ exclude: ['amsterdam'] }) })}</p>
 			</article>
 		</div>
 		<p class="sub-text">
@@ -252,6 +252,7 @@
 <FaqSection />
 
 <script>
+	import { placeList } from '$lib/utils/places';
 	import { breadcrumbs } from '$lib/seo/schema.js';
 	import { business } from '$lib/data/business.js';
 	import { ContactForm, WhatsappCard, FaqSection, Seo, CtaButtons } from '$lib';

@@ -185,7 +185,7 @@ export const terms = {
 			heading: '2. Proefles en inschrijving',
 			items: [
 				trialLesson.freeWithPackage &&
-					`De proefles is alleen gratis als je na de proefles een pakket afneemt. Neem je geen pakket af, dan betaal je voor de proefles de prijs van een losse les (${euro(prices.lesson)}).`,
+					`De proefles is alleen gratis als je na de proefles een pakket afneemt. Neem je geen pakket af, dan kost de proefles ${euro(prices.trialLesson)}.`,
 				trialLesson.minutes && `Een proefles duurt ${trialLesson.minutes} minuten.`,
 				'Na de proefles geeft de instructeur een lesadvies. Je beslist zelf of je daarna lessen of een pakket afneemt.',
 				'Je bent ingeschreven zodra we je aanmelding voor lessen of een pakket hebben bevestigd.',
@@ -203,7 +203,7 @@ export const terms = {
 			heading: '4. Prijzen en betaling',
 			items: [
 				'Alle prijzen op de website zijn in euro’s en inclusief btw.',
-				`Een losse les van 60 minuten kost ${euro(prices.lesson)}.`,
+				`Een losse les van 1,5 uur kost ${euro(prices.singleLesson)}. Alle actuele tarieven staan op de pagina Losse tarieven.`,
 				`Een praktijkexamen (CBR) kost ${euro(prices.exam)}. Een tussentijdse toets kost ${euro(prices.interimExam)}.`,
 				policies.installments === true &&
 					'Betalen in termijnen is mogelijk. De termijnen spreken we bij inschrijving af.',
@@ -268,7 +268,7 @@ export const terms = {
 			heading: '2. Trial lesson and enrolment',
 			items: [
 				trialLesson.freeWithPackage &&
-					`The trial lesson is only free if you buy a package afterwards. If you do not, you pay the price of a single lesson (${euro(prices.lesson)}) for the trial lesson.`,
+					`The trial lesson is only free if you buy a package afterwards. If you do not, the trial lesson costs ${euro(prices.trialLesson)}.`,
 				trialLesson.minutes && `A trial lesson lasts ${trialLesson.minutes} minutes.`,
 				'After the trial lesson, the instructor gives you lesson advice. You decide yourself whether to book lessons or a package.',
 				'You are enrolled once we have confirmed your registration for lessons or a package.',
@@ -286,7 +286,7 @@ export const terms = {
 			heading: '4. Prices and payment',
 			items: [
 				'All prices on the website are in euros and include VAT.',
-				`A single 60-minute lesson costs ${euro(prices.lesson)}.`,
+				`A single 1.5-hour lesson costs ${euro(prices.singleLesson)}. All current rates are on the Single rates page.`,
 				`A practical exam (CBR) costs ${euro(prices.exam)}. An interim test costs ${euro(prices.interimExam)}.`,
 				policies.installments === true &&
 					'Payment in instalments is possible. We agree on the instalments when you enrol.',

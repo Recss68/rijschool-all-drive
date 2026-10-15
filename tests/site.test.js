@@ -19,7 +19,7 @@ describe('Markdown content negotiation', () => {
 	it.each([
 		'/',
 		'/en/prices',
-		'/rijschool-haarlem',
+		'/rijschool-aalsmeer',
 		'/en/driving-school-amsterdam',
 		'/spoedcursus',
 	])('%s returns Markdown for Accept: text/markdown', async (path) => {
@@ -131,5 +131,20 @@ describe('redirects', () => {
 		const res = await get(from);
 		expect(res.status).toBe(301);
 		expect(new URL(res.headers.get('location'), BASE).pathname).toBe(to);
+	});
+});
+
+describe('service area', () => {
+	it('an inactive city (Haarlem) is off the site, the sitemap and llms.txt', async () => {
+		expect((await get('/rijschool-haarlem')).status).toBe(404);
+		const xml = await (await get('/sitemap.xml')).text();
+		expect(xml).not.toContain('haarlem');
+		const llms = await (await get('/llms.txt')).text();
+		expect(llms).not.toContain('rijschool-haarlem');
+	});
+
+	it('single rates page lists every rate', async () => {
+		const html = await (await get('/losse-tarieven')).text();
+		for (const price of ['50', '97,50', '290', '350', '375', '390']) expect(html).toContain(price);
 	});
 });

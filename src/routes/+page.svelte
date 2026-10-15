@@ -30,6 +30,16 @@
 	</div>
 </section>
 
+<section class="rates-container section">
+	<div class="section-inner">
+		<div class="section-heading">
+			<h2>{m.home_rates_heading()}</h2>
+			<p>{m.home_rates_text()}</p>
+		</div>
+		<SingleRates showLink />
+	</div>
+</section>
+
 <section class="service-area-container section">
 	<div class="section-inner">
 		<div class="section-heading">
@@ -106,6 +116,7 @@
 		Seo,
 		ServiceArea,
 		RelatedCards,
+		SingleRates,
 	} from '$lib';
 	import { m } from '$lib/paraglide/messages.js';
 
@@ -118,6 +129,7 @@
 <style>
 	.benefits-container,
 	.service-area-container,
+	.rates-container,
 	.price-cards-container,
 	.process-steps-container,
 	.reviews-container,

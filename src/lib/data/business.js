@@ -31,12 +31,23 @@ export const business = {
 	// Date the prices were last changed; shown on /prijzen and used as dateModified in schema
 	pricesUpdated: '2026-10-14',
 
+	// Every price lives here once; package prices use the hourly lesson rate
 	prices: {
-		lesson: 65, // per lesson of 60 minutes
+		lesson: 65, // per hour
+		singleLesson: 97.5, // a single lesson of 1.5 hours
+		trialLesson: 50, // free when a package is bought
+		interimExam: 290, // tussentijdse toets (TTT)
 		exam: 350, // CBR practical exam
-		interimExam: 250, // tussentijdse toets (TTT)
+		fearOfFailureExam: 375, // faalangstexamen
+		bnor: 390, // BNOR
 		theory: 69,
 	},
+
+	// Average lesson length in hours (text only, no price claims)
+	averageLessonHours: 1.5,
+
+	// Order of the single rates ("Losse tarieven") on the rates component and page
+	singleRates: ['trialLesson', 'singleLesson', 'interimExam', 'exam', 'fearOfFailureExam', 'bnor'],
 
 	// Average number of lessons students need (may be published)
 	averageLessons: { min: 20, max: 25 },

@@ -7,7 +7,7 @@ export const service = {
 	slug: 'rijangst-en-faalangstexamen',
 	order: 4,
 	serviceType: 'Rijles bij rijangst en begeleiding naar een faalangstexamen',
-	showPrice: false,
+	showPrice: true,
 	cta: 'trial',
 	nl: {
 		cardTitle: 'Rijangst & faalangst',
@@ -67,7 +67,7 @@ export const service = {
 			},
 			{
 				q: 'Wat kost een faalangstexamen?',
-				a: 'De kosten van het CBR kunnen veranderen. Vraag ons naar de actuele kosten en de mogelijkheden binnen je pakket.',
+				a: 'Een faalangstexamen kost bij Rijschool All Drive {fearExamPrice}. Vraag ons naar de mogelijkheden binnen je pakket.',
 			},
 		],
 	},
@@ -129,7 +129,7 @@ export const service = {
 			},
 			{
 				q: 'How much does a fear of failure exam cost?',
-				a: 'CBR costs may change. Ask us about the current costs and the options within your package.',
+				a: 'A fear of failure exam costs {fearExamPrice} at Rijschool All Drive. Ask us about the options within your package.',
 			},
 		],
 	},

@@ -162,3 +162,20 @@ export function pricesPage() {
 		about: { '@id': ORG_ID },
 	};
 }
+
+/** OfferCatalog of the single rates (/losse-tarieven), matching the visible table. */
+export function singleRatesCatalog(labels) {
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'OfferCatalog',
+		name: m.rates_heading(),
+		url: absoluteUrl('/losse-tarieven'),
+		itemListElement: business.singleRates.map((id) => ({
+			'@type': 'Offer',
+			name: labels[id],
+			price: business.prices[id],
+			priceCurrency: 'EUR',
+			seller: { '@id': ORG_ID },
+		})),
+	};
+}

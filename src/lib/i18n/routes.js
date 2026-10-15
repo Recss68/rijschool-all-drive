@@ -8,7 +8,8 @@
 /** @type {{ nl: string, en: string, updated: string, noindex?: boolean }[]} */
 export const staticRoutes = [
 	{ nl: '/', en: '/en', updated: '2026-10-14' },
-	{ nl: '/prijzen', en: '/en/prices', updated: '2026-10-14' },
+	{ nl: '/prijzen', en: '/en/prices', updated: '2026-10-15' },
+	{ nl: '/losse-tarieven', en: '/en/single-rates', updated: '2026-10-15' },
 	{ nl: '/over-ons', en: '/en/about-us', updated: '2026-10-14' },
 	{ nl: '/contact', en: '/en/contact', updated: '2026-10-14' },
 	{ nl: '/werkgebied', en: '/en/service-area', updated: '2026-10-14' },

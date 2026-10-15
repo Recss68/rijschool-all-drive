@@ -26,6 +26,13 @@
 	</div>
 </section>
 
+<section class="section rates" id="losse-tarieven">
+	<div class="section-inner">
+		<h2>{m.rates_heading()}</h2>
+		<SingleRates showLink />
+	</div>
+</section>
+
 <section class="section package-info">
 	<div class="section-inner">
 		<h2>{m.prijzen_package_info_heading()}</h2>
@@ -157,7 +164,15 @@
 <CtaSection isPricePage={true} />
 
 <script>
-	import { PricingCards, CtaSection, FaqSection, Seo, CtaButtons, PackageTable } from '$lib';
+	import {
+		PricingCards,
+		CtaSection,
+		FaqSection,
+		Seo,
+		CtaButtons,
+		PackageTable,
+		SingleRates,
+	} from '$lib';
 	import { breadcrumbs, faqPage, pricesPage } from '$lib/seo/schema.js';
 	import { faqItems as getFaqItems } from '$lib/utils/faq';
 	import { m } from '$lib/paraglide/messages.js';
@@ -169,12 +184,13 @@
 
 	// Only confirmed policies are listed (see $lib/data/business.js)
 	const priceTerms = [
+		m.lesson_duration_note(),
 		business.promoFreeInterimExam &&
 			m.prijzen_term_promo({ price: formatEuro(prices.interimExam) }),
 		m.prijzen_term_extra_lesson({ price: formatEuro(prices.lesson) }),
 		m.prijzen_term_exam({ price: formatEuro(prices.exam) }),
 		business.trialLesson.freeWithPackage &&
-			m.prijzen_term_trial({ price: formatEuro(prices.lesson) }),
+			m.prijzen_term_trial({ price: formatEuro(prices.trialLesson) }),
 		policies.installments === true && m.prijzen_term_installments_yes(),
 		policies.installments === false && m.prijzen_term_installments_no(),
 		policies.packageValidityMonths &&
@@ -186,6 +202,15 @@
 </script>
 
 <style>
+	.rates {
+		background-color: var(--c-section);
+		h2 {
+			text-align: center;
+			font-size: var(--fs-hl-lg);
+			margin-bottom: var(--space-8);
+		}
+	}
+
 	.compare {
 		.section-inner {
 			max-width: 860px;

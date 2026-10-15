@@ -24,7 +24,7 @@
 				<h1 id="my-text">{@html m.hero_title()}</h1>
 				<p>
 					{m.hero_subtitle()}
-					{m.hero_areas()}
+					{m.hero_areas_short({ count: cities.length - 1 })}
 				</p>
 				<!-- one clear primary action; WhatsApp as alternative, prices as a quiet link -->
 				<div class="hero-buttons">
@@ -33,9 +33,14 @@
 					>
 					<a href={business.whatsappUrl} class="btn-outline">{m.cta_whatsapp_short()}</a>
 				</div>
-				<a class="prices-link" href={localizeHref('/prijzen')}
-					>{m.hero_cta_prices()} <span aria-hidden="true">→</span></a
-				>
+				<p class="price-links">
+					<a href={localizeHref('/prijzen')}
+						>{m.hero_cta_prices()} <span aria-hidden="true">→</span></a
+					>
+					<a href={localizeHref('/losse-tarieven')}
+						>{m.hero_cta_rates()} <span aria-hidden="true">→</span></a
+					>
+				</p>
 				<TrialFacts />
 				<hr class="divider-blue" />
 				<ul>
@@ -80,6 +85,7 @@
 </section>
 
 <script>
+	import { cities } from '$lib/data/cities';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import { gsap } from 'gsap';
 	import { onMount, onDestroy } from 'svelte';
@@ -197,9 +203,14 @@
 		}
 	}
 
-	.prices-link {
+	.hero-section .price-links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--space-2) var(--space-6);
+		margin: var(--space-4) 0 0;
+	}
+	.hero-section .price-links a {
 		display: inline-block;
-		margin-top: var(--space-4);
 		padding-block: var(--space-2);
 		color: var(--c-white);
 		font-weight: var(--fw-semibold);

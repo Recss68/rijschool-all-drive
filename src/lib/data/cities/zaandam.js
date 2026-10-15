@@ -8,7 +8,7 @@ export const city = {
 	coordinates: { lat: 52.442, lon: 4.8292 },
 	municipality: 'Zaanstad', // CBS name, highlighted on the service-area map
 	mapLabel: 'top',
-	nearby: ['amsterdam', 'haarlem', 'diemen'],
+	nearby: ['oostzaan', 'landsmeer', 'amsterdam'],
 	cbrExamLocation: null, // TODO: verify the nearest CBR practical exam centre for licence B on cbr.nl
 	nl: {
 		metaTitle: 'Rijschool Zaandam | Rijles automaat & schakel | All Drive',

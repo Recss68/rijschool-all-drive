@@ -80,7 +80,11 @@
 					<span class="pin" aria-hidden="true"></span>
 					<span class="city">
 						<span class="city-name" translate="no">{point.name}</span>
-						<span class="count">{m.area_count({ count: point.areas.length })}</span>
+						<span class="count"
+							>{point.areas.length === 1
+								? m.area_count_one()
+								: m.area_count({ count: point.areas.length })}</span
+						>
 					</span>
 					<span class="arrow" aria-hidden="true">→</span>
 				</a>
@@ -105,7 +109,7 @@
 	} from '$lib/utils/map.js';
 
 	const bounds = mapBounds(cities);
-	const servedNames = new Set(cities.map((c) => c.municipality));
+	const servedNames = new Set(cities.map((c) => c.municipality).filter(Boolean));
 	// Served municipalities last, so their blue outline is drawn on top of the neighbours
 	const shapes = MUNICIPALITIES.map((f) => ({
 		name: f.name,
