@@ -74,6 +74,13 @@
 								<h5 class="includes-title">{m.pricing_includes_title()}</h5>
 
 								<ul class="includes">
+									{#if promoLine && pkg.group !== 'theorie'}
+										<li class="inc promo">
+											<img class="inc-icon" src="/icons/list-bullet.svg" alt="" />
+											<span>{promoLine}</span>
+										</li>
+									{/if}
+
 									{#if lessonsLine}
 										<li class="inc">
 											<img class="inc-icon" src="/icons/list-bullet.svg" alt="" />
@@ -139,6 +146,11 @@
 	import packagesEn from '$lib/data/pricing-packages.en.json';
 
 	const packages = pickByLocale({ nl: packagesNl, en: packagesEn });
+
+	// Temporary offer, shown on every driving package (not on theory)
+	const promoLine =
+		business.promoFreeInterimExam &&
+		m.recommended_feature_promo({ price: formatEuro(business.prices.interimExam) });
 
 	// Define the available tabs
 	const tabs = [
@@ -448,6 +460,11 @@
 		color: var(--c-text);
 		font-size: var(--fs-body-sm);
 		line-height: 1.35;
+	}
+
+	.inc.promo {
+		font-weight: var(--fw-semibold);
+		color: var(--c-navy-900);
 	}
 
 	.inc-icon {

@@ -172,7 +172,10 @@
 				gap: var(--space-3);
 				margin-bottom: var(--space-4);
 				svg {
+					/* fixed size: long feature lines must not squeeze the check mark */
+					flex: none;
 					width: var(--space-6);
+					height: var(--space-6);
 					color: var(--c-green);
 				}
 			}
