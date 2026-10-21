@@ -138,6 +138,8 @@
 			</div>
 		{/each}
 
+		<FoundViaField id="{uid}-gevonden" value={values.gevonden ?? ''} />
+
 		<div class="field">
 			<Turnstile bind:this={turnstile} />
 			{#if errors.captcha}
@@ -150,6 +152,7 @@
 			<label for="{uid}-website">Website</label>
 			<input id="{uid}-website" name="website" type="text" tabindex="-1" autocomplete="off" />
 		</div>
+		<LeadSourceField />
 
 		<p class="privacy">
 			{m.signup_privacy_prefix()}
@@ -182,6 +185,8 @@
 	import { MAIN_PACKAGE_IDS } from '$lib/seo/schema.js';
 	import { trackSignup } from '$lib/analytics.js';
 	import Turnstile from './Turnstile.svelte';
+	import LeadSourceField from './LeadSourceField.svelte';
+	import FoundViaField from './FoundViaField.svelte';
 	import packagesNl from '$lib/data/pricing-packages.nl.json';
 	import packagesEn from '$lib/data/pricing-packages.en.json';
 

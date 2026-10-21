@@ -22,6 +22,8 @@ export function validateSignup(data, placeSlugs, now = new Date()) {
 		adres: text(data, 'adres'),
 		telefoon: text(data, 'telefoon'),
 		email: text(data, 'email'),
+		// optional; unknown values are ignored when the email is built
+		gevonden: text(data, 'gevonden').slice(0, 40),
 	};
 	const errors = {};
 

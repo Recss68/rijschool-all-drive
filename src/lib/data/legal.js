@@ -4,7 +4,7 @@
 
 import { business } from './business.js';
 
-export const legalLastUpdated = '2026-10-15';
+export const legalLastUpdated = '2026-10-21';
 
 const { name, kvk, email, phoneDisplay, prices, policies, trialLesson } = business;
 
@@ -24,6 +24,7 @@ export const privacy = {
 			paragraphs: ['Wij verwerken alleen gegevens die je zelf aan ons geeft:'],
 			items: [
 				'Via het contactformulier: naam, e-mailadres, telefoonnummer, onderwerp en je bericht.',
+				'Als je een formulier verstuurt: je antwoord op de vraag “Hoe heb je ons gevonden?” (niet verplicht). Heb je cookies geaccepteerd, dan ook hoe je op onze website bent gekomen (bijvoorbeeld via Google, een AI-chat, social media of een link) en de eerste pagina die je bezocht. Zo weten we hoe mensen ons vinden.',
 				'Via WhatsApp, telefoon of e-mail: je naam, telefoonnummer of e-mailadres en de inhoud van het gesprek.',
 				'Bij inschrijving: je naam, adres, geboortedatum, telefoonnummer en e-mailadres, en de gegevens die nodig zijn om je examen bij het CBR aan te vragen.',
 				'Tijdens je opleiding: je lesplanning, je voortgang en je betalingen.',
@@ -66,6 +67,7 @@ export const privacy = {
 			paragraphs: [
 				'We meten op twee manieren hoe de website wordt gebruikt. Vercel Web Analytics werkt zonder cookies en zonder gegevens waarmee je persoonlijk herkenbaar bent.',
 				'Daarnaast gebruiken we Google Analytics, maar alleen als je daar in de cookiebanner toestemming voor geeft. Google plaatst dan analytische cookies (beginnend met _ga) en ontvangt gegevens over je bezoek, zoals de pagina’s die je bekijkt en een ingekort IP-adres. We delen geen gegevens voor advertenties. Je kunt je keuze altijd wijzigen via “Cookie-instellingen” onderaan elke pagina.',
+				'Accepteer je cookies, dan onthoudt je browser tijdens je bezoek ook hoe je op onze website bent gekomen: de website waar je vandaan kwam, campagnegegevens in de link en de eerste pagina die je bekeek. Dit staat in de sessieopslag van je browser, wordt alleen naar ons verstuurd als je zelf een formulier verstuurt en wordt gewist zodra je je browser sluit of je toestemming intrekt. Accepteer je geen cookies, dan houden we dit niet bij; in het formulier kun je dan zelf aangeven hoe je ons hebt gevonden.',
 				'De reviewwidget van Elfsight wordt van een externe server geladen. Elfsight kan daarbij eigen cookies plaatsen; zie hiervoor het privacybeleid van Elfsight.',
 			],
 		},
@@ -105,6 +107,7 @@ export const privacy = {
 			heading: '2. What data do we process?',
 			paragraphs: ['We only process data you give us yourself:'],
 			items: [
+				'When you submit a form: your answer to the question “How did you find us?” (optional). If you accepted cookies, also how you arrived at our website (for example via Google, an AI chat, social media or a link) and the first page you visited. This tells us how people find us.',
 				'Through the contact form: name, email address, phone number, subject and your message.',
 				'Through WhatsApp, phone or email: your name, phone number or email address and the content of the conversation.',
 				'When you enrol: your name, address, date of birth, phone number and email address, and the details needed to book your exam with the CBR.',
@@ -148,6 +151,7 @@ export const privacy = {
 			paragraphs: [
 				'We measure how the website is used in two ways. Vercel Web Analytics works without cookies and without data that identifies you personally.',
 				'We also use Google Analytics, but only if you agree in the cookie banner. Google then places analytics cookies (starting with _ga) and receives data about your visit, such as the pages you view and a shortened IP address. We do not share data for advertising. You can change your choice at any time via “Cookie settings” at the bottom of every page.',
+				'If you accept cookies, your browser also remembers during your visit how you arrived at our website: the website you came from, campaign details in the link and the first page you viewed. This is kept in your browser’s session storage, is only sent to us when you submit a form yourself, and is deleted when you close your browser or withdraw your consent. If you do not accept cookies, we do not keep track of this; you can tell us how you found us in the form instead.',
 				"The Elfsight review widget is loaded from an external server. Elfsight may place its own cookies; see Elfsight's privacy policy.",
 			],
 		},

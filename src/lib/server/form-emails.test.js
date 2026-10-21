@@ -1,5 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { signupEmail, contactEmail } from './form-emails.js';
+import {
+	signupEmail,
+	contactEmail,
+	signupConfirmationEmail,
+	contactConfirmationEmail,
+} from './form-emails.js';
 import { whatsappNumber, escapeHtml } from './email.js';
 
 const signup = {
@@ -26,6 +31,26 @@ describe('form emails', () => {
 		expect(mail.html).toContain('tel:0612345678');
 	});
 
+	it('school mails show where the lead came from, escaped', () => {
+		const source = { utm_source: 'instagram', utm_campaign: '<b>bio</b>', landing: '/' };
+		const mail = signupEmail(signup, 'Oostzaan', new Date('2026-10-15'), source);
+		expect(mail.subject).toMatch(/via Instagram$/);
+		expect(mail.text).toContain('Bron (automatisch): Instagram');
+		expect(mail.html).toContain('Herkomst');
+		expect(mail.html).toContain('&lt;b&gt;bio&lt;/b&gt;');
+		const contact = contactEmail(
+			{
+				naam: 'Jan',
+				email: 'j@example.com',
+				telefoon: '0612345678',
+				onderwerp: 'Vraag',
+				bericht: 'Hoi',
+			},
+			{}
+		);
+		expect(contact.subject).toBe('Contactformulier: Vraag (via onbekende bron)');
+	});
+
 	it('contact mail escapes the message', () => {
 		const mail = contactEmail({
 			naam: 'Jan',
@@ -36,6 +61,31 @@ describe('form emails', () => {
 		});
 		expect(mail.html).not.toContain('<script>alert');
 		expect(mail.html).toContain('https://wa.me/31687654321');
+	});
+
+	it('sign-up confirmation thanks the visitor and repeats only their choices', () => {
+		const mail = signupConfirmationEmail(signup);
+		expect(mail.subject).toBe('Bedankt voor je inschrijving bij Rijschool All Drive');
+		expect(mail.text).toContain('dat je kiest voor Rijschool All Drive');
+		expect(mail.text).toContain('Pakket in gedachten: Vol Gas (nog niet definitief)');
+		expect(mail.html).toContain('https://wa.me/31627824428');
+		// never echo free text from the form (name, address) to the given address
+		for (const typed of ['Sanne', 'onerror', 'Straatnaam', '06 12345678']) {
+			expect(mail.html).not.toContain(typed);
+			expect(mail.text).not.toContain(typed);
+		}
+	});
+
+	it('confirmations follow the visitor’s language', () => {
+		const signupEn = signupConfirmationEmail(signup, 'en');
+		expect(signupEn.subject).toBe('Thank you for signing up with Rijschool All Drive');
+		expect(signupEn.text).toContain('Automatic or manual: Manual');
+		expect(signupEn.html).toContain('<html lang="en">');
+		const contactEn = contactConfirmationEmail('en');
+		expect(contactEn.text).toContain('for choosing Rijschool All Drive');
+		expect(contactConfirmationEmail('nl').subject).toBe(
+			'Bedankt voor je bericht aan Rijschool All Drive'
+		);
 	});
 
 	it('normalises Dutch phone numbers for WhatsApp', () => {
