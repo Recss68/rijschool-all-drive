@@ -19,11 +19,9 @@
 				</ol>
 			</nav>
 			<div class="cta-card">
-				<h2>{cta === 'intensive' ? m.service_intensive_cta_heading() : m.info_cta_heading()}</h2>
-				<p>{cta === 'intensive' ? m.service_intensive_cta_text() : m.info_cta_text()}</p>
-				<a class="btn-secondary" href={business.whatsappUrl}
-					>{cta === 'intensive' ? m.cta_intensive() : m.cta_book_trial()}</a
-				>
+				<h2>{copy.heading}</h2>
+				<p>{copy.text}</p>
+				<a class="btn-secondary" href={business.whatsappUrl}>{copy.button}</a>
 				<a class="btn-primary" href="tel:{business.phone}">{m.cta_call_now()}</a>
 			</div>
 		</aside>
@@ -33,9 +31,12 @@
 <script>
 	import { m } from '$lib/paraglide/messages.js';
 	import { business } from '$lib/data/business.js';
+	import { ctaCopy } from '$lib/utils/cta-copy';
 
-	/** @type {{ toc: { id: string, label: string }[], cta?: 'trial' | 'intensive', children: import('svelte').Snippet }} */
+	/** @type {{ toc: { id: string, label: string }[], cta?: 'trial' | 'intensive' | 'refresher' | 'drivingTest', children: import('svelte').Snippet }} */
 	let { toc, cta = 'trial', children } = $props();
+
+	const copy = $derived(ctaCopy(cta));
 </script>
 
 <style>

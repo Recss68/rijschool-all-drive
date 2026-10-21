@@ -22,7 +22,7 @@
 	import { m } from '$lib/paraglide/messages.js';
 	import CtaButtons from '$lib/components/ui/CtaButtons.svelte';
 
-	/** @type {{ trail: { label: string, href?: string }[], title: string, lead: string, meta: string, cta?: 'trial' | 'intensive' }} */
+	/** @type {{ trail: { label: string, href?: string }[], title: string, lead: string, meta: string, cta?: 'trial' | 'intensive' | 'refresher' | 'drivingTest' }} */
 	let { trail, title, lead, meta, cta = 'trial' } = $props();
 </script>
 

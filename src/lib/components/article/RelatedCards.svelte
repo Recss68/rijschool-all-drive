@@ -1,6 +1,9 @@
-<section class="section related" class:white={tone === 'white'}>
+<section class="section related" class:white={tone === 'white'} style:--card-min={cardMin}>
 	<div class="section-inner">
 		<h2>{heading}</h2>
+		{#if text}
+			<p class="intro">{text}</p>
+		{/if}
 		<ul role="list">
 			{#each items as item (item.href)}
 				<li>
@@ -21,8 +24,8 @@
 <script>
 	import { localizeHref } from '$lib/paraglide/runtime';
 
-	/** @type {{ heading: string, cta: string, items: { href: string, title: string, text: string }[], tone?: 'section' | 'white' }} */
-	let { heading, cta, items, tone = 'section' } = $props();
+	/** @type {{ heading: string, text?: string, cta: string, items: { href: string, title: string, text: string }[], tone?: 'section' | 'white', cardMin?: string }} */
+	let { heading, text = '', cta, items, tone = 'section', cardMin } = $props();
 </script>
 
 <style>
@@ -36,13 +39,20 @@
 			font-size: var(--fs-hl-lg);
 			margin-bottom: var(--space-8);
 		}
+		.intro {
+			max-width: 680px;
+			margin: calc(-1 * var(--space-4)) auto var(--space-8);
+			text-align: center;
+			color: var(--c-text-light);
+			text-wrap: pretty;
+		}
 		ul {
 			list-style: none;
 			padding: 0;
 			margin: 0;
 			display: grid;
 			gap: var(--space-5);
-			grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+			grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--card-min, 210px)), 1fr));
 		}
 	}
 

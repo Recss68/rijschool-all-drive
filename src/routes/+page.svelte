@@ -57,9 +57,11 @@
 
 <RelatedCards
 	heading={m.home_services_heading()}
+	text={m.home_services_text()}
 	cta={m.home_services_cta()}
 	items={serviceCards}
 	tone="white"
+	cardMin="260px"
 />
 
 <section class="process-steps-container section">

@@ -7,13 +7,13 @@
 // `updated` = last real content change (sitemap lastmod); bump it when you edit a page.
 /** @type {{ nl: string, en: string, updated: string, noindex?: boolean }[]} */
 export const staticRoutes = [
-	{ nl: '/', en: '/en', updated: '2026-10-14' },
+	{ nl: '/', en: '/en', updated: '2026-10-21' },
 	{ nl: '/prijzen', en: '/en/prices', updated: '2026-10-15' },
 	{ nl: '/losse-tarieven', en: '/en/single-rates', updated: '2026-10-15' },
 	{ nl: '/over-ons', en: '/en/about-us', updated: '2026-10-14' },
 	{ nl: '/contact', en: '/en/contact', updated: '2026-10-14' },
 	{ nl: '/werkgebied', en: '/en/service-area', updated: '2026-10-14' },
-	{ nl: '/privacy', en: '/en/privacy', updated: '2026-10-14' },
+	{ nl: '/privacy', en: '/en/privacy', updated: '2026-10-21' },
 	{ nl: '/algemene-voorwaarden', en: '/en/terms-and-conditions', updated: '2026-10-14' },
 	// sign-up form: reachable, but not indexed and not in the sitemap
 	{ nl: '/aanmelden', en: '/en/sign-up', updated: '2026-10-14', noindex: true },
@@ -29,6 +29,8 @@ export const staticRoutes = [
 		updated: '2026-10-14',
 	},
 	{ nl: '/spoedcursus', en: '/en/intensive-driving-course', updated: '2026-10-14' },
+	{ nl: '/opfriscursus', en: '/en/refresher-driving-course', updated: '2026-10-21' },
+	{ nl: '/rijtest', en: '/en/driving-assessment', updated: '2026-10-21' },
 	// information
 	{
 		nl: '/rijbewijs-aanvragen',
