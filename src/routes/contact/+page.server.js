@@ -4,6 +4,7 @@ import { sendToSchool, sendConfirmation } from '$lib/server/mail.js';
 import { contactEmail, contactConfirmationEmail } from '$lib/server/form-emails.js';
 import { verifyTurnstile, turnstileSecret } from '$lib/server/turnstile.js';
 import { parseLeadSource } from '$lib/server/lead-source.js';
+import { notifyTeam, contactNotification } from '$lib/server/notify.js';
 
 export const actions = {
 	default: async ({ request, getClientAddress }) => {
@@ -48,8 +49,12 @@ export const actions = {
 			return fail(500, { error: 'send', values });
 		}
 
-		// Automatic confirmation for the visitor; a failure here never fails the form
-		await sendConfirmation({ to: email, ...contactConfirmationEmail(getLocale()) });
+		// Confirmation for the visitor and a phone notification for the school, side by side;
+		// neither can fail the form (the school's email above is the record)
+		await Promise.all([
+			sendConfirmation({ to: email, ...contactConfirmationEmail(getLocale()) }),
+			notifyTeam(contactNotification(values, source)),
+		]);
 
 		// The thank-you page is the conversion URL for Google Ads
 		redirect(303, localizeHref('/bedankt?form=contact'));

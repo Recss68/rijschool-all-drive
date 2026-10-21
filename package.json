@@ -11,7 +11,9 @@
 		"lint": "prettier --check \"**/*.{js,ts,tsx,css,svelte,json,md,yml,yaml}\" && eslint .",
 		"format": "prettier --write \"**/*.{js,ts,tsx,css,svelte,json,md,yml,yaml}\"",
 		"format:check": "prettier --check \"**/*.{js,ts,tsx,css,svelte,json,md,yml,yaml}\"",
-		"test": "vitest run"
+		"test": "vitest run",
+		"telegram:chat-id": "node scripts/telegram.mjs chat-id",
+		"telegram:test": "node scripts/telegram.mjs test"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^2.0.1",
