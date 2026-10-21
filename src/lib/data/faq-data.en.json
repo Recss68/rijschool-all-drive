@@ -65,6 +65,16 @@
 		"answer": "Yes. In an intensive course you take many lessons in a short time. The price depends on your situation; request one via WhatsApp or call us."
 	},
 	{
+		"id": 15,
+		"question": "Do you offer a refresher course?",
+		"answer": "Yes. Do you already have a licence but haven’t driven in years, or no longer dare to drive after an accident? A refresher course gets you driving confidently again. You pay per lesson: a 60-minute lesson costs {lessonPrice}."
+	},
+	{
+		"id": 16,
+		"question": "Can I take a driving assessment with you to renew my licence?",
+		"answer": "Yes. If you need to renew your licence, for example from age 75 or after an accident, you can take a driving assessment with us and get honest advice. If you have to take a test or investigation with the CBR, we prepare you for it. The official assessment is always done by the CBR."
+	},
+	{
 		"id": 12,
 		"question": "Do you teach in English?",
 		"answer": "Yes. We teach in English and in Dutch."

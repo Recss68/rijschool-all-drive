@@ -65,12 +65,15 @@
 		>
 	</div>
 
+	<FoundViaField id="contact-gevonden" value={form?.values?.gevonden ?? ''} />
+
 	<!-- spam protection: Cloudflare Turnstile + a honeypot field that people never see -->
 	<Turnstile bind:this={turnstile} />
 	<div class="hp" aria-hidden="true">
 		<label for="contact-website">Website</label>
 		<input id="contact-website" name="website" type="text" tabindex="-1" autocomplete="off" />
 	</div>
+	<LeadSourceField />
 
 	<div>
 		<button class="btn-secondary" type="submit" disabled={submitting}>
@@ -98,6 +101,8 @@
 	import { m } from '$lib/paraglide/messages.js';
 	import { trackFormSubmit } from '$lib/analytics.js';
 	import Turnstile from './Turnstile.svelte';
+	import LeadSourceField from './LeadSourceField.svelte';
+	import FoundViaField from './FoundViaField.svelte';
 
 	let { form } = $props();
 

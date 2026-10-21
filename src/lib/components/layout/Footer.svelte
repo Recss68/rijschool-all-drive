@@ -46,8 +46,12 @@
 		<div class="quick-menu-info">
 			<h2>{m.footer_info_heading()}</h2>
 			<ul>
-				{#each infoPages as page (page.slug)}
-					<li><a href={localizeHref(`/${page.slug}`)}>{pickByLocale(page).title}</a></li>
+				{#each [...infoPages, ...footerServices] as page (page.slug)}
+					<li>
+						<a href={localizeHref(`/${page.slug}`)}
+							>{pickByLocale(page).linkTitle ?? pickByLocale(page).title}</a
+						>
+					</li>
 				{/each}
 			</ul>
 		</div>
@@ -144,7 +148,11 @@
 	import { openConsentSettings } from '$lib/consent.svelte.js';
 	import { cities } from '$lib/data/cities';
 	import { infoPages } from '$lib/data/info';
+	import { getService } from '$lib/data/services';
 	import { pickByLocale } from '$lib/utils/get-localized-data';
+
+	// Services for people who already have a licence; listed with the information pages
+	const footerServices = ['opfriscursus', 'rijtest'].map(getService);
 
 	const { social } = business;
 </script>

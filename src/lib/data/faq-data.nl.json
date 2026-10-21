@@ -65,6 +65,16 @@
 		"answer": "Ja. Met een spoedcursus volg je veel lessen in korte tijd. De prijs hangt af van je situatie; vraag een spoedcursus aan via WhatsApp of bel ons."
 	},
 	{
+		"id": 15,
+		"question": "Geven jullie ook een opfriscursus?",
+		"answer": "Ja. Heb je al een rijbewijs, maar rijd je al jaren niet meer of durf je niet meer sinds een ongeval? Met een opfriscursus rijd je weer zelfverzekerd. Je betaalt per les: een les van 60 minuten kost {lessonPrice}."
+	},
+	{
+		"id": 16,
+		"question": "Kan ik bij jullie een rijtest doen om mijn rijbewijs te verlengen?",
+		"answer": "Ja. Moet je je rijbewijs verlengen, bijvoorbeeld vanaf 75 jaar of na een ongeval, dan kun je bij ons een rijtest doen en krijg je eerlijk advies. Moet je een rijtest of onderzoek bij het CBR doen, dan bereiden we je daarop voor. De officiële beoordeling doet altijd het CBR."
+	},
+	{
 		"id": 12,
 		"question": "Geven jullie ook les in het Engels?",
 		"answer": "Ja. We geven les in het Nederlands en in het Engels."

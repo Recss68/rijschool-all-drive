@@ -2,8 +2,8 @@
 //
 // Each file exports `service` = {
 //   slug, order, serviceType, showPrice (false = never show or mark up a price, e.g. spoedcursus),
-//   cta: 'trial' | 'intensive',
-//   nl: { cardTitle, summary (one short sentence for cards), title, metaTitle, metaDescription, answer, articles[{ heading, variant?, paragraphs?, items?, links? }],
+//   cta: 'trial' | 'intensive' | 'refresher' | 'drivingTest' (all but 'trial' lead to WhatsApp, copy in $lib/utils/cta-copy),
+//   nl: { cardTitle, linkTitle? (short footer link text, defaults to title), summary (one short sentence for cards), title, metaTitle, metaDescription, answer, articles[{ heading, variant?, paragraphs?, items?, links? }],
 //         faq[{ q, a }] },
 //   en: { ...same keys }
 // }

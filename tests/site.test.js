@@ -22,6 +22,8 @@ describe('Markdown content negotiation', () => {
 		'/rijschool-aalsmeer',
 		'/en/driving-school-amsterdam',
 		'/spoedcursus',
+		'/opfriscursus',
+		'/en/driving-assessment',
 	])('%s returns Markdown for Accept: text/markdown', async (path) => {
 		const res = await get(path, { accept: 'text/markdown' });
 		expect(res.status).toBe(200);
@@ -141,6 +143,22 @@ describe('service area', () => {
 		expect(xml).not.toContain('haarlem');
 		const llms = await (await get('/llms.txt')).text();
 		expect(llms).not.toContain('rijschool-haarlem');
+	});
+
+	it('the homepage links to the refresher course and driving assessment', async () => {
+		const html = await (await get('/')).text();
+		expect(html).toContain('href="/opfriscursus"');
+		expect(html).toContain('href="/rijtest"');
+		const en = await (await get('/en')).text();
+		expect(en).toContain('href="/en/refresher-driving-course"');
+		expect(en).toContain('href="/en/driving-assessment"');
+	});
+
+	it('the footer information column lists the refresher course and driving assessment', async () => {
+		const html = await (await get('/prijzen')).text();
+		const info = html.slice(html.indexOf('quick-menu-info'));
+		expect(info).toContain('href="/opfriscursus"');
+		expect(info).toContain('href="/rijtest"');
 	});
 
 	it('single rates page lists every rate', async () => {

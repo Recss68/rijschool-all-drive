@@ -66,10 +66,16 @@ describe('services and information pages', () => {
 		}
 	);
 
-	it('never shows a price for the intensive course', () => {
-		const intensive = services.find((s) => s.slug === 'spoedcursus');
-		expect(intensive.showPrice).toBe(false);
-		expect(JSON.stringify(intensive)).not.toMatch(/€|\{(lesson|from|exam)Price\}/);
+	it.each(['spoedcursus', 'rijtest'])('never shows a price for /%s (price on request)', (slug) => {
+		const service = services.find((s) => s.slug === slug);
+		expect(service.showPrice).toBe(false);
+		expect(JSON.stringify(service)).not.toMatch(/€|\{(lesson|from|exam)Price\}/);
+	});
+
+	it('the rijtest page never presents itself as the official CBR assessment', () => {
+		const { nl, en } = services.find((s) => s.slug === 'rijtest');
+		expect(JSON.stringify(nl)).toContain('geen officieel examen');
+		expect(JSON.stringify(en)).toContain('not an official exam');
 	});
 });
 

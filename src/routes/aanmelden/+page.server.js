@@ -1,10 +1,12 @@
 import { fail, redirect } from '@sveltejs/kit';
-import { localizeHref } from '$lib/paraglide/runtime';
+import { localizeHref, getLocale } from '$lib/paraglide/runtime';
 import { cities } from '$lib/data/cities';
-import { sendToSchool } from '$lib/server/mail.js';
+import { sendToSchool, sendConfirmation } from '$lib/server/mail.js';
 import { verifyTurnstile, turnstileSecret } from '$lib/server/turnstile.js';
+import { parseLeadSource } from '$lib/server/lead-source.js';
+import { notifyTeam, signupNotification } from '$lib/server/notify.js';
 import { validateSignup } from '$lib/server/signup.js';
-import { signupEmail } from '$lib/server/form-emails.js';
+import { signupEmail, signupConfirmationEmail } from '$lib/server/form-emails.js';
 
 export function load({ url }) {
 	return { pakket: url.searchParams.get('pakket') };
@@ -36,12 +38,24 @@ export const actions = {
 				? values.plaats_anders
 				: cities.find((c) => c.slug === values.plaats)?.name;
 
+		const source = parseLeadSource(data.get('herkomst'));
+
 		try {
-			await sendToSchool({ replyTo: values.email, ...signupEmail(values, place) });
+			await sendToSchool({
+				replyTo: values.email,
+				...signupEmail(values, place, new Date(), source),
+			});
 		} catch (error) {
 			console.error('Failed to send sign-up email:', error);
 			return fail(500, { values, errors: { form: 'send' } });
 		}
+
+		// Confirmation for the visitor and a phone notification for the school, side by side;
+		// neither can fail the form (the school's email above is the record)
+		await Promise.all([
+			sendConfirmation({ to: values.email, ...signupConfirmationEmail(values, getLocale()) }),
+			notifyTeam(signupNotification(values, place, source)),
+		]);
 
 		// The thank-you page is the conversion URL for Google Ads
 		redirect(303, thanksUrl());
