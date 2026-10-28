@@ -25,7 +25,7 @@
 	]}
 	title={h1}
 	lead={answer}
-	meta="{business.name} · {m.city_fact_types()}"
+	meta="{business.name} · {cityTypesFact(city)}"
 />
 
 <ArticleLayout toc={sections.map((s) => ({ id: s.id, label: s.heading }))}>
@@ -75,7 +75,7 @@
 	<section class="block" id={sectionId('services')}>
 		<h2>{m.city_services_heading()}</h2>
 		<ul class="check-list inline-links">
-			{#each services as item (item.slug)}
+			{#each cityServices as item (item.slug)}
 				<li><a href={localizeHref(`/${item.slug}`)}>{pickByLocale(item).title}</a></li>
 			{/each}
 		</ul>
@@ -115,12 +115,13 @@
 	import { m } from '$lib/paraglide/messages.js';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import { business } from '$lib/data/business.js';
-	import { getCity } from '$lib/data/cities';
+	import { getCity, offersAutomatic } from '$lib/data/cities';
 	import { services } from '$lib/data/services';
 	import { pickByLocale } from '$lib/utils/get-localized-data';
 	import { formatEuro } from '$lib/utils/format-euro';
 	import { fillPlaceholders, starterPackage } from '$lib/utils/placeholders';
 	import { slugify } from '$lib/utils/text';
+	import { cityAnswer, cityTypesFact } from '$lib/utils/city-copy';
 	import { service as schemaService, breadcrumbs, faqPage } from '$lib/seo/schema.js';
 
 	let { data } = $props();
@@ -131,15 +132,7 @@
 	const starter = starterPackage();
 
 	// Direct, factual answer for search engines and AI assistants
-	const answer = $derived(
-		m.city_answer({
-			city: city.name,
-			price: formatEuro(starter.price),
-			count: starter.lessons,
-			min: business.averageLessons.min,
-			max: business.averageLessons.max,
-		})
-	);
+	const answer = $derived(cityAnswer(city));
 
 	const headings = $derived({
 		intro: m.city_facts_heading(),
@@ -157,7 +150,7 @@
 	);
 
 	const facts = $derived([
-		m.city_fact_types(),
+		cityTypesFact(city),
 		m.city_fact_languages(),
 		m.city_fact_lesson({ price: formatEuro(business.prices.lesson) }),
 		m.city_fact_packages({ price: formatEuro(starter.price), count: starter.lessons }),
@@ -167,6 +160,11 @@
 		m.city_fact_on_request(),
 		...(business.trialLesson.freeWithPackage ? [m.trial_fact_free()] : []),
 	]);
+
+	// no link to the automatic lessons page where none are given
+	const cityServices = $derived(
+		services.filter((s) => s.slug !== 'automaat-rijles' || offersAutomatic(city))
+	);
 
 	const faq = $derived(content.faq.map(({ q, a }) => ({ q, a: fillPlaceholders(a) })));
 

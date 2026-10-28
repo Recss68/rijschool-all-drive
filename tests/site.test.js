@@ -161,6 +161,20 @@ describe('service area', () => {
 		expect(info).toContain('href="/rijtest"');
 	});
 
+	it('Zaandam is presented as manual only and left off the automatic lessons page', async () => {
+		const html = await (await get('/rijschool-zaandam')).text();
+		expect(html).toContain('Alleen schakellessen');
+		expect(html).not.toContain('href="/automaat-rijles"');
+		const md = await (await get('/rijschool-zaandam', { accept: 'text/markdown' })).text();
+		expect(md).toContain('alleen in een schakelauto');
+		const automatic = await (await get('/automaat-rijles')).text();
+		// the city cards (the footer still links every city)
+		const cards = automatic.slice(automatic.indexOf('class="section related'));
+		expect(cards.slice(0, cards.indexOf('</section>'))).not.toContain('href="/rijschool-zaandam"');
+		expect(cards).toContain('href="/rijschool-diemen"');
+		expect(automatic).not.toContain('"name":"Zaandam"');
+	});
+
 	it('single rates page lists every rate', async () => {
 		const html = await (await get('/losse-tarieven')).text();
 		for (const price of ['50', '97,50', '290', '350', '375', '390']) expect(html).toContain(price);

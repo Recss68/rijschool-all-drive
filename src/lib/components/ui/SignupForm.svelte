@@ -24,20 +24,29 @@
 			<legend>{m.signup_transmission_label()}</legend>
 			<div class="options three">
 				{#each transmissions as option (option.value)}
-					<label class="option">
+					{@const unavailable = option.value === 'automaat' && manualOnly}
+					<label class="option" class:unavailable>
 						<input
 							type="radio"
 							name="transmissie"
 							value={option.value}
 							required
-							checked={values.transmissie === option.value}
+							disabled={unavailable}
+							bind:group={transmission}
 						/>
-						<span>{option.label}</span>
+						<span>
+							{option.label}
+							{#if unavailable}<small>{m.signup_not_in_city({ city: placeCity.name })}</small>{/if}
+						</span>
 					</label>
 				{/each}
 			</div>
 			{#if errors.transmissie}
-				<p class="field-error" id="err-transmissie">{m.signup_error_choice()}</p>
+				<p class="field-error" id="err-transmissie">
+					{errors.transmissie === 'unavailable' && placeCity
+						? m.signup_error_automatic_unavailable({ city: placeCity.name })
+						: m.signup_error_choice()}
+				</p>
 			{/if}
 		</fieldset>
 
@@ -60,6 +69,9 @@
 			{#if errors.plaats}
 				<p class="field-error" id="err-plaats">{m.signup_error_choice()}</p>
 			{/if}
+			<p class="notice" role="status">
+				{#if manualOnly}{m.signup_manual_only_note({ city: placeCity.name })}{/if}
+			</p>
 		</div>
 
 		{#if place === 'anders'}
@@ -179,7 +191,7 @@
 	import { goto } from '$app/navigation';
 	import { m } from '$lib/paraglide/messages.js';
 	import { localizeHref } from '$lib/paraglide/runtime';
-	import { cities } from '$lib/data/cities';
+	import { cities, offersAutomatic } from '$lib/data/cities';
 	import { pickByLocale } from '$lib/utils/get-localized-data';
 	import { formatEuro } from '$lib/utils/format-euro';
 	import { MAIN_PACKAGE_IDS } from '$lib/seo/schema.js';
@@ -214,6 +226,15 @@
 	let values = $state(start.form?.values ?? {});
 	let turnstile;
 	let place = $state(start.form?.values?.plaats ?? '');
+	let transmission = $state(start.form?.values?.transmissie ?? '');
+
+	// Some cities only have manual lessons (city data `transmissions`): automatic is then
+	// disabled, and a choice for automatic made before picking the city is cleared
+	const placeCity = $derived(cities.find((city) => city.slug === place));
+	const manualOnly = $derived(Boolean(placeCity) && !offersAutomatic(placeCity));
+	$effect(() => {
+		if (manualOnly && untrack(() => transmission) === 'automaat') transmission = '';
+	});
 
 	onMount(() => (enhanced = true));
 
@@ -335,6 +356,7 @@
 				turnstile?.reset();
 				errors = result.data.errors ?? {};
 				values = result.data.values ?? values;
+				transmission = values.transmissie ?? '';
 				if (Object.keys(errors).some((k) => STEP_ONE.includes(k))) step = 1;
 				await tick();
 				formEl?.querySelector('[aria-invalid="true"], .form-error')?.focus?.();
@@ -403,6 +425,28 @@
 	}
 
 	/* the whole card is the hit target for its radio */
+	.notice:empty {
+		display: none;
+	}
+	.notice {
+		margin: 0;
+		padding: var(--space-3) var(--space-4);
+		border-left: 4px solid var(--c-yellow);
+		border-radius: var(--radius-softest);
+		background-color: #fffbeb;
+		color: var(--c-navy-900);
+		font-size: var(--fs-label-s-mobile);
+		font-weight: var(--fw-semibold);
+	}
+
+	.option.unavailable {
+		cursor: not-allowed;
+		opacity: 0.55;
+		&:hover {
+			border-color: var(--c-border-gray);
+		}
+	}
+
 	.option {
 		position: relative;
 		display: flex;

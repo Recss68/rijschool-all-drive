@@ -11,6 +11,7 @@ import { pickByLocale } from '$lib/utils/get-localized-data';
 import { formatEuro } from '$lib/utils/format-euro';
 import { fillPlaceholders, starterPackage } from '$lib/utils/placeholders';
 import { faqItems } from '$lib/utils/faq';
+import { cityAnswer } from '$lib/utils/city-copy';
 import { absoluteUrl } from '$lib/seo/url.js';
 import packagesNl from '$lib/data/pricing-packages.nl.json';
 import packagesEn from '$lib/data/pricing-packages.en.json';
@@ -238,16 +239,9 @@ function legal(title, articles) {
 function city(slug) {
 	const c = getCity(slug);
 	const content = pickByLocale(c);
-	const starter = starterPackage();
 	return [
 		`# ${content.h1 ?? m.city_hero_title({ city: c.name })}`,
-		m.city_answer({
-			city: c.name,
-			price: formatEuro(starter.price),
-			count: starter.lessons,
-			min: business.averageLessons.min,
-			max: business.averageLessons.max,
-		}),
+		cityAnswer(c),
 		content.intro,
 		c.slug !== 'amsterdam' && m.city_no_branch({ city: c.name }),
 		content.districts &&

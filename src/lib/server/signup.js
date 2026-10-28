@@ -9,9 +9,10 @@ const text = (data, name) => String(data.get(name) ?? '').trim();
  * @param {FormData} data
  * @param {string[]} placeSlugs city slugs that can be chosen, plus 'anders'
  * @param {Date} [now] for tests
+ * @param {string[]} [manualOnly] city slugs where no automatic lessons are given
  * @returns {{ values: Record<string, string>, errors: Record<string, string> }}
  */
-export function validateSignup(data, placeSlugs, now = new Date()) {
+export function validateSignup(data, placeSlugs, now = new Date(), manualOnly = []) {
 	const values = {
 		transmissie: text(data, 'transmissie'),
 		plaats: text(data, 'plaats'),
@@ -28,6 +29,8 @@ export function validateSignup(data, placeSlugs, now = new Date()) {
 	const errors = {};
 
 	if (!TRANSMISSIONS.includes(values.transmissie)) errors.transmissie = 'required';
+	else if (values.transmissie === 'automaat' && manualOnly.includes(values.plaats))
+		errors.transmissie = 'unavailable';
 	if (![...placeSlugs, 'anders'].includes(values.plaats)) errors.plaats = 'required';
 	else if (values.plaats === 'anders' && values.plaats_anders.length < 2)
 		errors.plaats_anders = 'required';

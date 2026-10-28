@@ -1,7 +1,7 @@
 // /llms.txt (https://llmstxt.org): H1, blockquote summary, then sections with links.
 // Cities, services, info pages and packages come from the same data as the site.
 import { business } from '$lib/data/business.js';
-import { cities } from '$lib/data/cities';
+import { cities, offersAutomatic } from '$lib/data/cities';
 import { services } from '$lib/data/services';
 import { infoPages } from '$lib/data/info';
 import { formatEuro } from '$lib/utils/format-euro';
@@ -84,7 +84,10 @@ ${services.map((s) => both(s.nl.title, `/${s.slug}`, s.showPrice ? '' : 'price o
 
 - Motorcycle (A), trailer (BE), truck (C) or bus (D) licences: not offered. Only car licence B, manual and automatic.
 - Locations outside Amsterdam and the surrounding area listed above.
-
+${cities
+	.filter((c) => !offersAutomatic(c))
+	.map((c) => `- Automatic lessons in ${c.name}: only manual (schakel) lessons are given there.\n`)
+	.join('')}
 ## How an agent can use this
 
 - Request a trial lesson or package via WhatsApp: ${business.whatsappUrl}

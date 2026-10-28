@@ -121,9 +121,18 @@ export function breadcrumbs(items) {
 }
 
 /**
- * @param {{ name: string, description: string, path: string, serviceType?: string, cityData?: any, offers?: any }} opts
+ * @param {{ name: string, description: string, path: string, serviceType?: string, cityData?: any, areaCities?: any[], offers?: any }} opts
+ *   areaCities: the cities where this service is given (default: all)
  */
-export function service({ name, description, path, serviceType, cityData, offers }) {
+export function service({
+	name,
+	description,
+	path,
+	serviceType,
+	cityData,
+	areaCities = cities,
+	offers,
+}) {
 	return {
 		'@context': 'https://schema.org',
 		'@type': 'Service',
@@ -132,7 +141,7 @@ export function service({ name, description, path, serviceType, cityData, offers
 		url: absoluteUrl(path),
 		...(serviceType && { serviceType }),
 		provider: { '@id': ORG_ID },
-		areaServed: cityData ? city(cityData) : cities.map(city),
+		areaServed: cityData ? city(cityData) : areaCities.map(city),
 		availableLanguage: business.lessonLanguages,
 		...(offers && { offers }),
 	};

@@ -25,6 +25,19 @@ describe('validateSignup', () => {
 		expect(values.naam).toBe('Jan Jansen');
 	});
 
+	it('refuses automatic lessons in a manual-only city, but accepts manual there', () => {
+		const zaandam = { ...valid, plaats: 'zaandam' };
+		const cities = ['amsterdam', 'zaandam'];
+		const now = new Date('2026-10-28');
+		expect(validateSignup(form(zaandam), cities, now, ['zaandam']).errors).toEqual({
+			transmissie: 'unavailable',
+		});
+		for (const transmissie of ['schakel', 'onbekend'])
+			expect(
+				validateSignup(form({ ...zaandam, transmissie }), cities, now, ['zaandam']).errors
+			).toEqual({});
+	});
+
 	it('defaults the package to "not sure yet"', () => {
 		const { values, errors } = validateSignup(form({ ...valid, pakket: '' }), places);
 		expect(errors).toEqual({});
