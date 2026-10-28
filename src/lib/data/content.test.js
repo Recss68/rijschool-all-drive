@@ -119,3 +119,11 @@ describe('package prices', () => {
 		}
 	});
 });
+
+describe('lesson types per city', () => {
+	it('Zaandam only offers manual lessons, every other city both', async () => {
+		const { cities, manualOnlySlugs, offersAutomatic } = await import('./cities');
+		expect(manualOnlySlugs).toEqual(['zaandam']);
+		for (const city of cities) expect(offersAutomatic(city)).toBe(city.slug !== 'zaandam');
+	});
+});

@@ -8,6 +8,7 @@
 			description: answer,
 			path: `/${service.slug}`,
 			serviceType: service.serviceType,
+			areaCities: serviceCities,
 		}),
 		breadcrumbs([{ name: content.title, path: `/${service.slug}` }]),
 		faqPage(faq),
@@ -49,7 +50,7 @@
 	import { m } from '$lib/paraglide/messages.js';
 	import { business } from '$lib/data/business.js';
 	import { getService } from '$lib/data/services';
-	import { cities } from '$lib/data/cities';
+	import { cities, offersAutomatic } from '$lib/data/cities';
 	import { pickByLocale } from '$lib/utils/get-localized-data';
 	import { fillPlaceholders } from '$lib/utils/placeholders';
 	import { slugify } from '$lib/utils/text';
@@ -70,8 +71,12 @@
 		heading: m.service_faq_heading(),
 	});
 
+	// the automatic lessons page only lists cities where automatic lessons are given
+	const serviceCities = $derived(
+		cities.filter((city) => service.slug !== 'automaat-rijles' || offersAutomatic(city))
+	);
 	const cityCards = $derived(
-		cities.map((city) => ({
+		serviceCities.map((city) => ({
 			href: `/rijschool-${city.slug}`,
 			title: pickByLocale(city).h1 ?? m.city_hero_title({ city: city.name }),
 			text: pickByLocale(city).metaDescription,

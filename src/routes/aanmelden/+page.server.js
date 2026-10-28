@@ -1,6 +1,6 @@
 import { fail, redirect } from '@sveltejs/kit';
 import { localizeHref, getLocale } from '$lib/paraglide/runtime';
-import { cities } from '$lib/data/cities';
+import { cities, manualOnlySlugs } from '$lib/data/cities';
 import { sendToSchool, sendConfirmation } from '$lib/server/mail.js';
 import { verifyTurnstile, turnstileSecret } from '$lib/server/turnstile.js';
 import { parseLeadSource } from '$lib/server/lead-source.js';
@@ -23,7 +23,9 @@ export const actions = {
 
 		const { values, errors } = validateSignup(
 			data,
-			cities.map((c) => c.slug)
+			cities.map((c) => c.slug),
+			new Date(),
+			manualOnlySlugs
 		);
 		if (Object.keys(errors).length) return fail(400, { values, errors });
 

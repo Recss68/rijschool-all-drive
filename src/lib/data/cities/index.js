@@ -5,6 +5,7 @@
 // Each city file exports `city` = {
 //   slug, name, order, active? (false = temporarily off), updated (ISO date of last content change), wikipedia, coordinates { lat, lon }, municipality (CBS name, or null for a village inside a larger municipality: marker only), mapLabel ('top' | 'right' | 'bottom' | 'left'), nearby[] (slugs of 2-3 nearby cities to link to),
 //   cbrExamLocation: null | string, // TODO per city: verify on cbr.nl before filling in
+//   transmissions?: ('automaat' | 'schakel')[], // lesson types offered here; default both (Zaandam: manual only)
 //   (faq answers may use {lessonPrice}, {fromPrice} and {fromLessons}, filled from the price data)
 //   nl: { h1?, metaTitle, metaDescription, intro, areas[], practice[], districts?[{ name, text }], faq[{ q, a }] },
 //   en: { ...same keys }
@@ -20,3 +21,10 @@ export const cities = Object.entries(modules)
 	.sort((a, b) => a.order - b.order);
 
 export const getCity = (slug) => cities.find((city) => city.slug === slug);
+
+/** Whether automatic lessons are given in this city (default: yes). */
+export const offersAutomatic = (city) =>
+	(city?.transmissions ?? ['automaat', 'schakel']).includes('automaat');
+
+/** Slugs of the cities where only manual (schakel) lessons are given. */
+export const manualOnlySlugs = cities.filter((city) => !offersAutomatic(city)).map((c) => c.slug);
