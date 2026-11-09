@@ -14,6 +14,10 @@
 			{/each}
 		</tbody>
 	</table>
+	<div class="package-only" role="note">
+		<strong>{m.rates_package_only_title()}</strong>
+		<p>{packageOnlyNote()}</p>
+	</div>
 	<p class="duration">{m.lesson_duration_note()}</p>
 	{#if showLink}
 		<a class="more" href={localizeHref('/losse-tarieven')}
@@ -25,30 +29,35 @@
 <script>
 	import { m } from '$lib/paraglide/messages.js';
 	import { localizeHref } from '$lib/paraglide/runtime';
-	import { business } from '$lib/data/business.js';
 	import { formatEuro } from '$lib/utils/format-euro';
+	import { singleRateRows, packageOnlyNote } from '$lib/utils/rates';
 
 	/** @type {{ showLink?: boolean }} */
 	let { showLink = false } = $props();
 
-	const labels = {
-		trialLesson: [m.rate_trial(), m.rate_trial_detail()],
-		singleLesson: [m.rate_lesson(), m.rate_lesson_detail()],
-		interimExam: [m.rate_interim_exam(), ''],
-		exam: [m.rate_exam(), ''],
-		fearOfFailureExam: [m.rate_fear_exam(), ''],
-		bnor: [m.rate_bnor(), m.rate_bnor_detail()],
-	};
-
-	const rows = business.singleRates.map((id) => ({
-		id,
-		label: labels[id][0],
-		detail: labels[id][1],
-		price: business.prices[id],
-	}));
+	const rows = singleRateRows();
 </script>
 
 <style>
+	.package-only {
+		margin-top: var(--space-4);
+		padding: var(--space-4) var(--space-5);
+		border-left: 4px solid var(--c-yellow);
+		border-radius: var(--radius-softest);
+		background-color: #fffbeb;
+		color: var(--c-navy-900);
+		strong {
+			display: block;
+			font-family: var(--font-heading);
+			font-size: var(--fs-label-sm-mobile);
+		}
+		p {
+			margin: var(--space-1) 0 0;
+			font-size: var(--fs-label-s-mobile);
+			color: var(--c-text);
+		}
+	}
+
 	.rates {
 		width: 100%;
 		max-width: 640px;

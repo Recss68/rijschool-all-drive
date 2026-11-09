@@ -47,7 +47,15 @@ export const business = {
 	averageLessonHours: 1.5,
 
 	// Order of the single rates ("Losse tarieven") on the rates component and page
-	singleRates: ['trialLesson', 'singleLesson', 'interimExam', 'exam', 'fearOfFailureExam', 'bnor'],
+	singleRates: [
+		'trialLesson',
+		'lesson',
+		'singleLesson',
+		'interimExam',
+		'exam',
+		'fearOfFailureExam',
+		'bnor',
+	],
 
 	// Average number of lessons students need (may be published)
 	averageLessons: { min: 20, max: 25 },

@@ -37,15 +37,9 @@
 	import { business } from '$lib/data/business.js';
 	import { formatEuro } from '$lib/utils/format-euro';
 	import { breadcrumbs, singleRatesCatalog } from '$lib/seo/schema.js';
+	import { singleRateNames } from '$lib/utils/rates';
 
-	const rateLabels = {
-		trialLesson: m.rate_trial(),
-		singleLesson: `${m.rate_lesson()} (${m.rate_lesson_detail()})`,
-		interimExam: m.rate_interim_exam(),
-		exam: m.rate_exam(),
-		fearOfFailureExam: m.rate_fear_exam(),
-		bnor: `${m.rate_bnor()} (${m.rate_bnor_detail()})`,
-	};
+	const rateLabels = singleRateNames();
 </script>
 
 <style>
