@@ -25,6 +25,7 @@
 <Footer />
 
 <SignupDialog />
+<LanguagePrompt />
 <CookieBanner />
 <PromoPopup />
 
@@ -32,6 +33,7 @@
 	import { Header, Footer } from '$lib';
 	import SignupDialog from '$lib/components/ui/SignupDialog.svelte';
 	import CookieBanner from '$lib/components/ui/CookieBanner.svelte';
+	import LanguagePrompt from '$lib/components/ui/LanguagePrompt.svelte';
 	import PromoPopup from '$lib/components/ui/PromoPopup.svelte';
 	import { afterNavigate } from '$app/navigation';
 	import { gtagPageView } from '$lib/gtag.js';

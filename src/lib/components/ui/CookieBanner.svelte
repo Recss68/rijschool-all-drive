@@ -2,7 +2,8 @@
 	Cookie choice for Google Analytics. Not a wall: the page stays usable and the banner only
 	renders in the browser, so crawlers never see it. Accept and decline are equally prominent.
 -->
-{#if consent.open}
+<!-- waits until the first-visit language question is answered -->
+{#if consent.open && !languageChoice.open}
 	<section class="cookie-banner" aria-labelledby="cookie-title" aria-describedby="cookie-text">
 		<div class="inner">
 			<div class="text">
@@ -29,6 +30,7 @@
 	import { m } from '$lib/paraglide/messages.js';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import { consent, initConsent, setConsent } from '$lib/consent.svelte.js';
+	import { languageChoice } from '$lib/language-choice.svelte.js';
 
 	onMount(initConsent);
 </script>

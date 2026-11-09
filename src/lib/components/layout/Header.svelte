@@ -37,6 +37,18 @@
 		</picture>
 	</a>
 
+	<!-- phones and tablets: the language is one tap away, not hidden in the menu -->
+	<button
+		type="button"
+		class="lang-quick"
+		lang={other}
+		aria-label={other === 'en' ? 'Switch to English' : 'Schakel naar Nederlands'}
+		onclick={switchLanguage}
+	>
+		<span aria-hidden="true">{other === 'en' ? '🇬🇧' : '🇳🇱'}</span>
+		{other.toUpperCase()}
+	</button>
+
 	<input bind:this={menuBtn} class="menu-btn" type="checkbox" id="menu-btn" name="menu-btn" />
 	<label class="menu-icon" aria-label={m.header_menu_toggle_aria()} for="menu-btn">
 		<span class="navicon"></span>
@@ -68,18 +80,28 @@
 			>
 			{business.phoneDisplay}
 		</a>
-		<a class="btn-white" href={localizeHref('/aanmelden')} data-signup>{m.cta_signup()}</a>
+		<a class="header-cta" href={localizeHref('/aanmelden')} data-signup
+			>{m.cta_signup()} <span class="arrow" aria-hidden="true">→</span></a
+		>
 	</nav>
 </header>
 
 <script>
-	import { localizeHref } from '$lib/paraglide/runtime';
+	import { localizeHref, getLocale, setLocale } from '$lib/paraglide/runtime';
 	import { business } from '$lib/data/business.js';
+	import { rememberLanguage } from '$lib/language-choice.svelte.js';
 	import { page } from '$app/stores';
 	import { m } from '$lib/paraglide/messages.js';
 	import LanguageSwitcher from '../ui/LanguageSwitcher.svelte';
 
 	let menuBtn;
+
+	// the language the quick button switches to (changing language reloads the page)
+	const other = getLocale() === 'nl' ? 'en' : 'nl';
+	function switchLanguage() {
+		rememberLanguage(other);
+		setLocale(other);
+	}
 	// desktop: the bar turns into a floating pill once you start scrolling
 	let scrollY = 0;
 
@@ -91,8 +113,10 @@
 <style>
 	header {
 		display: grid;
+		grid-template-columns: 1fr auto auto;
+		column-gap: var(--space-2);
 		grid-template-areas:
-			'title   title   hamburger'
+			'title   lang    hamburger'
 			'nav     nav     nav';
 		width: 100%;
 		position: fixed;
@@ -103,9 +127,49 @@
 		align-items: center;
 	}
 
-	.btn-white {
+	/* the header's sign-up button: solid blue, darker on hover, the arrow slides along */
+	.menu .header-cta {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--space-2);
+		padding: var(--space-3) var(--space-5);
+		border-radius: var(--radius-soft);
 		background-color: var(--c-accent);
 		color: var(--c-white);
+		font-weight: 700;
+		touch-action: manipulation;
+		transition:
+			transform 0.2s ease,
+			background-color 0.2s ease,
+			border-radius 0.35s ease;
+		.arrow {
+			margin-left: 0;
+		}
+		&:focus-visible {
+			outline: 2px solid var(--c-accent);
+			outline-offset: 3px;
+		}
+		&:active {
+			transform: scale(0.97);
+		}
+		@media (hover: hover) {
+			&:hover {
+				transform: translateY(-1px);
+				background-color: var(--c-span);
+				.arrow {
+					transform: translateX(4px);
+				}
+			}
+		}
+		@media (prefers-reduced-motion: reduce) {
+			transition: none;
+			&:hover,
+			&:active,
+			&:hover .arrow {
+				transform: none;
+			}
+		}
 	}
 
 	.menu-btn {
@@ -118,6 +182,35 @@
 	.menu-btn:focus-visible + .menu-icon {
 		outline: 2px solid var(--c-accent);
 		outline-offset: 2px;
+	}
+
+	.lang-quick {
+		grid-area: lang;
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-1);
+		height: 44px;
+		padding: 0 var(--space-3);
+		border: 1px solid var(--c-border-light);
+		border-radius: var(--radius-soft);
+		background-color: var(--c-white);
+		font: inherit;
+		font-size: var(--fs-label-s-mobile);
+		font-weight: var(--fw-semibold);
+		color: var(--c-navy-900);
+		cursor: pointer;
+		touch-action: manipulation;
+		-webkit-tap-highlight-color: transparent;
+		&:hover {
+			border-color: var(--c-accent);
+		}
+		&:focus-visible {
+			outline: 2px solid var(--c-accent);
+			outline-offset: 2px;
+		}
+		@media (min-width: 1200px) {
+			display: none;
+		}
 	}
 
 	/* hamburger: a 44px tap target with three rounded bars that turn into a cross */
@@ -330,7 +423,7 @@
 			.menu a {
 				font-size: var(--fs-label-s-mobile);
 			}
-			.btn-white {
+			.menu .header-cta {
 				border-radius: 999px;
 			}
 		}
