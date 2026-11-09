@@ -7,19 +7,26 @@
 	<div class="cta-buttons">
 		{#if variant !== 'trial'}
 			<a class="btn-white" href={business.whatsappUrl}
-				>{ctaCopy(variant).button} <span class="arrow" aria-hidden="true">→</span></a
+				><span class="btn-label"
+					>{ctaCopy(variant).button} <span class="arrow" aria-hidden="true">→</span></span
+				></a
 			>
 		{:else}
 			<a class="btn-white" href={localizeHref('/aanmelden')} data-signup
-				>{m.cta_signup()} <span class="arrow" aria-hidden="true">→</span></a
+				><span class="btn-label"
+					>{m.cta_signup()} <span class="arrow" aria-hidden="true">→</span></span
+				></a
 			>
-			<a class="btn-outline" href={business.whatsappUrl}>{m.cta_whatsapp_short()}</a>
+			<a class="btn-outline" href={business.whatsappUrl}
+				><span class="btn-label"><ButtonIcon name="whatsapp" />{m.cta_whatsapp_short()}</span></a
+			>
 		{/if}
 	</div>
 	<a class="call" href="tel:{business.phone}">{m.cta_or_call({ phone: business.phoneDisplay })}</a>
 </div>
 
 <script>
+	import ButtonIcon from '$lib/components/ui/ButtonIcon.svelte';
 	import { m } from '$lib/paraglide/messages.js';
 	import { business } from '$lib/data/business.js';
 	import { localizeHref } from '$lib/paraglide/runtime';

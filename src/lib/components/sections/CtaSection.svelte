@@ -13,10 +13,16 @@
 		{/if}
 		<div class="cta-buttons">
 			<a class="btn-white" href={localizeHref('/aanmelden')} data-signup
-				>{m.cta_signup()} <span class="arrow" aria-hidden="true">→</span></a
+				><span class="btn-label"
+					>{m.cta_signup()} <span class="arrow" aria-hidden="true">→</span></span
+				></a
 			>
-			<a class="btn-outline" href={business.whatsappUrl}>{m.cta_book_trial()}</a>
-			<a class="btn-outline" href="tel:{business.phone}">{m.cta_call_now()}</a>
+			<a class="btn-outline" href={business.whatsappUrl}
+				><span class="btn-label"><ButtonIcon name="whatsapp" />{m.cta_book_trial()}</span></a
+			>
+			<a class="btn-outline" href="tel:{business.phone}"
+				><span class="btn-label"><ButtonIcon name="phone" />{m.cta_call_now()}</span></a
+			>
 		</div>
 		<div class="trial-facts-wrap">
 			<TrialFacts />
@@ -25,6 +31,7 @@
 </section>
 
 <script>
+	import ButtonIcon from '$lib/components/ui/ButtonIcon.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import { m } from '$lib/paraglide/messages.js';
 	import { business } from '$lib/data/business.js';
