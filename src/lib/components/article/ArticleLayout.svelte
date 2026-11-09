@@ -99,6 +99,10 @@
 			counter-reset: step;
 			padding: 0;
 			margin: var(--space-6) 0 0;
+			/* every step as tall as the longest one, so the lines between the numbers are equal;
+			   the last step (no line below it) only takes the height it needs */
+			display: grid;
+			grid-template-rows: repeat(var(--step-rows, 1), 1fr) auto;
 		}
 		:global(.steps li) {
 			counter-increment: step;
