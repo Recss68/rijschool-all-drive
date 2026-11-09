@@ -9,7 +9,7 @@
 export const staticRoutes = [
 	{ nl: '/', en: '/en', updated: '2026-10-21' },
 	{ nl: '/prijzen', en: '/en/prices', updated: '2026-10-15' },
-	{ nl: '/losse-tarieven', en: '/en/single-rates', updated: '2026-10-15' },
+	{ nl: '/losse-tarieven', en: '/en/single-rates', updated: '2026-11-09' },
 	{ nl: '/over-ons', en: '/en/about-us', updated: '2026-10-14' },
 	{ nl: '/contact', en: '/en/contact', updated: '2026-10-14' },
 	{ nl: '/werkgebied', en: '/en/service-area', updated: '2026-10-14' },
@@ -31,6 +31,11 @@ export const staticRoutes = [
 	{ nl: '/spoedcursus', en: '/en/intensive-driving-course', updated: '2026-10-14' },
 	{ nl: '/opfriscursus', en: '/en/refresher-driving-course', updated: '2026-10-21' },
 	{ nl: '/rijtest', en: '/en/driving-assessment', updated: '2026-10-21' },
+	{
+		nl: '/rijles-voor-expats',
+		en: '/en/driving-lessons-for-expats',
+		updated: '2026-11-09',
+	},
 	// information
 	{
 		nl: '/rijbewijs-aanvragen',

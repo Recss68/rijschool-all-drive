@@ -29,9 +29,14 @@
 				<!-- one clear primary action; WhatsApp as alternative, prices as a quiet link -->
 				<div class="hero-buttons">
 					<a href={localizeHref('/aanmelden')} class="btn-white" data-signup
-						>{m.cta_signup()} <span class="arrow" aria-hidden="true">→</span></a
+						><span class="btn-label"
+							>{m.cta_signup()} <span class="arrow" aria-hidden="true">→</span></span
+						></a
 					>
-					<a href={business.whatsappUrl} class="btn-outline">{m.cta_whatsapp_short()}</a>
+					<a href={business.whatsappUrl} class="btn-outline"
+						><span class="btn-label"><ButtonIcon name="whatsapp" />{m.cta_whatsapp_short()}</span
+						></a
+					>
 				</div>
 				<p class="price-links">
 					<a href={localizeHref('/prijzen')}
@@ -85,6 +90,7 @@
 </section>
 
 <script>
+	import ButtonIcon from '$lib/components/ui/ButtonIcon.svelte';
 	import { cities } from '$lib/data/cities';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import { gsap } from 'gsap';

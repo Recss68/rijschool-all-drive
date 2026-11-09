@@ -24,7 +24,7 @@
 			{/each}
 			{#if section.items?.length}
 				{#if section.variant === 'steps'}
-					<ol class="steps">
+					<ol class="steps" style:--step-rows={section.items.length - 1}>
 						{#each section.items as item (item)}
 							<li>{fillPlaceholders(item)}</li>
 						{/each}

@@ -56,6 +56,7 @@
 <script>
 	import { m } from '$lib/paraglide/messages.js';
 	import { getLocale, setLocale, locales } from '$lib/paraglide/runtime';
+	import { rememberLanguage } from '$lib/language-choice.svelte.js';
 
 	let open = $state(false);
 
@@ -71,6 +72,8 @@
 
 	function selectLocale(locale) {
 		open = false;
+		// a switch is also an answer to the first-visit language question
+		rememberLanguage(locale);
 		setLocale(locale);
 	}
 

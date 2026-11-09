@@ -12,6 +12,7 @@ import { formatEuro } from '$lib/utils/format-euro';
 import { fillPlaceholders, starterPackage } from '$lib/utils/placeholders';
 import { faqItems } from '$lib/utils/faq';
 import { cityAnswer } from '$lib/utils/city-copy';
+import { singleRateNames, packageOnlyNote } from '$lib/utils/rates';
 import { absoluteUrl } from '$lib/seo/url.js';
 import packagesNl from '$lib/data/pricing-packages.nl.json';
 import packagesEn from '$lib/data/pricing-packages.en.json';
@@ -147,17 +148,11 @@ function aboutMd() {
 }
 
 function ratesMd() {
-	const labels = {
-		trialLesson: `${m.rate_trial()} (${m.rate_trial_detail()})`,
-		singleLesson: `${m.rate_lesson()} (${m.rate_lesson_detail()})`,
-		interimExam: m.rate_interim_exam(),
-		exam: m.rate_exam(),
-		fearOfFailureExam: m.rate_fear_exam(),
-		bnor: `${m.rate_bnor()} (${m.rate_bnor_detail()})`,
-	};
+	const names = singleRateNames();
 	return [
 		`## ${m.rates_heading()}`,
-		list(business.singleRates.map((id) => `${labels[id]}: ${formatEuro(business.prices[id])}`)),
+		list(business.singleRates.map((id) => `${names[id]}: ${formatEuro(business.prices[id])}`)),
+		`**${m.rates_package_only_title()}** ${packageOnlyNote()}`,
 		m.lesson_duration_note(),
 	].join('\n\n');
 }

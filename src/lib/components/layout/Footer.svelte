@@ -151,8 +151,8 @@
 	import { getService } from '$lib/data/services';
 	import { pickByLocale } from '$lib/utils/get-localized-data';
 
-	// Services for people who already have a licence; listed with the information pages
-	const footerServices = ['opfriscursus', 'rijtest'].map(getService);
+	// Services for people who already have a licence or come from abroad; listed with the information pages
+	const footerServices = ['opfriscursus', 'rijtest', 'rijles-voor-expats'].map(getService);
 
 	const { social } = business;
 </script>

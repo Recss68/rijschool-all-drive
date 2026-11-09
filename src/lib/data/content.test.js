@@ -127,3 +127,16 @@ describe('lesson types per city', () => {
 		for (const city of cities) expect(offersAutomatic(city)).toBe(city.slug !== 'zaandam');
 	});
 });
+
+describe('expats page', () => {
+	it('never promises a practical exam in English (CBR: Dutch, interpreter allowed)', async () => {
+		const { getService } = await import('./services');
+		const { nl, en } = getService('rijles-voor-expats');
+		expect(JSON.stringify(nl)).toContain('praktijkexamen af in het Nederlands');
+		expect(JSON.stringify(en)).toContain('practical exam in Dutch');
+		// the FAQ may ask the question, but nothing may promise it
+		expect(JSON.stringify(en)).not.toMatch(
+			/(take|do) the practical exam in English|practical exam can be taken in English/i
+		);
+	});
+});
