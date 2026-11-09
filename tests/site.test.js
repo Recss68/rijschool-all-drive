@@ -24,6 +24,8 @@ describe('Markdown content negotiation', () => {
 		'/spoedcursus',
 		'/opfriscursus',
 		'/en/driving-assessment',
+		'/rijles-voor-expats',
+		'/en/driving-lessons-for-expats',
 	])('%s returns Markdown for Accept: text/markdown', async (path) => {
 		const res = await get(path, { accept: 'text/markdown' });
 		expect(res.status).toBe(200);
@@ -177,6 +179,12 @@ describe('service area', () => {
 
 	it('single rates page lists every rate', async () => {
 		const html = await (await get('/losse-tarieven')).text();
-		for (const price of ['50', '97,50', '290', '350', '375', '390']) expect(html).toContain(price);
+		for (const price of ['50', '65', '97,50', '290', '350', '375', '390'])
+			expect(html).toContain(price);
+		expect(html).toContain('Rijles per uur');
+		expect(html).toContain('Let op: alleen bij afname van een pakket');
+		const md = await (await get('/losse-tarieven', { accept: 'text/markdown' })).text();
+		expect(md).toMatch(/Rijles per uur, 60 minuten: €\s65/);
+		expect(md).toContain('alleen bij afname van een pakket');
 	});
 });
