@@ -23,7 +23,7 @@ export const service = {
 		linkTitle: 'Rijtest rijbewijs verlengen',
 		metaTitle: 'Rijtest rijbewijs verlengen (75+) Amsterdam | All Drive',
 		metaDescription:
-			'Rijtest nodig om je rijbewijs te verlengen, vanaf 75 jaar of na een ongeval? Rijschool All Drive neemt een rijtest bij je af en bereidt je voor op de rijtest van het CBR.',
+			'Rijtest nodig om je rijbewijs te verlengen, vanaf 75 jaar of na een ongeval? All Drive neemt een rijtest bij je af en bereidt je voor op de CBR-rijtest.',
 		answer:
 			'Moet je je rijbewijs verlengen, bijvoorbeeld vanaf je 75e, of twijfel je na een ongeval of je nog veilig rijdt? Bij Rijschool All Drive doe je een rijtest met een van onze instructeurs. Je krijgt eerlijk advies over wat goed gaat en wat beter kan. Heeft het CBR een rijtest of een onderzoek naar de rijvaardigheid voor je ingepland, dan bereiden we je daar met lessen op voor.',
 		articles: [

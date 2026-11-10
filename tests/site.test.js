@@ -166,15 +166,65 @@ describe('service area', () => {
 	it('Zaandam is presented as manual only and left off the automatic lessons page', async () => {
 		const html = await (await get('/rijschool-zaandam')).text();
 		expect(html).toContain('Alleen schakellessen');
-		expect(html).not.toContain('href="/automaat-rijles"');
+		// the page's own services list (the footer still lists every service)
+		const services = html.slice(html.indexOf('id="onze-diensten"'));
+		expect(services.slice(0, services.indexOf('</section>'))).not.toContain(
+			'href="/automaat-rijles"'
+		);
 		const md = await (await get('/rijschool-zaandam', { accept: 'text/markdown' })).text();
 		expect(md).toContain('alleen in een schakelauto');
 		const automatic = await (await get('/automaat-rijles')).text();
 		// the city cards (the footer still links every city)
-		const cards = automatic.slice(automatic.indexOf('class="section related'));
-		expect(cards.slice(0, cards.indexOf('</section>'))).not.toContain('href="/rijschool-zaandam"');
+		const cards = automatic
+			.split('class="section related')
+			.slice(1)
+			.map((part) => part.slice(0, part.indexOf('</section>')))
+			.find((part) => part.includes('href="/rijschool-'));
+		expect(cards).not.toContain('href="/rijschool-zaandam"');
 		expect(cards).toContain('href="/rijschool-diemen"');
 		expect(automatic).not.toContain('"name":"Zaandam"');
+	});
+
+	it('city pages name the nearest CBR exam centre, also in the FAQ schema and Markdown', async () => {
+		const html = await (await get('/rijschool-oostzaan')).text();
+		expect(html).toContain('Examen in de buurt');
+		expect(html).toContain('CBR Examencentrum Zaandam');
+		expect(html).toContain('Waar doe ik mijn praktijkexamen als ik in Oostzaan woon?');
+		const md = await (await get('/rijschool-oostzaan', { accept: 'text/markdown' })).text();
+		expect(md).toContain('Kuilpad 1, 1509 AS Zaandam');
+		const llms = await (await get('/llms.txt')).text();
+		expect(llms).toContain('nearest CBR practical exam centre');
+	});
+
+	it('structured data covers the site, the instructor, articles and service prices', async () => {
+		const types = async (path) =>
+			[
+				...(await (await get(path)).text()).matchAll(
+					/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g
+				),
+			]
+				.map((m) => JSON.parse(m[1]))
+				.flatMap((j) => [].concat(j['@type']).map((t) => ({ t, j })));
+		const home = await types('/');
+		for (const t of ['DrivingSchool', 'WebSite', 'Person', 'FAQPage'])
+			expect(home.map((x) => x.t)).toContain(t);
+		const org = home.find((x) => x.t === 'DrivingSchool').j;
+		expect(org.aggregateRating.ratingValue).toBe(5);
+		expect(org.hasMap).toMatch(/^https:\/\//);
+		expect((await types('/over-ons')).map((x) => x.t)).toContain('AboutPage');
+		const info = (await types('/theorie-examen-auto')).find((x) => x.t === 'Article');
+		expect(info.j.dateModified).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+		const automatic = (await types('/automaat-rijles')).find((x) => x.t === 'Service');
+		expect(automatic.j.offers).toMatchObject({ price: 65, priceCurrency: 'EUR' });
+		expect((await types('/spoedcursus')).find((x) => x.t === 'Service').j.offers).toBeUndefined();
+	});
+
+	it('every service page links to all other services, and the footer lists them', async () => {
+		const html = await (await get('/rijtest')).text();
+		for (const slug of ['automaat-rijles', 'opfriscursus', 'rijles-voor-expats', 'spoedcursus'])
+			expect(html).toContain(`href="/${slug}"`);
+		const footer = html.slice(html.indexOf('quick-menu-services'));
+		expect(footer).toContain('href="/schakel-rijles"');
 	});
 
 	it('single rates page lists every rate', async () => {

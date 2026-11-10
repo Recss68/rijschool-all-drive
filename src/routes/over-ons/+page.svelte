@@ -2,7 +2,11 @@
 <Seo
 	title={m.meta_overons_title()}
 	description={m.meta_overons_description()}
-	schema={[breadcrumbs([{ name: m.header_about(), path: '/over-ons' }])]}
+	schema={[
+		aboutPage(),
+		headInstructor(),
+		breadcrumbs([{ name: m.header_about(), path: '/over-ons' }]),
+	]}
 />
 
 <section class="breadcrumb">
@@ -94,7 +98,7 @@
 <CtaSection />
 
 <script>
-	import { breadcrumbs } from '$lib/seo/schema.js';
+	import { breadcrumbs, aboutPage, headInstructor } from '$lib/seo/schema.js';
 	import {
 		AboutSection,
 		BenefitCards,

@@ -9,6 +9,15 @@
 			path: `/${service.slug}`,
 			serviceType: service.serviceType,
 			areaCities: serviceCities,
+			offers: service.showPrice
+				? {
+						'@type': 'Offer',
+						price:
+							service.slug === 'proefles' ? business.prices.trialLesson : business.prices.lesson,
+						priceCurrency: 'EUR',
+						description: service.slug === 'proefles' ? m.rate_trial_detail() : m.rate_hour_detail(),
+					}
+				: undefined,
 		}),
 		breadcrumbs([{ name: content.title, path: `/${service.slug}` }]),
 		faqPage(faq),
@@ -33,6 +42,14 @@
 	</FaqBlock>
 </ArticleLayout>
 
+<RelatedCards
+	heading={m.service_related_heading()}
+	cta={m.home_services_cta()}
+	items={otherServices}
+	tone="white"
+	cardMin="260px"
+/>
+
 <RelatedCards heading={m.service_cities_heading()} cta={m.city_view_page()} items={cityCards} />
 
 <CtaSection />
@@ -49,7 +66,7 @@
 	} from '$lib';
 	import { m } from '$lib/paraglide/messages.js';
 	import { business } from '$lib/data/business.js';
-	import { getService } from '$lib/data/services';
+	import { services, getService } from '$lib/data/services';
 	import { cities, offersAutomatic } from '$lib/data/cities';
 	import { pickByLocale } from '$lib/utils/get-localized-data';
 	import { fillPlaceholders } from '$lib/utils/placeholders';
@@ -75,6 +92,16 @@
 	const serviceCities = $derived(
 		cities.filter((city) => service.slug !== 'automaat-rijles' || offersAutomatic(city))
 	);
+	// links to every other service, so each service page is reachable from all the others
+	const otherServices = $derived(
+		services
+			.filter((other) => other.slug !== service.slug)
+			.map((other) => {
+				const item = pickByLocale(other);
+				return { href: `/${other.slug}`, title: item.cardTitle, text: item.summary };
+			})
+	);
+
 	const cityCards = $derived(
 		serviceCities.map((city) => ({
 			href: `/rijschool-${city.slug}`,

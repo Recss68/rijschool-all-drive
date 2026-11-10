@@ -6,33 +6,29 @@
 			<source
 				media="(min-width: 768px)"
 				srcset="/images/ad_long_black.avif"
-				loading="lazy"
 				width="250px"
 				type="image/avif"
 			/>
 			<source
 				media="(min-width: 768px)"
 				srcset="/images/ad_long_black.webp"
-				loading="lazy"
 				width="250px"
 				type="image/webp"
 			/>
 			<source
 				media="(min-width: 768px)"
 				srcset="/images/ad_long_black.png"
-				loading="lazy"
 				width="250px"
 				type="image/png"
 			/>
-			<source srcset="/images/ad_short_black.webp" loading="lazy" type="image/webp" />
-			<source srcset="/images/ad_short_black.png" loading="lazy" type="image/png" />
+			<source srcset="/images/ad_short_black.webp" type="image/webp" />
+			<source srcset="/images/ad_short_black.png" type="image/png" />
 			<img
 				class="logo"
 				src="/images/ad_short_black.avif"
 				width="80"
 				height="54"
 				alt={m.alt_logo()}
-				loading="lazy"
 			/>
 		</picture>
 	</a>

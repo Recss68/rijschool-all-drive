@@ -3,7 +3,7 @@ export const page = {
 	order: 3,
 	nl: {
 		title: 'Theorie-examen aanvragen',
-		metaTitle: 'Theorie-examen aanvragen bij het CBR: stap voor stap | All Drive',
+		metaTitle: 'Theorie-examen aanvragen bij het CBR, stap voor stap',
 		metaDescription:
 			'Zo vraag je je theorie-examen auto aan bij het CBR: inloggen met DigiD, locatie en datum kiezen en betalen. Stap-voor-stap uitleg van Rijschool All Drive.',
 		intro:
@@ -46,7 +46,7 @@ export const page = {
 	},
 	en: {
 		title: 'Booking your theory exam',
-		metaTitle: 'Booking your theory exam with the CBR: step by step | All Drive',
+		metaTitle: 'Booking your CBR theory exam, step by step | All Drive',
 		metaDescription:
 			'How to book your car theory exam with the CBR: log in with DigiD, choose a location and date and pay. Step-by-step guide by Rijschool All Drive.',
 		intro:

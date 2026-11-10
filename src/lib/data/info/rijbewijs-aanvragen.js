@@ -58,7 +58,7 @@ export const page = {
 		title: 'Applying for your driving licence',
 		metaTitle: 'Applying for your driving licence after passing | All Drive',
 		metaDescription:
-			'Passed your practical exam? Read how to apply for your driving licence at your municipality, what to bring and what to look out for. Explained by Rijschool All Drive.',
+			'Passed your practical exam? Read how to apply for your driving licence at your municipality, what to bring and what to look out for.',
 		intro:
 			'Passed your practical exam? Then you apply for your driving licence at the municipality where you are registered. You do not leave the exam with a card in your hand: you collect the licence itself later.',
 		articles: [

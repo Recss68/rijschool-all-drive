@@ -76,21 +76,39 @@
 								<ul class="includes">
 									{#if promoLine && pkg.group !== 'theorie'}
 										<li class="inc promo">
-											<img class="inc-icon" src="/icons/list-bullet.svg" alt="" />
+											<img
+												class="inc-icon"
+												src="/icons/list-bullet.svg"
+												alt=""
+												width="22"
+												height="22"
+											/>
 											<span>{promoLine}</span>
 										</li>
 									{/if}
 
 									{#if lessonsLine}
 										<li class="inc">
-											<img class="inc-icon" src="/icons/list-bullet.svg" alt="" />
+											<img
+												class="inc-icon"
+												src="/icons/list-bullet.svg"
+												alt=""
+												width="22"
+												height="22"
+											/>
 											<span>{lessonsLine}</span>
 										</li>
 									{/if}
 
 									{#each includes as item (item)}
 										<li class="inc">
-											<img class="inc-icon" src="/icons/list-bullet.svg" alt="" />
+											<img
+												class="inc-icon"
+												src="/icons/list-bullet.svg"
+												alt=""
+												width="22"
+												height="22"
+											/>
 											<span>{item}</span>
 										</li>
 									{/each}

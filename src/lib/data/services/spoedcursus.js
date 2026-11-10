@@ -11,7 +11,7 @@ export const service = {
 		title: 'Spoedcursus rijbewijs',
 		metaTitle: 'Spoedcursus rijbewijs Amsterdam | Rijschool All Drive',
 		metaDescription:
-			'Snel je rijbewijs halen met een spoedcursus van Rijschool All Drive in Amsterdam: veel lessen in korte tijd, schakel of automaat. Vraag hem direct aan via WhatsApp.',
+			'Snel je rijbewijs halen met een spoedcursus van Rijschool All Drive in Amsterdam: veel lessen in korte tijd, schakel of automaat. Vraag hem aan via WhatsApp.',
 		answer:
 			'Met een spoedcursus van Rijschool All Drive volg je veel lessen in korte tijd, zodat je sneller klaar bent voor je praktijkexamen. Dat kan in een schakel- of automaatauto, in het Nederlands of Engels. De prijs hangt af van je situatie; vraag een spoedcursus direct aan via WhatsApp of bel ons.',
 		articles: [

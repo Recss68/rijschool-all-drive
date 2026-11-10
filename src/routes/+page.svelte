@@ -2,7 +2,7 @@
 <Seo
 	title={m.meta_home_title()}
 	description={m.meta_home_description()}
-	schema={[organization()]}
+	schema={[organization(), website(), headInstructor(), faqPage(faqItems())]}
 />
 
 <Hero />
@@ -99,10 +99,13 @@
 
 <AboutSection />
 
+<FaqSection />
+
 <CtaSection />
 
 <script>
-	import { organization } from '$lib/seo/schema.js';
+	import { organization, website, headInstructor, faqPage } from '$lib/seo/schema.js';
+	import { faqItems } from '$lib/utils/faq';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import { services } from '$lib/data/services';
 	import { pickByLocale } from '$lib/utils/get-localized-data';
@@ -115,6 +118,7 @@
 		SuccessStories,
 		AboutSection,
 		CtaSection,
+		FaqSection,
 		Seo,
 		ServiceArea,
 		RelatedCards,
