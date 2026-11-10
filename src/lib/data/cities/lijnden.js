@@ -2,14 +2,13 @@ export const city = {
 	slug: 'lijnden',
 	name: 'Lijnden',
 	order: 9,
-	updated: '2026-10-15', // last real content change (sitemap lastmod)
+	updated: '2026-11-09', // last real content change (sitemap lastmod)
 	wikipedia: 'https://nl.wikipedia.org/wiki/Lijnden',
 	// Map position (village or town centre) and where the label sits next to the marker
 	coordinates: { lat: 52.349, lon: 4.761 },
 	municipality: null, // village in the municipality of Haarlemmermeer: marker only,
 	mapLabel: 'left',
 	nearby: ['badhoevedorp', 'zwanenburg', 'amsterdam'],
-	cbrExamLocation: null, // TODO: verify the nearest CBR practical exam centre for licence B on cbr.nl
 	nl: {
 		metaTitle: 'Rijschool Lijnden | Rijles automaat & schakel | All Drive',
 		metaDescription:
@@ -41,7 +40,7 @@ export const city = {
 	en: {
 		metaTitle: 'Driving School Lijnden | Automatic & manual | All Drive',
 		metaDescription:
-			'Driving lessons in Lijnden with Rijschool All Drive: dedicated instructor, pick-up in Lijnden and packages including the CBR exam. Request a trial lesson today.',
+			'Driving lessons in Lijnden with Rijschool All Drive: dedicated instructor, pick-up in Lijnden and packages including the CBR exam. Request a trial lesson.',
 		intro:
 			'Lijnden is a small village along the Ringvaart canal, between Badhoevedorp and Zwanenburg. With Rijschool All Drive you start here on quiet roads and then continue to the busier roads towards Schiphol and Amsterdam.',
 		areas: ['All of Lijnden'],

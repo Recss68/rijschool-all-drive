@@ -5,7 +5,7 @@ export const page = {
 		title: 'Theorie-examen auto',
 		metaTitle: 'Theorie-examen auto (rijbewijs B) uitgelegd | All Drive',
 		metaDescription:
-			'Alles over het theorie-examen auto: wat het is, uit welke onderdelen het bestaat, hoe lang je certificaat geldig is en hoe je je voorbereidt. Uitleg van All Drive.',
+			'Alles over het theorie-examen auto: wat het is, uit welke onderdelen het bestaat, hoe lang je certificaat geldig is en hoe je je voorbereidt.',
 		intro:
 			'Voordat je praktijkexamen mag doen, moet je slagen voor het theorie-examen auto (rijbewijs B). Dit examen neemt het CBR af. Je kunt al rijlessen volgen terwijl je nog met je theorie bezig bent.',
 		articles: [

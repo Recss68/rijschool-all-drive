@@ -2,14 +2,13 @@ export const city = {
 	slug: 'amstelveen',
 	name: 'Amstelveen',
 	order: 2,
-	updated: '2026-10-14', // last real content change (sitemap lastmod)
+	updated: '2026-11-09', // last real content change (sitemap lastmod)
 	wikipedia: 'https://nl.wikipedia.org/wiki/Amstelveen',
 	// Map position (city centre) and where the label sits next to the marker
 	coordinates: { lat: 52.3114, lon: 4.8701 },
 	municipality: 'Amstelveen', // CBS name, highlighted on the service-area map
 	mapLabel: 'right',
 	nearby: ['amsterdam', 'uithoorn', 'aalsmeer'],
-	cbrExamLocation: null, // TODO: verify the nearest CBR practical exam centre for licence B on cbr.nl
 	nl: {
 		metaTitle: 'Rijschool Amstelveen | Rijles automaat & schakel | All Drive',
 		metaDescription:
@@ -50,7 +49,7 @@ export const city = {
 	en: {
 		metaTitle: 'Driving School Amstelveen | Automatic & manual | All Drive',
 		metaDescription:
-			'Driving lessons in Amstelveen with Rijschool All Drive: dedicated instructor, pick-up throughout Amstelveen and packages including the CBR exam. Request a trial lesson.',
+			'Driving lessons in Amstelveen with Rijschool All Drive: dedicated instructor, pick-up throughout Amstelveen and packages incl. the CBR exam. Request a trial lesson.',
 		intro:
 			'Amstelveen combines quiet residential areas with the Amstelveen line express tram and the A9. With Rijschool All Drive you start in your own neighbourhood and build up to the busy Stadshart and the roads towards Amsterdam.',
 		areas: [

@@ -2,14 +2,13 @@ export const city = {
 	slug: 'aalsmeer',
 	name: 'Aalsmeer',
 	order: 6,
-	updated: '2026-10-15', // last real content change (sitemap lastmod)
+	updated: '2026-11-09', // last real content change (sitemap lastmod)
 	wikipedia: 'https://nl.wikipedia.org/wiki/Aalsmeer',
 	// Map position (village or town centre) and where the label sits next to the marker
 	coordinates: { lat: 52.2639, lon: 4.7625 },
 	municipality: 'Aalsmeer',
 	mapLabel: 'left',
 	nearby: ['amstelveen', 'uithoorn', 'badhoevedorp'],
-	cbrExamLocation: null, // TODO: verify the nearest CBR practical exam centre for licence B on cbr.nl
 	nl: {
 		metaTitle: 'Rijschool Aalsmeer | Rijles automaat & schakel | All Drive',
 		metaDescription:
@@ -41,7 +40,7 @@ export const city = {
 	en: {
 		metaTitle: 'Driving School Aalsmeer | Automatic & manual | All Drive',
 		metaDescription:
-			'Driving lessons in Aalsmeer with Rijschool All Drive: dedicated instructor, pick-up in Aalsmeer and packages including the CBR exam. Request a trial lesson today.',
+			'Driving lessons in Aalsmeer with Rijschool All Drive: dedicated instructor, pick-up in Aalsmeer and packages including the CBR exam. Request a trial lesson.',
 		intro:
 			'Aalsmeer lies between the Westeinder lakes and the motorways around Schiphol. With Rijschool All Drive you practise in the village centres of Aalsmeer and Kudelstaart and on the provincial roads, where you meet a lot of freight traffic to and from the flower auction.',
 		areas: ['Aalsmeer-Centrum', 'Oosteinde', 'Kudelstaart'],

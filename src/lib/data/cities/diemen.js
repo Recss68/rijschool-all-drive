@@ -2,14 +2,13 @@ export const city = {
 	slug: 'diemen',
 	name: 'Diemen',
 	order: 3,
-	updated: '2026-10-14', // last real content change (sitemap lastmod)
+	updated: '2026-11-09', // last real content change (sitemap lastmod)
 	wikipedia: 'https://nl.wikipedia.org/wiki/Diemen',
 	// Map position (city centre) and where the label sits next to the marker
 	coordinates: { lat: 52.3391, lon: 4.9622 },
 	municipality: 'Diemen', // CBS name, highlighted on the service-area map
 	mapLabel: 'right',
 	nearby: ['amsterdam', 'amstelveen', 'zaandam'],
-	cbrExamLocation: null, // TODO: verify the nearest CBR practical exam centre for licence B on cbr.nl
 	nl: {
 		metaTitle: 'Rijschool Diemen | Rijles automaat & schakel | All Drive',
 		metaDescription:

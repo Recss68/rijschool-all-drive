@@ -28,7 +28,7 @@ export const service = {
 		linkTitle: 'Rijles voor expats',
 		metaTitle: 'Rijles voor expats in het Engels | Amsterdam | All Drive',
 		metaDescription:
-			'Expat in Amsterdam? Rijles in het Engels bij Rijschool All Drive, en uitleg over je buitenlandse rijbewijs: 185 dagen, omwisselen, expatregeling en het CBR-examen.',
+			'Expat in Amsterdam? Rijles in het Engels bij All Drive, plus uitleg over je buitenlandse rijbewijs: 185 dagen, omwisselen, expatregeling en het CBR-examen.',
 		answer:
 			'Ben je expat in Amsterdam of omgeving? Bij Rijschool All Drive krijg je rijles in het Engels, met een vaste instructeur, in een schakel- of automaatauto. Een les van 60 minuten kost {lessonPrice}; pakketten inclusief CBR-praktijkexamen beginnen bij {fromPrice} voor {fromLessons} lessen. Kun je je buitenlandse rijbewijs niet omwisselen, dan bereiden we je voor op het theorie- en praktijkexamen van het CBR.',
 		articles: [
@@ -117,9 +117,9 @@ export const service = {
 			'Driving lessons in English and help with your foreign licence: exchange it or get a Dutch one.',
 		title: 'Driving lessons for expats in Amsterdam',
 		linkTitle: 'Driving lessons for expats',
-		metaTitle: 'Driving Lessons for Expats in English | Amsterdam | All Drive',
+		metaTitle: 'Driving Lessons for Expats in English, Amsterdam | All Drive',
 		metaDescription:
-			'Expat in Amsterdam? Driving lessons in English with Rijschool All Drive, plus how your foreign licence works: 185 days, exchange, the 30% ruling and the CBR exam.',
+			'Expat in Amsterdam? Driving lessons in English with All Drive, plus how your foreign licence works: 185 days, exchange, the 30% ruling and the CBR exam.',
 		answer:
 			'Are you an expat in or around Amsterdam? At Rijschool All Drive you get driving lessons in English, with a dedicated instructor, in a manual or automatic car. A 60-minute lesson costs {lessonPrice}; packages including the CBR practical exam start at {fromPrice} for {fromLessons} lessons. If you cannot exchange your foreign licence, we prepare you for the CBR theory and practical exams.',
 		articles: [

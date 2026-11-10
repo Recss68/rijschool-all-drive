@@ -45,7 +45,7 @@
 
 <script>
 	import { m } from '$lib/paraglide/messages.js';
-	import { getLocale } from '$lib/paraglide/runtime';
+	import { formatDate } from '$lib/utils/format-date';
 	import { business } from '$lib/data/business.js';
 	import { formatEuro } from '$lib/utils/format-euro';
 	import { pickByLocale } from '$lib/utils/get-localized-data';
@@ -55,13 +55,6 @@
 
 	const packages = pickByLocale({ nl: packagesNl, en: packagesEn });
 	const rows = MAIN_PACKAGE_IDS.map((id) => packages.find((pkg) => pkg.id === id));
-
-	const formatDate = (date) =>
-		new Date(date).toLocaleDateString(getLocale() === 'en' ? 'en-GB' : 'nl-NL', {
-			day: 'numeric',
-			month: 'long',
-			year: 'numeric',
-		});
 </script>
 
 <style>

@@ -4,14 +4,13 @@ export const city = {
 	active: false,
 	name: 'Haarlem',
 	order: 4,
-	updated: '2026-10-14', // last real content change (sitemap lastmod)
+	updated: '2026-11-09', // last real content change (sitemap lastmod)
 	wikipedia: 'https://nl.wikipedia.org/wiki/Haarlem',
 	// Map position (city centre) and where the label sits next to the marker
 	coordinates: { lat: 52.3874, lon: 4.6462 },
 	municipality: 'Haarlem', // CBS name, highlighted on the service-area map
 	mapLabel: 'top',
 	nearby: ['amsterdam', 'amstelveen', 'zaandam'],
-	cbrExamLocation: null, // TODO: verify the nearest CBR practical exam centre for licence B on cbr.nl
 	nl: {
 		metaTitle: 'Rijschool Haarlem | Rijles automaat & schakel | All Drive',
 		metaDescription:

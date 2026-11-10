@@ -46,10 +46,19 @@
 		<div class="quick-menu-info">
 			<h2>{m.footer_info_heading()}</h2>
 			<ul>
-				{#each [...infoPages, ...footerServices] as page (page.slug)}
+				{#each infoPages as page (page.slug)}
+					<li><a href={localizeHref(`/${page.slug}`)}>{pickByLocale(page).title}</a></li>
+				{/each}
+			</ul>
+		</div>
+
+		<div class="quick-menu-services">
+			<h2>{m.footer_services_heading()}</h2>
+			<ul>
+				{#each services as service (service.slug)}
 					<li>
-						<a href={localizeHref(`/${page.slug}`)}
-							>{pickByLocale(page).linkTitle ?? pickByLocale(page).title}</a
+						<a href={localizeHref(`/${service.slug}`)}
+							>{pickByLocale(service).linkTitle ?? pickByLocale(service).title}</a
 						>
 					</li>
 				{/each}
@@ -148,11 +157,8 @@
 	import { openConsentSettings } from '$lib/consent.svelte.js';
 	import { cities } from '$lib/data/cities';
 	import { infoPages } from '$lib/data/info';
-	import { getService } from '$lib/data/services';
+	import { services } from '$lib/data/services';
 	import { pickByLocale } from '$lib/utils/get-localized-data';
-
-	// Services for people who already have a licence or come from abroad; listed with the information pages
-	const footerServices = ['opfriscursus', 'rijtest', 'rijles-voor-expats'].map(getService);
 
 	const { social } = business;
 </script>
@@ -235,7 +241,7 @@
 				grid-template-columns: 1.4fr repeat(3, 1fr);
 				grid-template-areas:
 					'brand links cities info'
-					'brand contact hours .'
+					'brand contact hours services'
 					'bottom bottom bottom bottom';
 				grid-column-gap: var(--space-12);
 
@@ -250,6 +256,9 @@
 				}
 				.quick-menu-info {
 					grid-area: info;
+				}
+				.quick-menu-services {
+					grid-area: services;
 				}
 				.quick-menu-2 {
 					grid-area: contact;

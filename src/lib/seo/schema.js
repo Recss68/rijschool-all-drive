@@ -10,6 +10,8 @@ import packagesNl from '$lib/data/pricing-packages.nl.json';
 import packagesEn from '$lib/data/pricing-packages.en.json';
 
 export const ORG_ID = `${business.url}/#organization`;
+export const WEBSITE_ID = `${business.url}/#website`;
+export const PERSON_ID = `${business.url}/#head-instructor`;
 
 /** The three main packages that are promoted on the home page. */
 export const MAIN_PACKAGE_IDS = ['rij-start', 'door-rij', 'vol-gas'];
@@ -70,11 +72,18 @@ export function organization() {
 			value: business.kvk,
 		},
 		numberOfEmployees: { '@type': 'QuantitativeValue', value: team.size },
-		employee: {
-			'@type': 'Person',
-			name: team.headInstructor.name,
-			jobTitle: getLocale() === 'en' ? 'Head instructor' : 'Hoofdinstructeur',
-		},
+		employee: { '@id': PERSON_ID },
+		hasMap: business.googleBusinessUrl,
+		...(business.reviews && {
+			// the Google reviews as shown on the site (AI assistants read this; Google itself
+			// shows no stars for a business rating its own profile)
+			aggregateRating: {
+				'@type': 'AggregateRating',
+				ratingValue: business.reviews.rating,
+				reviewCount: business.reviews.count,
+				bestRating: 5,
+			},
+		}),
 		hasOfferCatalog: {
 			'@type': 'OfferCatalog',
 			name: m.home_packages_heading(),
@@ -186,5 +195,69 @@ export function singleRatesCatalog(labels) {
 			priceCurrency: 'EUR',
 			seller: { '@id': ORG_ID },
 		})),
+	};
+}
+
+/** The site itself, so search engines show "Rijschool All Drive" as the site name. */
+export function website() {
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'WebSite',
+		'@id': WEBSITE_ID,
+		name: business.name,
+		url: business.url,
+		inLanguage: ['nl', 'en'],
+		publisher: { '@id': ORG_ID },
+	};
+}
+
+/** The head instructor: the only team member who is named (privacy). */
+export function headInstructor() {
+	const { name, yearsExperience } = business.team.headInstructor;
+	const en = getLocale() === 'en';
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'Person',
+		'@id': PERSON_ID,
+		name,
+		jobTitle: en ? 'Head instructor' : 'Hoofdinstructeur',
+		description: en
+			? `Head instructor at ${business.name}, with ${yearsExperience} years of experience in driving instruction.`
+			: `Hoofdinstructeur bij ${business.name}, met ${yearsExperience} jaar ervaring in het rijonderwijs.`,
+		worksFor: { '@id': ORG_ID },
+		knowsLanguage: business.lessonLanguages,
+	};
+}
+
+/** The about page, pointing at the school and its head instructor. */
+export function aboutPage() {
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'AboutPage',
+		name: m.meta_overons_title(),
+		url: absoluteUrl('/over-ons'),
+		about: { '@id': ORG_ID },
+		mainEntity: { '@id': PERSON_ID },
+		isPartOf: { '@id': WEBSITE_ID },
+	};
+}
+
+/**
+ * An information article (the /[page=info] pages).
+ * @param {{ title: string, description: string, path: string, updated: string }} opts
+ */
+export function article({ title, description, path, updated }) {
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'Article',
+		headline: title,
+		description,
+		url: absoluteUrl(path),
+		mainEntityOfPage: absoluteUrl(path),
+		dateModified: updated,
+		inLanguage: getLocale(),
+		author: { '@id': ORG_ID },
+		publisher: { '@id': ORG_ID },
+		isPartOf: { '@id': WEBSITE_ID },
 	};
 }

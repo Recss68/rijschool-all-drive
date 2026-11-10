@@ -2,14 +2,13 @@ export const city = {
 	slug: 'oostzaan',
 	name: 'Oostzaan',
 	order: 12,
-	updated: '2026-10-15', // last real content change (sitemap lastmod)
+	updated: '2026-11-09', // last real content change (sitemap lastmod)
 	wikipedia: 'https://nl.wikipedia.org/wiki/Oostzaan',
 	// Map position (village or town centre) and where the label sits next to the marker
 	coordinates: { lat: 52.4392, lon: 4.8775 },
 	municipality: 'Oostzaan',
 	mapLabel: 'bottom',
 	nearby: ['zaandam', 'landsmeer', 'amsterdam'],
-	cbrExamLocation: null, // TODO: verify the nearest CBR practical exam centre for licence B on cbr.nl
 	nl: {
 		metaTitle: 'Rijschool Oostzaan | Rijles automaat & schakel | All Drive',
 		metaDescription:
@@ -41,7 +40,7 @@ export const city = {
 	en: {
 		metaTitle: 'Driving School Oostzaan | Automatic & manual | All Drive',
 		metaDescription:
-			'Driving lessons in Oostzaan with Rijschool All Drive: dedicated instructor, pick-up in Oostzaan and packages including the CBR exam. Request a trial lesson today.',
+			'Driving lessons in Oostzaan with Rijschool All Drive: dedicated instructor, pick-up in Oostzaan and packages including the CBR exam. Request a trial lesson.',
 		intro:
 			'Oostzaan lies between Zaandam and Amsterdam-Noord, with the Coenplein interchange close by. With Rijschool All Drive you start in the village and the surrounding polder, and then practise on the busy roads around Zaandam and Amsterdam.',
 		areas: ['All of Oostzaan'],

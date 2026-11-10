@@ -1,14 +1,24 @@
 <Seo
 	title={content.metaTitle}
 	description={content.metaDescription}
-	schema={[breadcrumbs([{ name: content.title, path: `/${data.slug}` }])]}
+	schema={[
+		article({
+			title: content.title,
+			description: content.metaDescription,
+			path: `/${data.slug}`,
+			updated,
+		}),
+		breadcrumbs([{ name: content.title, path: `/${data.slug}` }]),
+	]}
 />
 
 <ArticleHero
 	trail={[{ label: m.header_home(), href: '/' }, { label: m.footer_info_heading() }]}
 	title={content.title}
 	lead={content.intro}
-	meta="{business.name} · {m.info_reading_time({ minutes })}"
+	meta="{business.name} · {m.info_reading_time({ minutes })} · {m.info_updated({
+		date: formatDate(updated),
+	})}"
 />
 
 <ArticleLayout toc={sections.map((s) => ({ id: s.id, label: s.heading }))}>
@@ -26,11 +36,15 @@
 	import { infoPages, getInfoPage } from '$lib/data/info';
 	import { pickByLocale } from '$lib/utils/get-localized-data';
 	import { slugify, readingMinutes } from '$lib/utils/text';
-	import { breadcrumbs } from '$lib/seo/schema.js';
+	import { breadcrumbs, article } from '$lib/seo/schema.js';
+	import { formatDate } from '$lib/utils/format-date';
+	import { staticRoutes } from '$lib/i18n/routes.js';
 
 	let { data } = $props();
 
 	const content = $derived(pickByLocale(getInfoPage(data.slug)));
+	// last real content change, the same date the sitemap uses
+	const updated = $derived(staticRoutes.find((r) => r.nl === `/${data.slug}`)?.updated);
 
 	// Sections with stable anchor ids for the table of contents
 	const sections = $derived(

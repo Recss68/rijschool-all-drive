@@ -2,14 +2,13 @@ export const city = {
 	slug: 'uithoorn',
 	name: 'Uithoorn',
 	order: 7,
-	updated: '2026-10-15', // last real content change (sitemap lastmod)
+	updated: '2026-11-09', // last real content change (sitemap lastmod)
 	wikipedia: 'https://nl.wikipedia.org/wiki/Uithoorn',
 	// Map position (village or town centre) and where the label sits next to the marker
 	coordinates: { lat: 52.2378, lon: 4.8264 },
 	municipality: 'Uithoorn',
 	mapLabel: 'right',
 	nearby: ['amstelveen', 'aalsmeer', 'amsterdam'],
-	cbrExamLocation: null, // TODO: verify the nearest CBR practical exam centre for licence B on cbr.nl
 	nl: {
 		metaTitle: 'Rijschool Uithoorn | Rijles automaat & schakel | All Drive',
 		metaDescription:
@@ -41,7 +40,7 @@ export const city = {
 	en: {
 		metaTitle: 'Driving School Uithoorn | Automatic & manual | All Drive',
 		metaDescription:
-			'Driving lessons in Uithoorn with Rijschool All Drive: dedicated instructor, pick-up in Uithoorn and packages including the CBR exam. Request a trial lesson today.',
+			'Driving lessons in Uithoorn with Rijschool All Drive: dedicated instructor, pick-up in Uithoorn and packages including the CBR exam. Request a trial lesson.',
 		intro:
 			'Uithoorn lies on the Amstel river, at the southern edge of our service area. With Rijschool All Drive you drive through the residential areas of Uithoorn and De Kwakel, over the bridges near the Amstel and via the N201 towards Amstelveen and Aalsmeer.',
 		areas: ['Uithoorn-Centrum', 'Meerwijk', 'Zijdelwaard', 'Thamerdal', 'De Kwakel'],

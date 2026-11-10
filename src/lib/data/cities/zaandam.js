@@ -2,14 +2,13 @@ export const city = {
 	slug: 'zaandam',
 	name: 'Zaandam',
 	order: 5,
-	updated: '2026-10-28', // last real content change (sitemap lastmod)
+	updated: '2026-11-09', // last real content change (sitemap lastmod)
 	wikipedia: 'https://nl.wikipedia.org/wiki/Zaandam',
 	// Map position (city centre) and where the label sits next to the marker
 	coordinates: { lat: 52.442, lon: 4.8292 },
 	municipality: 'Zaanstad', // CBS name, highlighted on the service-area map
 	mapLabel: 'top',
 	nearby: ['oostzaan', 'landsmeer', 'amsterdam'],
-	cbrExamLocation: null,
 	// no automatic car in Zaandam: the form, city page and automaat page all follow this
 	transmissions: ['schakel'], // TODO: verify the nearest CBR practical exam centre for licence B on cbr.nl
 	nl: {

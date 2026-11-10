@@ -140,3 +140,22 @@ describe('expats page', () => {
 		);
 	});
 });
+
+describe('nearest CBR exam centres', () => {
+	it('picks the closest centres per city, as the crow flies', async () => {
+		const { getCity, cities } = await import('./cities');
+		const { cityExamCentres } = await import('$lib/utils/city-copy');
+		const names = (slug) => cityExamCentres(getCity(slug)).practical.map((c) => c.city);
+		expect(names('zaandam')).toEqual(['Zaandam']);
+		expect(names('amsterdam')).toEqual(['Amsterdam']);
+		// Aalsmeer is about as close to Haarlem as to Amsterdam: both are shown
+		expect(names('aalsmeer')).toEqual(['Haarlem', 'Amsterdam']);
+		// Zaandam has no theory exams: the nearest theory centre is elsewhere
+		expect(cityExamCentres(getCity('zaandam')).theory.city).toBe('Amsterdam');
+		for (const city of cities) {
+			const { practical } = cityExamCentres(city);
+			expect(practical[0].km).toBeLessThanOrEqual(20);
+			expect(practical[0].url).toMatch(/^https:\/\/www\.cbr\.nl\//);
+		}
+	});
+});
