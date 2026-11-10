@@ -2,13 +2,12 @@ export const city = {
 	slug: 'zwanenburg',
 	name: 'Zwanenburg',
 	order: 10,
-	updated: '2026-10-15', // last real content change (sitemap lastmod)
+	updated: '2026-11-09', // last real content change (sitemap lastmod)
 	// Map position (village or town centre) and where the label sits next to the marker
 	coordinates: { lat: 52.379, lon: 4.747 },
 	municipality: null, // village in the municipality of Haarlemmermeer: marker only,
 	mapLabel: 'top',
 	nearby: ['lijnden', 'badhoevedorp', 'amsterdam'],
-	cbrExamLocation: null, // TODO: verify the nearest CBR practical exam centre for licence B on cbr.nl
 	nl: {
 		metaTitle: 'Rijschool Zwanenburg | Rijles automaat & schakel | All Drive',
 		metaDescription:
@@ -40,7 +39,7 @@ export const city = {
 	en: {
 		metaTitle: 'Driving School Zwanenburg | Automatic & manual | All Drive',
 		metaDescription:
-			'Driving lessons in Zwanenburg with Rijschool All Drive: dedicated instructor, pick-up in Zwanenburg and packages including the CBR exam. Request a trial lesson today.',
+			'Driving lessons in Zwanenburg with Rijschool All Drive: dedicated instructor, pick-up in Zwanenburg and packages including the CBR exam. Request a trial lesson.',
 		intro:
 			'Zwanenburg lies on the northern side of the Haarlemmermeer, close to Halfweg. With Rijschool All Drive you practise in the residential streets of the village, along the Ringvaart canal and on the main roads towards Amsterdam.',
 		areas: ['All of Zwanenburg'],

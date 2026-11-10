@@ -4,14 +4,13 @@ export const city = {
 	slug: 'amsterdam',
 	name: 'Amsterdam',
 	order: 1,
-	updated: '2026-10-14', // last real content change (sitemap lastmod)
+	updated: '2026-11-09', // last real content change (sitemap lastmod)
 	wikipedia: 'https://nl.wikipedia.org/wiki/Amsterdam',
 	// Map position (city centre) and where the label sits next to the marker
 	coordinates: { lat: 52.3676, lon: 4.9041 },
 	municipality: 'Amsterdam', // CBS name, highlighted on the service-area map
 	mapLabel: 'top',
 	nearby: ['amstelveen', 'diemen', 'zaandam'],
-	cbrExamLocation: null, // TODO: verify on cbr.nl which centre takes practical exams for licence B
 	nl: {
 		h1: 'Rijles in alle stadsdelen van Amsterdam',
 		metaTitle: 'Rijles Amsterdam per stadsdeel | Rijschool All Drive',

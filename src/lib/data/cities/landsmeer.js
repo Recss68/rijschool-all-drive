@@ -2,14 +2,13 @@ export const city = {
 	slug: 'landsmeer',
 	name: 'Landsmeer',
 	order: 11,
-	updated: '2026-10-15', // last real content change (sitemap lastmod)
+	updated: '2026-11-09', // last real content change (sitemap lastmod)
 	wikipedia: 'https://nl.wikipedia.org/wiki/Landsmeer',
 	// Map position (village or town centre) and where the label sits next to the marker
 	coordinates: { lat: 52.4317, lon: 4.9142 },
 	municipality: 'Landsmeer',
 	mapLabel: 'right',
 	nearby: ['amsterdam', 'oostzaan', 'zaandam'],
-	cbrExamLocation: null, // TODO: verify the nearest CBR practical exam centre for licence B on cbr.nl
 	nl: {
 		metaTitle: 'Rijschool Landsmeer | Rijles automaat & schakel | All Drive',
 		metaDescription:
@@ -41,7 +40,7 @@ export const city = {
 	en: {
 		metaTitle: 'Driving School Landsmeer | Automatic & manual | All Drive',
 		metaDescription:
-			'Driving lessons in Landsmeer with Rijschool All Drive: dedicated instructor, pick-up in Landsmeer and packages including the CBR exam. Request a trial lesson today.',
+			'Driving lessons in Landsmeer with Rijschool All Drive: dedicated instructor, pick-up in Landsmeer and packages including the CBR exam. Request a trial lesson.',
 		intro:
 			'Landsmeer lies just north of Amsterdam-Noord, between meadows and water. With Rijschool All Drive you practise here on narrow village and polder roads, and continue via Amsterdam-Noord to the A10 ring road.',
 		areas: ['Landsmeer', 'Den Ilp', 'Purmerland'],

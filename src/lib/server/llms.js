@@ -5,6 +5,7 @@ import { cities, offersAutomatic } from '$lib/data/cities';
 import { services } from '$lib/data/services';
 import { infoPages } from '$lib/data/info';
 import { formatEuro } from '$lib/utils/format-euro';
+import { cityExamCentres } from '$lib/utils/city-copy';
 import { absoluteUrl } from '$lib/seo/url.js';
 import { MAIN_PACKAGE_IDS } from '$lib/seo/schema.js';
 import packagesEn from '$lib/data/pricing-packages.en.json';
@@ -61,7 +62,7 @@ ${business.singleRates.map((id) => `- ${RATE_NAMES[id]}: ${formatEuro(prices[id]
 
 ## Service area (Werkgebied)
 
-${cities.map((c) => both(c.slug === 'amsterdam' ? 'Amsterdam (all districts)' : c.name, `/rijschool-${c.slug}`)).join('\n')}
+${cities.map((c) => both(c.slug === 'amsterdam' ? 'Amsterdam (all districts)' : c.name, `/rijschool-${c.slug}`, `nearest CBR practical exam centre ${cityExamCentres(c).practical[0].name} (${cityExamCentres(c).practical[0].address})`)).join('\n')}
 - [Overview of the service area](${nl('/werkgebied')}) ([English](${en('/werkgebied')}))
 
 ## Services

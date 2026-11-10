@@ -72,6 +72,30 @@
 		</ul>
 	</section>
 
+	<section class="block" id={sectionId('exam')}>
+		<h2>{m.city_exam_heading()}</h2>
+		<p>{m.city_exam_intro({ city: city.name })}</p>
+		<ul class="check-list inline-links">
+			{#each exam.practical as centre (centre.url)}
+				<li>
+					<a href={centre.url} rel="noopener" target="_blank">{centre.name}</a>,
+					{m.city_exam_item({ address: centre.address, km: centre.km })}
+				</li>
+			{/each}
+		</ul>
+		<p>
+			{m.city_exam_theory({
+				name: exam.theory.name,
+				address: exam.theory.address,
+				km: exam.theory.km,
+			})}
+		</p>
+		<p>{m.city_exam_choice()}</p>
+		<p class="source">
+			<a href={cbrPracticalListUrl} rel="noopener" target="_blank">{m.city_exam_source()}</a>
+		</p>
+	</section>
+
 	<section class="block" id={sectionId('services')}>
 		<h2>{m.city_services_heading()}</h2>
 		<ul class="check-list inline-links">
@@ -121,7 +145,8 @@
 	import { formatEuro } from '$lib/utils/format-euro';
 	import { fillPlaceholders, starterPackage } from '$lib/utils/placeholders';
 	import { slugify } from '$lib/utils/text';
-	import { cityAnswer, cityTypesFact } from '$lib/utils/city-copy';
+	import { cityAnswer, cityTypesFact, cityExamCentres, cityExamFaq } from '$lib/utils/city-copy';
+	import { cbrPracticalListUrl } from '$lib/data/cbr-locations.js';
 	import { service as schemaService, breadcrumbs, faqPage } from '$lib/seo/schema.js';
 
 	let { data } = $props();
@@ -139,6 +164,7 @@
 		districts: m.city_districts_heading(),
 		areas: m.city_areas_heading({ city: city.name }),
 		practice: m.city_practice_heading(),
+		exam: m.city_exam_heading(),
 		services: m.city_services_heading(),
 		faq: m.city_faq_heading({ city: city.name }),
 	});
@@ -166,7 +192,12 @@
 		services.filter((s) => s.slug !== 'automaat-rijles' || offersAutomatic(city))
 	);
 
-	const faq = $derived(content.faq.map(({ q, a }) => ({ q, a: fillPlaceholders(a) })));
+	const exam = $derived(cityExamCentres(city));
+	// the city's own questions plus a generated one about the nearest exam centre
+	const faq = $derived([
+		...content.faq.map(({ q, a }) => ({ q, a: fillPlaceholders(a) })),
+		cityExamFaq(city),
+	]);
 
 	const nearby = $derived(
 		city.nearby
@@ -188,6 +219,15 @@
 
 	.callout {
 		margin-top: var(--space-6);
+	}
+
+	.source {
+		font-size: var(--fs-label-s-mobile);
+		a {
+			color: inherit;
+			text-decoration: underline;
+			text-underline-offset: 3px;
+		}
 	}
 
 	.city-packages {

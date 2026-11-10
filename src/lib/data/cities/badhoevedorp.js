@@ -2,14 +2,13 @@ export const city = {
 	slug: 'badhoevedorp',
 	name: 'Badhoevedorp',
 	order: 8,
-	updated: '2026-10-15', // last real content change (sitemap lastmod)
+	updated: '2026-11-09', // last real content change (sitemap lastmod)
 	wikipedia: 'https://nl.wikipedia.org/wiki/Badhoevedorp',
 	// Map position (village or town centre) and where the label sits next to the marker
 	coordinates: { lat: 52.3389, lon: 4.7833 },
 	municipality: null, // village in the municipality of Haarlemmermeer: marker only,
 	mapLabel: 'bottom',
 	nearby: ['lijnden', 'zwanenburg', 'amsterdam'],
-	cbrExamLocation: null, // TODO: verify the nearest CBR practical exam centre for licence B on cbr.nl
 	nl: {
 		metaTitle: 'Rijschool Badhoevedorp | Automaat & schakel | All Drive',
 		metaDescription:
@@ -41,7 +40,7 @@ export const city = {
 	en: {
 		metaTitle: 'Driving School Badhoevedorp | Automatic & manual | All Drive',
 		metaDescription:
-			'Driving lessons in Badhoevedorp with Rijschool All Drive: dedicated instructor, pick-up in Badhoevedorp and packages including the CBR exam. Request a trial lesson today.',
+			'Driving lessons in Badhoevedorp with Rijschool All Drive: dedicated instructor, pick-up in Badhoevedorp and packages including the CBR exam. Request a trial lesson.',
 		intro:
 			'Badhoevedorp is squeezed between Amsterdam-Nieuw-West, Schiphol and the A4 and A9 motorways. That is why with Rijschool All Drive you soon practise merging and motorway driving, while you start calmly in the village itself.',
 		areas: ['All of Badhoevedorp'],

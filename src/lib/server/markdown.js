@@ -11,7 +11,8 @@ import { pickByLocale } from '$lib/utils/get-localized-data';
 import { formatEuro } from '$lib/utils/format-euro';
 import { fillPlaceholders, starterPackage } from '$lib/utils/placeholders';
 import { faqItems } from '$lib/utils/faq';
-import { cityAnswer } from '$lib/utils/city-copy';
+import { cityAnswer, cityExamCentres, cityExamFaq } from '$lib/utils/city-copy';
+import { cbrPracticalListUrl } from '$lib/data/cbr-locations.js';
 import { singleRateNames, packageOnlyNote } from '$lib/utils/rates';
 import { absoluteUrl } from '$lib/seo/url.js';
 import packagesNl from '$lib/data/pricing-packages.nl.json';
@@ -231,6 +232,23 @@ function legal(title, articles) {
 	return [`# ${title}`, articlesMd(pickByLocale(articles))];
 }
 
+function cityExamMd(c) {
+	const { practical, theory } = cityExamCentres(c);
+	return [
+		`## ${m.city_exam_heading()}`,
+		m.city_exam_intro({ city: c.name }),
+		list(
+			practical.map(
+				(centre) =>
+					`[${centre.name}](${centre.url}), ${m.city_exam_item({ address: centre.address, km: centre.km })}`
+			)
+		),
+		m.city_exam_theory({ name: theory.name, address: theory.address, km: theory.km }),
+		m.city_exam_choice(),
+		`[${m.city_exam_source()}](${cbrPracticalListUrl})`,
+	].join('\n\n');
+}
+
 function city(slug) {
 	const c = getCity(slug);
 	const content = pickByLocale(c);
@@ -245,12 +263,13 @@ function city(slug) {
 		list(content.areas),
 		`## ${m.city_practice_heading()}`,
 		list(content.practice),
+		cityExamMd(c),
 		`## ${m.city_packages_heading({ city: c.name })}`,
 		packagesMd(['rij-start', 'door-rij', 'vol-gas']),
-		faqMd(
-			m.city_faq_heading({ city: c.name }),
-			content.faq.map(({ q, a }) => ({ q, a: fillPlaceholders(a) }))
-		),
+		faqMd(m.city_faq_heading({ city: c.name }), [
+			...content.faq.map(({ q, a }) => ({ q, a: fillPlaceholders(a) })),
+			cityExamFaq(c),
+		]),
 		`## ${m.city_others_heading()}`,
 		list(
 			c.nearby
