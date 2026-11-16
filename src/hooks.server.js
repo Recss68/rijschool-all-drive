@@ -1,9 +1,18 @@
 import { redirect } from '@sveltejs/kit';
+import { env } from '$env/dynamic/private';
 import { sequence } from '@sveltejs/kit/hooks';
 import { paraglideMiddleware } from '$lib/paraglide/server';
 import { getTextDirection, deLocalizeUrl, localizeHref } from '$lib/paraglide/runtime';
 import { renderMarkdown, notFoundMarkdown } from '$lib/server/markdown.js';
 import { wantsMarkdown, redirects } from '$lib/server/negotiation.js';
+import { canonicalHostRedirect } from '$lib/server/host.js';
+
+/** On production, any other host (the *.vercel.app alias) redirects to www in one step. */
+const hostHandle = ({ event, resolve }) => {
+	const target = canonicalHostRedirect(event.url, env.VERCEL_ENV);
+	if (target) redirect(308, target);
+	return resolve(event);
+};
 
 /** 301s: well-known aliases (/about) and English pages opened with a Dutch slug (/en/prijzen). */
 const redirectHandle = ({ event, resolve }) => {
@@ -50,4 +59,4 @@ const i18nHandle = ({ event, resolve }) =>
 		return response;
 	});
 
-export const handle = sequence(redirectHandle, i18nHandle);
+export const handle = sequence(hostHandle, redirectHandle, i18nHandle);

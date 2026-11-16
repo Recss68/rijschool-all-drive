@@ -5,6 +5,8 @@
 
 export const business = {
 	name: 'Rijschool All Drive',
+	// other ways people write the name (search engines and AI assistants match on these)
+	alternateNames: ['All Drive', 'Rijschool AllDrive', 'AllDrive Amsterdam'],
 	// Primary host: every canonical, sitemap, schema and og:url uses this origin
 	url: 'https://www.rijschoolalldrive.nl',
 	logo: '/images/ad_long_black.png',

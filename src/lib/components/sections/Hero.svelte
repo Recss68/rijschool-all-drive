@@ -21,7 +21,11 @@
 					</svg>
 					{m.hero_badge()}</span
 				>
-				<h1 id="my-text">{@html m.hero_title()}</h1>
+				<!-- brand + main product in the one H1, so a search for the brand finds this page -->
+				<h1 id="my-text">
+					<span class="brand">{business.name}</span>
+					{@html m.hero_title()}
+				</h1>
 				<p>
 					{m.hero_subtitle()}
 					{m.hero_areas_short({ count: cities.length - 1 })}
@@ -162,6 +166,16 @@
 		h1 {
 			color: var(--c-white);
 			font-size: var(--fs-display-md);
+		}
+		/* the brand as a small label above the headline (still part of the H1) */
+		h1 .brand {
+			display: block;
+			margin-bottom: var(--space-3);
+			font-size: var(--fs-label-md);
+			font-weight: var(--fw-semibold);
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			color: var(--c-sky-100);
 		}
 		p {
 			color: var(--c-slate-200);

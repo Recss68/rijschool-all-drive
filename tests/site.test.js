@@ -227,6 +227,15 @@ describe('service area', () => {
 		expect(footer).toContain('href="/schakel-rijles"');
 	});
 
+	it('the homepage title and H1 name the brand together with the main product', async () => {
+		const html = await (await get('/')).text();
+		expect(html).toContain('<title>Rijschool All Drive | Rijschool in Amsterdam</title>');
+		const h1 = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)[1].replace(/<[^>]+>/g, ' ');
+		expect(h1).toContain('Rijschool All Drive');
+		expect(h1).toContain('Rijschool in Amsterdam');
+		expect(html).toContain('"alternateName":["All Drive"');
+	});
+
 	it('single rates page lists every rate', async () => {
 		const html = await (await get('/losse-tarieven')).text();
 		for (const price of ['50', '65', '97,50', '290', '350', '375', '390'])
