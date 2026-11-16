@@ -5,6 +5,10 @@ name: Deploy check
 on:
   deployment_status:
   workflow_dispatch:
+    inputs:
+      indexnow_days:
+        description: 'IndexNow: submit pages changed in the last N days (3650 = all pages)'
+        default: '7'
 
 permissions:
   contents: read
@@ -52,3 +56,20 @@ jobs:
         run: |
           [ "$(curl -s -o /dev/null -w '%{http_code}' "$SITE/about")" = 301 ]
           [ "$(curl -s -o /dev/null -w '%{http_code}' https://rijschoolalldrive.nl/)" = 308 ]
+          [ "$(curl -s -o /dev/null -w '%{http_code}' https://rijschool-all-drive.vercel.app/)" = 308 ]
+
+  indexnow:
+    name: Notify search engines (IndexNow)
+    needs: smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    env:
+      SITE: https://www.rijschoolalldrive.nl
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # Problems show up as a warning in the run summary, never as a failed check
+      - name: Submit recently changed pages
+        run: node scripts/indexnow.mjs --days "${{ inputs.indexnow_days || '7' }}"
