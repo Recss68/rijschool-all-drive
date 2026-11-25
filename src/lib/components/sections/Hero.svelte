@@ -112,7 +112,6 @@
 	import ButtonIcon from '$lib/components/ui/ButtonIcon.svelte';
 	import { cities } from '$lib/data/cities';
 	import { localizeHref } from '$lib/paraglide/runtime';
-	import { gsap } from 'gsap';
 	import { onMount, onDestroy } from 'svelte';
 	import { m } from '$lib/paraglide/messages.js';
 	import { business } from '$lib/data/business.js';
@@ -129,7 +128,11 @@
 		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
 		try {
-			const { SplitText } = await import('gsap/SplitText');
+			// loaded after the first paint, so the animation library is not on the critical path
+			const [{ gsap }, { SplitText }] = await Promise.all([
+				import('gsap'),
+				import('gsap/SplitText'),
+			]);
 			gsap.registerPlugin(SplitText);
 			// split into words too, so words never break across lines
 			split = new SplitText('#my-text', { type: 'words,chars' });
