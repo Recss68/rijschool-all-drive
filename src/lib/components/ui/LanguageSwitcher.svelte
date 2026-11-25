@@ -4,11 +4,11 @@
 		class="language-switcher__toggle"
 		aria-haspopup="true"
 		aria-expanded={open}
-		aria-label={m.language_switcher_aria()}
 		onclick={() => (open = !open)}
 	>
+		<!-- the visible code stays part of the name, so voice control can say "click NL" -->
 		<span class="flag" aria-hidden="true">{languageFlags[getLocale()]}</span>
-		{getLocale().toUpperCase()}
+		{getLocale().toUpperCase()}<span class="visually-hidden">, {m.language_switcher_aria()}</span>
 	</button>
 
 	{#if open}
@@ -89,6 +89,7 @@
 	}
 
 	.language-switcher__toggle {
+		position: relative;
 		display: flex;
 		align-items: center;
 		gap: var(--space-2);

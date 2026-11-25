@@ -236,6 +236,20 @@ h6 {
 	color: var(--c-navy-900);
 }
 
+/* --- Utilities ------------------------------------------------------------ */
+/* Text for screen readers only (accessible names, table captions, headings) */
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	white-space: nowrap;
+	border: 0;
+}
+
 /* Reduce motion */
 @media (prefers-reduced-motion: reduce) {
 	* {

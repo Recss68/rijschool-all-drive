@@ -38,19 +38,17 @@
 	</a>
 
 	<!-- phones and tablets: the language is one tap away, not hidden in the menu -->
-	<button
-		type="button"
-		class="lang-quick"
-		lang={other}
-		aria-label={other === 'en' ? 'Switch to English' : 'Schakel naar Nederlands'}
-		onclick={switchLanguage}
-	>
+	<button type="button" class="lang-quick" lang={other} onclick={switchLanguage}>
+		<!-- the visible code stays part of the name, so voice control can say "click EN" -->
 		<span aria-hidden="true">{other === 'en' ? '🇬🇧' : '🇳🇱'}</span>
-		{other.toUpperCase()}
+		{other.toUpperCase()}<span class="visually-hidden"
+			>, {other === 'en' ? 'switch to English' : 'schakel naar Nederlands'}</span
+		>
 	</button>
 
 	<input bind:this={menuBtn} class="menu-btn" type="checkbox" id="menu-btn" name="menu-btn" />
-	<label class="menu-icon" aria-label={m.header_menu_toggle_aria()} for="menu-btn">
+	<label class="menu-icon" for="menu-btn">
+		<span class="visually-hidden">{m.header_menu_toggle_aria()}</span>
 		<span class="navicon"></span>
 	</label>
 
@@ -198,6 +196,7 @@
 		font-size: var(--fs-label-s-mobile);
 		font-weight: var(--fw-semibold);
 		color: var(--c-navy-900);
+		position: relative;
 		cursor: pointer;
 		touch-action: manipulation;
 		-webkit-tap-highlight-color: transparent;
@@ -236,7 +235,9 @@
 	}
 
 	.nav-item {
-		transition: all 0.2s ease-in-out;
+		transition:
+			color 0.2s ease-in-out,
+			background-color 0.2s ease-in-out;
 		&:hover {
 			color: var(--hover-state);
 			background-color: var(--hover-state-x);
@@ -433,8 +434,10 @@
 			align-items: center;
 		}
 
+		/* the menu is always open here: take the toggle out of the tab order and the a11y tree */
+		.menu-btn,
 		.menu-icon {
-			visibility: hidden;
+			display: none;
 		}
 
 		.menu {
