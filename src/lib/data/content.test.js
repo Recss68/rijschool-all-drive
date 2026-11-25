@@ -77,6 +77,17 @@ describe('services and information pages', () => {
 		expect(JSON.stringify(nl)).toContain('geen officieel examen');
 		expect(JSON.stringify(en)).toContain('not an official exam');
 	});
+
+	it('internal links in information pages point to existing pages', () => {
+		const internal = infoPages
+			.flatMap((p) => [...p.nl.articles, ...p.en.articles])
+			.flatMap((a) => a.links ?? [])
+			.filter((l) => l.href.startsWith('/'));
+		expect(internal.length).toBeGreaterThan(0);
+		for (const { href } of internal) {
+			expect(staticRoutes.map((r) => r.nl)).toContain(href);
+		}
+	});
 });
 
 describe('privacy', () => {

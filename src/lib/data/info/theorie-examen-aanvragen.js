@@ -1,3 +1,5 @@
+import { infoNextStep } from '../info-next-step.js';
+
 export const page = {
 	slug: 'theorie-examen-aanvragen',
 	order: 3,
@@ -37,6 +39,7 @@ export const page = {
 					'Neem op de examendag je identiteitsbewijs mee en kom op tijd.',
 				],
 			},
+			infoNextStep.nl,
 			{
 				heading: 'Officiële informatie',
 				variant: 'sources',
@@ -80,6 +83,7 @@ export const page = {
 					'Bring your ID on the exam day and arrive on time.',
 				],
 			},
+			infoNextStep.en,
 			{
 				heading: 'Official information',
 				variant: 'sources',

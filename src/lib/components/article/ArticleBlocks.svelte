@@ -1,4 +1,6 @@
-<!-- Renders content sections ({ id, heading, variant?, paragraphs?, items?, links? }) inside ArticleLayout -->
+<!-- Renders content sections ({ id, heading, variant?, paragraphs?, items?, links? }) inside ArticleLayout.
+     In a 'sources' block, links are external (new tab); in any other block they are internal pages
+     (Dutch path, localized here), so an article can point readers to their next step. -->
 {#each sections as section (section.id)}
 	{#if section.variant === 'sources'}
 		<aside class="sources" id={section.id}>
@@ -37,11 +39,19 @@
 					</ul>
 				{/if}
 			{/if}
+			{#if section.links?.length}
+				<ul class="check-list inline-links">
+					{#each section.links as link (link.href)}
+						<li><a href={localizeHref(link.href)}>{link.label}</a></li>
+					{/each}
+				</ul>
+			{/if}
 		</section>
 	{/if}
 {/each}
 
 <script>
+	import { localizeHref } from '$lib/paraglide/runtime';
 	import { fillPlaceholders } from '$lib/utils/placeholders';
 
 	/** @type {{ sections: { id: string, heading: string, variant?: string, paragraphs?: string[], items?: string[], links?: { label: string, href: string }[] }[] }} */

@@ -1,8 +1,14 @@
+import { infoNextStep } from '../info-next-step.js';
+
+const cbrDeadlines =
+	'https://www.cbr.nl/nl/veelgestelde-vragen/hoeveel-tijd-heb-ik-om-mijn-rijbewijs-aan-te-vragen';
 const sourcesNl = [
+	{ label: 'CBR: hoeveel tijd heb ik om mijn rijbewijs aan te vragen?', href: cbrDeadlines },
 	{ label: 'Rijksoverheid: rijbewijs', href: 'https://www.rijksoverheid.nl/onderwerpen/rijbewijs' },
 	{ label: 'Gemeente Amsterdam', href: 'https://www.amsterdam.nl' },
 ];
 const sourcesEn = [
+	{ label: 'CBR: how much time do I have to apply for my licence? (Dutch)', href: cbrDeadlines },
 	{
 		label: 'Government of the Netherlands: driving licence',
 		href: 'https://www.government.nl/topics/driving-licence',
@@ -24,7 +30,12 @@ export const page = {
 			{
 				heading: 'Wanneer vraag je je rijbewijs aan?',
 				paragraphs: [
-					'Na het slagen geeft het CBR je resultaat door aan de RDW. Daarna kun je je rijbewijs aanvragen bij je gemeente. Wacht er niet te lang mee: je moet je rijbewijs binnen anderhalf jaar na het slagen aanvragen.',
+					'Na het slagen zet het CBR twee verklaringen op je naam in het rijbewijsregister: een Verklaring van geschiktheid en een Verklaring van rijvaardigheid. Daarmee vraag je je rijbewijs aan bij je gemeente, meestal al kort na het slagen. Beide verklaringen zijn beperkt geldig:',
+				],
+				items: [
+					'Vraag je je rijbewijs niet binnen 1 jaar aan, dan moet je eerst opnieuw een Gezondheidsverklaring invullen.',
+					'Vraag je het niet binnen 3 jaar aan, dan moet je theorie- en praktijkexamen opnieuw doen.',
+					'Na de aanvraag kun je je rijbewijs na 5 werkdagen ophalen. Haal het binnen 3 maanden persoonlijk op bij de gemeente.',
 				],
 			},
 			{
@@ -44,6 +55,7 @@ export const page = {
 					'De gemeente vertelt je wanneer je je rijbewijs kunt ophalen. Ophalen doe je zelf, met je identiteitsbewijs.',
 				],
 			},
+			infoNextStep.nl,
 			{
 				heading: 'Officiële informatie',
 				variant: 'sources',
@@ -65,7 +77,12 @@ export const page = {
 			{
 				heading: 'When do you apply?',
 				paragraphs: [
-					'After you pass, the CBR sends your result to the RDW. You can then apply for your licence at your municipality. Do not wait too long: you must apply within one and a half years of passing.',
+					'After you pass, the CBR registers two statements in your name in the driving licence register: a Verklaring van geschiktheid (fitness to drive) and a Verklaring van rijvaardigheid (driving proficiency). With these you apply for your licence at your municipality, usually shortly after passing. Both statements are only valid for a limited time:',
+				],
+				items: [
+					'If you do not apply within 1 year, you first have to fill in a new health declaration (Gezondheidsverklaring).',
+					'If you do not apply within 3 years, you have to take the theory and practical exams again.',
+					'After applying, you can collect your licence after 5 working days. Collect it in person at the municipality within 3 months.',
 				],
 			},
 			{
@@ -85,6 +102,7 @@ export const page = {
 					'The municipality tells you when you can collect your licence. You collect it yourself, with your ID.',
 				],
 			},
+			infoNextStep.en,
 			{
 				heading: 'Official information',
 				variant: 'sources',

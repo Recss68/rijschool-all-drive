@@ -40,11 +40,11 @@ export const staticRoutes = [
 	{
 		nl: '/rijbewijs-aanvragen',
 		en: '/en/applying-for-your-driving-licence',
-		updated: '2026-10-14',
+		updated: '2026-11-25',
 	},
-	{ nl: '/theorie-examen-auto', en: '/en/car-theory-exam', updated: '2026-10-14' },
-	{ nl: '/theorie-examen-aanvragen', en: '/en/booking-your-theory-exam', updated: '2026-10-14' },
-	{ nl: '/rijschool-machtigen', en: '/en/authorising-your-driving-school', updated: '2026-10-14' },
+	{ nl: '/theorie-examen-auto', en: '/en/car-theory-exam', updated: '2026-11-25' },
+	{ nl: '/theorie-examen-aanvragen', en: '/en/booking-your-theory-exam', updated: '2026-11-25' },
+	{ nl: '/rijschool-machtigen', en: '/en/authorising-your-driving-school', updated: '2026-11-25' },
 ];
 
 export const cityRoute = {
