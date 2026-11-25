@@ -191,10 +191,10 @@
 	import { goto } from '$app/navigation';
 	import { m } from '$lib/paraglide/messages.js';
 	import { localizeHref } from '$lib/paraglide/runtime';
-	import { cities, offersAutomatic } from '$lib/data/cities';
+	import { page } from '$app/state';
 	import { pickByLocale } from '$lib/utils/get-localized-data';
 	import { formatEuro } from '$lib/utils/format-euro';
-	import { MAIN_PACKAGE_IDS } from '$lib/seo/schema.js';
+	import { MAIN_PACKAGE_IDS } from '$lib/data/main-packages.js';
 	import { trackSignup } from '$lib/analytics.js';
 	import Turnstile from './Turnstile.svelte';
 	import LeadSourceField from './LeadSourceField.svelte';
@@ -230,8 +230,10 @@
 
 	// Some cities only have manual lessons (city data `transmissions`): automatic is then
 	// disabled, and a choice for automatic made before picking the city is cleared
+	// places from the root layout's server load (names only, not the city pages)
+	const cities = $derived(page.data.siteLinks.cities);
 	const placeCity = $derived(cities.find((city) => city.slug === place));
-	const manualOnly = $derived(Boolean(placeCity) && !offersAutomatic(placeCity));
+	const manualOnly = $derived(Boolean(placeCity?.manualOnly));
 	$effect(() => {
 		if (manualOnly && untrack(() => transmission) === 'automaat') transmission = '';
 	});

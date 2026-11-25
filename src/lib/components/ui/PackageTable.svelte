@@ -49,7 +49,7 @@
 	import { business } from '$lib/data/business.js';
 	import { formatEuro } from '$lib/utils/format-euro';
 	import { pickByLocale } from '$lib/utils/get-localized-data';
-	import { MAIN_PACKAGE_IDS } from '$lib/seo/schema.js';
+	import { MAIN_PACKAGE_IDS } from '$lib/data/main-packages.js';
 	import packagesNl from '$lib/data/pricing-packages.nl.json';
 	import packagesEn from '$lib/data/pricing-packages.en.json';
 

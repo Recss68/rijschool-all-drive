@@ -1,5 +1,6 @@
 <svelte:head>
-	<link rel="icon" href="/images/favicon_white.jpg" />
+	<link rel="icon" href="/images/favicon.png" type="image/png" sizes="64x64" />
+	<link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
 	<link
 		rel="preload"
 		href="/fonts/bricolage-grotesque.woff2"

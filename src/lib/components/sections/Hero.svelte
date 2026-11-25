@@ -76,12 +76,27 @@
 			</div>
 			<div class="hero-grid-2 fadeInUp">
 				<picture>
-					<source srcset="/images/hero-picture.avif" type="image/avif" />
-					<source srcset="/images/hero-picture.webp" type="image/webp" />
+					<!-- hidden on phones: an empty source there, so phones never download the photo -->
+					<source
+						media="(max-width: 767px)"
+						srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+					/>
+					<source
+						srcset="/images/hero-picture-640.avif 640w, /images/hero-picture.avif 1080w"
+						sizes="50vw"
+						type="image/avif"
+					/>
+					<source
+						srcset="/images/hero-picture-640.webp 640w, /images/hero-picture.webp 1080w"
+						sizes="50vw"
+						type="image/webp"
+					/>
 					<!-- LCP image on desktop: load eagerly with high priority -->
 					<img
 						class="hero-image"
 						src="/images/hero-picture.jpg"
+						srcset="/images/hero-picture-640.jpg 640w, /images/hero-picture.jpg 1080w"
+						sizes="50vw"
 						alt={m.alt_hero()}
 						width="1080"
 						height="720"
@@ -97,7 +112,6 @@
 	import ButtonIcon from '$lib/components/ui/ButtonIcon.svelte';
 	import { cities } from '$lib/data/cities';
 	import { localizeHref } from '$lib/paraglide/runtime';
-	import { gsap } from 'gsap';
 	import { onMount, onDestroy } from 'svelte';
 	import { m } from '$lib/paraglide/messages.js';
 	import { business } from '$lib/data/business.js';
@@ -114,7 +128,11 @@
 		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
 		try {
-			const { SplitText } = await import('gsap/SplitText');
+			// loaded after the first paint, so the animation library is not on the critical path
+			const [{ gsap }, { SplitText }] = await Promise.all([
+				import('gsap'),
+				import('gsap/SplitText'),
+			]);
 			gsap.registerPlugin(SplitText);
 			// split into words too, so words never break across lines
 			split = new SplitText('#my-text', { type: 'words,chars' });

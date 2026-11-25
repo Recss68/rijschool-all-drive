@@ -1,12 +1,12 @@
 <svelte:window on:resize={handleResize} />
 
 <section class="section pricing">
-	<h2 class="sr-only">{m.pricing_heading_sr()}</h2>
+	<h2 class="visually-hidden">{m.pricing_heading_sr()}</h2>
 
 	{#each tabs as tab (tab.id)}
 		<input
 			type="radio"
-			class="sr-only tab-radio"
+			class="visually-hidden tab-radio"
 			name="pricing-group"
 			id={'tab-' + tab.id}
 			value={tab.id}
@@ -29,7 +29,7 @@
 
 	{#each groups as group (group.id)}
 		<section class="pricing-slider-wrap" data-group={group.id}>
-			<h3 class="sr-only">{group.label}</h3>
+			<h3 class="visually-hidden">{group.label}</h3>
 
 			<div
 				class="pricing-slider-viewport"
@@ -142,7 +142,8 @@
 									on:click={() => goTo(group.id, index)}
 								>
 									<span class="dot-visual"></span>
-									<span class="sr-only">{m.pricing_go_to_slide({ number: index + 1 })}</span>
+									<span class="visually-hidden">{m.pricing_go_to_slide({ number: index + 1 })}</span
+									>
 								</button>
 							</li>
 						{/each}
@@ -567,18 +568,6 @@
 	.dot:focus-visible {
 		outline: 4px solid color-mix(in srgb, var(--c-accent) 55%, transparent);
 		outline-offset: 2px;
-	}
-
-	.sr-only {
-		position: absolute;
-		width: 1px;
-		height: 1px;
-		padding: 0;
-		margin: -1px;
-		overflow: hidden;
-		clip: rect(0 0 0 0);
-		white-space: nowrap;
-		border: 0;
 	}
 
 	@keyframes card-enter {

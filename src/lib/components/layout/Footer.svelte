@@ -2,12 +2,12 @@
 	<div class="section-inner">
 		<div class="footer-heading">
 			<picture>
+				<source srcset="/images/ad_long_white.avif" type="image/avif" />
 				<source srcset="/images/ad_long_white.webp" type="image/webp" />
-				<source srcset="/images/ad_long_white.png" type="image/png" />
 				<img
-					src="/images/ad_long_white.avif"
-					width="1376"
-					height="768"
+					src="/images/ad_long_white.png"
+					width="640"
+					height="357"
 					alt={m.alt_logo()}
 					loading="lazy"
 				/>
@@ -33,7 +33,7 @@
 		<div class="quick-menu-cities">
 			<h2>{m.footer_cities_heading()}</h2>
 			<ul>
-				{#each cities as city (city.slug)}
+				{#each siteLinks.cities as city (city.slug)}
 					<li>
 						<a href={localizeHref(`/rijschool-${city.slug}`)}
 							>{m.city_hero_title({ city: city.name })}</a
@@ -46,8 +46,8 @@
 		<div class="quick-menu-info">
 			<h2>{m.footer_info_heading()}</h2>
 			<ul>
-				{#each infoPages as page (page.slug)}
-					<li><a href={localizeHref(`/${page.slug}`)}>{pickByLocale(page).title}</a></li>
+				{#each siteLinks.infoPages as info (info.slug)}
+					<li><a href={localizeHref(`/${info.slug}`)}>{pickByLocale(info)}</a></li>
 				{/each}
 			</ul>
 		</div>
@@ -55,11 +55,9 @@
 		<div class="quick-menu-services">
 			<h2>{m.footer_services_heading()}</h2>
 			<ul>
-				{#each services as service (service.slug)}
+				{#each siteLinks.services as service (service.slug)}
 					<li>
-						<a href={localizeHref(`/${service.slug}`)}
-							>{pickByLocale(service).linkTitle ?? pickByLocale(service).title}</a
-						>
+						<a href={localizeHref(`/${service.slug}`)}>{pickByLocale(service)}</a>
 					</li>
 				{/each}
 			</ul>
@@ -155,10 +153,11 @@
 	import { m } from '$lib/paraglide/messages.js';
 	import { business } from '$lib/data/business.js';
 	import { openConsentSettings } from '$lib/consent.svelte.js';
-	import { cities } from '$lib/data/cities';
-	import { infoPages } from '$lib/data/info';
-	import { services } from '$lib/data/services';
+	import { page } from '$app/state';
 	import { pickByLocale } from '$lib/utils/get-localized-data';
+
+	// from the root layout's server load: only names and links, not the pages themselves
+	const siteLinks = $derived(page.data.siteLinks);
 
 	const { social } = business;
 </script>
