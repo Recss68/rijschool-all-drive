@@ -12,6 +12,8 @@
 		"format": "prettier --write \"**/*.{js,ts,tsx,css,svelte,json,md,yml,yaml}\"",
 		"format:check": "prettier --check \"**/*.{js,ts,tsx,css,svelte,json,md,yml,yaml}\"",
 		"test": "vitest run",
+		"lighthouse": "npx --yes @lhci/cli@0.16.1 autorun",
+		"a11y": "npx --yes pa11y-ci@5.0.0 --sitemap \"http://localhost:${TEST_PORT:-4173}/sitemap.xml\" --sitemap-find https://www.rijschoolalldrive.nl --sitemap-replace \"http://localhost:${TEST_PORT:-4173}\"",
 		"telegram:chat-id": "node scripts/telegram.mjs chat-id",
 		"telegram:test": "node scripts/telegram.mjs test",
 		"indexnow": "node scripts/indexnow.mjs"

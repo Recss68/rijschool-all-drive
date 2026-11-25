@@ -31,3 +31,6 @@ vite.config.ts.timestamp-*
 
 SEO-GEO-AIO-CHECKLIST.md
 
+
+# Lighthouse CI reports
+.lighthouseci
