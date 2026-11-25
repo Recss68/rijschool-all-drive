@@ -1,10 +1,20 @@
 <section class="about-section section">
 	<div class="section-inner">
 		<picture>
-			<source srcset="/images/alldrive-auto.avif" type="image/avif" />
-			<source srcset="/images/alldrive-auto.webp" type="image/webp" />
+			<source
+				srcset="/images/alldrive-auto-800.avif 800w, /images/alldrive-auto-1200.avif 1200w, /images/alldrive-auto.avif 1536w"
+				sizes="(min-width: 786px) 50vw, 100vw"
+				type="image/avif"
+			/>
+			<source
+				srcset="/images/alldrive-auto-800.webp 800w, /images/alldrive-auto-1200.webp 1200w, /images/alldrive-auto.webp 1536w"
+				sizes="(min-width: 786px) 50vw, 100vw"
+				type="image/webp"
+			/>
 			<img
 				src="/images/alldrive-auto.jpg"
+				srcset="/images/alldrive-auto-800.jpg 800w, /images/alldrive-auto-1200.jpg 1200w, /images/alldrive-auto.jpg 1536w"
+				sizes="(min-width: 786px) 50vw, 100vw"
 				alt={m.alt_car()}
 				width="600"
 				height="500"

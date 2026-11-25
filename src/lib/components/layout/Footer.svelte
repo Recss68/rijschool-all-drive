@@ -2,12 +2,12 @@
 	<div class="section-inner">
 		<div class="footer-heading">
 			<picture>
+				<source srcset="/images/ad_long_white.avif" type="image/avif" />
 				<source srcset="/images/ad_long_white.webp" type="image/webp" />
-				<source srcset="/images/ad_long_white.png" type="image/png" />
 				<img
-					src="/images/ad_long_white.avif"
-					width="1376"
-					height="768"
+					src="/images/ad_long_white.png"
+					width="640"
+					height="357"
 					alt={m.alt_logo()}
 					loading="lazy"
 				/>

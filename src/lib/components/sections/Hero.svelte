@@ -76,12 +76,27 @@
 			</div>
 			<div class="hero-grid-2 fadeInUp">
 				<picture>
-					<source srcset="/images/hero-picture.avif" type="image/avif" />
-					<source srcset="/images/hero-picture.webp" type="image/webp" />
+					<!-- hidden on phones: an empty source there, so phones never download the photo -->
+					<source
+						media="(max-width: 767px)"
+						srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+					/>
+					<source
+						srcset="/images/hero-picture-640.avif 640w, /images/hero-picture.avif 1080w"
+						sizes="50vw"
+						type="image/avif"
+					/>
+					<source
+						srcset="/images/hero-picture-640.webp 640w, /images/hero-picture.webp 1080w"
+						sizes="50vw"
+						type="image/webp"
+					/>
 					<!-- LCP image on desktop: load eagerly with high priority -->
 					<img
 						class="hero-image"
 						src="/images/hero-picture.jpg"
+						srcset="/images/hero-picture-640.jpg 640w, /images/hero-picture.jpg 1080w"
+						sizes="50vw"
 						alt={m.alt_hero()}
 						width="1080"
 						height="720"

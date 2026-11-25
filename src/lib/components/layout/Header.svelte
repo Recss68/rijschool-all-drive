@@ -3,31 +3,35 @@
 <header class="fadeInUp" class:scrolled={scrollY > 24}>
 	<a href={localizeHref('/')}>
 		<picture>
+			<!-- files are 2x the shown size; AVIF first, the PNG in <img> is the fallback -->
 			<source
 				media="(min-width: 768px)"
 				srcset="/images/ad_long_black.avif"
-				width="250px"
+				width="250"
+				height="73"
 				type="image/avif"
 			/>
 			<source
 				media="(min-width: 768px)"
 				srcset="/images/ad_long_black.webp"
-				width="250px"
+				width="250"
+				height="73"
 				type="image/webp"
 			/>
 			<source
 				media="(min-width: 768px)"
 				srcset="/images/ad_long_black.png"
-				width="250px"
+				width="250"
+				height="73"
 				type="image/png"
 			/>
+			<source srcset="/images/ad_short_black.avif" type="image/avif" />
 			<source srcset="/images/ad_short_black.webp" type="image/webp" />
-			<source srcset="/images/ad_short_black.png" type="image/png" />
 			<img
 				class="logo"
-				src="/images/ad_short_black.avif"
+				src="/images/ad_short_black.png"
 				width="80"
-				height="54"
+				height="53"
 				alt={m.alt_logo()}
 			/>
 		</picture>
