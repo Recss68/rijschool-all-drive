@@ -7,7 +7,7 @@ import { infoPages } from '$lib/data/info';
 import { formatEuro } from '$lib/utils/format-euro';
 import { cityExamCentres } from '$lib/utils/city-copy';
 import { absoluteUrl } from '$lib/seo/url.js';
-import { MAIN_PACKAGE_IDS } from '$lib/seo/schema.js';
+import { MAIN_PACKAGE_IDS } from '$lib/data/main-packages.js';
 import packagesEn from '$lib/data/pricing-packages.en.json';
 import packagesNl from '$lib/data/pricing-packages.nl.json';
 

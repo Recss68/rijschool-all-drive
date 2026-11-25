@@ -6,15 +6,13 @@ import { business } from '$lib/data/business.js';
 import { cities } from '$lib/data/cities';
 import { pickByLocale } from '$lib/utils/get-localized-data';
 import { absoluteUrl } from './url.js';
+import { MAIN_PACKAGE_IDS } from '$lib/data/main-packages.js';
 import packagesNl from '$lib/data/pricing-packages.nl.json';
 import packagesEn from '$lib/data/pricing-packages.en.json';
 
 export const ORG_ID = `${business.url}/#organization`;
 export const WEBSITE_ID = `${business.url}/#website`;
 export const PERSON_ID = `${business.url}/#head-instructor`;
-
-/** The three main packages that are promoted on the home page. */
-export const MAIN_PACKAGE_IDS = ['rij-start', 'door-rij', 'vol-gas'];
 
 const city = (c) => ({
 	'@type': 'City',
