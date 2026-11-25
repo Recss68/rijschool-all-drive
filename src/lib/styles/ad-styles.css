@@ -4,11 +4,12 @@
    ========================================================================== */
 
 /* --- Fonts ------------------------------------------------- */
-/* Both files are variable fonts: one file covers the full weight range. */
+/* Both files are variable fonts, subset to Latin-1 and weights 300-800 (all the site uses)
+   to keep them small: rebuild them with scripts/subset-fonts.sh when adding characters or weights. */
 @font-face {
 	font-family: 'Bricolage Grotesque';
 	src: url('/fonts/bricolage-grotesque.woff2') format('woff2');
-	font-weight: 200 800;
+	font-weight: 300 800;
 	font-style: normal;
 	font-display: swap;
 }
@@ -16,7 +17,7 @@
 @font-face {
 	font-family: 'DM Sans';
 	src: url('/fonts/dmsans.woff2') format('woff2');
-	font-weight: 100 1000;
+	font-weight: 300 800;
 	font-style: normal;
 	font-display: swap;
 }

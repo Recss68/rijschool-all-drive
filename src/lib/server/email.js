@@ -134,8 +134,8 @@ export function renderEmail({
 	return `<!doctype html>
 <html lang="${escapeHtml(lang)}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><title>${escapeHtml(title)}</title>
 <style>
-	@font-face { font-family: 'Bricolage Grotesque'; src: url('${site}/fonts/bricolage-grotesque.woff2') format('woff2'); font-weight: 200 800; }
-	@font-face { font-family: 'DM Sans'; src: url('${site}/fonts/dmsans.woff2') format('woff2'); font-weight: 100 1000; }
+	@font-face { font-family: 'Bricolage Grotesque'; src: url('${site}/fonts/bricolage-grotesque.woff2') format('woff2'); font-weight: 300 800; }
+	@font-face { font-family: 'DM Sans'; src: url('${site}/fonts/dmsans.woff2') format('woff2'); font-weight: 300 800; }
 </style></head>
 <body style="margin:0;padding:0;background:${C.section};">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${C.section};padding:24px 12px;">
