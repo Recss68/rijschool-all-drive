@@ -160,7 +160,7 @@
 			display: grid;
 			grid-template-columns: repeat(2, 1fr);
 			grid-template-rows: 1fr;
-			grid-column-gap: var(--space-18);
+			column-gap: var(--space-18);
 		}
 
 		.hero-grid-1 {

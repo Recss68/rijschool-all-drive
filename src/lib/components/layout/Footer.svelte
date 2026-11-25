@@ -202,7 +202,7 @@
 				background-color: var(--c-footer-icons-bg);
 				padding: var(--space-2);
 				border-radius: var(--radius-round);
-				transition: background-color 0.2 ease-in-out;
+				transition: background-color 0.2s ease-in-out;
 				&:hover {
 					background-color: var(--c-accent);
 				}
@@ -242,7 +242,7 @@
 					'brand links cities info'
 					'brand contact hours services'
 					'bottom bottom bottom bottom';
-				grid-column-gap: var(--space-12);
+				column-gap: var(--space-12);
 
 				.footer-heading {
 					grid-area: brand;

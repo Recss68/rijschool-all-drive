@@ -196,6 +196,7 @@
 	}
 
 	/* ---------- motion (transform/opacity only) ---------- */
+	/* stylelint-disable no-duplicate-selectors -- motion is kept apart from the shapes it moves */
 	.dashes {
 		animation: road 0.5s linear infinite;
 	}
