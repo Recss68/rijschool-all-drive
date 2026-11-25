@@ -154,7 +154,7 @@
 			.lessons-grid {
 				display: grid;
 				grid-template-columns: repeat(2, 1fr);
-				grid-column-gap: var(--space-6);
+				column-gap: var(--space-6);
 				align-items: start;
 				.lessons-grid-1 {
 					margin-top: var(--space-8);

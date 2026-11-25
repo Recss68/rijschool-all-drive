@@ -37,6 +37,8 @@ jobs:
         run: npm run format:check
       - name: ESLint
         run: npx eslint .
+      - name: Stylelint
+        run: npm run lint:css
 
   test:
     name: Tests (unit + integration)

@@ -331,7 +331,6 @@
 	#tab-basis:checked ~ nav .pricing-tabs label[for='tab-basis'],
 	#tab-theorie:checked ~ nav .pricing-tabs label[for='tab-theorie'] {
 		background: var(--c-white);
-		outline: 4px solid rgba(0, 123, 255, 0.35);
 		outline-offset: 2px;
 		outline: 4px solid color-mix(in srgb, var(--c-accent) 55%, transparent);
 	}
@@ -520,7 +519,6 @@
 	}
 
 	.cta:focus-visible {
-		outline: 4px solid rgba(0, 123, 255, 0.35);
 		outline-offset: 4px;
 		outline: 4px solid color-mix(in srgb, var(--c-accent) 55%, transparent);
 	}
