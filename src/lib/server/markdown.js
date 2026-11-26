@@ -56,7 +56,14 @@ function articlesMd(articles) {
 				);
 			}
 			if (article.links?.length) {
-				parts.push(list(article.links.map((l) => `[${l.label}](${l.href})`)));
+				// internal links are Dutch base paths (see ArticleBlocks), so localize them like the HTML does
+				parts.push(
+					list(
+						article.links.map((l) =>
+							l.href.startsWith('/') ? link(l.label, l.href) : `[${l.label}](${l.href})`
+						)
+					)
+				);
 			}
 			return parts.join('\n\n');
 		})

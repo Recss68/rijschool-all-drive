@@ -1,3 +1,4 @@
+import { infoNextStep } from '../info-next-step.js';
 import { business } from '../business.js';
 
 export const page = {
@@ -33,6 +34,7 @@ export const page = {
 					'Voor je eerste rijbewijs vul je ook een Gezondheidsverklaring (Eigen verklaring) in via Mijn CBR. Het CBR moet die hebben goedgekeurd voordat je praktijkexamen kunt doen. Doe dit daarom ruim op tijd.',
 				],
 			},
+			infoNextStep.nl,
 			{
 				heading: 'Officiële informatie',
 				variant: 'sources',
@@ -70,6 +72,7 @@ export const page = {
 					'For your first licence you also fill in a health declaration (Gezondheidsverklaring / Eigen verklaring) in Mijn CBR. The CBR must have approved it before you can take your practical exam, so do this in good time.',
 				],
 			},
+			infoNextStep.en,
 			{
 				heading: 'Official information',
 				variant: 'sources',

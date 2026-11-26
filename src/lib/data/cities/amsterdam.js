@@ -4,7 +4,7 @@ export const city = {
 	slug: 'amsterdam',
 	name: 'Amsterdam',
 	order: 1,
-	updated: '2026-11-09', // last real content change (sitemap lastmod)
+	updated: '2026-11-25', // last real content change (sitemap lastmod)
 	wikipedia: 'https://nl.wikipedia.org/wiki/Amsterdam',
 	// Map position (city centre) and where the label sits next to the marker
 	coordinates: { lat: 52.3676, lon: 4.9041 },
@@ -13,7 +13,7 @@ export const city = {
 	nearby: ['amstelveen', 'diemen', 'zaandam'],
 	nl: {
 		h1: 'Rijles in alle stadsdelen van Amsterdam',
-		metaTitle: 'Rijles Amsterdam per stadsdeel | Rijschool All Drive',
+		metaTitle: 'Rijschool Amsterdam | Rijles in elk stadsdeel | All Drive',
 		metaDescription:
 			'Rijles in Amsterdam Centrum, Noord, Oost, Zuid, West, Nieuw-West en Zuidoost. Ophalen in je eigen stadsdeel, schakel of automaat. Vraag je proefles aan.',
 		intro:
@@ -74,7 +74,7 @@ export const city = {
 	},
 	en: {
 		h1: 'Driving lessons in every Amsterdam district',
-		metaTitle: 'Driving lessons in every Amsterdam district | All Drive',
+		metaTitle: 'Driving School Amsterdam | Every district | All Drive',
 		metaDescription:
 			'Driving lessons in Amsterdam Centrum, Noord, Oost, Zuid, West, Nieuw-West and Zuidoost. Pick-up in your district, manual or automatic. Request a trial lesson.',
 		intro:
