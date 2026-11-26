@@ -19,6 +19,7 @@ Every merge from `dev` into `main` is a release with its own version tag.
 
 ### Fixed
 
+- Review score on the site and in the structured data matches the Google Business Profile again (4.8 from 25 reviews), with a decimal comma in Dutch.
 - Applying for your licence: the CBR deadlines (1 year health statement, 3 years proficiency statement) replace the incorrect 1.5 years (#73).
 
 ## [1.0.0] - 2026-11-25

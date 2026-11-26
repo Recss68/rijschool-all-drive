@@ -9,6 +9,7 @@ import { getInfoPage } from '$lib/data/info';
 import { privacy, terms } from '$lib/data/legal.js';
 import { pickByLocale } from '$lib/utils/get-localized-data';
 import { formatEuro } from '$lib/utils/format-euro';
+import { formatRating } from '$lib/utils/format-rating';
 import { fillPlaceholders, starterPackage } from '$lib/utils/placeholders';
 import { faqItems } from '$lib/utils/faq';
 import { cityAnswer, cityExamCentres, cityExamFaq } from '$lib/utils/city-copy';
@@ -118,7 +119,7 @@ function home() {
 			m.trial_fact_free(),
 			business.reviews &&
 				m.reviews_summary({
-					rating: business.reviews.rating,
+					rating: formatRating(business.reviews.rating),
 					count: business.reviews.count,
 					source: business.reviews.source,
 				}) + ` (${business.reviews.url})`,
