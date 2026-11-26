@@ -64,7 +64,7 @@
 					{#if reviews}
 						<li>
 							<a href={reviews.url}
-								><span class="t-highlight">{reviews.rating}/5</span>
+								><span class="t-highlight">{formatRating(reviews.rating)}/5</span>
 								{m.hero_stat_rating({ source: reviews.source, count: reviews.count })}</a
 							>
 						</li>
@@ -117,6 +117,7 @@
 	import { business } from '$lib/data/business.js';
 	import TrialFacts from '$lib/components/ui/TrialFacts.svelte';
 	import { formatEuro } from '$lib/utils/format-euro';
+	import { formatRating } from '$lib/utils/format-rating';
 	import { passRateNote } from '$lib/utils/pass-rate';
 
 	const { passRate, reviews } = business;

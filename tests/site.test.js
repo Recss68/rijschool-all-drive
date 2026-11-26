@@ -3,6 +3,7 @@ import { describe, expect, it, beforeAll } from 'vitest';
 import { XMLValidator } from 'fast-xml-parser';
 import { PORT } from './setup.js';
 import { cities } from '../src/lib/data/cities/index.js';
+import { business } from '../src/lib/data/business.js';
 
 const BASE = `http://localhost:${PORT}`;
 const ORIGIN = 'https://www.rijschoolalldrive.nl';
@@ -209,7 +210,7 @@ describe('service area', () => {
 		for (const t of ['DrivingSchool', 'WebSite', 'Person', 'FAQPage'])
 			expect(home.map((x) => x.t)).toContain(t);
 		const org = home.find((x) => x.t === 'DrivingSchool').j;
-		expect(org.aggregateRating.ratingValue).toBe(5);
+		expect(org.aggregateRating.ratingValue).toBe(business.reviews.rating);
 		expect(org.hasMap).toMatch(/^https:\/\//);
 		expect((await types('/over-ons')).map((x) => x.t)).toContain('AboutPage');
 		const info = (await types('/theorie-examen-auto')).find((x) => x.t === 'Article');
@@ -217,6 +218,15 @@ describe('service area', () => {
 		const automatic = (await types('/automaat-rijles')).find((x) => x.t === 'Service');
 		expect(automatic.j.offers).toMatchObject({ price: 65, priceCurrency: 'EUR' });
 		expect((await types('/spoedcursus')).find((x) => x.t === 'Service').j.offers).toBeUndefined();
+	});
+
+	it('shows the review score with the decimal separator of the page language', async () => {
+		const score = (locale) =>
+			new Intl.NumberFormat(locale, { maximumFractionDigits: 1 }).format(business.reviews.rating);
+		const nl = await (await get('/')).text();
+		const en = await (await get('/en')).text();
+		expect(nl).toContain(`${score('nl-NL')}/5`);
+		expect(en).toContain(`${score('en-GB')}/5`);
 	});
 
 	it('every service page links to all other services, and the footer lists them', async () => {

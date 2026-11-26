@@ -66,10 +66,11 @@ export const business = {
 	// Example: { value: 85, period: '2025', firstAttempt: true, url: 'https://www.cbr.nl/...' }
 	passRate: null,
 
-	// Review score. Example: { rating: 4.9, count: 32, source: 'Google', url: 'https://g.page/...' }
+	// Review score as shown on the Google Business Profile (checked 2026-11-26).
+	// Update it when the profile changes; the site must never show a higher score than Google.
 	reviews: {
-		rating: 5,
-		count: 21,
+		rating: 4.8,
+		count: 25,
 		source: 'Google',
 		url: 'https://maps.app.goo.gl/J3xUMiU4sVrXCfJZ8',
 	},

@@ -1,6 +1,10 @@
 {#if reviews}
 	<p class="reviews-summary">
-		{m.reviews_summary({ rating: reviews.rating, count: reviews.count, source: reviews.source })}
+		{m.reviews_summary({
+			rating: formatRating(reviews.rating),
+			count: reviews.count,
+			source: reviews.source,
+		})}
 		· <a href={reviews.url}>{m.reviews_link()}</a>
 	</p>
 {/if}
@@ -13,6 +17,7 @@
 	import { onMount } from 'svelte';
 	import { m } from '$lib/paraglide/messages.js';
 	import { business } from '$lib/data/business.js';
+	import { formatRating } from '$lib/utils/format-rating';
 
 	const { reviews } = business;
 

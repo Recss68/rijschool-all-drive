@@ -1,6 +1,6 @@
 import { getLocale } from '$lib/paraglide/runtime';
 
-const intlLocales = { nl: 'nl-NL', en: 'en-GB' };
+export const intlLocales = { nl: 'nl-NL', en: 'en-GB' };
 
 /**
  * Formats an amount in euros for the current locale. Whole amounts are shown
