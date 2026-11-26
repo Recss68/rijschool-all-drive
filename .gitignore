@@ -3,7 +3,6 @@ node_modules
 # Output
 .output
 .vercel
-.netlify
 .wrangler
 /.svelte-kit
 /build
@@ -34,3 +33,6 @@ SEO-GEO-AIO-CHECKLIST.md
 
 # Lighthouse CI reports
 .lighthouseci
+
+# Project context for AI agents; a copy lives in the Obsidian client folder
+AGENTS.md
